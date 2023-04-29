@@ -1,8 +1,4 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import NavBar from '../components/NavBar';
-
-const inter = Inter({ subsets: ['latin'] })
+import CApp from '../components/CApp';
 
 export const metadata = {
   title: 'Chunithm Singapore Tournament 2023',
@@ -14,10 +10,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} py-8 px-4 max-w-xl flex flex-col justify-center m-auto`}>
-        <NavBar />
-        {children}
+    <html lang="en" style={{ marginLeft: "calc(100vw - 100%)", marginRight: "0" }}>
+      <body style={{ maxWidth: "800px", margin: "0 auto" }}>
+        <CApp>
+          {children}
+        </CApp>
       </body>
     </html>
   )

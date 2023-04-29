@@ -1,12 +1,25 @@
-import Link from 'next/link';
+'use client';
 
-const NavBar = () => (
-  <div className="flex gap-4">
-    <div>Chunithm Tournament</div>
-    <Link href="/">Leaderboard</Link>
-    <Link href="/rules">Rules</Link>
-    <Link href="/submission">Submission</Link>
-  </div>
-);
+import Link from 'next/link';
+import { Menu } from 'antd';
+import { usePathname } from 'next/navigation';
+
+const links = {
+  'Leaderboard': '/',
+  'Rules': '/rules',
+  'Submission': '/submission',
+}
+
+const NavBar = () => {
+  const pathname = usePathname();
+
+  return (
+    <Menu
+      mode='horizontal'
+      items={Object.entries(links).map(([key, href]) => ({ label: (<Link href={href}>{key}</Link>), key: key }))}
+      selectedKeys={Object.entries(links).flatMap(([key, href]) => (pathname === href ? [key] : []))}
+    />
+  );
+}
 
 export default NavBar;
