@@ -2,6 +2,7 @@
 
 import React from "react";
 import ReactMarkdown from "react-markdown";
+// @ts-ignore
 import rules from "./rules.md";
 import remarkGfm from "remark-gfm";
 import { Affix, Col, Row } from "antd";
@@ -15,10 +16,7 @@ const Rules = () => {
   }[] = [];
 
   // Magic.
-  const addToTOC = ({
-    children,
-    ...props
-  }: React.PropsWithChildren<HeadingProps>) => {
+  const addToTOC = ({ children, ...props }: React.PropsWithChildren<any>) => {
     const level = Number(props.node.tagName.match(/h(\d)/)?.slice(1));
     if (level && children && typeof children[0] === "string") {
       const id = children[0].toLowerCase().replace(/[^a-z0-9]+/g, "-");

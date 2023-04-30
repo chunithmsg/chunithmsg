@@ -21,33 +21,38 @@ const masterSongs = [
   { image: unknownSong, title: "???" },
 ];
 
-const generateColumns = (songs) => [
-  { title: "No", key: "no", render: (_text, _record, idx) => idx + 1 },
-  {
-    title: "ID",
-    key: "id",
-    render: (text, record) =>
-      `${text}${record.disqualified && " (disqualified)"}`,
-  },
-  ...songs.map(({ title, image }, idx) => ({
-    title: (
-      <>
-        <Image src={image} />
-        <div>{title}</div>
-      </>
-    ),
-    key: `song${idx + 1}`,
-  })),
-  {
-    title: "Total",
-    key: "total",
-    render: (_text, record) =>
-      Object.entries(record).reduce(
-        (accum, [k, v]) => accum + (k.startsWith("song") ? v : 0),
-        0
+const generateColumns = (songs: { image: any; title: string }[]) =>
+  [
+    {
+      title: "No",
+      key: "no",
+      render: (_text: string, _record: any, idx: number) => idx + 1,
+    },
+    {
+      title: "ID",
+      key: "id",
+      render: (text: string, record: any) =>
+        `${text}${record.disqualified && " (disqualified)"}`,
+    },
+    ...songs.map(({ title, image }, idx) => ({
+      title: (
+        <>
+          <Image src={image} alt="" />
+          <div>{title}</div>
+        </>
       ),
-  },
-].map((d) => ({ ...d, dataIndex: d.key }));
+      key: `song${idx + 1}`,
+    })),
+    {
+      title: "Total",
+      key: "total",
+      render: (_text: string, record: any) =>
+        Object.entries(record).reduce(
+          (accum, [k, v]) => accum + ((k.startsWith("song") ? v : 0) as number),
+          0
+        ),
+    },
+  ].map((d) => ({ ...d, dataIndex: d.key }));
 
 const challengerScores = [
   {
@@ -59,7 +64,7 @@ const challengerScores = [
   },
 ];
 
-const masterScores = [];
+const masterScores: any[] = [];
 
 const StyledTable = styled(Table)`
   .disqualified {
@@ -70,16 +75,19 @@ const StyledTable = styled(Table)`
 const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState(false);
 
-  const table = (songs, scores) => (
+  const table = (songs: any[], scores: any[]) => (
     <StyledTable
       columns={generateColumns(songs)}
-      dataSource={scores.sort((a, b) => a.song1 + a.song2 + a.song3 - b.song1 - b.song2 - b.song3).filter(
-        ({ disqualified }) => !hideDisqualified || !disqualified
-      )}
-      rowClassName={(record) => record.disqualified && "disqualified"}
+      dataSource={scores
+        .sort(
+          (a: any, b: any) =>
+            a.song1 + a.song2 + a.song3 - b.song1 - b.song2 - b.song3
+        )
+        .filter(({ disqualified }) => !hideDisqualified || !disqualified)}
+      rowClassName={(record: any) => record.disqualified && "disqualified"}
       pagination={false}
     />
-  )
+  );
 
   return (
     <>
