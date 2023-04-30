@@ -22,6 +22,11 @@ The Qualifier follows a Score-Attack format where players will have to play a fi
 
 The Challengers Qualifier consists of 1 set of 3 songs:
 
+![Unknown](question.png)
+![Unknown](question.png)
+![Unknown](question.png)
+
+
 | No. | Title | Artist | Difficulty | Genre |
 | --- | ----- | ------ | ---------- | ----- |
 | 1   | ???   | ???    | ???        | ???   |
@@ -122,6 +127,10 @@ The Qualifier follows a Score-Attack format where players will have to play a fi
 
 The Masters Qualifier (Set A) songs are as follows:
 
+![Unknown](question.png)
+![Unknown](question.png)
+![Unknown](question.png)
+
 | No. | Title | Artist | Difficulty | Genre |
 | --- | ----- | ------ | ---------- | ----- |
 | 1   | ???   | ???    | ???        | ???   |
@@ -129,6 +138,10 @@ The Masters Qualifier (Set A) songs are as follows:
 | 3   | ???   | ???    | ???        | ???   |
 
 The Masters Qualifier (Set B) songs are as follows:
+
+![Unknown](question.png)
+![Unknown](question.png)
+![Unknown](question.png)
 
 | No. | Title | Artist | Difficulty | Genre |
 | --- | ----- | ------ | ---------- | ----- |

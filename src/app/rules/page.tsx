@@ -1,15 +1,63 @@
-import fs from 'fs';
+'use client';
+
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import path from 'path';
+import rules from './rules.md';
 import remarkGfm from 'remark-gfm';
+import { Affix, Col, Row } from 'antd';
 
 const Rules = () => {
+  // https://gist.github.com/sobelk/16fe68ff5520b2d5e2b6d406e329e0de
+  const toc: {
+    level: number,
+    id: string,
+    title: string,
+  }[] = [];
+
+  // Magic.
+  const addToTOC = ({children, ...props}: React.PropsWithChildren<HeadingProps>) => {
+    const level = Number(props.node.tagName.match(/h(\d)/)?.slice(1));
+    if (level && children && typeof children[0] === "string") {
+      const id = children[0].toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      toc.push({
+        level,
+        id,
+        title: children[0],
+      });
+      return React.createElement(
+        props.node.tagName, {id}, children
+      )
+    } else {
+      return React.createElement(props.node.tagName, props, children);
+    }
+  };
+
+  const TOC = () => (
+    <ul>
+      {toc.map(({level, id, title}) => (
+        <li key={id}>
+          <a href={`#${id}`}>{title}</a>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <>
       <h1>Rules</h1>
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {fs.readFileSync(path.join(process.cwd(), 'src', 'app', 'rules', 'rules.md'), 'utf8')}
-      </ReactMarkdown>
+      <Row>
+        <Col span={16} order={2}>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h2: addToTOC,
+            }}
+          >
+            {rules}
+          </ReactMarkdown>
+        </Col>
+        <Col span={8} order={1}><Affix><TOC /></Affix></Col>
+      </Row>
     </>
   );
 }
