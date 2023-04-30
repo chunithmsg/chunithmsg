@@ -7,12 +7,14 @@ const nextConfig = {
     ...config,
     module: {
       ...config.module,
-      rules: config.module.rules.concat([{
-        test: /\.md/,
-        type: 'asset/source',
-      }])
-    }
-  })
-}
+      rules: config.module.rules.concat([
+        {
+          test: /\.md/,
+          type: "asset/source",
+        },
+      ]),
+    },
+  }),
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
