@@ -73,7 +73,7 @@ Please note that the Qualifiers are done at your own expense.
 
 #### Submission
 
-Submissions are done here.
+[Submissions are done here.](https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform)
 
 You are allowed to attempt the qualifiers as many times as you would like.
 
@@ -203,7 +203,7 @@ Please note that the Qualifiers are done at your own expense.
 
 #### Submission
 
-Submissions are done here.
+[Submissions are done here.](https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform)
 
 You will need to submit the form two times - once for each set.
 

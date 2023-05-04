@@ -51,6 +51,10 @@ const Rules = () => {
               h2: addToTOC,
             }}
           >
+            {/*
+            The submission URL within the page is hard-coded.
+            TODO: Remove the magic constant and use the constants.ts file instead.
+            */}
             {rules}
           </ReactMarkdown>
         </Col>
