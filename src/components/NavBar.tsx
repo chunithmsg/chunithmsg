@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { Menu } from "antd";
 import { usePathname } from "next/navigation";
+import { submissionUrl } from "@/constants";
 
 const links = {
   Leaderboard: "/",
   Rules: "/rules",
-  Submission:
-    "https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform",
+  Submission: submissionUrl,
 };
 
 const NavBar = () => {
