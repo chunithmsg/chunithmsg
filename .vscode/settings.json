@@ -1,4 +1,28 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "cSpell.words": [
+    "Aime",
+    "Chunithm",
+    "Contrapasso",
+    "Exitium",
+    "GIGA",
+    "Leaderboard",
+    "macrocosmos",
+    "MIGHTYYYY",
+    "Nhelv",
+    "OVERCUTE",
+    "Paqqin",
+    "Parad'ox",
+    "parvorbital",
+    "Performai",
+    "punir",
+    "Qlipthogear",
+    "Surveiller",
+    "Tiama",
+    "Trrricksters",
+    "Virtualand",
+    "YURUSHITE",
+    "Λzure"
+  ]
 }
