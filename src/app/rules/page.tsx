@@ -2,7 +2,6 @@
 
 import React from "react";
 import ReactMarkdown from "react-markdown";
-// @ts-ignore
 import rules from "./rules.md";
 import remarkGfm from "remark-gfm";
 import { Affix, Col, Row } from "antd";
