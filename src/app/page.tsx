@@ -7,18 +7,18 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const challengerSongs = [
-  { image: unknownSong, title: "???" },
-  { image: unknownSong, title: "???" },
-  { image: unknownSong, title: "???" },
+  { image: unknownSong, title: "13" },
+  { image: unknownSong, title: "13+" },
+  { image: unknownSong, title: "14" },
 ];
 
 const masterSongs = [
-  { image: unknownSong, title: "???" },
-  { image: unknownSong, title: "???" },
-  { image: unknownSong, title: "???" },
-  { image: unknownSong, title: "???" },
-  { image: unknownSong, title: "???" },
-  { image: unknownSong, title: "???" },
+  { image: unknownSong, title: "14.5" },
+  { image: unknownSong, title: "14.6" },
+  { image: unknownSong, title: "14.8" },
+  { image: unknownSong, title: "14.7" },
+  { image: unknownSong, title: "14.8" },
+  { image: unknownSong, title: "14.9" },
 ];
 
 const generateColumns = (songs: { image: any; title: string }[]) =>
@@ -55,13 +55,6 @@ const generateColumns = (songs: { image: any; title: string }[]) =>
   ].map((d) => ({ ...d, dataIndex: d.key }));
 
 const challengerScores = [
-  {
-    id: "DONJAR",
-    song1: 1009999,
-    song2: 1008888,
-    song3: 1007777,
-    disqualified: true,
-  },
 ];
 
 const masterScores: any[] = [];
@@ -92,7 +85,7 @@ const Leaderboard = () => {
   return (
     <>
       <h1>Leaderboard</h1>
-      <div>
+      <div style={{ display: "flex", gap: "8px", }}>
         <Switch onChange={setHideDisqualified} />
         Hide disqualified
       </div>

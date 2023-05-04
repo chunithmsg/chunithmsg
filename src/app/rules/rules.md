@@ -8,11 +8,29 @@ Only the Top 8 of the Masters Division and the Top 16 of the Challengers Divisio
 
 ## Qualifiers Prizes
 
-Details coming soon!
+### Masters
+
+For each song, the player with the highest score that didn't qualify for finals will get $5.
 
 ## Finals Prizes
 
-Details coming soon!
+### Challengers
+
+| Placement  | Prizes                                             |
+| ---------- | -------------------------------------------------- |
+| Rank 1     | $40 in Virtualand credits + T-shirt + Handkerchief |
+| Rank 2     | $20 in Virtualand credits + T-shirt + Handkerchief |
+| Rank 3 - 4 | $10 in Virtualand credits + Handkerchief           |
+| Rank 5 - 8 | Handkerchief                                       |
+
+### Masters
+
+| Placement  | Prizes                                              |
+| ---------- | --------------------------------------------------- |
+| Rank 1     | $150 in Virtualand credits + T-shirt + Handkerchief |
+| Rank 2     | $100 in Virtualand credits + T-shirt + Handkerchief |
+| Rank 3 - 4 | $50 in Virtualand credits + Handkerchief            |
+| Rank 5 - 8 | $25 in Virtualand credits                           |
 
 ## Challengers Qualifiers
 
@@ -30,9 +48,9 @@ The Challengers Qualifier consists of 1 set of 3 songs:
 
 | No. | Title | Artist | Difficulty | Genre |
 | --- | ----- | ------ | ---------- | ----- |
-| 1   | ???   | ???    | ???        | ???   |
-| 2   | ???   | ???    | ???        | ???   |
-| 3   | ???   | ???    | ???        | ???   |
+| 1   | ???   | ???    | 13         | ???   |
+| 2   | ???   | ???    | 13+        | ???   |
+| 3   | ???   | ???    | 14         | ???   |
 
 ### Rules (Please Read Before Attempting!)
 
@@ -55,7 +73,7 @@ Please note that the Qualifiers are done at your own expense.
 
 #### Submission
 
-Submissions are done via this Google Forms Link.
+Submissions are done here.
 
 You are allowed to attempt the qualifiers as many times as you would like.
 
@@ -70,6 +88,10 @@ In the case of a tie in the total score, the player with an earlier play time (o
 The Top 16 ranked players will move on to the Finals.
 
 You may view the leaderboard which will be updated daily as much as possible (Chunithm Sun Divisional Leaderboard).
+
+#### Notes
+
+The organisers reserve the right to disqualify any player from the challengers bracket for any reason.
 
 ## Challengers Finals
 
@@ -148,9 +170,9 @@ The Masters Qualifier (Set A) songs are as follows:
 
 | No. | Title | Artist | Difficulty | Genre |
 | --- | ----- | ------ | ---------- | ----- |
-| 1   | ???   | ???    | ???        | ???   |
-| 2   | ???   | ???    | ???        | ???   |
-| 3   | ???   | ???    | ???        | ???   |
+| 1   | ???   | ???    | 14+        | ???   |
+| 2   | ???   | ???    | 14+        | ???   |
+| 3   | ???   | ???    | 14+        | ???   |
 
 The Masters Qualifier (Set B) songs are as follows:
 
@@ -160,16 +182,18 @@ The Masters Qualifier (Set B) songs are as follows:
 
 | No. | Title | Artist | Difficulty | Genre |
 | --- | ----- | ------ | ---------- | ----- |
-| 1   | ???   | ???    | ???        | ???   |
-| 2   | ???   | ???    | ???        | ???   |
-| 3   | ???   | ???    | ???        | ???   |
+| 1   | ???   | ???    | 14+        | ???   |
+| 2   | ???   | ???    | 14+        | ???   |
+| 3   | ???   | ???    | 14+        | ???   |
 
 ### Rules (Please Read Before Attempting!)
 
 #### Attempting the qualifiers
 
 Qualifiers can only be played in Virtualand outlets only.
+
 For each set, the qualifier songs must be played in the exact order as shown in the document (i.e. Tracks 1, 2 and 3, or Tracks 2, 3 and 4).
+
 Please take a picture of each individual score. Each picture should clearly show:
 
 - The Virtualand card reader.
@@ -179,7 +203,7 @@ Please note that the Qualifiers are done at your own expense.
 
 #### Submission
 
-Submissions are done via this Google Forms Link.
+Submissions are done here.
 
 You will need to submit the form two times - once for each set.
 
@@ -217,15 +241,41 @@ In the event of a tie where both players have the same total score, the winner w
 - The higher number of counter-picks won (i.e. songs that were not selected by the player themselves).
 - The lower total number of (Non-Critical) Justice judgments among all 4 songs.
 
+### Cards
+
+Each player will be given two power-up cards that they can use during the tournament. Each card may only be used at most once. Additionally, on the top 8 round and the top 4 round, each player may only use at most one card, and at the top 2 round, no cards may be used.
+
+The cards are as follows:
+1. Randomiser: randomises one song chosen by your opponent to a pool of six songs according to the song's chart constant. The chosen song by the randomiser may not be the same as the song previously chosen.
+2. Limit Break: one of your song choices may be chosen with a higher chart constant, according to the section "Chart Constant Restrictions" below. In addition, this song choice may not be randomised with the "Randomiser" card above.
+
+Hence, this is how choosing the song process will be done.
+1. Everyone chooses 2 charts. Limit break can be used in one chart of your choice.
+2. These charts will be passed to your opponent. If your opponent have not used limit break, your opponent may use the Randomiser card to randomise one chart of your choice. However, charts chosen with Limit Break cannot be randomised.
+3. Reveal all charts.
+
 ### Chart Constant Restrictions
 
 There will be level restrictions put in place per round through the course of the tournament. Please view the following tables for more information.
 
-| Round | Chart Constant Restrictions |
-| ----- | --------------------------- |
-| Top 8 | 14.5 - 14.9 inclusive       |
-| Top 4 | 14.8 - 15.2 inclusive       |
-| Top 2 | 15.0 - 15.4 inclusive       |
+| Round | Chart Constant Restrictions | With Limit Break      |
+| ----- | --------------------------- | --------------------- |
+| Top 8 | 14.5 - 14.9 inclusive       | 14.5 - 15.2 inclusive |
+| Top 4 | 14.8 - 15.2 inclusive       | 14.8 - 15.4 inclusive |
+| Top 2 | 15.0 - 15.4 inclusive       | N/A                   |
+
+### Randomiser Pool
+
+Here are the charts that are available to be chosen with the Randomiser card.
+
+| No. \ Chart Constant | 14.5 | 14.6 | 14.7 | 14.8 | 14.9 | 15.0 | 15.1 | 15.2 |
+| - | - | - | - | - | - | - | - | - |
+| 1 | Good bye, Merry-Go-Round. (MAS) | Evans (ULT) | Ai Nov (MAS) | 8-EM (MAS) | Exitium (MAS) | ANU (MAS) | parvorbital (MAS) | macrocosmos (MAS) |
+| 2 | Philosopher (MAS) | larva (MAS) | Blessed Rain (MAS) | AMAZING MIGHTYYYY!!!! (MAS) | GIGA DRIVE (MAS) | Contrapasso -inferno- (MAS) | POTENTIAL (MAS) | Rebellion (MAS) |
+| 3 | Qlipthogear (MAS) | Nhelv (MAS) | Last Celebration (MAS) | Don't Fight The Music (MAS) | Glorious Crown (tpz over-Over-OVERCUTE REMIX) (MAS) | ENDYMION (MAS) | Trrricksters!! (MAS) | Strange Love (MAS) |
+| 4 | 初音ミクの消失 (MAS) | Parad'ox (MAS) | Paqqin (tpz Despair Remix) (MAS) | Excalibur \~Revived resolution\~ (MAS) | Surveiller et punir (MAS) | Invisible Frenzy (MAS) | X7124 (MAS) | To: Be Continued (MAS) |
+| 5 | 管弦楽組曲 第3番 ニ長調「第2曲（G線上のアリア）」BWV.1068-2 (MAS) | PUPA (MAS) | Sound Chimera (MAS) | Trackless wilderness (MAS) | YURUSHITE (MAS) | Killing Rhythm (MAS) | 怒槌 (MAS) | Λzure Vixen (MAS) |
+| 6 | 花と、雪と、ドラムンベース。 (MAS) | Scarlet Lance (MAS) | 初音ミクの激唱 (MAS) | 封焔の135秒 (MAS) | 患部で止まってすぐ溶ける～狂気の優曇華院 (ULT) | TiamaT:F minor (MAS) | 玩具狂奏曲 -終焉-	(MAS) | 宿星審判 (MAS) |
 
 ## FAQs
 
