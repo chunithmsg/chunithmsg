@@ -243,17 +243,21 @@ In the event of a tie where both players have the same total score, the winner w
 
 ### Cards
 
-Each player will be given two power-up cards that they can use during the tournament. Each card may only be used at most once. Additionally, on the top 8 round and the top 4 round, each player may only use at most one card, and at the top 2 round, no cards may be used.
+Each player will be given two power-up cards that they can use during the tournament.
+
+- Each card may only be used at most once throughout the tournament.
+- A player can use at most one card per round.
+- No card can be used in the final (i.e. Top 2) round.
 
 The cards are as follows:
 
-1. Randomiser: randomises one song chosen by your opponent to a pool of six songs according to the song's chart constant. The chosen song by the randomiser may not be the same as the song previously chosen.
-2. Limit Break: one of your song choices may be chosen with a higher chart constant, according to the section "Chart Constant Restrictions" below. In addition, this song choice may not be randomised with the "Randomiser" card above.
+1. Randomiser: Randomises one song chosen by your opponent to a pool of six songs according to the song's chart constant. The chosen song by the randomiser cannot be the same as the song previously chosen.
+2. Limit Break: One of your song choices may be chosen with a higher chart constant, according to the section "Chart Constant Restrictions" below. In addition, this song choice may not be randomised with the "Randomiser" card above.
 
 Hence, this is how choosing the song process will be done.
 
 1. Everyone chooses 2 charts. Limit break can be used in one chart of your choice.
-2. These charts will be passed to your opponent. If your opponent have not used limit break, your opponent may use the Randomiser card to randomise one chart of your choice. However, charts chosen with Limit Break cannot be randomised.
+2. These charts will be passed to your opponent. If your opponent has not used limit break, your opponent may use the Randomiser card to randomise one chart of your choice. However, charts chosen with Limit Break cannot be randomised.
 3. Reveal all charts.
 
 ### Chart Constant Restrictions
