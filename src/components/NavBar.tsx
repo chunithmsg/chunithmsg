@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 const links = {
   Leaderboard: "/",
   Rules: "/rules",
-  Submission: "https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform",
+  Submission:
+    "https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform",
 };
 
 const NavBar = () => {

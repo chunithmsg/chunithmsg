@@ -246,10 +246,12 @@ In the event of a tie where both players have the same total score, the winner w
 Each player will be given two power-up cards that they can use during the tournament. Each card may only be used at most once. Additionally, on the top 8 round and the top 4 round, each player may only use at most one card, and at the top 2 round, no cards may be used.
 
 The cards are as follows:
+
 1. Randomiser: randomises one song chosen by your opponent to a pool of six songs according to the song's chart constant. The chosen song by the randomiser may not be the same as the song previously chosen.
 2. Limit Break: one of your song choices may be chosen with a higher chart constant, according to the section "Chart Constant Restrictions" below. In addition, this song choice may not be randomised with the "Randomiser" card above.
 
 Hence, this is how choosing the song process will be done.
+
 1. Everyone chooses 2 charts. Limit break can be used in one chart of your choice.
 2. These charts will be passed to your opponent. If your opponent have not used limit break, your opponent may use the Randomiser card to randomise one chart of your choice. However, charts chosen with Limit Break cannot be randomised.
 3. Reveal all charts.
@@ -268,14 +270,14 @@ There will be level restrictions put in place per round through the course of th
 
 Here are the charts that are available to be chosen with the Randomiser card.
 
-| No. \ Chart Constant | 14.5 | 14.6 | 14.7 | 14.8 | 14.9 | 15.0 | 15.1 | 15.2 |
-| - | - | - | - | - | - | - | - | - |
-| 1 | Good bye, Merry-Go-Round. (MAS) | Evans (ULT) | Ai Nov (MAS) | 8-EM (MAS) | Exitium (MAS) | ANU (MAS) | parvorbital (MAS) | macrocosmos (MAS) |
-| 2 | Philosopher (MAS) | larva (MAS) | Blessed Rain (MAS) | AMAZING MIGHTYYYY!!!! (MAS) | GIGA DRIVE (MAS) | Contrapasso -inferno- (MAS) | POTENTIAL (MAS) | Rebellion (MAS) |
-| 3 | Qlipthogear (MAS) | Nhelv (MAS) | Last Celebration (MAS) | Don't Fight The Music (MAS) | Glorious Crown (tpz over-Over-OVERCUTE REMIX) (MAS) | ENDYMION (MAS) | Trrricksters!! (MAS) | Strange Love (MAS) |
-| 4 | 初音ミクの消失 (MAS) | Parad'ox (MAS) | Paqqin (tpz Despair Remix) (MAS) | Excalibur \~Revived resolution\~ (MAS) | Surveiller et punir (MAS) | Invisible Frenzy (MAS) | X7124 (MAS) | To: Be Continued (MAS) |
-| 5 | 管弦楽組曲 第3番 ニ長調「第2曲（G線上のアリア）」BWV.1068-2 (MAS) | PUPA (MAS) | Sound Chimera (MAS) | Trackless wilderness (MAS) | YURUSHITE (MAS) | Killing Rhythm (MAS) | 怒槌 (MAS) | Λzure Vixen (MAS) |
-| 6 | 花と、雪と、ドラムンベース。 (MAS) | Scarlet Lance (MAS) | 初音ミクの激唱 (MAS) | 封焔の135秒 (MAS) | 患部で止まってすぐ溶ける～狂気の優曇華院 (ULT) | TiamaT:F minor (MAS) | 玩具狂奏曲 -終焉-	(MAS) | 宿星審判 (MAS) |
+| No. \ Chart Constant | 14.5                                                                   | 14.6                | 14.7                             | 14.8                                   | 14.9                                                | 15.0                        | 15.1                    | 15.2                   |
+| -------------------- | ---------------------------------------------------------------------- | ------------------- | -------------------------------- | -------------------------------------- | --------------------------------------------------- | --------------------------- | ----------------------- | ---------------------- |
+| 1                    | Good bye, Merry-Go-Round. (MAS)                                        | Evans (ULT)         | Ai Nov (MAS)                     | 8-EM (MAS)                             | Exitium (MAS)                                       | ANU (MAS)                   | parvorbital (MAS)       | macrocosmos (MAS)      |
+| 2                    | Philosopher (MAS)                                                      | larva (MAS)         | Blessed Rain (MAS)               | AMAZING MIGHTYYYY!!!! (MAS)            | GIGA DRIVE (MAS)                                    | Contrapasso -inferno- (MAS) | POTENTIAL (MAS)         | Rebellion (MAS)        |
+| 3                    | Qlipthogear (MAS)                                                      | Nhelv (MAS)         | Last Celebration (MAS)           | Don't Fight The Music (MAS)            | Glorious Crown (tpz over-Over-OVERCUTE REMIX) (MAS) | ENDYMION (MAS)              | Trrricksters!! (MAS)    | Strange Love (MAS)     |
+| 4                    | 初音ミクの消失 (MAS)                                                   | Parad'ox (MAS)      | Paqqin (tpz Despair Remix) (MAS) | Excalibur \~Revived resolution\~ (MAS) | Surveiller et punir (MAS)                           | Invisible Frenzy (MAS)      | X7124 (MAS)             | To: Be Continued (MAS) |
+| 5                    | 管弦楽組曲 第 3 番 ニ長調「第 2 曲（G 線上のアリア）」BWV.1068-2 (MAS) | PUPA (MAS)          | Sound Chimera (MAS)              | Trackless wilderness (MAS)             | YURUSHITE (MAS)                                     | Killing Rhythm (MAS)        | 怒槌 (MAS)              | Λzure Vixen (MAS)      |
+| 6                    | 花と、雪と、ドラムンベース。 (MAS)                                     | Scarlet Lance (MAS) | 初音ミクの激唱 (MAS)             | 封焔の 135 秒 (MAS)                    | 患部で止まってすぐ溶ける～狂気の優曇華院 (ULT)      | TiamaT:F minor (MAS)        | 玩具狂奏曲 -終焉- (MAS) | 宿星審判 (MAS)         |
 
 ## FAQs
 

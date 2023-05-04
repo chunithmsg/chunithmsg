@@ -54,8 +54,7 @@ const generateColumns = (songs: { image: any; title: string }[]) =>
     },
   ].map((d) => ({ ...d, dataIndex: d.key }));
 
-const challengerScores = [
-];
+const challengerScores: any[] = [];
 
 const masterScores: any[] = [];
 
@@ -85,7 +84,7 @@ const Leaderboard = () => {
   return (
     <>
       <h1>Leaderboard</h1>
-      <div style={{ display: "flex", gap: "8px", }}>
+      <div style={{ display: "flex", gap: "8px" }}>
         <Switch onChange={setHideDisqualified} />
         Hide disqualified
       </div>
