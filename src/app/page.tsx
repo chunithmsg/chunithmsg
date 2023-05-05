@@ -95,7 +95,16 @@ const generateColumns = (songs: Song[]) =>
 
 const challengerScores: any[] = [];
 
-const masterScores: any[] = [];
+const masterScores: any[] = [{
+  song1: 1006411,
+  song2: 1006607,
+  song3: 1004832,
+  song4: 1007043,
+  song5: 1007653,
+  song6: 1003465,
+  id: "Xantho",
+  disqualified: true,
+}];
 
 const StyledTable = styled(Table)`
   .disqualified {
