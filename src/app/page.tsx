@@ -3,15 +3,15 @@
 import { Table, Switch, Tabs } from "antd";
 import Image from "next/image";
 import unknownSong from "../../public/question.png";
-import wakeUpDreamer from "../../public/wakeUpDreamer.png";
+import wakeUpDreamer from "../../public/wakeupdreamer.png";
 import chaos from "../../public/chaos.png";
 import pygmalion from "../../public/pygmalion.png";
 import valsqotch from "../../public/valsqotch.png";
-import imperishableNight from "../../public/imperishableNight.png";
-import battleNo1 from "../../public/battleNo1.png";
+import imperishableNight from "../../public/imperishablenight.png";
+import battleNo1 from "../../public/battleno1.png";
 import spica from "../../public/spica.png";
-import weGonnaJourney from "../../public/weGonnaJourney.png";
-import blazingStorm from "../../public/blazingStorm.png";
+import weGonnaJourney from "../../public/wegonnajourney.png";
+import blazingStorm from "../../public/blazingstorm.png";
 import styled from "styled-components";
 import { useState } from "react";
 
