@@ -42,15 +42,15 @@ The Qualifier follows a Score-Attack format where players will have to play a fi
 
 The Challengers Qualifier consists of 1 set of 3 songs:
 
-![Unknown](question.png)
-![Unknown](question.png)
-![Unknown](question.png)
+![Wake up Dreamer](wakeUpDreamer.png)
+![CHAOS](chaos.png)
+![ピュグマリオンの咒文](pygmalion.png)
 
-| No. | Title | Artist | Difficulty | Genre |
-| --- | ----- | ------ | ---------- | ----- |
-| 1   | ???   | ???    | 13         | ???   |
-| 2   | ???   | ???    | 13+        | ???   |
-| 3   | ???   | ???    | 14         | ???   |
+| No. | Title                | Artist                     | Difficulty | Genre    |
+| --- | -------------------- | -------------------------- | ---------- | -------- |
+| 1   | Wake up Dreamer      | Junk                       | Master 13  | Original |
+| 2   | CHAOS                | Æsir「Cytus Ⅱ」            | Master 13+ | Variety  |
+| 3   | ピュグマリオンの咒文 | アリスシャッハと魔法の楽団 | Master 14  | Original |
 
 ### Rules (Please Read Before Attempting!)
 
@@ -164,27 +164,27 @@ The Qualifier follows a Score-Attack format where players will have to play a fi
 
 The Masters Qualifier (Set A) songs are as follows:
 
-![Unknown](question.png)
-![Unknown](question.png)
-![Unknown](question.png)
+![Valsqotch](valsqotch.png)
+![Imperishable Night 2006 (2016 Refine)](imperishableNight.png)
+![BATTLE NO.1](battleNo1.png)
 
-| No. | Title | Artist | Difficulty | Genre |
-| --- | ----- | ------ | ---------- | ----- |
-| 1   | ???   | ???    | 14+        | ???   |
-| 2   | ???   | ???    | 14+        | ???   |
-| 3   | ???   | ???    | 14+        | ???   |
+| No. | Title                                 | Artist                    | Difficulty | Genre        |
+| --- | ------------------------------------- | ------------------------- | ---------- | ------------ |
+| 1   | Valsqotch                             | owl＊tree feat. chi＊tree | Master 14+ | ゲキマイ     |
+| 2   | Imperishable Night 2006 (2016 Refine) | ゆうゆ / 篠螺悠那         | Master 14+ | 東方 Project |
+| 3   | BATTLE NO.1                           | TANO\*C Sound Team        | Master 14+ | Variety      |
 
 The Masters Qualifier (Set B) songs are as follows:
 
-![Unknown](question.png)
-![Unknown](question.png)
-![Unknown](question.png)
+![スピカの天秤](spica.png)
+![We Gonna Journey](weGonnaJourney.png)
+![Blazing:Storm](blazingStorm.png)
 
-| No. | Title | Artist | Difficulty | Genre |
-| --- | ----- | ------ | ---------- | ----- |
-| 1   | ???   | ???    | 14+        | ???   |
-| 2   | ???   | ???    | 14+        | ???   |
-| 3   | ???   | ???    | 14+        | ???   |
+| No. | Title            | Artist       | Difficulty | Genre    |
+| --- | ---------------- | ------------ | ---------- | -------- |
+| 1   | スピカの天秤     | Acotto       | Master 14+ | Original |
+| 2   | We Gonna Journey | Queen P.A.L. | Ultima 14+ | Original |
+| 3   | Blazing:Storm    | かゆき       | Master 14+ | Original |
 
 ### Rules (Please Read Before Attempting!)
 
