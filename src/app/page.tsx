@@ -3,25 +3,54 @@
 import { Table, Switch, Tabs } from "antd";
 import Image from "next/image";
 import unknownSong from "../../public/question.png";
+import wakeUpDreamer from "../../public/wakeUpDreamer.png";
+import chaos from "../../public/chaos.png";
+import pygmalion from "../../public/pygmalion.png";
+import valsqotch from "../../public/valsqotch.png";
+import imperishableNight from "../../public/imperishableNight.png";
+import battleNo1 from "../../public/battleNo1.png";
+import spica from "../../public/spica.png";
+import weGonnaJourney from "../../public/weGonnaJourney.png";
+import blazingStorm from "../../public/blazingStorm.png";
 import styled from "styled-components";
 import { useState } from "react";
 
-const challengerSongs = [
-  { image: unknownSong, title: "13" },
-  { image: unknownSong, title: "13+" },
-  { image: unknownSong, title: "14" },
+interface Song {
+  image: any;
+  title: string;
+  genre?: Genre;
+}
+
+type Genre = "variety" | "original" | "gekimai" | "touhou" | "";
+
+const genreBorderColours: { [key in Genre]: string } = {
+  variety: "#00ff00",
+  original: "#bd2a1a",
+  gekimai: "#ffff00",
+  touhou: "#3862b4",
+  "": "#ffffff",
+};
+
+const challengerSongs: Song[] = [
+  { image: wakeUpDreamer, title: "Wake up Dreamer", genre: "original" },
+  { image: chaos, title: "CHAOS", genre: "variety" },
+  { image: pygmalion, title: "ピュグマリオンの咒文", genre: "original" },
 ];
 
-const masterSongs = [
-  { image: unknownSong, title: "14.5" },
-  { image: unknownSong, title: "14.6" },
-  { image: unknownSong, title: "14.8" },
-  { image: unknownSong, title: "14.7" },
-  { image: unknownSong, title: "14.8" },
-  { image: unknownSong, title: "14.9" },
+const masterSongs: Song[] = [
+  { image: valsqotch, title: "Valsqotch", genre: "gekimai" },
+  {
+    image: imperishableNight,
+    title: "Imperishable Night 2006 (2016 Refine)",
+    genre: "touhou",
+  },
+  { image: battleNo1, title: "BATTLE NO.1", genre: "variety" },
+  { image: spica, title: "スピカの天秤", genre: "original" },
+  { image: weGonnaJourney, title: "We Gonna Journey", genre: "original" },
+  { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
 ];
 
-const generateColumns = (songs: { image: any; title: string }[]) =>
+const generateColumns = (songs: Song[]) =>
   [
     {
       title: "No",
@@ -34,10 +63,19 @@ const generateColumns = (songs: { image: any; title: string }[]) =>
       render: (text: string, record: any) =>
         `${text}${record.disqualified && " (disqualified)"}`,
     },
-    ...songs.map(({ title, image }, idx) => ({
+    ...songs.map(({ title, image, genre }, idx) => ({
       title: (
         <>
-          <Image src={image} alt="" />
+          <Image
+            src={image}
+            alt=""
+            style={{
+              border: `4px solid ${genreBorderColours[genre ?? ""]}`,
+              maxHeight: "120px",
+              height: "auto",
+              width: "auto",
+            }}
+          />
           <div>{title}</div>
         </>
       ),
@@ -48,7 +86,8 @@ const generateColumns = (songs: { image: any; title: string }[]) =>
       key: "total",
       render: (_text: string, record: any) =>
         Object.entries(record).reduce(
-          (accum, [k, v]) => accum + ((k.startsWith("song") ? v : 0) as number),
+          (accumulate, [k, v]) =>
+            accumulate + ((k.startsWith("song") ? v : 0) as number),
           0
         ),
     },
