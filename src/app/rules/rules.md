@@ -80,7 +80,7 @@ The Qualifier follows a Score-Attack format where players will have to play a fi
 
 The Challengers Qualifier consists of 1 set of 3 songs:
 
-![Wake up Dreamer](wakeUpDreamer.png)
+![Wake up Dreamer](wakeupdreamer.png)
 ![CHAOS](chaos.png)
 ![ピュグマリオンの咒文](pygmalion.png)
 
@@ -203,8 +203,8 @@ The Qualifier follows a Score-Attack format where players will have to play a fi
 The Masters Qualifier (Set A) songs are as follows:
 
 ![Valsqotch](valsqotch.png)
-![Imperishable Night 2006 (2016 Refine)](imperishableNight.png)
-![BATTLE NO.1](battleNo1.png)
+![Imperishable Night 2006 (2016 Refine)](imperishablenight.png)
+![BATTLE NO.1](battleno1.png)
 
 | No. | Title                                 | Artist                    | Difficulty | Genre        |
 | --- | ------------------------------------- | ------------------------- | ---------- | ------------ |
@@ -215,8 +215,8 @@ The Masters Qualifier (Set A) songs are as follows:
 The Masters Qualifier (Set B) songs are as follows:
 
 ![スピカの天秤](spica.png)
-![We Gonna Journey](weGonnaJourney.png)
-![Blazing:Storm](blazingStorm.png)
+![We Gonna Journey](wegonnajourney.png)
+![Blazing:Storm](blazingstorm.png)
 
 | No. | Title            | Artist       | Difficulty | Genre    |
 | --- | ---------------- | ------------ | ---------- | -------- |
