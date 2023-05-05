@@ -5,8 +5,11 @@ import ReactMarkdown from "react-markdown";
 import rules from "./rules.md";
 import remarkGfm from "remark-gfm";
 import { Affix, Col, Row } from "antd";
+import { useWindowSize } from "@/utils/useWindowSize";
 
 const Rules = () => {
+  const { width } = useWindowSize();
+
   // https://gist.github.com/sobelk/16fe68ff5520b2d5e2b6d406e329e0de
   const toc: {
     level: number;
@@ -58,11 +61,13 @@ const Rules = () => {
             {rules}
           </ReactMarkdown>
         </Col>
-        <Col span={8} order={1}>
-          <Affix>
-            <TOC />
-          </Affix>
-        </Col>
+        {width && width > 450 && (
+          <Col span={8} order={1}>
+            <Affix>
+              <TOC />
+            </Affix>
+          </Col>
+        )}
       </Row>
     </>
   );
