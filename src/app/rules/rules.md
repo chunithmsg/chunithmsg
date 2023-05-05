@@ -32,6 +32,44 @@ For each song, the player with the highest score that didn't qualify for finals 
 | Rank 3 - 4 | $50 in Virtualand credits + Handkerchief            |
 | Rank 5 - 8 | $25 in Virtualand credits                           |
 
+## Lucky Draw Prizes
+
+Any player who makes at least one submission (in either the Challengers or Masters division), and is physically present during the tourney finals, will be eligible for the Lucky Draw.
+
+### Grand Prize
+
+- 25-ji Nightcord de. Set (Aime, Glove, Keychain)
+
+### Second Prize
+
+- More More Jump! Set (Aime, Glove, Keychain)
+
+### Third Prize
+
+- Vivid Bad SQUAD Set (Aime, Glove)
+
+### Tier 2 Prizes
+
+- Leo/need Set (Aime, Glove)
+- Wonderlands x Showtime Set (Aime, Glove)
+- VIRTUAL SINGERS Set (Aime, Glove)
+
+### Starters
+
+- Nai/0419_Guardian Aime ×2
+- Chunithm Sports Towel
+- Chunithm Yellow Glove
+
+### Pictures of Prizes
+
+![Project Sekai Sets](lucky-draw-prizes/sekai_small.png)
+
+![Towel](lucky-draw-prizes/towel_small.jpg)
+
+![TUYU Aime](lucky-draw-prizes/tuyu_small.png)
+
+![Gloves](lucky-draw-prizes/glove_small.JPG)
+
 ## Challengers Qualifiers
 
 ### Format
