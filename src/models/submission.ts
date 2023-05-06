@@ -9,5 +9,19 @@ export interface Submission {
   isVoidSubmission: boolean;
 }
 
-export const getTotalScore = (submission: Submission) =>
+export const getTotalSubmissionScore = (submission: Submission) =>
   submission.songScores.reduce((a, b) => a + b, 0);
+
+export const compareSubmissions = (
+  submissionA: Submission,
+  submissionB: Submission
+) => {
+  const aScore = getTotalSubmissionScore(submissionA);
+  const bScore = getTotalSubmissionScore(submissionB);
+
+  if (aScore !== bScore) {
+    return bScore - aScore;
+  } else {
+    return submissionA.timestamp.getTime() - submissionB.timestamp.getTime();
+  }
+};

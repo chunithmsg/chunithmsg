@@ -16,6 +16,18 @@ export enum QualifierSet {
 }
 
 /**
+ * An array of all the members of QualifierSet.
+ *
+ * I am way too fed up with finding a simple and clean way to iterate through the members of an enum.
+ * This is not scalable and I don't care.
+ */
+export const allQualifierSets = [
+  QualifierSet.Challengers,
+  QualifierSet.MastersA,
+  QualifierSet.MastersB,
+];
+
+/**
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
  */
 const sheetNames = {
@@ -37,6 +49,8 @@ const columnIndexes = {
  */
 const submissionRange = "A3:H1000";
 
+export type SubmissionSet = { [S in QualifierSet]: Submission[] };
+
 export class SubmissionController {
   authClient?: AuthClient;
 
@@ -49,11 +63,11 @@ export class SubmissionController {
 
     // Not taking advantage of possibilities of concurrency/parallelism,
     // but that can be a problem for the future. This is good enough.
-    for (const qualifierSet of Object.values(QualifierSet) as QualifierSet[]) {
+    for (const qualifierSet of allQualifierSets) {
       output[qualifierSet] = await this.getSubmissionForSet(qualifierSet);
     }
 
-    return output;
+    return output as SubmissionSet;
   }
 
   private async getSubmissionForSet(
