@@ -44,6 +44,27 @@ const columnIndexes = {
   isPlayerDisqualified: 7,
 };
 
+const parseLocalDate = (dateTimeString: string) => {
+  const tokens = dateTimeString.split(/\D/).map(parseInt);
+  const pseudoTimestamp = Date.UTC(
+    tokens[0],
+    tokens[1] - 1,
+    tokens[2],
+    tokens[3],
+    tokens[4]
+  );
+
+  // The offset for GMT+8.
+  //
+  // I'm fed up with trying to find a nice way to do something like
+  // timezoneOffsetOf("Asia/Singapore"), and I can sort of understand
+  // why with DST and all that stuff, but wow am I just tired of trying
+  // to find a 'nice' solution.
+  const timezoneOffset = 8 * 60 * 1000;
+
+  return new Date(pseudoTimestamp - timezoneOffset);
+};
+
 /**
  * The range within each sheet that contains the submission data.
  */
@@ -94,7 +115,7 @@ export class SubmissionController {
     return values
       .filter((row) => row[0] !== "")
       .map<Submission>((row) => ({
-        timestamp: new Date(row[columnIndexes.timestamp]),
+        timestamp: parseLocalDate(row[columnIndexes.timestamp]),
         ign: row[columnIndexes.ign],
         isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
         isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",

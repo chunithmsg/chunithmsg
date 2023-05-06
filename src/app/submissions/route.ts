@@ -6,6 +6,7 @@ import {
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
+  console.log("Submissions fetched at ", new Date());
   const submissionController = new SubmissionController();
 
   await submissionController.initialise();
