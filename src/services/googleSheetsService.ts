@@ -3,7 +3,9 @@ import { google } from "googleapis";
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
 const sheets = google.sheets("v4");
 
-export const getAuthToken = async () => {
+export type AuthClient = Awaited<ReturnType<typeof getAuthClient>>;
+
+export const getAuthClient = async () => {
   const auth = new google.auth.GoogleAuth({
     scopes: SCOPES,
   });

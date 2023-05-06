@@ -1,16 +1,16 @@
 import { qualifiersSpreadsheetId } from "@/constants";
 import {
-  getAuthToken,
+  getAuthClient,
   getSpreadSheetValues,
 } from "@/services/googleSheetsService";
 
 describe("Google Sheets Service", () => {
   it("Token can be obtained", async () => {
-    await getAuthToken();
+    await getAuthClient();
   });
 
   it("Google Sheet can be read", async () => {
-    const authToken = await getAuthToken();
+    const authToken = await getAuthClient();
     const result = await getSpreadSheetValues(
       qualifiersSpreadsheetId,
       authToken,
