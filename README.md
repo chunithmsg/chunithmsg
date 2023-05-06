@@ -45,3 +45,9 @@ export GCLOUD_PROJECT="595992552497"
 # The .json file containing the Google APIs Credentials. You may need to ask @xantho09 about this.
 export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
 ```
+
+Then run the following command:
+
+```bash
+yarn test
+```
