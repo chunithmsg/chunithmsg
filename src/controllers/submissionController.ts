@@ -5,6 +5,7 @@ import {
   getAuthClient,
   getSpreadSheetValues,
 } from "@/services/googleSheetsService";
+import { parseLocalDate } from "@/utils/dateUtils";
 
 /**
  * The three qualifiers sets - one for Challengers and two for Masters.
@@ -42,27 +43,6 @@ const columnIndexes = {
   songs: 2,
   isVoidSubmission: 6,
   isPlayerDisqualified: 7,
-};
-
-const parseLocalDate = (dateTimeString: string) => {
-  const tokens = dateTimeString.split(/\D/).map(parseInt);
-  const pseudoTimestamp = Date.UTC(
-    tokens[0],
-    tokens[1] - 1,
-    tokens[2],
-    tokens[3],
-    tokens[4]
-  );
-
-  // The offset for GMT+8.
-  //
-  // I'm fed up with trying to find a nice way to do something like
-  // timezoneOffsetOf("Asia/Singapore"), and I can sort of understand
-  // why with DST and all that stuff, but wow am I just tired of trying
-  // to find a 'nice' solution.
-  const timezoneOffset = 8 * 60 * 1000;
-
-  return new Date(pseudoTimestamp - timezoneOffset);
 };
 
 /**

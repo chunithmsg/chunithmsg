@@ -177,11 +177,12 @@ const Leaderboard = () => {
         <Switch onChange={setHideDisqualified} checked={hideDisqualified} />
         Hide disqualified
       </div>
-      <div style={{ marginTop: "8px", marginBottom: "8px" }}>
+      {/* Put this back in when the update actually updates. */}
+      {/* <div style={{ marginTop: "8px", marginBottom: "8px" }}>
         {`Last updated: ${
           lastFetchTimestamp ? formatDate(lastFetchTimestamp) : "----"
         }`}
-      </div>
+      </div> */}
       <Tabs
         defaultActiveKey="masters"
         items={[
