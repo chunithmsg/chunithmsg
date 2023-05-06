@@ -40,10 +40,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 To run the GoogleApis tests, start by setting these environment variables:
 
 ```bash
-# This is the Actual Google Cloud Project ID
+# Details of this Google Cloud project can be found here: https://console.cloud.google.com/welcome?project=even-environs-201001
+
 export GCLOUD_PROJECT="595992552497"
-# The .json file containing the Google APIs Credentials. You may need to ask @xantho09 about this.
-export GOOGLE_APPLICATION_CREDENTIALS=./credentials.json
+export GOOGLE_PROJECT_ID="even-environs-201001"
+export GOOGLE_CLIENT_EMAIL="chuni-qualifier-submission-rea@even-environs-201001.iam.gserviceaccount.com"
+
+# This is from the credentials JSON file. If you don't have these, you may need to contact @xantho09,
+# or create your own key for this service account in the above GCloud Project.
+export GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nABCDEF...UVWXYZ\n-----END PRIVATE KEY-----\n"
 ```
 
 Then run the following command:
