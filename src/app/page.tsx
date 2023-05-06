@@ -130,7 +130,9 @@ const Leaderboard = () => {
 
   useEffect(() => {
     (async () => {
-      const { masters, challengers } = await fetch("/submissions");
+      const { masters, challengers } = await (
+        await fetch("/submissions")
+      ).json();
       setChallengerStandings(challengers);
       setMasterStandings(masters);
     })();
