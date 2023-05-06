@@ -14,9 +14,14 @@ describe("Google Sheets Service", () => {
     const result = await getSpreadSheetValues(
       qualifiersSpreadsheetId,
       authToken,
-      "'Masters Set A - Dumping Ground'!A3:H5"
+      "'Masters Set A - Dumping Ground'!A2:H2"
     );
 
-    console.log("Data", result.data.values);
+    expect(result.status).toBe(200);
+
+    const headerRow = (result.data.values as string[][])[0];
+    const firstHeaderCell = headerRow[0];
+
+    expect(firstHeaderCell).toBe("Timestamp of last song");
   });
 });

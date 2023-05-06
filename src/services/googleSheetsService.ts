@@ -17,11 +17,11 @@ export const getSpreadSheetValues = async (
   // Using Awaited<ReturnType<typeof getAuthToken>> doesn't work, because that's a union type of
   // JSONClient | Compute, and I can't cast it into JSONClient for aforementioned reasons.
   authClient: any,
-  sheetName: string
+  range: string
 ) => {
   return await sheets.spreadsheets.values.get({
     spreadsheetId,
     auth: authClient,
-    range: sheetName,
+    range,
   });
 };
