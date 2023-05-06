@@ -2,7 +2,6 @@
 
 import { Table, Switch, Tabs } from "antd";
 import Image from "next/image";
-import unknownSong from "../../public/question.png";
 import wakeUpDreamer from "../../public/wakeupdreamer.png";
 import chaos from "../../public/chaos.png";
 import pygmalion from "../../public/pygmalion.png";
@@ -50,6 +49,8 @@ const masterSongs: Song[] = [
   { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
 ];
 
+const formatScore = (score: string) => parseInt(score).toLocaleString("en-US");
+
 const generateColumns = (songs: Song[]) =>
   [
     {
@@ -80,6 +81,7 @@ const generateColumns = (songs: Song[]) =>
         </>
       ),
       key: `song${idx + 1}`,
+      render: formatScore,
     })),
     {
       title: "Total",
@@ -95,16 +97,18 @@ const generateColumns = (songs: Song[]) =>
 
 const challengerScores: any[] = [];
 
-const masterScores: any[] = [{
-  song1: 1006411,
-  song2: 1006607,
-  song3: 1004832,
-  song4: 1007043,
-  song5: 1007653,
-  song6: 1003465,
-  id: "Xantho",
-  disqualified: true,
-}];
+const masterScores: any[] = [
+  {
+    song1: 1006411,
+    song2: 1006607,
+    song3: 1004832,
+    song4: 1007043,
+    song5: 1007653,
+    song6: 1003465,
+    id: "Xantho",
+    disqualified: true,
+  },
+];
 
 const StyledTable = styled(Table)`
   .disqualified {
