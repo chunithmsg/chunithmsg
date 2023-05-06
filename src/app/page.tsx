@@ -2,6 +2,7 @@
 
 import { Table, Switch, Tabs } from "antd";
 import Image from "next/image";
+
 import wakeUpDreamer from "../../public/wakeupdreamer.png";
 import chaos from "../../public/chaos.png";
 import pygmalion from "../../public/pygmalion.png";
@@ -11,14 +12,10 @@ import battleNo1 from "../../public/battleno1.png";
 import spica from "../../public/spica.png";
 import weGonnaJourney from "../../public/wegonnajourney.png";
 import blazingStorm from "../../public/blazingstorm.png";
+
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
 import { Standing } from "@/models/standing";
-import { SubmissionController } from "@/controllers/submissionController";
-import {
-  getChallengersStandings,
-  getMastersStandings,
-} from "@/utils/leaderboardUtils";
 
 interface Song {
   image: any;
@@ -124,7 +121,6 @@ const StyledTable = styled(Table)`
 
 const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState(false);
-  const [submissionController, _] = useState(new SubmissionController());
   const [masterStandings, setMasterStandings] = useState<
     Standing[] | undefined
   >(undefined);
@@ -132,17 +128,13 @@ const Leaderboard = () => {
     Standing[] | undefined
   >(undefined);
 
-  // const fetchStandings = useCallback(async () => {
-  //   await submissionController.initialise();
-
-  //   const submissionSet = await submissionController.getAllSubmissions();
-  //   setMasterStandings(getMastersStandings(submissionSet));
-  //   setChallengerStandings(getChallengersStandings(submissionSet));
-  // }, []);
-
-  // useEffect(() => {
-  //   fetchStandings().catch(console.error);
-  // }, [fetchStandings]);
+  useEffect(() => {
+    (async () => {
+      const { masters, challengers } = await fetch("/submissions");
+      setChallengerStandings(challengers);
+      setMasterStandings(masters);
+    })();
+  }, []);
 
   const table = (songs: Song[], scores: Standing[]) => (
     <StyledTable
