@@ -55,6 +55,11 @@ export class SubmissionController {
   authClient?: AuthClient;
 
   async initialise() {
+    // Opening myself up to race conditions, but I'll deal with those later.
+    if (this.authClient !== undefined) {
+      return;
+    }
+
     this.authClient = await getAuthClient();
   }
 

@@ -12,7 +12,13 @@ import spica from "../../public/spica.png";
 import weGonnaJourney from "../../public/wegonnajourney.png";
 import blazingStorm from "../../public/blazingstorm.png";
 import styled from "styled-components";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { Standing } from "@/models/standing";
+import { SubmissionController } from "@/controllers/submissionController";
+import {
+  getChallengersStandings,
+  getMastersStandings,
+} from "@/utils/leaderboardUtils";
 
 interface Song {
   image: any;
@@ -118,16 +124,32 @@ const StyledTable = styled(Table)`
 
 const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState(false);
+  const [submissionController, _] = useState(new SubmissionController());
+  const [masterStandings, setMasterStandings] = useState<
+    Standing[] | undefined
+  >(undefined);
+  const [challengerStandings, setChallengerStandings] = useState<
+    Standing[] | undefined
+  >(undefined);
 
-  const table = (songs: any[], scores: any[]) => (
+  // const fetchStandings = useCallback(async () => {
+  //   await submissionController.initialise();
+
+  //   const submissionSet = await submissionController.getAllSubmissions();
+  //   setMasterStandings(getMastersStandings(submissionSet));
+  //   setChallengerStandings(getChallengersStandings(submissionSet));
+  // }, []);
+
+  // useEffect(() => {
+  //   fetchStandings().catch(console.error);
+  // }, [fetchStandings]);
+
+  const table = (songs: Song[], scores: Standing[]) => (
     <StyledTable
       columns={generateColumns(songs)}
-      dataSource={scores
-        .sort(
-          (a: any, b: any) =>
-            a.song1 + a.song2 + a.song3 - b.song1 - b.song2 - b.song3
-        )
-        .filter(({ disqualified }) => !hideDisqualified || !disqualified)}
+      dataSource={scores.filter(
+        ({ isDisqualified }) => !hideDisqualified || !isDisqualified
+      )}
       rowClassName={(record: any) => record.disqualified && "disqualified"}
       pagination={false}
     />
@@ -146,12 +168,12 @@ const Leaderboard = () => {
           {
             key: "masters",
             label: "Masters",
-            children: table(masterSongs, masterScores),
+            children: table(masterSongs, masterStandings || []),
           },
           {
             key: "challengers",
             label: "Challengers",
-            children: table(challengerSongs, challengerScores),
+            children: table(challengerSongs, challengerStandings || []),
           },
         ]}
       />
