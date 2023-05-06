@@ -11,8 +11,13 @@ export const GET = async () => {
   await submissionController.initialise();
   const submissionSet = await submissionController.getAllSubmissions();
 
-  return NextResponse.json({
-    masters: getMastersStandings(submissionSet),
-    challengers: getChallengersStandings(submissionSet),
-  });
+  return NextResponse.json(
+    {
+      masters: getMastersStandings(submissionSet),
+      challengers: getChallengersStandings(submissionSet),
+    },
+    {
+      headers: [["Cache-control", "no-store"]],
+    }
+  );
 };
