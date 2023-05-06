@@ -8,6 +8,11 @@ export type AuthClient = Awaited<ReturnType<typeof getAuthClient>>;
 export const getAuthClient = async () => {
   const auth = new google.auth.GoogleAuth({
     scopes: SCOPES,
+    projectId: process.env.GOOGLE_PROJECT_ID,
+    credentials: {
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    },
   });
   const authClient = await auth.getClient();
   return authClient;
