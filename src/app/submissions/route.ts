@@ -9,7 +9,6 @@ export const GET = async () => {
   const submissionController = new SubmissionController();
 
   await submissionController.initialise();
-
   const submissionSet = await submissionController.getAllSubmissions();
 
   return NextResponse.json({

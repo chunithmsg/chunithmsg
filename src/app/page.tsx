@@ -16,6 +16,7 @@ import blazingStorm from "../../public/blazingstorm.png";
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
 import { Standing } from "@/models/standing";
+import { ColumnsType } from "antd/es/table";
 
 interface Song {
   image: any;
@@ -54,62 +55,54 @@ const masterSongs: Song[] = [
 
 const formatScore = (score: string) => parseInt(score).toLocaleString("en-US");
 
-const generateColumns = (songs: Song[]) =>
-  [
-    {
-      title: "No",
-      key: "no",
-      render: (_text: string, _record: any, idx: number) => idx + 1,
-    },
-    {
-      title: "ID",
-      key: "id",
-      render: (text: string, record: any) =>
-        `${text}${record.disqualified && " (disqualified)"}`,
-    },
-    ...songs.map(({ title, image, genre }, idx) => ({
-      title: (
-        <>
-          <Image
-            src={image}
-            alt=""
-            style={{
-              border: `4px solid ${genreBorderColours[genre ?? ""]}`,
-              maxHeight: "120px",
-              height: "auto",
-              width: "auto",
-            }}
-          />
-          <div>{title}</div>
-        </>
-      ),
-      key: `song${idx + 1}`,
-      render: formatScore,
-    })),
-    {
-      title: "Total",
-      key: "total",
-      render: (_text: string, record: any) =>
-        Object.entries(record).reduce(
-          (accumulate, [k, v]) =>
-            accumulate + ((k.startsWith("song") ? v : 0) as number),
-          0
-        ),
-    },
-  ].map((d) => ({ ...d, dataIndex: d.key }));
-
-const challengerScores: any[] = [];
-
-const masterScores: any[] = [
+// Ideally, the return type should be ColumnsType<Standing>, but the record
+// isn't exactly of the same type. Some information was lost to JSON.
+const generateColumns = (songs: Song[]): ColumnsType<any> => [
   {
-    song1: 1006411,
-    song2: 1006607,
-    song3: 1004832,
-    song4: 1007043,
-    song5: 1007653,
-    song6: 1003465,
-    id: "Xantho",
-    disqualified: true,
+    title: "No",
+    key: "no",
+    dataIndex: "no",
+    render: (_text: string, _record: any, idx: number) => idx + 1,
+  },
+  {
+    title: "IGN",
+    key: "ign",
+    dataIndex: "ign",
+    render: (text: string, record: any) =>
+      `${text}${record.isDisqualified ? " (disqualified)" : ""}`,
+  },
+  ...songs.map(({ title, image, genre }, idx) => ({
+    title: (
+      <>
+        <Image
+          src={image}
+          alt=""
+          style={{
+            border: `4px solid ${genreBorderColours[genre ?? ""]}`,
+            maxHeight: "120px",
+            height: "auto",
+            width: "auto",
+          }}
+        />
+        <div>{title}</div>
+      </>
+    ),
+    key: `song${idx + 1}`,
+    dataIndex: `song${idx + 1}`,
+    render: formatScore,
+  })),
+  {
+    title: "Total Score",
+    key: "totalScore",
+    dataIndex: "totalScore",
+    render: formatScore,
+  },
+  {
+    title: "Time of play",
+    key: "timestamp",
+    dataIndex: "timestamp",
+    render: (_text: string, record: any) =>
+      new Date(record.timestamp).toLocaleString(),
   },
 ];
 
@@ -120,31 +113,35 @@ const StyledTable = styled(Table)`
 `;
 
 const Leaderboard = () => {
-  const [hideDisqualified, setHideDisqualified] = useState(false);
-  const [masterStandings, setMasterStandings] = useState<
-    Standing[] | undefined
-  >(undefined);
-  const [challengerStandings, setChallengerStandings] = useState<
-    Standing[] | undefined
-  >(undefined);
+  const [hideDisqualified, setHideDisqualified] = useState(true);
+  const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
+  const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
+    []
+  );
+  const [isFetchingStandings, setIsFetchingStandings] = useState(false);
+
+  const fetchStandings = useCallback(async () => {
+    setIsFetchingStandings(true);
+    const response = await fetch("/submissions");
+    const { masters, challengers } = await response.json();
+
+    setChallengerStandings(challengers);
+    setMasterStandings(masters);
+    setIsFetchingStandings(false);
+  }, []);
 
   useEffect(() => {
-    (async () => {
-      const { masters, challengers } = await (
-        await fetch("/submissions")
-      ).json();
-      setChallengerStandings(challengers);
-      setMasterStandings(masters);
-    })();
-  }, []);
+    fetchStandings().catch(console.error);
+  }, [fetchStandings]);
 
   const table = (songs: Song[], scores: Standing[]) => (
     <StyledTable
+      loading={isFetchingStandings}
       columns={generateColumns(songs)}
       dataSource={scores.filter(
         ({ isDisqualified }) => !hideDisqualified || !isDisqualified
       )}
-      rowClassName={(record: any) => record.disqualified && "disqualified"}
+      rowClassName={(record: any) => record.isDisqualified && "disqualified"}
       pagination={false}
     />
   );
@@ -153,7 +150,7 @@ const Leaderboard = () => {
     <>
       <h1>Leaderboard</h1>
       <div style={{ display: "flex", gap: "8px" }}>
-        <Switch onChange={setHideDisqualified} />
+        <Switch onChange={setHideDisqualified} checked={hideDisqualified} />
         Hide disqualified
       </div>
       <Tabs
@@ -162,12 +159,12 @@ const Leaderboard = () => {
           {
             key: "masters",
             label: "Masters",
-            children: table(masterSongs, masterStandings || []),
+            children: table(masterSongs, masterStandings),
           },
           {
             key: "challengers",
             label: "Challengers",
-            children: table(challengerSongs, challengerStandings || []),
+            children: table(challengerSongs, challengerStandings),
           },
         ]}
       />

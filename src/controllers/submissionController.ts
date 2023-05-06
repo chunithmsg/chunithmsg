@@ -84,16 +84,23 @@ export class SubmissionController {
       `${sheetNames[qualifierSet]}!${submissionRange}`
     );
 
-    const values = response.data.values as string[][];
+    const values = response.data.values as string[][] | null | undefined;
+    if (!values) {
+      // A null or undefined response is likely due to the sheet being empty in
+      // the searched range.
+      return [];
+    }
 
-    return values.map<Submission>((row) => ({
-      timestamp: new Date(row[columnIndexes.timestamp]),
-      ign: row[columnIndexes.ign],
-      isDisqualified: row[columnIndexes.isPlayerDisqualified] == "Y",
-      isVoidSubmission: row[columnIndexes.isVoidSubmission] == "Y",
-      songScores: [0, 1, 2].map((index) =>
-        parseInt(row[columnIndexes.songs + index])
-      ) as [number, number, number],
-    }));
+    return values
+      .filter((row) => row[0] !== "")
+      .map<Submission>((row) => ({
+        timestamp: new Date(row[columnIndexes.timestamp]),
+        ign: row[columnIndexes.ign],
+        isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
+        isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
+        songScores: [0, 1, 2].map((index) =>
+          parseInt(row[columnIndexes.songs + index])
+        ) as [number, number, number],
+      }));
   }
 }
