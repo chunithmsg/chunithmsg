@@ -53,7 +53,20 @@ const masterSongs: Song[] = [
   { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
 ];
 
+/**
+ * Formats the given score using the "en-US" locale.
+ *
+ * @param score The score to format, given as the string representation of an integer.
+ * @returns The formatted score.
+ */
 const formatScore = (score: string) => parseInt(score).toLocaleString("en-US");
+
+const formatDate = (timestamp: number | string) =>
+  new Date(timestamp).toLocaleString("en-SG", {
+    timeZone: "Asia/Singapore",
+  });
+
+const ONE_MINUTE_IN_MILLISECONDS = 60 * 1000;
 
 // Ideally, the return type should be ColumnsType<Standing>, but the record
 // isn't exactly of the same type. Some information was lost to JSON.
@@ -101,8 +114,7 @@ const generateColumns = (songs: Song[]): ColumnsType<any> => [
     title: "Time of play",
     key: "timestamp",
     dataIndex: "timestamp",
-    render: (_text: string, record: any) =>
-      new Date(record.timestamp).toLocaleString(),
+    render: (_text: string, record: any) => formatDate(record.timestamp),
   },
 ];
 
@@ -113,6 +125,9 @@ const StyledTable = styled(Table)`
 `;
 
 const Leaderboard = () => {
+  const [lastFetchTimestamp, setLastFetchTimestamp] = useState<
+    number | undefined
+  >(undefined);
   const [hideDisqualified, setHideDisqualified] = useState(true);
   const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
   const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
@@ -128,11 +143,20 @@ const Leaderboard = () => {
     setChallengerStandings(challengers);
     setMasterStandings(masters);
     setIsFetchingStandings(false);
+    setLastFetchTimestamp(Date.now());
   }, []);
 
+  // Intentionally running this every single time, instead of just once on initial render.
   useEffect(() => {
-    fetchStandings().catch(console.error);
-  }, [fetchStandings]);
+    const currentTimestamp = Date.now();
+    if (
+      !isFetchingStandings &&
+      (!lastFetchTimestamp ||
+        currentTimestamp - lastFetchTimestamp > ONE_MINUTE_IN_MILLISECONDS)
+    ) {
+      fetchStandings().catch(console.error);
+    }
+  });
 
   const table = (songs: Song[], scores: Standing[]) => (
     <StyledTable
@@ -152,6 +176,11 @@ const Leaderboard = () => {
       <div style={{ display: "flex", gap: "8px" }}>
         <Switch onChange={setHideDisqualified} checked={hideDisqualified} />
         Hide disqualified
+      </div>
+      <div style={{ marginTop: "8px", marginBottom: "8px" }}>
+        {`Last updated: ${
+          lastFetchTimestamp ? formatDate(lastFetchTimestamp) : "----"
+        }`}
       </div>
       <Tabs
         defaultActiveKey="masters"
