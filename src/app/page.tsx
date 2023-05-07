@@ -67,8 +67,6 @@ const formatDate = (timestamp: number | string) =>
     timeZone: "Asia/Singapore",
   });
 
-const ONE_MINUTE_IN_MILLISECONDS = 60 * 1000;
-
 // Ideally, the return type should be ColumnsType<Standing>, but the record
 // isn't exactly of the same type. Some information was lost to JSON.
 const generateColumns = (songs: Song[]): ColumnsType<any> => [
@@ -148,14 +146,7 @@ const Leaderboard = () => {
   }, []);
 
   useEffect(() => {
-    const currentTimestamp = Date.now();
-    if (
-      !isFetchingStandings &&
-      (!lastFetchTimestamp ||
-        currentTimestamp - lastFetchTimestamp > ONE_MINUTE_IN_MILLISECONDS)
-    ) {
-      fetchStandings().catch(console.error);
-    }
+    fetchStandings().catch(console.error);
   }, [fetchStandings]);
 
   const table = (songs: Song[], scores: Standing[]) => (
