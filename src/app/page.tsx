@@ -1,6 +1,7 @@
 "use client";
 
-import { Table, Switch, Tabs } from "antd";
+import { Table, Switch, Tabs, Button } from "antd";
+import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
 import wakeUpDreamer from "../../public/wakeupdreamer.png";
@@ -91,8 +92,8 @@ const generateColumns = (songs: Song[]): ColumnsType<any> => [
           src={image}
           alt=""
           style={{
-            border: `4px solid ${genreBorderColours[genre ?? ""]}`,
-            maxHeight: "120px",
+            border: `3px solid ${genreBorderColours[genre ?? ""]}`,
+            maxHeight: "90px",
             height: "auto",
             width: "auto",
           }}
@@ -146,7 +147,6 @@ const Leaderboard = () => {
     setLastFetchTimestamp(Date.now());
   }, []);
 
-  // Intentionally running this every single time, instead of just once on initial render.
   useEffect(() => {
     const currentTimestamp = Date.now();
     if (
@@ -156,7 +156,7 @@ const Leaderboard = () => {
     ) {
       fetchStandings().catch(console.error);
     }
-  });
+  }, [fetchStandings]);
 
   const table = (songs: Song[], scores: Standing[]) => (
     <StyledTable
@@ -173,16 +173,24 @@ const Leaderboard = () => {
   return (
     <>
       <h1>Leaderboard</h1>
-      <div style={{ display: "flex", gap: "8px" }}>
+      <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
         <Switch onChange={setHideDisqualified} checked={hideDisqualified} />
-        Hide disqualified
+        <p style={{ flex: "1" }}>{"Hide disqualified"}</p>
+        <Button
+          icon={<RedoOutlined />}
+          type="default"
+          disabled={isFetchingStandings}
+          onClick={() => fetchStandings()}
+        >
+          Refresh
+        </Button>
       </div>
       {/* Put this back in when the update actually updates. */}
-      {/* <div style={{ marginTop: "8px", marginBottom: "8px" }}>
+      <div style={{ marginTop: "8px", marginBottom: "8px" }}>
         {`Last updated: ${
           lastFetchTimestamp ? formatDate(lastFetchTimestamp) : "----"
         }`}
-      </div> */}
+      </div>
       <Tabs
         defaultActiveKey="masters"
         items={[
