@@ -93,7 +93,7 @@ export class SubmissionController {
     }
 
     return values
-      .filter((row) => row[0] !== "")
+      .filter((row) => row && row[0] !== "")
       .map<Submission>((row) => ({
         timestamp: parseLocalDate(row[columnIndexes.timestamp]),
         ign: row[columnIndexes.ign],
