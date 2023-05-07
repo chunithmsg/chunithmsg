@@ -5,19 +5,16 @@ import {
 } from "@/utils/leaderboardUtils";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async () => {
   const submissionController = new SubmissionController();
 
   await submissionController.initialise();
   const submissionSet = await submissionController.getAllSubmissions();
 
-  return NextResponse.json(
-    {
-      masters: getMastersStandings(submissionSet),
-      challengers: getChallengersStandings(submissionSet),
-    },
-    {
-      headers: [["Cache-control", "no-store"]],
-    }
-  );
+  return NextResponse.json({
+    masters: getMastersStandings(submissionSet),
+    challengers: getChallengersStandings(submissionSet),
+  });
 };
