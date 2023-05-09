@@ -66,6 +66,9 @@ const formatScore = (score: number) => score.toLocaleString("en-US");
 const formatDate = (timestamp: number) =>
   new Date(timestamp).toLocaleString("en-SG", {
     timeZone: "Asia/Singapore",
+    dateStyle: "short",
+    timeStyle: "short",
+    hour12: false,
   });
 
 const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
@@ -161,6 +164,7 @@ const Leaderboard = () => {
 
   const table = (songs: Song[], scores: Standing[]) => (
     <LeaderboardTable
+      size="small"
       loading={isFetchingStandings}
       columns={generateColumns(songs)}
       dataSource={scores.filter(
