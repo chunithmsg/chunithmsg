@@ -87,19 +87,17 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
   },
   ...songs.map(({ title, image, genre }, idx) => ({
     title: (
-      <>
-        <Image
-          src={image}
-          alt=""
-          style={{
-            border: `3px solid ${genreBorderColours[genre ?? ""]}`,
-            maxHeight: "90px",
-            height: "auto",
-            width: "auto",
-          }}
-        />
-        <div>{title}</div>
-      </>
+      <Image
+        src={image}
+        alt={title}
+        title={title}
+        style={{
+          border: `3px solid ${genreBorderColours[genre ?? ""]}`,
+          maxHeight: "90px",
+          height: "auto",
+          width: "auto",
+        }}
+      />
     ),
     key: `song${idx + 1}`,
     dataIndex: `song${idx + 1}`,
