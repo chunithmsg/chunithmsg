@@ -41,8 +41,8 @@ const columnIndexes = {
   timestamp: 0,
   ign: 1,
   songs: 2,
-  isVoidSubmission: 6,
-  isPlayerDisqualified: 7,
+  isVoidSubmission: 9,
+  isPlayerDisqualified: 10,
 };
 
 /**
@@ -100,9 +100,11 @@ export class SubmissionController {
         isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
         isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
         songScores: [0, 1, 2].map((index) => ({
-          score: parseInt(row[columnIndexes.songs + index]),
-          // TODO: Reorder columns in Google Sheet and remove magic number
-          ajFcStatus: (row[9 + index] ?? "") as "" | "FC" | "AJ",
+          score: parseInt(row[columnIndexes.songs + 2 * index]),
+          ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? "") as
+            | ""
+            | "FC"
+            | "AJ",
         })),
       }));
   }
