@@ -1,6 +1,6 @@
 "use client";
 
-import { Table, Switch, Tabs, Button } from "antd";
+import { Table, Switch, Tabs, Button, Tag } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
@@ -18,6 +18,7 @@ import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
 import { Standing } from "@/models/standing";
 import { ColumnsType } from "antd/es/table";
+import { SongScore } from "@/models/songScore";
 
 interface Song {
   image: any;
@@ -60,27 +61,25 @@ const masterSongs: Song[] = [
  * @param score The score to format, given as the string representation of an integer.
  * @returns The formatted score.
  */
-const formatScore = (score: string) => parseInt(score).toLocaleString("en-US");
+const formatScore = (score: number) => score.toLocaleString("en-US");
 
-const formatDate = (timestamp: number | string) =>
+const formatDate = (timestamp: number) =>
   new Date(timestamp).toLocaleString("en-SG", {
     timeZone: "Asia/Singapore",
   });
 
-// Ideally, the return type should be ColumnsType<Standing>, but the record
-// isn't exactly of the same type. Some information was lost to JSON.
-const generateColumns = (songs: Song[]): ColumnsType<any> => [
+const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
   {
     title: "No",
     key: "no",
     dataIndex: "no",
-    render: (_text: string, _record: any, idx: number) => idx + 1,
+    render: (_text: string, _record: Standing, idx: number) => idx + 1,
   },
   {
     title: "IGN",
     key: "ign",
     dataIndex: "ign",
-    render: (text: string, record: any) =>
+    render: (text: string, record: Standing) =>
       `${text}${record.isDisqualified ? " (disqualified)" : ""}`,
   },
   ...songs.map(({ title, image, genre }, idx) => ({
@@ -101,7 +100,18 @@ const generateColumns = (songs: Song[]): ColumnsType<any> => [
     ),
     key: `song${idx + 1}`,
     dataIndex: `song${idx + 1}`,
-    render: formatScore,
+    render: (_text: string, record: Standing) => {
+      const { score, ajFcStatus } = record[
+        `song${idx + 1}` as keyof Standing
+      ] as SongScore;
+      return (
+        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+          <p>{formatScore(score)}</p>
+          {ajFcStatus == "AJ" && <Tag color="gold">AJ</Tag>}
+          {ajFcStatus == "FC" && <Tag color="green">FC</Tag>}
+        </div>
+      );
+    },
   })),
   {
     title: "Total Score",
@@ -113,11 +123,11 @@ const generateColumns = (songs: Song[]): ColumnsType<any> => [
     title: "Time of play",
     key: "timestamp",
     dataIndex: "timestamp",
-    render: (_text: string, record: any) => formatDate(record.timestamp),
+    render: (_text: string, record: Standing) => formatDate(record.timestamp),
   },
 ];
 
-const StyledTable = styled(Table)`
+const LeaderboardTable = styled(Table<Standing>)`
   .disqualified {
     background-color: #ccc;
   }
@@ -150,7 +160,7 @@ const Leaderboard = () => {
   }, [fetchStandings]);
 
   const table = (songs: Song[], scores: Standing[]) => (
-    <StyledTable
+    <LeaderboardTable
       loading={isFetchingStandings}
       columns={generateColumns(songs)}
       dataSource={scores.filter(

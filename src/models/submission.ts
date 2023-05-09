@@ -1,16 +1,21 @@
+import { SongScore } from "./songScore";
+
 /**
  * The Submission type represents a player's submission of 3 songs.
  */
 export interface Submission {
   ign: string;
-  timestamp: Date;
-  songScores: [number, number, number];
+  timestamp: number;
+  songScores: SongScore[];
   isDisqualified: boolean;
   isVoidSubmission: boolean;
 }
 
 export const getTotalSubmissionScore = (submission: Submission) =>
-  submission.songScores.reduce((a, b) => a + b, 0);
+  submission.songScores.reduce(
+    (total, songScore) => total + songScore.score,
+    0
+  );
 
 export const compareSubmissions = (
   submissionA: Submission,
@@ -22,6 +27,6 @@ export const compareSubmissions = (
   if (aScore !== bScore) {
     return bScore - aScore;
   } else {
-    return submissionA.timestamp.getTime() - submissionB.timestamp.getTime();
+    return submissionA.timestamp - submissionB.timestamp;
   }
 };

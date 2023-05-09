@@ -48,7 +48,7 @@ const columnIndexes = {
 /**
  * The range within each sheet that contains the submission data.
  */
-const submissionRange = "A3:H1000";
+const submissionRange = "A3:L1000";
 
 export type SubmissionSet = { [S in QualifierSet]: Submission[] };
 
@@ -95,13 +95,15 @@ export class SubmissionController {
     return values
       .filter((row) => row && row[0] !== "")
       .map<Submission>((row) => ({
-        timestamp: parseLocalDate(row[columnIndexes.timestamp]),
+        timestamp: parseLocalDate(row[columnIndexes.timestamp]).getTime(),
         ign: row[columnIndexes.ign],
         isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
         isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
-        songScores: [0, 1, 2].map((index) =>
-          parseInt(row[columnIndexes.songs + index])
-        ) as [number, number, number],
+        songScores: [0, 1, 2].map((index) => ({
+          score: parseInt(row[columnIndexes.songs + index]),
+          // TODO: Reorder columns in Google Sheet and remove magic number
+          ajFcStatus: (row[9 + index] ?? "") as "" | "FC" | "AJ",
+        })),
       }));
   }
 }

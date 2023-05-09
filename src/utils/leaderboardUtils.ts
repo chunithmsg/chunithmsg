@@ -3,12 +3,15 @@ import {
   SubmissionSet,
   allQualifierSets,
 } from "@/controllers/submissionController";
+import { SongScore } from "@/models/songScore";
 import { Standing, compareStandings } from "@/models/standing";
 import {
   Submission,
   compareSubmissions,
   getTotalSubmissionScore,
 } from "@/models/submission";
+
+const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: "" };
 
 const extractBestSubmissions = (submissionSet: SubmissionSet) => {
   const output: { [S in QualifierSet]?: Submission[] } = {};
@@ -56,9 +59,9 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
       song1: songScores[0],
       song2: songScores[1],
       song3: songScores[2],
-      song4: 0,
-      song5: 0,
-      song6: 0,
+      song4: ZERO_SCORE,
+      song5: ZERO_SCORE,
+      song6: ZERO_SCORE,
       totalScore: getTotalSubmissionScore(submission),
     };
   }
@@ -72,9 +75,9 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
         ign,
         timestamp,
         isDisqualified,
-        song1: 0,
-        song2: 0,
-        song3: 0,
+        song1: ZERO_SCORE,
+        song2: ZERO_SCORE,
+        song3: ZERO_SCORE,
         song4: songScores[0],
         song5: songScores[1],
         song6: songScores[2],
