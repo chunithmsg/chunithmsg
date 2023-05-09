@@ -193,7 +193,11 @@ const Leaderboard = () => {
       {/* Put this back in when the update actually updates. */}
       <div style={{ marginTop: "8px", marginBottom: "8px" }}>
         {`Last updated: ${
-          lastFetchTimestamp ? formatDate(lastFetchTimestamp) : "----"
+          lastFetchTimestamp
+            ? new Date(lastFetchTimestamp).toLocaleString("en-SG", {
+                timeZone: "Asia/Singapore",
+              })
+            : "----"
         }`}
       </div>
       <Tabs
