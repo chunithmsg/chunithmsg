@@ -28,14 +28,6 @@ interface Song {
 
 type Genre = "variety" | "original" | "gekimai" | "touhou" | "";
 
-const genreBorderColours: { [key in Genre]: string } = {
-  variety: "#00ff00",
-  original: "#bd2a1a",
-  gekimai: "#ffff00",
-  touhou: "#3862b4",
-  "": "#ffffff",
-};
-
 const challengerSongs: Song[] = [
   { image: wakeUpDreamer, title: "Wake up Dreamer", genre: "original" },
   { image: chaos, title: "CHAOS", genre: "variety" },
