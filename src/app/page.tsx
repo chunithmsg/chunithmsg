@@ -93,7 +93,6 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
           alt={title}
           title={title}
           style={{
-            border: `3px solid ${genreBorderColours[genre ?? ""]}`,
             maxHeight: "90px",
             height: "auto",
             width: "auto",
@@ -173,6 +172,7 @@ const Leaderboard = () => {
       )}
       rowClassName={(record: any) => record.isDisqualified && "disqualified"}
       pagination={false}
+      rowKey={"ign"}
     />
   );
 
