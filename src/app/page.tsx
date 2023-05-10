@@ -38,7 +38,7 @@ const masterSongs: Song[] = [
   { image: valsqotch, title: "Valsqotch", genre: "gekimai" },
   {
     image: imperishableNight,
-    title: "Imperishable Night 2006 (2016 Refine)",
+    title: "Imperishable Night 2006\n(2016 Refine)",
     genre: "touhou",
   },
   { image: battleNo1, title: "BATTLE NO.1", genre: "variety" },
@@ -90,7 +90,7 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
             width: "auto",
           }}
         />
-        <div>{title}</div>
+        <div style={{ whiteSpace: "pre-line" }}>{title}</div>
       </div>
     ),
     key: `song${idx + 1}`,
