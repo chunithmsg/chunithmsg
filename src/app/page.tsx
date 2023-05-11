@@ -79,34 +79,36 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
   },
   ...songs.map(({ title, image, genre }, idx) => ({
     title: (
-      <div>
-        <Image
-          src={image}
-          alt={title}
-          title={title}
-          style={{
-            maxHeight: "90px",
-            height: "auto",
-            width: "auto",
-          }}
-        />
-        <div style={{ whiteSpace: "pre-line" }}>{title}</div>
-      </div>
+      <Image
+        src={image}
+        alt={title}
+        title={title}
+        style={{
+          maxHeight: "90px",
+          height: "auto",
+          width: "auto",
+        }}
+      />
     ),
-    key: `song${idx + 1}`,
-    dataIndex: `song${idx + 1}`,
-    render: (_text: string, record: Standing) => {
-      const { score, ajFcStatus } = record[
-        `song${idx + 1}` as keyof Standing
-      ] as SongScore;
-      return (
-        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-          <p>{formatScore(score)}</p>
-          {ajFcStatus == "AJ" && <Tag color="gold">AJ</Tag>}
-          {ajFcStatus == "FC" && <Tag color="green">FC</Tag>}
-        </div>
-      );
-    },
+    children: [
+      {
+        title: <div style={{ whiteSpace: "pre-line" }}>{title}</div>,
+        key: `song${idx + 1}`,
+        dataIndex: `song${idx + 1}`,
+        render: (_text: string, record: Standing) => {
+          const { score, ajFcStatus } = record[
+            `song${idx + 1}` as keyof Standing
+          ] as SongScore;
+          return (
+            <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+              <p>{formatScore(score)}</p>
+              {ajFcStatus == "AJ" && <Tag color="gold">AJ</Tag>}
+              {ajFcStatus == "FC" && <Tag color="green">FC</Tag>}
+            </div>
+          );
+        },
+      },
+    ],
   })),
   {
     title: "Total Score",
