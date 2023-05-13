@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Menu } from "antd";
 import { usePathname } from "next/navigation";
-import { submissionUrl } from "@/constants";
+import { submissionUrl } from "@/utils/constants";
 
 const links = {
   Leaderboard: "/",

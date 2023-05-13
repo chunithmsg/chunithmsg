@@ -1,4 +1,4 @@
-import { qualifiersSpreadsheetId } from "@/constants";
+import { qualifiersSpreadsheetId } from "@/utils/constants";
 import { Submission } from "@/models/submission";
 import {
   AuthClient,
