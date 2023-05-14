@@ -192,6 +192,10 @@ There will be level restrictions put in place per round through the course of th
 | Top 4  | Level 14                            |
 | Top 2  | Chart Constant 14.2 - 14.7          |
 
+### Song Ban List
+
+In addition, all songs that are locked as well as all ULTIMA charts may not be selected in the competition. For a full list of banned songs and charts (which may be updated), [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
+
 ## Masters Qualifiers
 
 ### Format
@@ -307,6 +311,10 @@ There will be level restrictions put in place per round through the course of th
 | Top 8 | 14.5 - 14.9 inclusive       | 14.5 - 15.2 inclusive |
 | Top 4 | 14.8 - 15.2 inclusive       | 14.8 - 15.4 inclusive |
 | Top 2 | 15.0 - 15.4 inclusive       | N/A                   |
+
+### Song Ban List
+
+In addition, some charts may not be chosen in the competition. For a full list of charts, [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
 
 ### Randomiser Pool
 
