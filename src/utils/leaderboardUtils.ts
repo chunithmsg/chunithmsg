@@ -156,7 +156,8 @@ const toRankMap = (
 };
 
 export const getIndividualScoreStandings = (
-  submissionSet: SubmissionSet
+  submissionSet: SubmissionSet,
+  submissionScoreThreshold: number = 1_000_000
 ): IndividualSongStanding[] => {
   // Holy shit, this function is a long hot mess and I feel filthy for writing it.
 
@@ -189,9 +190,19 @@ export const getIndividualScoreStandings = (
 
   // Extract the best score of each player on a per-song basis.
   for (const qualifierSet of allQualifierSets) {
-    for (const { songScores, ign, isDisqualified, timestamp } of submissionSet[
-      qualifierSet
-    ]) {
+    // Filtering rule: Submissions eligible for this prize requires
+    // all the songs in the submission to be at least the given threshold.
+    const filteredSubmissions = submissionSet[qualifierSet].filter(
+      ({ songScores }) =>
+        songScores.every(({ score }) => score >= submissionScoreThreshold)
+    );
+
+    for (const {
+      songScores,
+      ign,
+      isDisqualified,
+      timestamp,
+    } of filteredSubmissions) {
       // Prepare the "leaderboard standing" object.
       let leaderboardStanding: IndividualSongScore["leaderboardStanding"] =
         undefined;
