@@ -77,7 +77,7 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
     render: (text: string, record: Standing) =>
       `${text}${record.isDisqualified ? " (disqualified)" : ""}`,
   },
-  ...songs.map(({ title, image, genre }, idx) => ({
+  ...songs.map(({ title, image }, idx) => ({
     title: (
       <Image
         src={image}
@@ -185,7 +185,6 @@ const Leaderboard = () => {
           Refresh
         </Button>
       </div>
-      {/* Put this back in when the update actually updates. */}
       <div style={{ marginTop: "8px", marginBottom: "8px" }}>
         {`Last updated: ${
           lastFetchTimestamp
