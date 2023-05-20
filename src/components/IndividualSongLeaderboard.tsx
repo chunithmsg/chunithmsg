@@ -6,11 +6,9 @@ import styled from "styled-components";
 import Image from "next/image";
 import SongScoreLabel from "./SongScoreLabel";
 import {
+  filterIndividualScoreStandings,
   formatOrdinal,
   formatTimestamp,
-} from "@/utils/leaderboardFrontendUtils";
-import {
-  filterIndividualScoreStandings,
   isFinalist,
 } from "@/utils/leaderboardUtils";
 

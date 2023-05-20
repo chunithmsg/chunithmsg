@@ -1,5 +1,5 @@
 import { SongScore } from "@/models/songScore";
-import { formatScore } from "@/utils/leaderboardFrontendUtils";
+import { formatScore } from "@/utils/leaderboardUtils";
 import { Tag } from "antd";
 
 const SongScoreLabel = ({
