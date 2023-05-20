@@ -157,7 +157,7 @@ const toRankMap = (
 
 export const getIndividualScoreStandings = (
   submissionSet: SubmissionSet,
-  submissionScoreThreshold: number = 1_000_000
+  submissionScoreThreshold: number = 975_000
 ): IndividualSongStanding[] => {
   // Holy shit, this function is a long hot mess and I feel filthy for writing it.
 
@@ -273,24 +273,4 @@ export const getIndividualScoreStandings = (
   }
 
   return standings;
-};
-
-/**
- * Formats the given score using the "en-US" locale.
- *
- * @param score The score to format, given as the string representation of an integer.
- * @returns The formatted score.
- */
-export const formatScore = (score: number) => score.toLocaleString("en-US");
-
-export const formatOrdinal = (rank: number) => {
-  if (rank % 10 == 1 && rank % 100 != 11) {
-    return `${rank}th`;
-  } else if (rank % 10 == 2 && rank % 100 != 12) {
-    return `${rank}nd`;
-  } else if (rank % 10 == 3 && rank % 100 != 13) {
-    return `${rank}rd`;
-  } else {
-    return `${rank}th`;
-  }
 };

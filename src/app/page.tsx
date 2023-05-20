@@ -19,6 +19,10 @@ import { useCallback, useEffect, useState } from "react";
 import { Standing } from "@/models/standing";
 import { ColumnsType } from "antd/es/table";
 import { SongScore } from "@/models/songScore";
+import { IndividualSongStanding } from "@/models/individualSongStanding";
+import IndividualSongLeaderboard, {
+  Song as TempSong,
+} from "@/components/IndividualSongLeaderboard";
 
 interface Song {
   image: any;
@@ -45,6 +49,15 @@ const masterSongs: Song[] = [
   { image: spica, title: "スピカの天秤", genre: "original" },
   { image: weGonnaJourney, title: "We Gonna Journey", genre: "original" },
   { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
+];
+
+const individualSongs: TempSong[] = [
+  { songId: "valsqotch", jacket: valsqotch },
+  { songId: "imperishableNight", jacket: imperishableNight },
+  { songId: "battleNo1", jacket: battleNo1 },
+  { songId: "spica", jacket: spica },
+  { songId: "weGonnaJourney", jacket: weGonnaJourney },
+  { songId: "blazingStorm", jacket: blazingStorm },
 ];
 
 /**
@@ -139,15 +152,20 @@ const Leaderboard = () => {
   const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
     []
   );
+  const [individualSongStandings, setIndividualSongStandings] = useState<
+    IndividualSongStanding[]
+  >([]);
   const [isFetchingStandings, setIsFetchingStandings] = useState(false);
 
   const fetchStandings = useCallback(async () => {
     setIsFetchingStandings(true);
     const response = await fetch("/submissions");
-    const { masters, challengers } = await response.json();
+    const { masters, challengers, individualSongStandings } =
+      await response.json();
 
     setChallengerStandings(challengers);
     setMasterStandings(masters);
+    setIndividualSongStandings(individualSongStandings);
     setIsFetchingStandings(false);
     setLastFetchTimestamp(Date.now());
   }, []);
@@ -206,6 +224,17 @@ const Leaderboard = () => {
             key: "challengers",
             label: "Challengers",
             children: table(challengerSongs, challengerStandings),
+          },
+          {
+            key: "individualSongStandings",
+            label: "Individual Songs",
+            children: (
+              <IndividualSongLeaderboard
+                songs={individualSongs}
+                loading={isFetchingStandings}
+                dataSource={individualSongStandings}
+              />
+            ),
           },
         ]}
       />

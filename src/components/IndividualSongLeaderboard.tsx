@@ -5,7 +5,10 @@ import { ColumnGroupType, ColumnType, ColumnsType } from "antd/es/table";
 import styled from "styled-components";
 import Image from "next/image";
 import SongScoreLabel from "./SongScoreLabel";
-import { formatOrdinal } from "@/utils/leaderboardUtils";
+import {
+  formatOrdinal,
+  formatTimestamp,
+} from "@/utils/leaderboardFrontendUtils";
 
 export interface IndividualSongLeaderboardProps
   extends React.ComponentProps<typeof Table> {
@@ -19,7 +22,7 @@ const LeaderboardTable = styled(Table<IndividualSongStanding>)`
   }
 `;
 
-interface Song {
+export interface Song {
   songId: SongId;
   jacket: any;
 }
@@ -64,18 +67,20 @@ const createColumnFromSong = ({
               style={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
+                marginTop: "14px",
               }}
             >
-              <div>
-                <p>{ign}</p>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "4px" }}
+              >
+                {ign}
                 {leaderboardStanding && (
                   <Tag color="purple">{`${
                     leaderboardStanding.division
                   } ${formatOrdinal(leaderboardStanding.rank)}`}</Tag>
                 )}
               </div>
-              <p>{timestamp}</p>
+              {formatTimestamp(timestamp)}
               <SongScoreLabel songScore={songScore} />
             </div>
           );

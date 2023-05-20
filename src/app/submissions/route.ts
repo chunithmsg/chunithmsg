@@ -1,6 +1,7 @@
 import { SubmissionController } from "@/controllers/submissionController";
 import {
   getChallengersStandings,
+  getIndividualScoreStandings,
   getMastersStandings,
 } from "@/utils/leaderboardUtils";
 import { NextResponse } from "next/server";
@@ -16,5 +17,6 @@ export const GET = async () => {
   return NextResponse.json({
     masters: getMastersStandings(submissionSet),
     challengers: getChallengersStandings(submissionSet),
+    individualSongStandings: getIndividualScoreStandings(submissionSet),
   });
 };
