@@ -158,7 +158,7 @@ const toRankMap = (
 
 export const getIndividualScoreStandings = (
   submissionSet: SubmissionSet,
-  submissionScoreThreshold: number = 975_000
+  submissionScoreThreshold: number = 0
 ): IndividualSongStanding[] => {
   // Holy shit, this function is a long hot mess and I feel filthy for writing it.
 
