@@ -34,3 +34,8 @@ export const songDetails: { [songId in SongId]: SongDetails } = {
   chaos: { title: "CHAOS", genre: "variety" },
   pygmalion: { title: "ピュグマリオンの咒文", genre: "original" },
 };
+
+export interface SongWithJacket {
+  songId: SongId;
+  jacket: any; // Image
+}

@@ -1,5 +1,5 @@
 import { IndividualSongStanding } from "@/models/individualSongStanding";
-import { SongId, songDetails } from "@/utils/songUtils";
+import { SongId, SongWithJacket, songDetails } from "@/utils/songUtils";
 import { Table, Tag } from "antd";
 import { ColumnGroupType, ColumnType, ColumnsType } from "antd/es/table";
 import styled from "styled-components";
@@ -14,7 +14,7 @@ import {
 
 export interface IndividualSongLeaderboardProps
   extends React.ComponentProps<typeof Table> {
-  songs: Song[];
+  songs: SongWithJacket[];
   standings: IndividualSongStanding[];
   options?: {
     shouldHideDisqualified?: boolean;
@@ -28,15 +28,10 @@ const LeaderboardTable = styled(Table<IndividualSongStanding>)`
   }
 `;
 
-export interface Song {
-  songId: SongId;
-  jacket: any;
-}
-
 const createColumnFromSong = ({
   songId,
   jacket,
-}: Song):
+}: SongWithJacket):
   | ColumnGroupType<IndividualSongStanding>
   | ColumnType<IndividualSongStanding> => {
   const { title } = songDetails[songId];

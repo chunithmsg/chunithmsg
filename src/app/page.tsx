@@ -20,10 +20,9 @@ import { Standing } from "@/models/standing";
 import { ColumnsType } from "antd/es/table";
 import { SongScore } from "@/models/songScore";
 import { IndividualSongStanding } from "@/models/individualSongStanding";
-import IndividualSongLeaderboard, {
-  Song as TempSong,
-} from "@/components/IndividualSongLeaderboard";
+import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
 import SongScoreLabel from "@/components/SongScoreLabel";
+import { SongWithJacket } from "@/utils/songUtils";
 
 interface Song {
   image: any;
@@ -52,7 +51,7 @@ const masterSongs: Song[] = [
   { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
 ];
 
-const individualSongs: TempSong[] = [
+const individualSongs: SongWithJacket[] = [
   { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
   { songId: "chaos", jacket: chaos },
   { songId: "pygmalion", jacket: pygmalion },
