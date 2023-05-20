@@ -113,6 +113,7 @@ const IndividualSongLeaderboard = ({
       pagination={false}
       loading={loading}
       dataSource={dataSource}
+      rowKey="index"
     />
   );
 };
