@@ -3,7 +3,10 @@ import {
   SubmissionSet,
   allQualifierSets,
 } from "@/controllers/submissionController";
-import { IndividualSongStanding } from "@/models/individualSongStanding";
+import {
+  IndividualSongStanding,
+  generateKey,
+} from "@/models/individualSongStanding";
 import { SongScore } from "@/models/songScore";
 import { Standing, compareStandings } from "@/models/standing";
 import {
@@ -260,16 +263,16 @@ export const getIndividualScoreStandings = (
   const numStandings = Math.max(numMasters, numChallengers);
 
   for (let i = 0; i < numStandings; ++i) {
-    const standing: IndividualSongStanding = { index: i };
+    const scoreMap: { [songId in SongId]?: IndividualSongScore } = {};
 
     for (const songId of allSongs) {
       const individualSongScore = sortedScoresBySong[songId]?.[i];
       if (individualSongScore) {
-        standing[songId] = individualSongScore;
+        scoreMap[songId] = individualSongScore;
       }
     }
 
-    standings.push(standing);
+    standings.push({ key: generateKey(scoreMap), scoreMap });
   }
 
   return standings;

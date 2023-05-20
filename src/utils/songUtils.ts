@@ -1,18 +1,19 @@
-export type SongId = keyof typeof songId;
-export type Genre = "variety" | "original" | "gekimai" | "touhou" | "";
+export const allSongIds = [
+  "valsqotch",
+  "imperishableNight",
+  "battleNo1",
+  "spica",
+  "weGonnaJourney",
+  "blazingStorm",
+  "wakeUpDreamer",
+  "chaos",
+  "pygmalion",
+] as const;
 
-export const songId = {
-  // As of right now, the values don't exactly do anything. They're just there.
-  valsqotch: "valsqotch",
-  imperishableNight: "imperishable_night",
-  battleNo1: "battle_no_1",
-  spica: "spica",
-  weGonnaJourney: "we_gonna_journey",
-  blazingStorm: "blazing_storm",
-  wakeUpDreamer: "wake_up_dreamer",
-  chaos: "chaos",
-  pygmalion: "pygmalion",
-};
+const allGenres = ["variety", "original", "gekimai", "touhou", ""] as const;
+
+export type SongId = (typeof allSongIds)[number];
+export type Genre = (typeof allGenres)[number];
 
 export interface SongDetails {
   title: string;

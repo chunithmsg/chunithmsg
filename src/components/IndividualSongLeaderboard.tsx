@@ -52,9 +52,9 @@ const createColumnFromSong = ({
       {
         title: <div style={{ whiteSpace: "pre-line" }}>{title}</div>,
         key: songId,
-        dataIndex: songId,
+        dataIndex: ["scoreMap", songId],
         render: (_text: string, record: IndividualSongStanding) => {
-          const individualSongScore = record[songId];
+          const individualSongScore = record.scoreMap[songId];
           if (!individualSongScore) {
             return <></>;
           }
@@ -113,7 +113,7 @@ const IndividualSongLeaderboard = ({
       pagination={false}
       loading={loading}
       dataSource={dataSource}
-      rowKey="index"
+      rowKey="key"
     />
   );
 };
