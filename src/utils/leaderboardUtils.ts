@@ -312,7 +312,6 @@ export const filterIndividualScoreStandings = (
 
   // Copy over the entries, skipping filtered entries as required.
   const songIds = Object.keys(standings[0].scoreMap) as SongId[];
-  console.log("songIDs to check", songIds);
   for (const songId of songIds) {
     let copyIndex = 0;
     let readIndex = 0;

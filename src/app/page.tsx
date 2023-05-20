@@ -151,7 +151,7 @@ const Leaderboard = () => {
     number | undefined
   >(undefined);
   const [shouldHideDisqualified, setShouldHideDisqualified] = useState(true);
-  const [shouldHideFinalists, setShouldHideFinalists] = useState(true);
+  const [shouldHideFinalists, setShouldHideFinalists] = useState(false);
   const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
   const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
     []
@@ -160,6 +160,7 @@ const Leaderboard = () => {
     IndividualSongStanding[]
   >([]);
   const [isFetchingStandings, setIsFetchingStandings] = useState(false);
+  const [activeTab, setActiveTab] = useState("");
 
   const fetchStandings = useCallback(async () => {
     setIsFetchingStandings(true);
@@ -211,13 +212,15 @@ const Leaderboard = () => {
             />
             {"Hide Disqualified"}
           </div>
-          <div style={{ display: "flex", gap: "8px" }}>
-            <Switch
-              onChange={setShouldHideFinalists}
-              checked={shouldHideFinalists}
-            />
-            {"Hide Finalists"}
-          </div>
+          {activeTab === "individualSongStandings" && (
+            <div style={{ display: "flex", gap: "8px" }}>
+              <Switch
+                onChange={setShouldHideFinalists}
+                checked={shouldHideFinalists}
+              />
+              {"Hide Finalists"}
+            </div>
+          )}
         </div>
         <Button
           icon={<RedoOutlined />}
@@ -238,6 +241,7 @@ const Leaderboard = () => {
         }`}
       </div>
       <Tabs
+        onChange={setActiveTab}
         defaultActiveKey="masters"
         items={[
           {
