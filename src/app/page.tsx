@@ -150,7 +150,7 @@ const Leaderboard = () => {
   const [lastFetchTimestamp, setLastFetchTimestamp] = useState<
     number | undefined
   >(undefined);
-  const [hideDisqualified, setHideDisqualified] = useState(true);
+  const [shouldHideDisqualified, setShouldHideDisqualified] = useState(true);
   const [shouldHideFinalists, setShouldHideFinalists] = useState(true);
   const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
   const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
@@ -184,7 +184,7 @@ const Leaderboard = () => {
       loading={isFetchingStandings}
       columns={generateColumns(songs)}
       dataSource={scores.filter(
-        ({ isDisqualified }) => !hideDisqualified || !isDisqualified
+        ({ isDisqualified }) => !shouldHideDisqualified || !isDisqualified
       )}
       rowClassName={(record: any) => record.isDisqualified && "disqualified"}
       pagination={false}
@@ -205,7 +205,10 @@ const Leaderboard = () => {
           }}
         >
           <div style={{ display: "flex", gap: "8px" }}>
-            <Switch onChange={setHideDisqualified} checked={hideDisqualified} />
+            <Switch
+              onChange={setShouldHideDisqualified}
+              checked={shouldHideDisqualified}
+            />
             {"Hide Disqualified"}
           </div>
           <div style={{ display: "flex", gap: "8px" }}>
@@ -257,7 +260,7 @@ const Leaderboard = () => {
                 standings={individualSongStandings}
                 options={{
                   shouldHideFinalists,
-                  shouldHideDisqualified: hideDisqualified,
+                  shouldHideDisqualified,
                 }}
               />
             ),
