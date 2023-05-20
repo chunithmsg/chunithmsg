@@ -140,7 +140,9 @@ const IndividualSongLeaderboard = ({
   const filteredStandings = filterIndividualScoreStandings(standings, {
     shouldFilterDisqualified: options?.shouldHideDisqualified,
     shouldFilterFinalists: options?.shouldHideFinalists,
-  });
+  }).filter((standing) =>
+    songs.some(({ songId }) => standing.scoreMap[songId] !== undefined)
+  );
 
   return (
     <LeaderboardTable

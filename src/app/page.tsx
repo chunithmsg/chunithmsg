@@ -23,6 +23,8 @@ import { IndividualSongStanding } from "@/models/individualSongStanding";
 import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
 import SongScoreLabel from "@/components/SongScoreLabel";
 import { SongWithJacket } from "@/utils/songUtils";
+import { qualifiersEndTimestamp } from "@/utils/constants";
+import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
 interface Song {
   image: any;
@@ -51,10 +53,7 @@ const masterSongs: Song[] = [
   { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
 ];
 
-const individualSongs: SongWithJacket[] = [
-  { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
-  { songId: "chaos", jacket: chaos },
-  { songId: "pygmalion", jacket: pygmalion },
+const individualMastersSongs: SongWithJacket[] = [
   { songId: "valsqotch", jacket: valsqotch },
   { songId: "imperishableNight", jacket: imperishableNight },
   { songId: "battleNo1", jacket: battleNo1 },
@@ -63,21 +62,11 @@ const individualSongs: SongWithJacket[] = [
   { songId: "blazingStorm", jacket: blazingStorm },
 ];
 
-/**
- * Formats the given score using the "en-US" locale.
- *
- * @param score The score to format, given as the string representation of an integer.
- * @returns The formatted score.
- */
-const formatScore = (score: number) => score.toLocaleString("en-US");
-
-const formatDate = (timestamp: number) =>
-  new Date(timestamp).toLocaleString("en-SG", {
-    timeZone: "Asia/Singapore",
-    dateStyle: "short",
-    timeStyle: "short",
-    hour12: false,
-  });
+const individualChallengersSongs: SongWithJacket[] = [
+  { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
+  { songId: "chaos", jacket: chaos },
+  { songId: "pygmalion", jacket: pygmalion },
+];
 
 const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
   {
@@ -130,9 +119,26 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
     title: "Time of play",
     key: "timestamp",
     dataIndex: "timestamp",
-    render: (_text: string, record: Standing) => formatDate(record.timestamp),
+    render: (_text: string, record: Standing) =>
+      formatTimestamp(record.timestamp),
   },
 ];
+
+const formatDuration = (durationInMilliseconds: number) => {
+  let tempDuration = Math.floor(durationInMilliseconds / 1000);
+  const numSeconds = tempDuration % 60;
+
+  tempDuration = Math.floor(tempDuration / 60);
+  const numMinutes = tempDuration % 60;
+
+  tempDuration = Math.floor(tempDuration / 60);
+  const numHours = tempDuration % 24;
+
+  tempDuration = Math.floor(tempDuration / 24);
+  const numDays = tempDuration;
+
+  return `${numDays}d ${numHours}h ${numMinutes}m ${numSeconds}s`;
+};
 
 const LeaderboardTable = styled(Table<Standing>)`
   .disqualified {
@@ -141,6 +147,10 @@ const LeaderboardTable = styled(Table<Standing>)`
 `;
 
 const Leaderboard = () => {
+  const [
+    qualifiersRemainingTimeInMilliseconds,
+    setQualifiersRemainingTimeInMilliseconds,
+  ] = useState<number | undefined>(undefined);
   const [lastFetchTimestamp, setLastFetchTimestamp] = useState<
     number | undefined
   >(undefined);
@@ -169,6 +179,18 @@ const Leaderboard = () => {
     setLastFetchTimestamp(Date.now());
   }, []);
 
+  const updateQualifiersRemainingTime = useCallback(() => {
+    const currentTimestamp = Date.now();
+    setQualifiersRemainingTimeInMilliseconds(
+      Math.max(qualifiersEndTimestamp - currentTimestamp, 0)
+    );
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(updateQualifiersRemainingTime, 250);
+    return () => clearInterval(interval);
+  }, [updateQualifiersRemainingTime]);
+
   useEffect(() => {
     fetchStandings().catch(console.error);
   }, [fetchStandings]);
@@ -190,6 +212,13 @@ const Leaderboard = () => {
   return (
     <>
       <h1>Leaderboard</h1>
+      <p style={{ fontWeight: "bold" }}>{`Qualifiers time remaining: ${
+        qualifiersRemainingTimeInMilliseconds === undefined
+          ? "---"
+          : qualifiersRemainingTimeInMilliseconds > 0
+          ? formatDuration(qualifiersRemainingTimeInMilliseconds)
+          : "Ended!"
+      }`}</p>
       <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
         <div
           style={{
@@ -206,7 +235,8 @@ const Leaderboard = () => {
             />
             {"Hide Disqualified"}
           </div>
-          {activeTab === "individualSongStandings" && (
+          {(activeTab === "individualMastersSongStandings" ||
+            activeTab === "individualChallengersSongStandings") && (
             <div style={{ display: "flex", gap: "8px" }}>
               <Switch
                 onChange={setShouldHideFinalists}
@@ -249,11 +279,26 @@ const Leaderboard = () => {
             children: table(challengerSongs, challengerStandings),
           },
           {
-            key: "individualSongStandings",
-            label: "Individual Songs",
+            key: "individualMastersSongStandings",
+            label: "Individual Songs (Masters)",
             children: (
               <IndividualSongLeaderboard
-                songs={individualSongs}
+                songs={individualMastersSongs}
+                loading={isFetchingStandings}
+                standings={individualSongStandings}
+                options={{
+                  shouldHideFinalists,
+                  shouldHideDisqualified,
+                }}
+              />
+            ),
+          },
+          {
+            key: "individualChallengersSongStandings",
+            label: "Individual Songs (Challengers)",
+            children: (
+              <IndividualSongLeaderboard
+                songs={individualChallengersSongs}
                 loading={isFetchingStandings}
                 standings={individualSongStandings}
                 options={{
