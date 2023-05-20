@@ -52,6 +52,9 @@ const masterSongs: Song[] = [
 ];
 
 const individualSongs: TempSong[] = [
+  { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
+  { songId: "chaos", jacket: chaos },
+  { songId: "pygmalion", jacket: pygmalion },
   { songId: "valsqotch", jacket: valsqotch },
   { songId: "imperishableNight", jacket: imperishableNight },
   { songId: "battleNo1", jacket: battleNo1 },
@@ -148,6 +151,7 @@ const Leaderboard = () => {
     number | undefined
   >(undefined);
   const [hideDisqualified, setHideDisqualified] = useState(true);
+  const [shouldHideFinalists, setShouldHideFinalists] = useState(true);
   const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
   const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
     []
@@ -192,8 +196,26 @@ const Leaderboard = () => {
     <>
       <h1>Leaderboard</h1>
       <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-        <Switch onChange={setHideDisqualified} checked={hideDisqualified} />
-        <p style={{ flex: "1" }}>{"Hide disqualified"}</p>
+        <div
+          style={{
+            display: "flex",
+            flex: "1",
+            flexDirection: "column",
+            gap: "8px",
+          }}
+        >
+          <div style={{ display: "flex", gap: "8px" }}>
+            <Switch onChange={setHideDisqualified} checked={hideDisqualified} />
+            {"Hide Disqualified"}
+          </div>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <Switch
+              onChange={setShouldHideFinalists}
+              checked={shouldHideFinalists}
+            />
+            {"Hide Finalists"}
+          </div>
+        </div>
         <Button
           icon={<RedoOutlined />}
           type="default"
@@ -232,7 +254,11 @@ const Leaderboard = () => {
               <IndividualSongLeaderboard
                 songs={individualSongs}
                 loading={isFetchingStandings}
-                dataSource={individualSongStandings}
+                standings={individualSongStandings}
+                options={{
+                  shouldHideFinalists,
+                  shouldHideDisqualified: hideDisqualified,
+                }}
               />
             ),
           },

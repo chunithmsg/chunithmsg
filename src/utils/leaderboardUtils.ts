@@ -1,9 +1,4 @@
 import {
-  QualifierSet,
-  SubmissionSet,
-  allQualifierSets,
-} from "@/controllers/submissionController";
-import {
   IndividualSongStanding,
   generateKey,
 } from "@/models/individualSongStanding";
@@ -11,6 +6,7 @@ import { SongScore } from "@/models/songScore";
 import { Standing, compareStandings } from "@/models/standing";
 import {
   Submission,
+  SubmissionSet,
   compareSubmissions,
   getTotalSubmissionScore,
 } from "@/models/submission";
@@ -20,6 +16,8 @@ import {
   compareIndividualSongScores,
   mergeIndividualSongScores,
 } from "@/models/individualSongScore";
+import { numChallengersFinalists, numMastersFinalists } from "./constants";
+import { QualifierSet, allQualifierSets } from "./submissionConstants";
 
 const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: "" };
 
@@ -258,8 +256,8 @@ export const getIndividualScoreStandings = (
   // Finally, create the standings
   const standings: IndividualSongStanding[] = [];
 
-  const numMasters = Object.keys(mastersRankMap).length;
-  const numChallengers = Object.keys(challengersRankMap).length;
+  const numMasters = Object.keys(mastersStandings).length;
+  const numChallengers = Object.keys(challengersStandings).length;
   const numStandings = Math.max(numMasters, numChallengers);
 
   for (let i = 0; i < numStandings; ++i) {
@@ -276,4 +274,82 @@ export const getIndividualScoreStandings = (
   }
 
   return standings;
+};
+
+export const isFinalist = (leaderboardStanding?: {
+  division: "Challengers" | "Masters";
+  rank: number;
+}) => {
+  if (!leaderboardStanding) {
+    return false;
+  }
+
+  const { division, rank } = leaderboardStanding;
+  if (division === "Challengers") {
+    return rank <= numChallengersFinalists;
+  } else {
+    return rank <= numMastersFinalists;
+  }
+};
+
+export const filterIndividualScoreStandings = (
+  standings: IndividualSongStanding[],
+  options: {
+    shouldFilterDisqualified?: boolean;
+    shouldFilterFinalists?: boolean;
+  } = {}
+): IndividualSongStanding[] => {
+  if (standings.length === 0) {
+    return [];
+  }
+
+  const { shouldFilterDisqualified, shouldFilterFinalists } = options;
+
+  const output: IndividualSongStanding[] = [];
+  for (let i = 0; i < standings.length; ++i) {
+    output.push({ key: 0, scoreMap: {} });
+  }
+
+  // Copy over the entries, skipping filtered entries as required.
+  const songIds = Object.keys(standings[0].scoreMap) as SongId[];
+  console.log("songIDs to check", songIds);
+  for (const songId of songIds) {
+    let copyIndex = 0;
+    let readIndex = 0;
+
+    for (; readIndex < standings.length; ++readIndex) {
+      const individualSongScore = standings[readIndex].scoreMap[songId];
+      if (!individualSongScore) {
+        break;
+      }
+
+      const shouldFilter =
+        (shouldFilterDisqualified && individualSongScore.isDisqualified) ||
+        (shouldFilterFinalists &&
+          isFinalist(individualSongScore.leaderboardStanding));
+
+      if (shouldFilter) {
+        continue;
+      }
+
+      output[copyIndex].scoreMap[songId] = individualSongScore;
+      ++copyIndex;
+    }
+  }
+
+  // Remove trailing empty entries.
+  for (let i = output.length - 1; i >= 0; --i) {
+    if (Object.keys(output[i].scoreMap).length > 0) {
+      break;
+    }
+
+    output.pop();
+  }
+
+  // Re-calculate key values
+  for (let i = 0; i < output.length; ++i) {
+    output[i].key = generateKey(output[i].scoreMap);
+  }
+
+  return output;
 };

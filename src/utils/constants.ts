@@ -9,3 +9,6 @@ export const submissionUrl =
  */
 export const qualifiersSpreadsheetId =
   "1FQ05Q3CyyP5uD38p8sgaIcxn_NwCVKyyUTn7zOBnL8A";
+
+export const numMastersFinalists = 8;
+export const numChallengersFinalists = 16;

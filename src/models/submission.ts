@@ -1,3 +1,4 @@
+import { QualifierSet } from "@/utils/submissionConstants";
 import { SongScore } from "./songScore";
 
 /**
@@ -30,3 +31,5 @@ export const compareSubmissions = (
     return submissionA.timestamp - submissionB.timestamp;
   }
 };
+
+export type SubmissionSet = { [S in QualifierSet]: Submission[] };

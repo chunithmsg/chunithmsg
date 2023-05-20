@@ -1,32 +1,12 @@
 import { qualifiersSpreadsheetId } from "@/utils/constants";
-import { Submission } from "@/models/submission";
+import { Submission, SubmissionSet } from "@/models/submission";
 import {
   AuthClient,
   getAuthClient,
   getSpreadSheetValues,
 } from "@/services/googleSheetsService";
 import { parseLocalDate } from "@/utils/dateUtils";
-
-/**
- * The three qualifiers sets - one for Challengers and two for Masters.
- */
-export enum QualifierSet {
-  Challengers,
-  MastersA,
-  MastersB,
-}
-
-/**
- * An array of all the members of QualifierSet.
- *
- * I am way too fed up with finding a simple and clean way to iterate through the members of an enum.
- * This is not scalable and I don't care.
- */
-export const allQualifierSets = [
-  QualifierSet.Challengers,
-  QualifierSet.MastersA,
-  QualifierSet.MastersB,
-];
+import { QualifierSet, allQualifierSets } from "@/utils/submissionConstants";
 
 /**
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
@@ -49,8 +29,6 @@ const columnIndexes = {
  * The range within each sheet that contains the submission data.
  */
 const submissionRange = "A3:L1000";
-
-export type SubmissionSet = { [S in QualifierSet]: Submission[] };
 
 export class SubmissionController {
   authClient?: AuthClient;
