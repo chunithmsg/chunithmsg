@@ -118,7 +118,7 @@ const createColumnFromSong = ({
                 {isDisqualified && <Tag color="magenta">DQ</Tag>}
               </div>
               {formatTimestamp(timestamp)}
-              <SongScoreLabel songScore={songScore} />
+              <SongScoreLabel songScore={songScore} fontWeight="bold" />
             </div>
           );
         },

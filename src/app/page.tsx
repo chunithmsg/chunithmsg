@@ -23,6 +23,7 @@ import { IndividualSongStanding } from "@/models/individualSongStanding";
 import IndividualSongLeaderboard, {
   Song as TempSong,
 } from "@/components/IndividualSongLeaderboard";
+import SongScoreLabel from "@/components/SongScoreLabel";
 
 interface Song {
   image: any;
@@ -112,16 +113,10 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
         key: `song${idx + 1}`,
         dataIndex: `song${idx + 1}`,
         render: (_text: string, record: Standing) => {
-          const { score, ajFcStatus } = record[
+          const songScore = record[
             `song${idx + 1}` as keyof Standing
           ] as SongScore;
-          return (
-            <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-              <p>{formatScore(score)}</p>
-              {ajFcStatus == "AJ" && <Tag color="gold">AJ</Tag>}
-              {ajFcStatus == "FC" && <Tag color="green">FC</Tag>}
-            </div>
-          );
+          return <SongScoreLabel songScore={songScore} />;
         },
       },
     ],
