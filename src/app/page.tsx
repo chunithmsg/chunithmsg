@@ -256,13 +256,7 @@ const Leaderboard = () => {
         </Button>
       </div>
       <div style={{ marginTop: "8px", marginBottom: "8px" }}>
-        {`Last updated: ${
-          lastFetchTimestamp
-            ? new Date(lastFetchTimestamp).toLocaleString("en-SG", {
-                timeZone: "Asia/Singapore",
-              })
-            : "----"
-        }`}
+        Leaderboard is frozen!
       </div>
       <Tabs
         onChange={setActiveTab}
