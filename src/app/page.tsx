@@ -213,6 +213,7 @@ const Leaderboard = () => {
       rowClassName={(record: any) => record.isDisqualified && "disqualified"}
       pagination={false}
       rowKey={"ign"}
+      scroll={{ x: true }}
     />
   );
 

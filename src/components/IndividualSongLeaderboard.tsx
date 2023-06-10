@@ -152,6 +152,7 @@ const IndividualSongLeaderboard = ({
       loading={loading}
       dataSource={filteredStandings}
       rowKey="key"
+      scroll={{ x: true }}
     />
   );
 };
