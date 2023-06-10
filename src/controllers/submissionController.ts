@@ -30,6 +30,14 @@ const columnIndexes = {
  */
 const submissionRange = "A3:L1000";
 
+export interface SubmissionOptions {
+  /**
+   * A timestamp, indicating only to fetch submissions up to (and including) the
+   * specified timestamp. If unspecified, all submissions will be fetched.
+   */
+  timestampLimit?: number;
+}
+
 export class SubmissionController {
   authClient?: AuthClient;
 
@@ -42,20 +50,24 @@ export class SubmissionController {
     this.authClient = await getAuthClient();
   }
 
-  async getAllSubmissions() {
+  async getAllSubmissions(options?: SubmissionOptions) {
     const output: { [S in QualifierSet]?: Submission[] } = {};
 
     // Not taking advantage of possibilities of concurrency/parallelism,
     // but that can be a problem for the future. This is good enough.
     for (const qualifierSet of allQualifierSets) {
-      output[qualifierSet] = await this.getSubmissionForSet(qualifierSet);
+      output[qualifierSet] = await this.getSubmissionForSet(
+        qualifierSet,
+        options
+      );
     }
 
     return output as SubmissionSet;
   }
 
   private async getSubmissionForSet(
-    qualifierSet: QualifierSet
+    qualifierSet: QualifierSet,
+    options?: SubmissionOptions
   ): Promise<Submission[]> {
     const response = await getSpreadSheetValues(
       qualifiersSpreadsheetId,
@@ -84,6 +96,12 @@ export class SubmissionController {
             | "FC"
             | "AJ",
         })),
-      }));
+      }))
+      .filter(({ timestamp }) =>
+        // Filter by timestamp, if specified in options.
+        options?.timestampLimit === undefined
+          ? true
+          : timestamp <= options.timestampLimit
+      );
   }
 }
