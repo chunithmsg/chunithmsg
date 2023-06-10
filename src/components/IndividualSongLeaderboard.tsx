@@ -128,7 +128,7 @@ const IndividualSongLeaderboard = ({
 }: IndividualSongLeaderboardProps) => {
   const columns: ColumnsType<IndividualSongStanding> = [
     {
-      title: "Rank",
+      title: "#",
       key: "rank",
       dataIndex: "rank",
       render: (_text: string, _record: IndividualSongStanding, idx: number) =>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Table, Switch, Tabs, Button, Tag } from "antd";
+import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
@@ -23,7 +23,11 @@ import { IndividualSongStanding } from "@/models/individualSongStanding";
 import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
 import SongScoreLabel from "@/components/SongScoreLabel";
 import { SongWithJacket } from "@/utils/songUtils";
-import { qualifiersEndTimestamp } from "@/utils/constants";
+import {
+  leaderboardFreezeEndTimestamp,
+  leaderboardFreezeStartTimestamp,
+  qualifiersEndTimestamp,
+} from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
 interface Song {
@@ -70,7 +74,7 @@ const individualChallengersSongs: SongWithJacket[] = [
 
 const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
   {
-    title: "No",
+    title: "#",
     key: "no",
     dataIndex: "no",
     render: (_text: string, _record: Standing, idx: number) => idx + 1,
@@ -141,18 +145,25 @@ const formatDuration = (durationInMilliseconds: number) => {
 };
 
 const LeaderboardTable = styled(Table<Standing>)`
+  .masters-finalist {
+    background-color: #f0e9f5;
+  }
+
+  .challengers-finalist {
+    background-color: #f5f0f0;
+  }
+
   .disqualified {
     background-color: #ccc;
   }
 `;
 
 const Leaderboard = () => {
+  const [api, contextHolder] = notification.useNotification();
+
   const [currentTimestamp, setCurrentTimestamp] = useState<number | undefined>(
     undefined
   );
-  const [lastFetchTimestamp, setLastFetchTimestamp] = useState<
-    number | undefined
-  >(undefined);
 
   const [shouldHideDisqualified, setShouldHideDisqualified] = useState(true);
   const [shouldHideFinalists, setShouldHideFinalists] = useState(false);
@@ -178,7 +189,6 @@ const Leaderboard = () => {
     setMasterStandings(masters);
     setIndividualSongStandings(individualSongStandings);
     setIsFetchingStandings(false);
-    setLastFetchTimestamp(Date.now());
   }, []);
 
   const updateCurrentTimestamp = useCallback(async () => {
@@ -202,7 +212,17 @@ const Leaderboard = () => {
       ? undefined
       : Math.max(qualifiersEndTimestamp - currentTimestamp, 0);
 
-  const table = (songs: Song[], scores: Standing[]) => (
+  const isLeaderboardFrozen =
+    currentTimestamp &&
+    leaderboardFreezeStartTimestamp <= currentTimestamp &&
+    currentTimestamp < leaderboardFreezeEndTimestamp;
+
+  const table = (
+    songs: Song[],
+    scores: Standing[],
+    division: "masters" | "challengers",
+    numFinalists: number
+  ) => (
     <LeaderboardTable
       size="small"
       loading={isFetchingStandings}
@@ -210,7 +230,11 @@ const Leaderboard = () => {
       dataSource={scores.filter(
         ({ isDisqualified }) => !shouldHideDisqualified || !isDisqualified
       )}
-      rowClassName={(record: any) => record.isDisqualified && "disqualified"}
+      rowClassName={(record: Standing, index: number) =>
+        `${index < numFinalists ? `${division}-finalist ` : ""}${
+          record.isDisqualified ? "disqualified " : ""
+        }`
+      }
       pagination={false}
       rowKey={"ign"}
       scroll={{ x: true }}
@@ -219,6 +243,7 @@ const Leaderboard = () => {
 
   return (
     <>
+      {contextHolder}
       <h1>Leaderboard</h1>
       <p style={{ fontWeight: "bold" }}>{`Qualifiers time remaining: ${
         qualifiersRemainingTimeInMilliseconds === undefined
@@ -258,27 +283,53 @@ const Leaderboard = () => {
           icon={<RedoOutlined />}
           type="default"
           disabled={isFetchingStandings}
-          onClick={() => fetchStandings()}
+          onClick={() => {
+            if (isLeaderboardFrozen) {
+              api.info({
+                message: "Not sure what you were expecting...",
+                description:
+                  "The leaderboard is frozen right now, so nothing's going to change by refreshing. But you do you; don't let me tell you how to live your life.",
+                placement: "bottomRight",
+                duration: 6,
+              });
+            }
+            fetchStandings();
+          }}
         >
           Refresh
         </Button>
       </div>
-      <div style={{ marginTop: "8px", marginBottom: "8px" }}>
-        Leaderboard is frozen!
-      </div>
+      {isLeaderboardFrozen && (
+        <div
+          style={{
+            marginTop: "12px",
+            marginBottom: "4px",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          The leaderboard is currently frozen
+        </div>
+      )}
       <Tabs
+        style={{ marginTop: "8px" }}
         onChange={setActiveTab}
         defaultActiveKey="masters"
         items={[
           {
             key: "masters",
             label: "Masters",
-            children: table(masterSongs, masterStandings),
+            children: table(masterSongs, masterStandings, "masters", 8),
           },
           {
             key: "challengers",
             label: "Challengers",
-            children: table(challengerSongs, challengerStandings),
+            children: table(
+              challengerSongs,
+              challengerStandings,
+              "challengers",
+              16
+            ),
           },
           {
             key: "individualMastersSongStandings",
