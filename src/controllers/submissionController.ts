@@ -18,24 +18,32 @@ const sheetNames = {
 };
 
 const columnIndexes = {
-  timestamp: 0,
-  ign: 1,
-  songs: 2,
-  isVoidSubmission: 9,
-  isPlayerDisqualified: 10,
+  formSubmissionTimestamp: 0,
+  timestamp: 1,
+  ign: 2,
+  songs: 3,
+  isVoidSubmission: 10,
+  isPlayerDisqualified: 11,
 };
 
 /**
  * The range within each sheet that contains the submission data.
  */
-const submissionRange = "A3:L1000";
+const submissionRange = "A3:M1000";
 
 export interface SubmissionOptions {
   /**
-   * A timestamp, indicating only to fetch submissions up to (and including) the
-   * specified timestamp. If unspecified, all submissions will be fetched.
+   * A timestamp, indicating only to fetch submissions with timestamps up
+   * to (and including) the specified timestamp. If unspecified, all
+   * submissions will be fetched regardless of timestamp.
    */
   timestampLimit?: number;
+  /**
+   * A timestamp, indicating only to fetch submissions with form submission
+   * timestamps up to (and including) the specified timestamp. If unspecified,
+   * all submissions will be fetched regardless of form submission timestamp.
+   */
+  formSubmissionTimestampLimit?: number;
 }
 
 export class SubmissionController {
@@ -86,6 +94,9 @@ export class SubmissionController {
       .filter((row) => row && row[0] !== "")
       .map<Submission>((row) => ({
         timestamp: parseLocalDate(row[columnIndexes.timestamp]).getTime(),
+        formSubmissionTimestamp: parseLocalDate(
+          row[columnIndexes.formSubmissionTimestamp]
+        ).getTime(),
         ign: row[columnIndexes.ign],
         isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
         isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
@@ -102,6 +113,12 @@ export class SubmissionController {
         options?.timestampLimit === undefined
           ? true
           : timestamp <= options.timestampLimit
+      )
+      .filter(({ formSubmissionTimestamp }) =>
+        options?.formSubmissionTimestampLimit === undefined
+          ? true
+          : formSubmissionTimestamp !== undefined &&
+            formSubmissionTimestamp <= options.formSubmissionTimestampLimit
       );
   }
 }

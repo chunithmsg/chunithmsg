@@ -23,7 +23,7 @@ export const GET = async () => {
   await submissionController.initialise();
   const submissionSet = await submissionController.getAllSubmissions(
     isLeaderboardFrozen
-      ? { timestampLimit: leaderboardFreezeStartTimestamp }
+      ? { formSubmissionTimestampLimit: leaderboardFreezeStartTimestamp }
       : {}
   );
 

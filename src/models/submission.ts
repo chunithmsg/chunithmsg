@@ -7,6 +7,7 @@ import { SongScore } from "./songScore";
 export interface Submission {
   ign: string;
   timestamp: number;
+  formSubmissionTimestamp: number;
   songScores: SongScore[];
   isDisqualified: boolean;
   isVoidSubmission: boolean;
