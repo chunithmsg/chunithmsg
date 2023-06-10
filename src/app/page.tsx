@@ -83,8 +83,18 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
     title: "IGN",
     key: "ign",
     dataIndex: "ign",
-    render: (text: string, record: Standing) =>
-      `${text}${record.isDisqualified ? " (disqualified)" : ""}`,
+    render: (_text: string, { ign, isDisqualified }: Standing) => (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "4px",
+        }}
+      >
+        {ign}
+        {isDisqualified && <Tag color="magenta">DQ</Tag>}
+      </div>
+    ),
   },
   ...songs.map(({ title, image }, idx) => ({
     title: (
