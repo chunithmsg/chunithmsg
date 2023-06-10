@@ -83,6 +83,8 @@ const createColumnFromSong = ({
                 flexDirection: "column",
                 paddingLeft: "6px",
                 paddingRight: "6px",
+                paddingTop: "14px",
+                paddingBottom: "14px",
                 ...(isDisqualified && { background: "#ddd" }),
                 ...(isMastersFinalist && { background: "#f0e9f5" }),
                 ...(isChallengersFinalist && { background: "#f5f0f0" }),
@@ -90,7 +92,6 @@ const createColumnFromSong = ({
             >
               <div
                 style={{
-                  paddingTop: "14px",
                   display: "flex",
                   alignItems: "center",
                   gap: "4px",

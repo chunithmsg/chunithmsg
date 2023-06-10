@@ -315,6 +315,7 @@ const Leaderboard = () => {
             marginTop: "12px",
             marginBottom: "4px",
             fontWeight: "bold",
+            fontSize: "large",
             textAlign: "center",
           }}
         >
