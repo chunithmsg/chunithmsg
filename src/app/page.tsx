@@ -147,19 +147,21 @@ const LeaderboardTable = styled(Table<Standing>)`
 `;
 
 const Leaderboard = () => {
-  const [
-    qualifiersRemainingTimeInMilliseconds,
-    setQualifiersRemainingTimeInMilliseconds,
-  ] = useState<number | undefined>(undefined);
+  const [currentTimestamp, setCurrentTimestamp] = useState<number | undefined>(
+    undefined
+  );
   const [lastFetchTimestamp, setLastFetchTimestamp] = useState<
     number | undefined
   >(undefined);
+
   const [shouldHideDisqualified, setShouldHideDisqualified] = useState(true);
   const [shouldHideFinalists, setShouldHideFinalists] = useState(false);
+
   const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
   const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
     []
   );
+
   const [individualSongStandings, setIndividualSongStandings] = useState<
     IndividualSongStanding[]
   >([]);
@@ -179,21 +181,26 @@ const Leaderboard = () => {
     setLastFetchTimestamp(Date.now());
   }, []);
 
-  const updateQualifiersRemainingTime = useCallback(() => {
-    const currentTimestamp = Date.now();
-    setQualifiersRemainingTimeInMilliseconds(
-      Math.max(qualifiersEndTimestamp - currentTimestamp, 0)
-    );
+  const updateCurrentTimestamp = useCallback(async () => {
+    const response = await fetch("/current-time");
+    const { unixTimestamp } = await response.json();
+
+    setCurrentTimestamp(unixTimestamp);
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(updateQualifiersRemainingTime, 250);
+    const interval = setInterval(updateCurrentTimestamp, 250);
     return () => clearInterval(interval);
-  }, [updateQualifiersRemainingTime]);
+  }, [updateCurrentTimestamp]);
 
   useEffect(() => {
     fetchStandings().catch(console.error);
   }, [fetchStandings]);
+
+  const qualifiersRemainingTimeInMilliseconds =
+    currentTimestamp === undefined
+      ? undefined
+      : Math.max(qualifiersEndTimestamp - currentTimestamp, 0);
 
   const table = (songs: Song[], scores: Standing[]) => (
     <LeaderboardTable
