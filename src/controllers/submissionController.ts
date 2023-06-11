@@ -53,7 +53,7 @@ export interface SubmissionOptions {
  * @param row The row to check, representing a submission
  * @returns true iff the row has been filled out completely
  */
-const isCompleteSubmissionRow = (row: string[]) => {
+export const isCompleteSubmissionRow = (row: string[]) => {
   const indexesToCheck = [
     columnIndexes.formSubmissionTimestamp,
     columnIndexes.timestamp,
@@ -71,26 +71,45 @@ const isCompleteSubmissionRow = (row: string[]) => {
  * @param row The row to parse
  * @returns The parsed Submission, or undefined if an error occurred.
  */
-const tryParseSubmissionRow = (row: string[]): Submission | undefined => {
+export const tryParseSubmissionRow = (
+  row: string[]
+): Submission | undefined => {
   try {
+    const timestamp = parseLocalDate(row[columnIndexes.timestamp]).getTime();
+    const formSubmissionTimestamp = parseLocalDate(
+      row[columnIndexes.formSubmissionTimestamp]
+    ).getTime();
+    const songScores = [0, 1, 2].map((index) => ({
+      score: parseInt(row[columnIndexes.songs + 2 * index]),
+      ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? "") as
+        | ""
+        | "FC"
+        | "AJ",
+    }));
+
+    // Check if any of the numerical fields was parsed to NaN.
+    if (
+      [
+        timestamp,
+        formSubmissionTimestamp,
+        ...songScores.map(({ score }) => score),
+      ].some(isNaN)
+    ) {
+      throw new Error("One of the numerical fields is parsed as NaN.");
+    }
+
     return {
-      timestamp: parseLocalDate(row[columnIndexes.timestamp]).getTime(),
-      formSubmissionTimestamp: parseLocalDate(
-        row[columnIndexes.formSubmissionTimestamp]
-      ).getTime(),
+      timestamp,
+      formSubmissionTimestamp,
       ign: row[columnIndexes.ign],
       isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
       isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
-      songScores: [0, 1, 2].map((index) => ({
-        score: parseInt(row[columnIndexes.songs + 2 * index]),
-        ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? "") as
-          | ""
-          | "FC"
-          | "AJ",
-      })),
+      songScores,
     };
   } catch (error) {
-    console.error(`Parsing error occurred when attempting to parse: ${row}.`);
+    console.error(
+      `Parsing error occurred when attempting to parse: ${JSON.stringify(row)}.`
+    );
     console.error(error);
     return undefined;
   }

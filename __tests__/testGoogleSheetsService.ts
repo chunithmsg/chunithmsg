@@ -20,7 +20,7 @@ describe("Google Sheets Service", () => {
     expect(result.status).toBe(200);
 
     const headerRow = (result.data.values as string[][])[0];
-    const firstHeaderCell = headerRow[0];
+    const firstHeaderCell = headerRow[1];
 
     expect(firstHeaderCell).toBe("Timestamp of last song");
   });
