@@ -296,9 +296,9 @@ const Leaderboard = () => {
           onClick={() => {
             if (isLeaderboardFrozen) {
               api.info({
-                message: "Not sure what you were expecting...",
+                message: "Bruh, calm down",
                 description:
-                  "The leaderboard is frozen right now, so nothing's going to change by refreshing. But you do you; don't let me tell you how to live your life.",
+                  "The leaderboard is still frozen. I promise it'll unfreeze when the qualifiers are over, which should happen soon. Be patient, okay? :›",
                 placement: "bottomRight",
                 duration: 6,
               });
