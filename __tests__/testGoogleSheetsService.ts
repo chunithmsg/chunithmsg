@@ -17,11 +17,11 @@ describe("Google Sheets Service", () => {
       "'Masters Set A - Dumping Ground'!A2:H2"
     );
 
-    expect(result.status).toBe(200);
+    expect(result.status).toEqual(200);
 
     const headerRow = (result.data.values as string[][])[0];
     const firstHeaderCell = headerRow[1];
 
-    expect(firstHeaderCell).toBe("Timestamp of last song");
+    expect(firstHeaderCell).toEqual("Timestamp of last song");
   });
 });

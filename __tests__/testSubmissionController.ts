@@ -67,7 +67,7 @@ describe("Submission Controller", () => {
     },
   ])("Test isCompleteSubmissionRow", ({ row, expectedIsComplete }) => {
     const actualIsComplete = isCompleteSubmissionRow(row);
-    expect(actualIsComplete).toBe(expectedIsComplete);
+    expect(actualIsComplete).toEqual(expectedIsComplete);
   });
 
   it.each([
