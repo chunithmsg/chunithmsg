@@ -46,6 +46,60 @@ export interface SubmissionOptions {
   formSubmissionTimestampLimit?: number;
 }
 
+/**
+ * Checks if the specified row, which represents a submission to parse, is completely filled.
+ * An incomplete row is one where a mandatory field has not been filled out.
+ *
+ * @param row The row to check, representing a submission
+ * @returns true iff the row has been filled out completely
+ */
+const isCompleteSubmissionRow = (row: string[]) => {
+  const indexesToCheck = [
+    columnIndexes.formSubmissionTimestamp,
+    columnIndexes.timestamp,
+    columnIndexes.ign,
+    ...[0, 1, 2].map((i) => columnIndexes.songs + 2 * i),
+  ];
+
+  return row && indexesToCheck.every((index) => row[index]);
+};
+
+/**
+ * Attempts to parse a submission row, where undefined is returned when
+ * the parsing fails.
+ *
+ * @param row The row to parse
+ * @returns The parsed Submission, or undefined if an error occurred.
+ */
+const tryParseSubmissionRow = (row: string[]): Submission | undefined => {
+  try {
+    return {
+      timestamp: parseLocalDate(row[columnIndexes.timestamp]).getTime(),
+      formSubmissionTimestamp: parseLocalDate(
+        row[columnIndexes.formSubmissionTimestamp]
+      ).getTime(),
+      ign: row[columnIndexes.ign],
+      isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
+      isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
+      songScores: [0, 1, 2].map((index) => ({
+        score: parseInt(row[columnIndexes.songs + 2 * index]),
+        ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? "") as
+          | ""
+          | "FC"
+          | "AJ",
+      })),
+    };
+  } catch (error) {
+    console.error(`Parsing error occurred when attempting to parse: ${row}.`);
+    console.error(error);
+    return undefined;
+  }
+};
+
+const notUndefined = <TValue>(value: TValue | undefined): value is TValue => {
+  return value !== undefined;
+};
+
 export class SubmissionController {
   authClient?: AuthClient;
 
@@ -91,23 +145,9 @@ export class SubmissionController {
     }
 
     return values
-      .filter((row) => row && row[0] !== "")
-      .map<Submission>((row) => ({
-        timestamp: parseLocalDate(row[columnIndexes.timestamp]).getTime(),
-        formSubmissionTimestamp: parseLocalDate(
-          row[columnIndexes.formSubmissionTimestamp]
-        ).getTime(),
-        ign: row[columnIndexes.ign],
-        isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
-        isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
-        songScores: [0, 1, 2].map((index) => ({
-          score: parseInt(row[columnIndexes.songs + 2 * index]),
-          ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? "") as
-            | ""
-            | "FC"
-            | "AJ",
-        })),
-      }))
+      .filter(isCompleteSubmissionRow)
+      .map(tryParseSubmissionRow)
+      .filter(notUndefined)
       .filter(({ timestamp }) =>
         // Filter by timestamp, if specified in options.
         options?.timestampLimit === undefined
