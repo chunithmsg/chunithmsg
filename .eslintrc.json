@@ -10,6 +10,10 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
     "react/function-component-definition": "off"
   }
 }
