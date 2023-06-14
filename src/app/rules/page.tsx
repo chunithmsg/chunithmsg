@@ -2,10 +2,10 @@
 
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import rules from "./rules.md";
 import remarkGfm from "remark-gfm";
 import { Affix, Col, Row } from "antd";
 import { useWindowSize } from "@/utils/useWindowSize";
+import rules from "./rules.md";
 
 const Rules = () => {
   const { width } = useWindowSize();

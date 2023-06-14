@@ -1,18 +1,6 @@
-"use client";
-
 import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
-
-import wakeUpDreamer from "../../public/wakeupdreamer.png";
-import chaos from "../../public/chaos.png";
-import pygmalion from "../../public/pygmalion.png";
-import valsqotch from "../../public/valsqotch.png";
-import imperishableNight from "../../public/imperishablenight.png";
-import battleNo1 from "../../public/battleno1.png";
-import spica from "../../public/spica.png";
-import weGonnaJourney from "../../public/wegonnajourney.png";
-import blazingStorm from "../../public/blazingstorm.png";
 
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
@@ -29,6 +17,16 @@ import {
   qualifiersEndTimestamp,
 } from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
+
+import wakeUpDreamer from "../../public/wakeupdreamer.png";
+import chaos from "../../public/chaos.png";
+import pygmalion from "../../public/pygmalion.png";
+import valsqotch from "../../public/valsqotch.png";
+import imperishableNight from "../../public/imperishablenight.png";
+import battleNo1 from "../../public/battleno1.png";
+import spica from "../../public/spica.png";
+import weGonnaJourney from "../../public/wegonnajourney.png";
+import blazingStorm from "../../public/blazingstorm.png";
 
 interface Song {
   image: any;
@@ -246,7 +244,7 @@ const Leaderboard = () => {
         }`
       }
       pagination={false}
-      rowKey={"ign"}
+      rowKey="ign"
       scroll={{ x: true }}
     />
   );
@@ -276,7 +274,7 @@ const Leaderboard = () => {
               onChange={setShouldHideDisqualified}
               checked={shouldHideDisqualified}
             />
-            {"Hide Disqualified"}
+            Hide Disqualified
           </div>
           {(activeTab === "individualMastersSongStandings" ||
             activeTab === "individualChallengersSongStandings") && (
@@ -285,7 +283,7 @@ const Leaderboard = () => {
                 onChange={setShouldHideFinalists}
                 checked={shouldHideFinalists}
               />
-              {"Hide Finalists"}
+              Hide Finalists
             </div>
           )}
         </div>

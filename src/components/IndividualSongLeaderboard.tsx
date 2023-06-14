@@ -1,16 +1,16 @@
 import { IndividualSongStanding } from "@/models/individualSongStanding";
-import { SongId, SongWithJacket, songDetails } from "@/utils/songUtils";
+import { SongWithJacket, songDetails } from "@/utils/songUtils";
 import { Table, Tag } from "antd";
 import { ColumnGroupType, ColumnType, ColumnsType } from "antd/es/table";
 import styled from "styled-components";
 import Image from "next/image";
-import SongScoreLabel from "./SongScoreLabel";
 import {
   filterIndividualScoreStandings,
   formatOrdinal,
   formatTimestamp,
   isFinalist,
 } from "@/utils/leaderboardUtils";
+import SongScoreLabel from "./SongScoreLabel";
 
 export interface IndividualSongLeaderboardProps
   extends React.ComponentProps<typeof Table> {
@@ -125,7 +125,7 @@ const IndividualSongLeaderboard = ({
   songs,
   loading,
   standings,
-  options,
+  options = { shouldHideDisqualified: false, shouldHideFinalists: false },
 }: IndividualSongLeaderboardProps) => {
   const columns: ColumnsType<IndividualSongStanding> = [
     {

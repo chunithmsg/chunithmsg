@@ -9,8 +9,6 @@ export const dynamic = "force-dynamic";
  *
  * @returns The current time as a Unix timestamp.
  */
-export const GET = () => {
-  return NextResponse.json({
+export const GET = () => NextResponse.json({
     unixTimestamp: Date.now(),
   });
-};

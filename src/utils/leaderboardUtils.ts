@@ -10,12 +10,12 @@ import {
   compareSubmissions,
   getTotalSubmissionScore,
 } from "@/models/submission";
-import { SongId } from "./songUtils";
 import {
   IndividualSongScore,
   compareIndividualSongScores,
   mergeIndividualSongScores,
 } from "@/models/individualSongScore";
+import { SongId } from "./songUtils";
 import { numChallengersFinalists, numMastersFinalists } from "./constants";
 import { QualifierSet, allQualifierSets } from "./submissionConstants";
 
@@ -23,19 +23,21 @@ const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: "" };
 
 const extractBestSubmissions = (submissionSet: SubmissionSet) => {
   const output: { [S in QualifierSet]?: Submission[] } = {};
-  for (const qualifierSet of allQualifierSets) {
+
+  // runs in parallel
+  allQualifierSets.forEach((qualifierSet) => {
     const submissions = submissionSet[qualifierSet];
     const bestSubmissionByIgn: { [ign: string]: Submission } = {};
 
-    for (const submission of submissions) {
+    submissions.forEach((submission) => {
       if (submission.isVoidSubmission) {
-        continue;
+        return;
       }
 
       const { ign } = submission;
       if (!bestSubmissionByIgn.hasOwnProperty(submission.ign)) {
         bestSubmissionByIgn[ign] = submission;
-        continue;
+        return;
       }
 
       if (compareSubmissions(submission, bestSubmissionByIgn[ign]) < 0) {
@@ -45,10 +47,10 @@ const extractBestSubmissions = (submissionSet: SubmissionSet) => {
       if (submission.isDisqualified) {
         bestSubmissionByIgn[ign].isDisqualified = true;
       }
-    }
+    });
 
     output[qualifierSet] = Object.values(bestSubmissionByIgn);
-  }
+  });
 
   return output as SubmissionSet;
 };
@@ -58,7 +60,8 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
   const standingsByIgn: { [ign: string]: Standing } = {};
 
   // Set A Processing
-  for (const submission of bestSubmissionSet[QualifierSet.MastersA]) {
+  // runs in parallel
+  bestSubmissionSet[QualifierSet.MastersA].forEach((submission) => {
     const { ign, timestamp, isDisqualified, songScores } = submission;
     standingsByIgn[ign] = {
       ign,
@@ -72,10 +75,11 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
       song6: ZERO_SCORE,
       totalScore: getTotalSubmissionScore(submission),
     };
-  }
+  });
 
   // Set B Processing
-  for (const submission of bestSubmissionSet[QualifierSet.MastersB]) {
+  // runs in parallel
+  bestSubmissionSet[QualifierSet.MastersB].forEach((submission) => {
     const { ign, timestamp, isDisqualified, songScores } = submission;
 
     if (!standingsByIgn.hasOwnProperty(ign)) {
@@ -91,7 +95,7 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
         song6: songScores[2],
         totalScore: getTotalSubmissionScore(submission),
       };
-      continue;
+      return;
     }
 
     if (standingsByIgn.hasOwnProperty(ign)) {
@@ -107,7 +111,7 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
         standing.timestamp = timestamp;
       }
     }
-  }
+  });
 
   const standings = Object.values(standingsByIgn);
   standings.sort(compareStandings);
@@ -119,7 +123,8 @@ export const getChallengersStandings = (submissionSet: SubmissionSet) => {
   const bestSubmissionSet = extractBestSubmissions(submissionSet);
   const standingsByIgn: { [ign: string]: Standing } = {};
 
-  for (const submission of bestSubmissionSet[QualifierSet.Challengers]) {
+  // runs in parallel
+  bestSubmissionSet[QualifierSet.Challengers].forEach((submission) => {
     const { ign, timestamp, isDisqualified, songScores } = submission;
     standingsByIgn[ign] = {
       ign,
@@ -130,7 +135,7 @@ export const getChallengersStandings = (submissionSet: SubmissionSet) => {
       song3: songScores[2],
       totalScore: getTotalSubmissionScore(submission),
     };
-  }
+  });
 
   const standings = Object.values(standingsByIgn);
   standings.sort(compareStandings);
@@ -143,6 +148,8 @@ const toRankMap = (
   shouldIgnoreDisqualified: boolean = true
 ) => {
   const rankMap: { [ign: string]: number } = {};
+
+  // FIXME: wtf is going on
   for (const [rank, standing] of standings
     .filter((standing) => !standing.isDisqualified)
     .entries()) {
@@ -169,9 +176,7 @@ export const getIndividualScoreStandings = (
   };
 
   const allSongs: SongId[] = [];
-  for (const qualifierSet of allQualifierSets) {
-    allSongs.push(...setSongs[qualifierSet]);
-  }
+  allQualifierSets.forEach((qualifierSet) => allSongs.push(...setSongs[qualifierSet]));
 
   // Prepare a map for "Leaderboard standings by IGN"
   const mastersStandings = getMastersStandings(submissionSet);
@@ -185,6 +190,7 @@ export const getIndividualScoreStandings = (
   } = {};
 
   // Initialise an empty dict for each song.
+  // TODO: im pretty sure theres a better way to do this
   for (const songId of allSongs) {
     bestScoreBySong[songId] = {};
   }

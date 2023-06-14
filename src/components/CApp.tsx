@@ -1,8 +1,6 @@
-"use client";
-
+import React from "react";
 import { App } from "antd";
 import NavBar from "./NavBar";
-import React from "react";
 
 const CApp = ({ children }: { children: React.ReactNode }) => (
   <App>

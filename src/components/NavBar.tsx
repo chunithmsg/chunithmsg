@@ -19,7 +19,7 @@ const NavBar = () => {
       mode="horizontal"
       items={Object.entries(links).map(([key, href]) => ({
         label: <Link href={href}>{key}</Link>,
-        key: key,
+        key,
       }))}
       selectedKeys={Object.entries(links).flatMap(([key, href]) =>
         pathname === href ? [key] : []

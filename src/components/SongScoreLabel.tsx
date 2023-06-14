@@ -14,8 +14,8 @@ const SongScoreLabel = ({
 }) => (
   <div style={{ display: "flex", gap: "8px", alignItems: "center", ...style }}>
     <div style={{ fontWeight }}>{formatScore(score)}</div>
-    {ajFcStatus == "AJ" && <Tag color="gold">AJ</Tag>}
-    {ajFcStatus == "FC" && <Tag color="green">FC</Tag>}
+    {ajFcStatus === "AJ" && <Tag color="gold">AJ</Tag>}
+    {ajFcStatus === "FC" && <Tag color="green">FC</Tag>}
   </div>
 );
 
