@@ -36,3 +36,12 @@ next-env.d.ts
 
 # Google APIs credentials
 credentials.json
+
+# env
+**/.env*.local
+
+# vscode
+.vscode/**
+
+# idea
+.idea/**
