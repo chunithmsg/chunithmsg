@@ -13,6 +13,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
     "antd": "^5.4.6",
+    "encoding": "^0.1.13",
     "googleapis": "^118.0.0",
     "next": "^13.3.2",
     "react": "18.2.0",
