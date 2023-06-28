@@ -2,22 +2,27 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, set the relevant constants and credentials into the following environment variables:
+Install the relevant dependencies.
+
+```bash
+yarn install --frozen-lockfile
+```
+
+Then, create a new file `.env.local` in the project root directory. The environment variables to set are those used for GoogleApis. An example of what the file would look like can be found in [.env.example](/.env.example)
 
 ```bash
 # Details of this Google Cloud project can be found here:
 # https://console.cloud.google.com/welcome?project=even-environs-201001
-
-export GCLOUD_PROJECT="595992552497"
-export GOOGLE_PROJECT_ID="even-environs-201001"
-export GOOGLE_CLIENT_EMAIL="chuni-qualifier-submission-rea@even-environs-201001.iam.gserviceaccount.com"
+GCLOUD_PROJECT="595992552497"
+GOOGLE_PROJECT_ID="even-environs-201001"
+GOOGLE_CLIENT_EMAIL="chuni-qualifier-submission-rea@even-environs-201001.iam.gserviceaccount.com"
 
 # This is from the credentials JSON file. If you don't have these, you may need to contact @xantho09,
 # or create your own key for this service account in the above GCloud Project.
-export GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nABCDEF...UVWXYZ\n-----END PRIVATE KEY-----\n"
+GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nABCDEF...UVWXYZ\n-----END PRIVATE KEY-----\n"
 ```
 
-(If you didn't set these environment variables, the development server would still run, but the fetching of the leaderboard standings would fail, causing the page to be eternally stuck in the loading state.)
+> :warning: If you did not create this file, or set the environment variables manually, the development server would still run, but the fetching of the leaderboard standings would fail, causing the page to be eternally stuck in the loading state.
 
 Then, run the development server:
 
@@ -54,22 +59,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Testing
 
-To run the GoogleApis tests, start by setting these environment variables:
-
-```bash
-# Details of this Google Cloud project can be found here: https://console.cloud.google.com/welcome?project=even-environs-201001
-
-export GCLOUD_PROJECT="595992552497"
-export GOOGLE_PROJECT_ID="even-environs-201001"
-export GOOGLE_CLIENT_EMAIL="chuni-qualifier-submission-rea@even-environs-201001.iam.gserviceaccount.com"
-
-# This is from the credentials JSON file. If you don't have these, you may need to contact @xantho09,
-# or create your own key for this service account in the above GCloud Project.
-export GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nABCDEF...UVWXYZ\n-----END PRIVATE KEY-----\n"
-```
-
-Then run the following command:
+To run the unit tests, use the following command:
 
 ```bash
 yarn test
+```
+
+## Linting
+
+To run the linter, use the following command:
+
+```bash
+yarn lint
 ```
