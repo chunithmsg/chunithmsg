@@ -20,8 +20,7 @@ export const generateKey = (scoreMap: {
   const MULTIPLIER = 151;
 
   let output = 0;
-  
-  // runs in parallel
+
   allSongIds.forEach((songId) => {
     const individualScore = scoreMap[songId];
     if (!individualScore) {

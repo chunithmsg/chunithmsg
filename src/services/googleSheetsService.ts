@@ -25,10 +25,9 @@ export const getSpreadSheetValues = async (
   // JSONClient | Compute, and I can't cast it into JSONClient for aforementioned reasons.
   authClient: any,
   range: string
-) => {
-  return await sheets.spreadsheets.values.get({
+) =>
+  sheets.spreadsheets.values.get({
     spreadsheetId,
     auth: authClient,
     range,
   });
-};

@@ -25,9 +25,8 @@ export const compareIndividualSongScores = (
 
   if (aScore !== bScore) {
     return bScore - aScore;
-  } else {
-    return scoreA.timestamp - scoreB.timestamp;
   }
+  return scoreA.timestamp - scoreB.timestamp;
 };
 
 /**

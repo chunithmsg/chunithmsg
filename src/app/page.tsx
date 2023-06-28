@@ -1,3 +1,5 @@
+"use client";
+
 import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
@@ -152,6 +154,19 @@ const formatDuration = (durationInMilliseconds: number) => {
   return `${numDays}d ${numHours}h ${numMinutes}m ${numSeconds}s`;
 };
 
+const getQualifiersRemainingTimeMessage = (
+  qualifiersRemainingTimeInMilliseconds: number | undefined
+) => {
+  if (qualifiersRemainingTimeInMilliseconds === undefined) {
+    return "---";
+  }
+  if (qualifiersRemainingTimeInMilliseconds <= 0) {
+    return "Ended!";
+  }
+
+  return formatDuration(qualifiersRemainingTimeInMilliseconds);
+};
+
 const LeaderboardTable = styled(Table<Standing>)`
   .masters-finalist {
     background-color: #f0e9f5;
@@ -190,12 +205,15 @@ const Leaderboard = () => {
   const fetchStandings = useCallback(async () => {
     setIsFetchingStandings(true);
     const response = await fetch("/submissions");
-    const { masters, challengers, individualSongStandings } =
-      await response.json();
+    const {
+      masters,
+      challengers,
+      individualSongStandings: responseIndividualSongStandings,
+    } = await response.json();
 
     setChallengerStandings(challengers);
     setMasterStandings(masters);
-    setIndividualSongStandings(individualSongStandings);
+    setIndividualSongStandings(responseIndividualSongStandings);
     setIsFetchingStandings(false);
   }, []);
 
@@ -253,13 +271,11 @@ const Leaderboard = () => {
     <>
       {contextHolder}
       <h1>Leaderboard</h1>
-      <p style={{ fontWeight: "bold" }}>{`Qualifiers time remaining: ${
-        qualifiersRemainingTimeInMilliseconds === undefined
-          ? "---"
-          : qualifiersRemainingTimeInMilliseconds > 0
-          ? formatDuration(qualifiersRemainingTimeInMilliseconds)
-          : "Ended!"
-      }`}</p>
+      <p
+        style={{ fontWeight: "bold" }}
+      >{`Qualifiers time remaining: ${getQualifiersRemainingTimeMessage(
+        qualifiersRemainingTimeInMilliseconds
+      )}`}</p>
       <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
         <div
           style={{

@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Affix, Col, Row } from "antd";
 import { useWindowSize } from "@/utils/useWindowSize";
+import TableOfContents from "@/components/TableOfContents";
 import rules from "./rules.md";
 
 const Rules = () => {
@@ -28,20 +29,9 @@ const Rules = () => {
         title: children[0],
       });
       return React.createElement(props.node.tagName, { id }, children);
-    } else {
-      return React.createElement(props.node.tagName, props, children);
     }
+    return React.createElement(props.node.tagName, props, children);
   };
-
-  const TOC = () => (
-    <ul>
-      {toc.map(({ level, id, title }) => (
-        <li key={id}>
-          <a href={`#${id}`}>{title}</a>
-        </li>
-      ))}
-    </ul>
-  );
 
   return (
     <>
@@ -64,7 +54,7 @@ const Rules = () => {
         {width && width > 450 && (
           <Col span={8} order={1}>
             <Affix>
-              <TOC />
+              <TableOfContents contents={toc} />
             </Affix>
           </Col>
         )}

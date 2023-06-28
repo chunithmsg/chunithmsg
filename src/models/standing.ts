@@ -25,7 +25,6 @@ export const compareStandings = (standingA: Standing, standingB: Standing) => {
 
   if (aScore !== bScore) {
     return bScore - aScore;
-  } else {
-    return standingA.timestamp - standingB.timestamp;
   }
+  return standingA.timestamp - standingB.timestamp;
 };

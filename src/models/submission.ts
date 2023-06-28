@@ -28,9 +28,8 @@ export const compareSubmissions = (
 
   if (aScore !== bScore) {
     return bScore - aScore;
-  } else {
-    return submissionA.timestamp - submissionB.timestamp;
   }
+  return submissionA.timestamp - submissionB.timestamp;
 };
 
 export type SubmissionSet = { [S in QualifierSet]: Submission[] };
