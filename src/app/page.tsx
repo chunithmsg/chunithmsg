@@ -1,6 +1,6 @@
 "use client";
 
-import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
+import { Table, Switch, Tabs, Button, Tag } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
@@ -13,11 +13,7 @@ import { IndividualSongStanding } from "@/models/individualSongStanding";
 import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
 import SongScoreLabel from "@/components/SongScoreLabel";
 import { SongWithJacket } from "@/utils/songUtils";
-import {
-  leaderboardFreezeEndTimestamp,
-  leaderboardFreezeStartTimestamp,
-  qualifiersEndTimestamp,
-} from "@/utils/constants";
+import { qualifiersEndTimestamp } from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
 import wakeUpDreamer from "../../public/wakeupdreamer.png";
@@ -182,8 +178,6 @@ const LeaderboardTable = styled(Table<Standing>)`
 `;
 
 const Leaderboard = () => {
-  const [api, contextHolder] = notification.useNotification();
-
   const [currentTimestamp, setCurrentTimestamp] = useState<number | undefined>(
     undefined
   );
@@ -238,11 +232,6 @@ const Leaderboard = () => {
       ? undefined
       : Math.max(qualifiersEndTimestamp - currentTimestamp, 0);
 
-  const isLeaderboardFrozen =
-    currentTimestamp &&
-    leaderboardFreezeStartTimestamp <= currentTimestamp &&
-    currentTimestamp < leaderboardFreezeEndTimestamp;
-
   const table = (
     songs: Song[],
     scores: Standing[],
@@ -269,7 +258,6 @@ const Leaderboard = () => {
 
   return (
     <>
-      {contextHolder}
       <h1>Leaderboard</h1>
       <p
         style={{ fontWeight: "bold" }}
@@ -307,35 +295,11 @@ const Leaderboard = () => {
           icon={<RedoOutlined />}
           type="default"
           disabled={isFetchingStandings}
-          onClick={() => {
-            if (isLeaderboardFrozen) {
-              api.info({
-                message: "Bruh, calm down",
-                description:
-                  "The leaderboard is still frozen. I promise it'll unfreeze when the qualifiers are over, which should happen soon. Be patient, okay? :›",
-                placement: "bottomRight",
-                duration: 6,
-              });
-            }
-            fetchStandings();
-          }}
+          onClick={fetchStandings}
         >
           Refresh
         </Button>
       </div>
-      {isLeaderboardFrozen && (
-        <div
-          style={{
-            marginTop: "12px",
-            marginBottom: "4px",
-            fontWeight: "bold",
-            fontSize: "large",
-            textAlign: "center",
-          }}
-        >
-          The leaderboard is currently frozen
-        </div>
-      )}
       <Tabs
         style={{ marginTop: "8px" }}
         onChange={setActiveTab}
