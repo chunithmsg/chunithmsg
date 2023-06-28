@@ -13,7 +13,6 @@ import { IndividualSongStanding } from "@/models/individualSongStanding";
 import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
 import SongScoreLabel from "@/components/SongScoreLabel";
 import { SongWithJacket } from "@/utils/songUtils";
-import { qualifiersEndTimestamp } from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
 import wakeUpDreamer from "../../public/wakeupdreamer.png";
@@ -134,35 +133,6 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
   },
 ];
 
-const formatDuration = (durationInMilliseconds: number) => {
-  let tempDuration = Math.floor(durationInMilliseconds / 1000);
-  const numSeconds = tempDuration % 60;
-
-  tempDuration = Math.floor(tempDuration / 60);
-  const numMinutes = tempDuration % 60;
-
-  tempDuration = Math.floor(tempDuration / 60);
-  const numHours = tempDuration % 24;
-
-  tempDuration = Math.floor(tempDuration / 24);
-  const numDays = tempDuration;
-
-  return `${numDays}d ${numHours}h ${numMinutes}m ${numSeconds}s`;
-};
-
-const getQualifiersRemainingTimeMessage = (
-  qualifiersRemainingTimeInMilliseconds: number | undefined
-) => {
-  if (qualifiersRemainingTimeInMilliseconds === undefined) {
-    return "---";
-  }
-  if (qualifiersRemainingTimeInMilliseconds <= 0) {
-    return "Ended!";
-  }
-
-  return formatDuration(qualifiersRemainingTimeInMilliseconds);
-};
-
 const LeaderboardTable = styled(Table<Standing>)`
   .masters-finalist {
     background-color: #f0e9f5;
@@ -178,10 +148,6 @@ const LeaderboardTable = styled(Table<Standing>)`
 `;
 
 const Leaderboard = () => {
-  const [currentTimestamp, setCurrentTimestamp] = useState<number | undefined>(
-    undefined
-  );
-
   const [shouldHideDisqualified, setShouldHideDisqualified] = useState(true);
   const [shouldHideFinalists, setShouldHideFinalists] = useState(false);
 
@@ -211,26 +177,9 @@ const Leaderboard = () => {
     setIsFetchingStandings(false);
   }, []);
 
-  const updateCurrentTimestamp = useCallback(async () => {
-    const response = await fetch("/current-time");
-    const { unixTimestamp } = await response.json();
-
-    setCurrentTimestamp(unixTimestamp);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(updateCurrentTimestamp, 250);
-    return () => clearInterval(interval);
-  }, [updateCurrentTimestamp]);
-
   useEffect(() => {
     fetchStandings().catch(console.error);
   }, [fetchStandings]);
-
-  const qualifiersRemainingTimeInMilliseconds =
-    currentTimestamp === undefined
-      ? undefined
-      : Math.max(qualifiersEndTimestamp - currentTimestamp, 0);
 
   const table = (
     songs: Song[],
@@ -259,11 +208,7 @@ const Leaderboard = () => {
   return (
     <>
       <h1>Leaderboard</h1>
-      <p
-        style={{ fontWeight: "bold" }}
-      >{`Qualifiers time remaining: ${getQualifiersRemainingTimeMessage(
-        qualifiersRemainingTimeInMilliseconds
-      )}`}</p>
+      <p style={{ fontWeight: "bold" }}>Qualifiers time remaining: Ended!</p>
       <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
         <div
           style={{

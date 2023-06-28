@@ -1,8 +1,3 @@
-import {
-  leaderboardFreezeEndTimestamp,
-  leaderboardFreezeStartTimestamp,
-  qualifiersEndTimestamp,
-} from "@/utils/constants";
 import { parseLocalDate } from "@/utils/dateUtils";
 
 describe("Date Utils", () => {
@@ -49,21 +44,4 @@ describe("Date Utils", () => {
       expect(actualTimestamp).toEqual(expectedTimestamp);
     }
   );
-
-  it.each([
-    {
-      constant: qualifiersEndTimestamp,
-      expected: 1686499200000, // Midnight (GMT+8), 12th June
-    },
-    {
-      constant: leaderboardFreezeStartTimestamp,
-      expected: 1686326400000, // Midnight (GMT+8), 10th June
-    },
-    {
-      constant: leaderboardFreezeEndTimestamp,
-      expected: 1686499200000, // Midnight (GMT+8), 12th June
-    },
-  ])("Test constants", ({ constant, expected }) => {
-    expect(constant).toEqual(expected);
-  });
 });
