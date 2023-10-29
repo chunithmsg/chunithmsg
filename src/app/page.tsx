@@ -7,12 +7,13 @@ import Image from "next/image";
 import wakeUpDreamer from "../../public/wakeupdreamer.png";
 import chaos from "../../public/chaos.png";
 import pygmalion from "../../public/pygmalion.png";
-import valsqotch from "../../public/valsqotch.png";
-import imperishableNight from "../../public/imperishablenight.png";
-import battleNo1 from "../../public/battleno1.png";
-import spica from "../../public/spica.png";
-import weGonnaJourney from "../../public/wegonnajourney.png";
-import blazingStorm from "../../public/blazingstorm.png";
+
+import flames135seconds from "../../public/kop-5th-qualifiers/flames135seconds.jpg";
+import viyellasTears from "../../public/kop-5th-qualifiers/viyellas_tears.jpg";
+import solips from "../../public/kop-5th-qualifiers/solips.jpg";
+import opfer from "../../public/kop-5th-qualifiers/opfer.jpg";
+import rhapsodyForTheEnd from "../../public/kop-5th-qualifiers/rhapsody_for_the end.jpg";
+import azureVixen from "../../public/kop-5th-qualifiers/azure_vixen.jpg";
 
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
@@ -22,7 +23,7 @@ import { SongScore } from "@/models/songScore";
 import { IndividualSongStanding } from "@/models/individualSongStanding";
 import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
 import SongScoreLabel from "@/components/SongScoreLabel";
-import { SongWithJacket } from "@/utils/songUtils";
+import { SongWithJacket, songDetails } from "@/utils/songUtils";
 import {
   leaderboardFreezeEndTimestamp,
   leaderboardFreezeStartTimestamp,
@@ -30,40 +31,28 @@ import {
 } from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
-interface Song {
-  image: any;
-  title: string;
-  genre?: Genre;
-}
-
-type Genre = "variety" | "original" | "gekimai" | "touhou" | "";
-
-const challengerSongs: Song[] = [
-  { image: wakeUpDreamer, title: "Wake up Dreamer", genre: "original" },
-  { image: chaos, title: "CHAOS", genre: "variety" },
-  { image: pygmalion, title: "ピュグマリオンの咒文", genre: "original" },
+const challengerSongs: SongWithJacket[] = [
+  { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
+  { songId: "chaos", jacket: chaos },
+  { songId: "pygmalion", jacket: pygmalion },
 ];
 
-const masterSongs: Song[] = [
-  { image: valsqotch, title: "Valsqotch", genre: "gekimai" },
-  {
-    image: imperishableNight,
-    title: "Imperishable Night 2006\n(2016 Refine)",
-    genre: "touhou",
-  },
-  { image: battleNo1, title: "BATTLE NO.1", genre: "variety" },
-  { image: spica, title: "スピカの天秤", genre: "original" },
-  { image: weGonnaJourney, title: "We Gonna Journey", genre: "original" },
-  { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
+const masterSongs: SongWithJacket[] = [
+  { songId: "flames135seconds", jacket: flames135seconds },
+  { songId: "viyellasTears", jacket: viyellasTears },
+  { songId: "solips", jacket: solips },
+  { songId: "opfer", jacket: opfer },
+  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
+  { songId: "azureVixen", jacket: azureVixen },
 ];
 
 const individualMastersSongs: SongWithJacket[] = [
-  { songId: "valsqotch", jacket: valsqotch },
-  { songId: "imperishableNight", jacket: imperishableNight },
-  { songId: "battleNo1", jacket: battleNo1 },
-  { songId: "spica", jacket: spica },
-  { songId: "weGonnaJourney", jacket: weGonnaJourney },
-  { songId: "blazingStorm", jacket: blazingStorm },
+  { songId: "flames135seconds", jacket: flames135seconds },
+  { songId: "viyellasTears", jacket: viyellasTears },
+  { songId: "solips", jacket: solips },
+  { songId: "opfer", jacket: opfer },
+  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
+  { songId: "azureVixen", jacket: azureVixen },
 ];
 
 const individualChallengersSongs: SongWithJacket[] = [
@@ -72,7 +61,7 @@ const individualChallengersSongs: SongWithJacket[] = [
   { songId: "pygmalion", jacket: pygmalion },
 ];
 
-const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
+const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
   {
     title: "#",
     key: "no",
@@ -96,33 +85,37 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
       </div>
     ),
   },
-  ...songs.map(({ title, image }, idx) => ({
-    title: (
-      <Image
-        src={image}
-        alt={title}
-        title={title}
-        style={{
-          maxHeight: "90px",
-          height: "auto",
-          width: "auto",
-        }}
-      />
-    ),
-    children: [
-      {
-        title: <div style={{ whiteSpace: "pre-line" }}>{title}</div>,
-        key: `song${idx + 1}`,
-        dataIndex: `song${idx + 1}`,
-        render: (_text: string, record: Standing) => {
-          const songScore = record[
-            `song${idx + 1}` as keyof Standing
-          ] as SongScore;
-          return <SongScoreLabel songScore={songScore} />;
+  ...songs.map(({ songId, jacket }, idx) => {
+    const { title } = songDetails[songId];
+
+    return {
+      title: (
+        <Image
+          src={jacket}
+          alt={title}
+          title={title}
+          style={{
+            maxHeight: "90px",
+            height: "auto",
+            width: "auto",
+          }}
+        />
+      ),
+      children: [
+        {
+          title: <div style={{ whiteSpace: "pre-line" }}>{title}</div>,
+          key: `song${idx + 1}`,
+          dataIndex: `song${idx + 1}`,
+          render: (_text: string, record: Standing) => {
+            const songScore = record[
+              `song${idx + 1}` as keyof Standing
+            ] as SongScore;
+            return <SongScoreLabel songScore={songScore} />;
+          },
         },
-      },
-    ],
-  })),
+      ],
+    };
+  }),
   {
     title: "Total Score",
     key: "totalScore",
@@ -228,7 +221,7 @@ const Leaderboard = () => {
     currentTimestamp < leaderboardFreezeEndTimestamp;
 
   const table = (
-    songs: Song[],
+    songs: SongWithJacket[],
     scores: Standing[],
     division: "masters" | "challengers",
     numFinalists: number
