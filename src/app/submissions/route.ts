@@ -4,7 +4,6 @@ import {
   leaderboardFreezeStartTimestamp,
 } from "@/utils/constants";
 import {
-  getChallengersStandings,
   getIndividualScoreStandings,
   getMastersStandings,
 } from "@/utils/leaderboardUtils";
@@ -29,7 +28,6 @@ export const GET = async () => {
 
   return NextResponse.json({
     masters: getMastersStandings(submissionSet),
-    challengers: getChallengersStandings(submissionSet),
     individualSongStandings: getIndividualScoreStandings(submissionSet),
   });
 };

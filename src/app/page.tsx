@@ -4,10 +4,6 @@ import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
-import wakeUpDreamer from "../../public/wakeupdreamer.png";
-import chaos from "../../public/chaos.png";
-import pygmalion from "../../public/pygmalion.png";
-
 import flames135seconds from "../../public/kop-5th-qualifiers/flames135seconds.jpg";
 import viyellasTears from "../../public/kop-5th-qualifiers/viyellas_tears.jpg";
 import solips from "../../public/kop-5th-qualifiers/solips.jpg";

@@ -115,29 +115,6 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
   return standings;
 };
 
-export const getChallengersStandings = (submissionSet: SubmissionSet) => {
-  const bestSubmissionSet = extractBestSubmissions(submissionSet);
-  const standingsByIgn: { [ign: string]: Standing } = {};
-
-  for (const submission of bestSubmissionSet[QualifierSet.Challengers]) {
-    const { ign, timestamp, isDisqualified, songScores } = submission;
-    standingsByIgn[ign] = {
-      ign,
-      timestamp,
-      isDisqualified,
-      song1: songScores[0],
-      song2: songScores[1],
-      song3: songScores[2],
-      totalScore: getTotalSubmissionScore(submission),
-    };
-  }
-
-  const standings = Object.values(standingsByIgn);
-  standings.sort(compareStandings);
-
-  return standings;
-};
-
 const toRankMap = (
   standings: Standing[],
   shouldIgnoreDisqualified: boolean = true
@@ -163,9 +140,8 @@ export const getIndividualScoreStandings = (
   // Holy shit, this function is a long hot mess and I feel filthy for writing it.
 
   const setSongs: { [A in QualifierSet]: SongId[] } = {
-    [QualifierSet.Challengers]: ["wakeUpDreamer", "chaos", "pygmalion"],
-    [QualifierSet.MastersA]: ["valsqotch", "imperishableNight", "battleNo1"],
-    [QualifierSet.MastersB]: ["spica", "weGonnaJourney", "blazingStorm"],
+    [QualifierSet.MastersA]: ["flames135seconds", "viyellasTears", "solips"],
+    [QualifierSet.MastersB]: ["opfer", "rhapsodyForTheEnd", "azureVixen"],
   };
 
   const allSongs: SongId[] = [];
@@ -175,10 +151,7 @@ export const getIndividualScoreStandings = (
 
   // Prepare a map for "Leaderboard standings by IGN"
   const mastersStandings = getMastersStandings(submissionSet);
-  const challengersStandings = getChallengersStandings(submissionSet);
-
   const mastersRankMap = toRankMap(mastersStandings);
-  const challengersRankMap = toRankMap(challengersStandings);
 
   const bestScoreBySong: {
     [songId in SongId]?: { [ign: string]: IndividualSongScore };
@@ -208,16 +181,9 @@ export const getIndividualScoreStandings = (
       let leaderboardStanding: IndividualSongScore["leaderboardStanding"] =
         undefined;
 
-      if (qualifierSet === QualifierSet.Challengers) {
-        if (challengersRankMap.hasOwnProperty(ign)) {
-          const rank = challengersRankMap[ign];
-          leaderboardStanding = { division: "Challengers", rank };
-        }
-      } else {
-        if (mastersRankMap.hasOwnProperty(ign)) {
-          const rank = mastersRankMap[ign];
-          leaderboardStanding = { division: "Masters", rank };
-        }
+      if (mastersRankMap.hasOwnProperty(ign)) {
+        const rank = mastersRankMap[ign];
+        leaderboardStanding = { division: "Masters", rank };
       }
 
       for (let i = 0; i < songScores.length; ++i) {
@@ -257,8 +223,7 @@ export const getIndividualScoreStandings = (
   const standings: IndividualSongStanding[] = [];
 
   const numMasters = Object.keys(mastersStandings).length;
-  const numChallengers = Object.keys(challengersStandings).length;
-  const numStandings = Math.max(numMasters, numChallengers);
+  const numStandings = numMasters;
 
   for (let i = 0; i < numStandings; ++i) {
     const scoreMap: { [songId in SongId]?: IndividualSongScore } = {};

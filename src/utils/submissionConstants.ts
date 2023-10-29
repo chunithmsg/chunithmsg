@@ -1,8 +1,7 @@
 /**
- * The three qualifiers sets - one for Challengers and two for Masters.
+ * The two qualifiers sets.
  */
 export enum QualifierSet {
-  Challengers,
   MastersA,
   MastersB,
 }
@@ -13,8 +12,4 @@ export enum QualifierSet {
  * I am way too fed up with finding a simple and clean way to iterate through the members of an enum.
  * This is not scalable and I don't care.
  */
-export const allQualifierSets = [
-  QualifierSet.Challengers,
-  QualifierSet.MastersA,
-  QualifierSet.MastersB,
-];
+export const allQualifierSets = [QualifierSet.MastersA, QualifierSet.MastersB];
