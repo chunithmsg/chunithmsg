@@ -31,12 +31,6 @@ import {
 } from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
-const challengerSongs: SongWithJacket[] = [
-  { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
-  { songId: "chaos", jacket: chaos },
-  { songId: "pygmalion", jacket: pygmalion },
-];
-
 const masterSongs: SongWithJacket[] = [
   { songId: "flames135seconds", jacket: flames135seconds },
   { songId: "viyellasTears", jacket: viyellasTears },
@@ -53,12 +47,6 @@ const individualMastersSongs: SongWithJacket[] = [
   { songId: "opfer", jacket: opfer },
   { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
   { songId: "azureVixen", jacket: azureVixen },
-];
-
-const individualChallengersSongs: SongWithJacket[] = [
-  { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
-  { songId: "chaos", jacket: chaos },
-  { songId: "pygmalion", jacket: pygmalion },
 ];
 
 const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
@@ -152,10 +140,6 @@ const LeaderboardTable = styled(Table<Standing>)`
     background-color: #f0e9f5;
   }
 
-  .challengers-finalist {
-    background-color: #f5f0f0;
-  }
-
   .disqualified {
     background-color: #ccc;
   }
@@ -172,9 +156,6 @@ const Leaderboard = () => {
   const [shouldHideFinalists, setShouldHideFinalists] = useState(false);
 
   const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
-  const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
-    []
-  );
 
   const [individualSongStandings, setIndividualSongStandings] = useState<
     IndividualSongStanding[]
@@ -185,10 +166,8 @@ const Leaderboard = () => {
   const fetchStandings = useCallback(async () => {
     setIsFetchingStandings(true);
     const response = await fetch("/submissions");
-    const { masters, challengers, individualSongStandings } =
-      await response.json();
+    const { masters, individualSongStandings } = await response.json();
 
-    setChallengerStandings(challengers);
     setMasterStandings(masters);
     setIndividualSongStandings(individualSongStandings);
     setIsFetchingStandings(false);
@@ -223,7 +202,7 @@ const Leaderboard = () => {
   const table = (
     songs: SongWithJacket[],
     scores: Standing[],
-    division: "masters" | "challengers",
+    division: "masters",
     numFinalists: number
   ) => (
     <LeaderboardTable
@@ -271,8 +250,7 @@ const Leaderboard = () => {
             />
             {"Hide Disqualified"}
           </div>
-          {(activeTab === "individualMastersSongStandings" ||
-            activeTab === "individualChallengersSongStandings") && (
+          {activeTab === "individualMastersSongStandings" && (
             <div style={{ display: "flex", gap: "8px" }}>
               <Switch
                 onChange={setShouldHideFinalists}
@@ -326,36 +304,11 @@ const Leaderboard = () => {
             children: table(masterSongs, masterStandings, "masters", 8),
           },
           {
-            key: "challengers",
-            label: "Challengers",
-            children: table(
-              challengerSongs,
-              challengerStandings,
-              "challengers",
-              16
-            ),
-          },
-          {
             key: "individualMastersSongStandings",
             label: "Individual Songs (Masters)",
             children: (
               <IndividualSongLeaderboard
                 songs={individualMastersSongs}
-                loading={isFetchingStandings}
-                standings={individualSongStandings}
-                options={{
-                  shouldHideFinalists,
-                  shouldHideDisqualified,
-                }}
-              />
-            ),
-          },
-          {
-            key: "individualChallengersSongStandings",
-            label: "Individual Songs (Challengers)",
-            children: (
-              <IndividualSongLeaderboard
-                songs={individualChallengersSongs}
                 loading={isFetchingStandings}
                 standings={individualSongStandings}
                 options={{
