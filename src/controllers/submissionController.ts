@@ -12,9 +12,8 @@ import { QualifierSet, allQualifierSets } from "@/utils/submissionConstants";
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
  */
 const sheetNames = {
-  [QualifierSet.Challengers]: "Challengers - Dumping Ground",
-  [QualifierSet.MastersA]: "Masters Set A - Dumping Ground",
-  [QualifierSet.MastersB]: "Masters Set B - Dumping Ground",
+  [QualifierSet.MastersA]: "KOP 5th - Set 1",
+  [QualifierSet.MastersB]: "KOP 5th - Set 2",
 };
 
 const columnIndexes = {
