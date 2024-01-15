@@ -78,31 +78,19 @@ The Finals will consist of 3 rounds:
 
 ### Score Attack Round
 
-For each match, a random Top 4 seed will be placed inside. Then, the other 3 slots will be filled by the remaining 12 players randomly. Each player will pick 1 song each, for a total of 4 songs per match.
+(The Top 6 players in the Qualifiers will **not** be involved in this round.)
 
-If the same song is picked by multiple players, that song will still be played in the Match, but a random song will be picked by the Organisers as a replacement. No song will be repeated twice in the same match.
+In the Score Attack Round, the **7th-30th placed players** will have to play **one** song prescribed by the Organisers. This song will be randomly chosen by the Organisers from a pool of **fifteen (15) Master Lv14** songs, and will be announced on 4th February 2200hrs. Players will play the song in order of seed number.
 
-After each song has been played, points will be awarded depending on the position. Please refer to the following table below for the point system:
+Only the top 12 scoring players will advance to the Team Matches Round. All other players will be eliminated.
 
-| Score Ranking | Points Awarded |
-| ------------- | -------------- |
-| 1st Place     | 4 Points       |
-| 2nd Place     | 3 Points       |
-| 3rd Place     | 2 Points       |
-| 4th Place     | 1 Points       |
+#### Song Pool
 
-In the case of a tie (within a single song), both players will be awarded the same number of points.
+(To be announced later)
 
-At the end of the match, the total number of points will be added up. The Top 2 of each match will advance to the next round.
+#### Tiebreakers
 
-At the end of the final Arena round (4 players left), the Top 2 will advance to the grand finals.
-
-### Tiebreakers
-
-In the event of a tie where there are multiple players (among the top 3 or 4) with the same total number of points at the end of the match, the winner will be chosen using the following properties, in order:
-
-- The higher total score of all 4 songs.
-- The lower total number of (Non-Critical) Justice judgments among all 4 songs.
+In the rare event of a tie where multiple players have the same score, the player with the **better seed number** will be ranked higher.
 
 ### Challengers Grand Finals
 
