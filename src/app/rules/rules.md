@@ -66,13 +66,17 @@ During the Qualifiers period, the leaderboard will be updated hourly, subject to
 
 The organisers reserve the right to disqualify any player from the competition for any reason.
 
-## Challengers Finals
+## Finals
 
 ### Format
 
-For the Challengers Division, the format of all matches (except the final match) will be an Arena System, which is similar to the 全国対戦 mode in the Japan Version of Chunithm.
+The Finals will consist of 3 rounds:
 
-### Arena System
+1. Score Attack Round
+2. Team Matches Round
+3. Grand Finals
+
+### Score Attack Round
 
 For each match, a random Top 4 seed will be placed inside. Then, the other 3 slots will be filled by the remaining 12 players randomly. Each player will pick 1 song each, for a total of 4 songs per match.
 
@@ -268,7 +272,7 @@ Here are the charts that are available to be chosen with the Randomiser card.
 
 ### Will the games be sponsored?
 
-The game credits will be provided in the Finals only.
+The game credits will be provided in both the Qualifiers and the Finals.
 
 ### When will the Waiting List people know whether they will be competing in the Finals?
 
@@ -278,17 +282,17 @@ On the day of the competition, if there are no shows, the Organiser will contact
 
 We will be sending out a schedule closer to the Finals date. However, you are highly recommended to stay in the Arcade for the duration of the Tournament.
 
-### How will the brackets be determined?
+### How will the teams be determined?
 
-The organiser will be drawing lots for the unseeded players beforehand. The procedures will be done live and in view of an audience.
+The Top 6 players in the Qualifiers will be designated as Team Captains. After the Score Attack Round concludes, the remaining 12 players will then be drafted by the Team Captains. Please refer to the Team Matches section for more details.
 
 ### Are there any registration fees for the tourney?
 
-No, there are not.
+Yes, there is a **$10 entry fee** for the Qualifiers.
 
 ### What is the Song Pool?
 
-We will cut off the Song Pool at Armageddon, which is the 13 April 2023 update. All games will use Master Ticket unless an Ultima is chosen, in which case an Ultima Ticket will be required.
+We will cut off the Song Pool at SUN Ep. V (夢と幻想の終点にて, Superbia, 空間創造理論, βlαnoir), which is the 21 December 2023 update. All games will use Master Ticket unless an Ultima is chosen, in which case an Ultima Ticket will be required.
 
 ### Is there any particular character skill needed for the Tournament?
 
