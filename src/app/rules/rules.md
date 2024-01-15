@@ -92,169 +92,80 @@ Only the top 12 scoring players will advance to the Team Matches Round. All othe
 
 In the rare event of a tie where multiple players have the same score, the player with the **better seed number** will be ranked higher.
 
-### Challengers Grand Finals
+### Team Matches Round
 
-In the grand finals match between the Top 2, each player will select 2 songs each, for a total of 4 songs.
+In this round, the remaining 18 players will be split into 6 teams of 3 players each. This round will be conducted in two phases: a Team Drafting phase, and the Team Battle phase.
 
-Just like the Arena matches, if the same song is picked by both players, that song will still be played in the Match, but a random song will be picked by the Organisers as a replacement. No song will be repeated twice in the same match.
+#### Team Drafting
 
-The winner is the player with the higher total score.
+In the Team Drafting Phase, the Top 6 players in the Qualifiers Round will be designated as Team Captains. In order of seed number, each Captain will draft one player of their choice (from the remaining 12 finalists), and the player will be added to their team. After all teams have 2 players each, the remaining 6 finalists will then be randomly placed into teams. Please refer to the image below for more details.
 
-#### Tiebreakers
+(Image to be uploaded soon)
 
-In the event of a tie where both players have the same total score, the winner will be chosen using the following properties, in order:
+At the end of this phase, each player must belong in exactly one team.
 
-- The higher number of songs won.
-- The higher number of counter-picks won (i.e. songs that were not selected by the player themselves).
-- The lower total number of (Non-Critical) Justice judgments among all 4 songs.
+#### Notes
 
-### Chart Constant Restrictions
+- The decisions of the Team Captains are **final** and **irreversible**. Therefore, Captains are advised to carefully consider their selections.
+- If any player refuses to be accepted in their team despite all mediation possible by the Organisers, the **entire team** shall be disbanded and disqualified from the Tournament.
+- The Organisers reserve the right to disqualify any player and/or team from the Tournament for any reason.
 
-There will be level restrictions put in place per round through the course of the tournament. Please view the following tables for more information.
+#### Team Battle
 
-| Round  | Level / Chart Constant Restrictions |
-| ------ | ----------------------------------- |
-| Top 16 | Level 13 and 13+                    |
-| Top 8  | Level 13+ and 14                    |
-| Top 4  | Level 14                            |
-| Top 2  | Chart Constant 14.2 - 14.7          |
+Team matches will feature home and away sides. In the 1st half, each team will play against every other team once. Matches are repeated in the 2nd half but with **home/away sides switched**.
 
-### Song Ban List
+Every team match consists of 2 separate 1v1 tracks. The home team will present the song and player order, before the away team responds with their player own player order. Please refer to the image below for more information.
 
-In addition, all songs that are locked as well as all ULTIMA charts may not be selected in the competition. For a full list of banned songs and charts (which may be updated), [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
+(Image to be uploaded soon)
 
-## Masters Qualifiers
+Each team will play a total of 10 matches, with 5 of them being on the home side. Every player must play **at least thrice in each half**.
 
-### Format
+#### Limit Break Mechanic
 
-The Qualifier follows a Score-Attack format where players will have to play a fixed set of songs and submit the score of their run. For the Masters Division, players will need to complete 2 sets of 3 songs each.
+Each team shall be entitled to **three (3)** "Limit Break" cards. This allows teams to select songs that are outside of the standard Chart Constant restrictions.
 
-### Qualifier Songs
+At the end of the Team Battle phase, all unused Limit Break cards will expire.
 
-The Masters Qualifier (Set A) songs are as follows:
+#### Song Restrictions
 
-![Valsqotch](valsqotch.png)
-![Imperishable Night 2006 (2016 Refine)](imperishablenight.png)
-![BATTLE NO.1](battleno1.png)
+The following table shows the Chart Constant restrictions for the Team Battle phase.
 
-| No. | Title                                 | Artist                    | Difficulty | Genre        |
-| --- | ------------------------------------- | ------------------------- | ---------- | ------------ |
-| 1   | Valsqotch                             | owl＊tree feat. chi＊tree | Master 14+ | ゲキマイ     |
-| 2   | Imperishable Night 2006 (2016 Refine) | ゆうゆ / 篠螺悠那         | Master 14+ | 東方 Project |
-| 3   | BATTLE NO.1                           | TANO\*C Sound Team        | Master 14+ | Variety      |
+| Chart Constant Restrictions | With Limit Break      |
+| --------------------------- | --------------------- |
+| 13.7 - 14.7 inclusive       | 13.0 - 14.9 inclusive |
 
-The Masters Qualifier (Set B) songs are as follows:
-
-![スピカの天秤](spica.png)
-![We Gonna Journey](wegonnajourney.png)
-![Blazing:Storm](blazingstorm.png)
-
-| No. | Title            | Artist       | Difficulty | Genre    |
-| --- | ---------------- | ------------ | ---------- | -------- |
-| 1   | スピカの天秤     | Acotto       | Master 14+ | Original |
-| 2   | We Gonna Journey | Queen P.A.L. | Ultima 14+ | Original |
-| 3   | Blazing:Storm    | かゆき       | Master 14+ | Original |
-
-### Rules (Please Read Before Attempting!)
-
-#### Attempting the qualifiers
-
-Qualifiers can only be played in Virtualand outlets only.
-
-For each set, the qualifier songs must be played in the exact order as shown in the document (i.e. Tracks 1, 2 and 3, or Tracks 2, 3 and 4).
-
-Please take a picture of each individual score. Each picture should clearly show:
-
-- The Virtualand card reader.
-- The QR Code on the machine (next to the Aime card reader).
-
-Please note that the Qualifiers are done at your own expense.
-
-#### Submission
-
-[Submissions are done here.](https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform)
-
-You will need to submit the form two times - once for each set.
-
-You are allowed to attempt the qualifiers as many times as you would like.
-
-You are allowed to submit your scores for Set A and Set B separately, and you can submit multiple attempts for each set.
-
-Both the play times of the songs (as displayed in Chunithm-Net) and the submission (in Google Forms) must be within the Qualifier Period.
+Note that **only MASTER or ULTIMA** charts may be selected. Furthermore, teams **cannot** repeat their picks throughout the entire tournament.
 
 #### Ranking
 
-Rankings are based on the total score of all 6 songs.
+At the end of the Team Battle phase, teams will be ranked according to the total number of wins during the Team Matches. The top **four (4)** teams will proceed to the Grand Finals, and the remaining teams will be eliminated.
 
-In the case of a tie in the total score, the player with an earlier play time (of the latest of the 6 songs, as displayed in Chunithm-Net) will be ranked higher.
+In the event of a tie in total wins, the following tiebreakers shall apply, in order of priority:
 
-The Top 8 ranked players will move on to the Finals.
+- The highest total number of wins on the "away" side.
+- The highest total score difference across all team matches.
+ 
+### Grand Finals
 
-You may view the leaderboard which will be updated daily as much as possible (Chunithm Sun Divisional Leaderboard).
+In the Grand Finals round, there will be three (3) matches, each consisting of 5 1v1 tracks. 
 
-## Masters Finals
+Songs 1, 3, and 5 are decided by the higher ranked team, while song 2 and 4 by the lower ranked team (CC range **14.8-15.4**). When responding to the opponent’s picks, no repeat assigning of players is allowed.
 
-### Format
+The 3rd and 4th place teams will battle first, and the team with the **higher total score** wins. The winning team challenges the next highest placed group until one team is left. Please refer to the following infographic for more information.
 
-The Masters Division will compete in a Single-Elimination Bracket, similar to the King of Performai (KOP) system. The 1st Seed will play against the 8th Seed, 2nd Seed against the 7th Seed, 3rd Seed against the 6th Seed and the 4th Seed against the 5th Seed.
+(Infographic to be uploaded soon)
 
-Each match will be 4 songs, 2 songs picked each by each player. If the same song is picked by both players, that song will still be played in the Match, but a random song will be picked by the Organisers as a replacement. No song will be repeated twice in the same match.
+#### Tiebreakers
 
-The winner of the match through total sum of score will advance to the next round.
-
-### Tiebreakers
-
-In the event of a tie where both players have the same total score, the winner will be chosen using the following properties, in order:
+In the extreme event of a tie in total score, the following tiebreakers will apply, in order of priority:
 
 - The higher number of songs won.
 - The higher number of counter-picks won (i.e. songs that were not selected by the player themselves).
 - The lower total number of (Non-Critical) Justice judgments among all 4 songs.
 
-### Cards
-
-Each player will be given two power-up cards that they can use during the tournament.
-
-- Each card may only be used at most once throughout the tournament.
-- A player can use at most one card per round.
-- No card can be used in the final (i.e. Top 2) round.
-
-The cards are as follows:
-
-1. Randomiser: Randomises one song chosen by your opponent to a pool of six songs according to the song's chart constant. The chosen song by the randomiser cannot be the same as the song previously chosen.
-2. Limit Break: One of your song choices may be chosen with a higher chart constant, according to the section "Chart Constant Restrictions" below. In addition, this song choice may not be randomised with the "Randomiser" card above.
-
-Hence, this is how choosing the song process will be done.
-
-1. Everyone chooses 2 charts. Limit break can be used in one chart of your choice.
-2. These charts will be passed to your opponent. If your opponent has not used limit break, your opponent may use the Randomiser card to randomise one chart of your choice. However, charts chosen with Limit Break cannot be randomised.
-3. Reveal all charts.
-
-### Chart Constant Restrictions
-
-There will be level restrictions put in place per round through the course of the tournament. Please view the following tables for more information.
-
-| Round | Chart Constant Restrictions | With Limit Break      |
-| ----- | --------------------------- | --------------------- |
-| Top 8 | 14.5 - 14.9 inclusive       | 14.5 - 15.2 inclusive |
-| Top 4 | 14.8 - 15.2 inclusive       | 14.8 - 15.4 inclusive |
-| Top 2 | 15.0 - 15.4 inclusive       | N/A                   |
-
 ### Song Ban List
 
-In addition, some charts may not be chosen in the competition. For a full list of charts, [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
-
-### Randomiser Pool
-
-Here are the charts that are available to be chosen with the Randomiser card.
-
-| No. \ Chart Constant | 14.5                                                                   | 14.6                | 14.7                             | 14.8                                   | 14.9                                                | 15.0                        | 15.1                    | 15.2                   |
-| -------------------- | ---------------------------------------------------------------------- | ------------------- | -------------------------------- | -------------------------------------- | --------------------------------------------------- | --------------------------- | ----------------------- | ---------------------- |
-| 1                    | Good bye, Merry-Go-Round. (MAS)                                        | Evans (ULT)         | Ai Nov (MAS)                     | 8-EM (MAS)                             | Exitium (MAS)                                       | ANU (MAS)                   | parvorbital (MAS)       | macrocosmos (MAS)      |
-| 2                    | Philosopher (MAS)                                                      | larva (MAS)         | Blessed Rain (MAS)               | AMAZING MIGHTYYYY!!!! (MAS)            | GIGA DRIVE (MAS)                                    | Contrapasso -inferno- (MAS) | POTENTIAL (MAS)         | Rebellion (MAS)        |
-| 3                    | Qlipthogear (MAS)                                                      | Nhelv (MAS)         | Last Celebration (MAS)           | Don't Fight The Music (MAS)            | Glorious Crown (tpz over-Over-OVERCUTE REMIX) (MAS) | ENDYMION (MAS)              | Trrricksters!! (MAS)    | Strange Love (MAS)     |
-| 4                    | 初音ミクの消失 (MAS)                                                   | Parad'ox (MAS)      | Paqqin (tpz Despair Remix) (MAS) | Excalibur \~Revived resolution\~ (MAS) | Surveiller et punir (MAS)                           | Invisible Frenzy (MAS)      | X7124 (MAS)             | To: Be Continued (MAS) |
-| 5                    | 管弦楽組曲 第 3 番 ニ長調「第 2 曲（G 線上のアリア）」BWV.1068-2 (MAS) | PUPA (MAS)          | Sound Chimera (MAS)              | Trackless wilderness (MAS)             | YURUSHITE (MAS)                                     | Killing Rhythm (MAS)        | 怒槌 (MAS)              | Λzure Vixen (MAS)      |
-| 6                    | 花と、雪と、ドラムンベース。 (MAS)                                     | Scarlet Lance (MAS) | 初音ミクの激唱 (MAS)             | 封焔の 135 秒 (MAS)                    | 患部で止まってすぐ溶ける～狂気の優曇華院 (ULT)      | TiamaT:F minor (MAS)        | 玩具狂奏曲 -終焉- (MAS) | 宿星審判 (MAS)         |
+For a full list of banned songs and charts (which may be updated), [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
 
 ## FAQs
 
