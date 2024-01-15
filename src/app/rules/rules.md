@@ -1,135 +1,70 @@
-## Introduction
+## Overview
 
-The Chunithm SUN Divisional Tourney will be held on Saturday, 17th June 2023 at 12pm at Virtualand Nex. The qualifiers will be held from Saturday, 6th May 2023 and Sunday, 11th June 2023, playable at any Virtualand Outlet.
+The **Chunithm Singapore SUN+ers League** will be held on Saturday, 17th February 2024 at 12pm. The qualifiers will be held **in-person** on Saturday, 3rd February 2024 12pm-6pm and Sunday, 4th February 2024 12pm-6pm. Both the Qualifiers and Finals will be held at **Virtualand Nex**.
 
-There will be 2 Divisions for this Tourney, Masters and Challengers. The Masters Division will be open to all players and the Challengers Division will be open to all players with a Max Rating of at most 16.50.
+In this tournament, players who qualify for the Finals will first compete in a **Score Attack Round**, where all finalists will play **one** song randomly selected from a pool of 15 Master Lv14 songs. Those who advance will then proceed to a **Team Draft Round**, where 6 captains will draft their team captains, and teams will battle it out in intense team battles and fight for the top prize! 
 
-Only the Top 8 of the Masters Division and the Top 16 of the Challengers Division of their respective qualifiers will gain entry to the Finals.
+Only the Top 30 players in the Qualifiers will gain entry to the Finals.
 
-## Qualifiers Prizes
+## Prizes
 
-### Masters
-
-For each song, the player with the highest score that didn't qualify for finals will get $5.
-
-## Finals Prizes
-
-### Challengers
-
-| Placement  | Prizes                                             |
-| ---------- | -------------------------------------------------- |
-| Rank 1     | $40 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 2     | $20 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 3 - 4 | $10 in Virtualand credits + Handkerchief           |
-| Rank 5 - 8 | Handkerchief                                       |
-
-### Masters
-
-| Placement  | Prizes                                              |
-| ---------- | --------------------------------------------------- |
-| Rank 1     | $150 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 2     | $100 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 3 - 4 | $50 in Virtualand credits + Handkerchief            |
-| Rank 5 - 8 | $25 in Virtualand credits                           |
+| Placement (Team)  | Prizes                                             |
+| ----------------- | -------------------------------------------------- |
+| 1st               | $60 in Virtualand credits (per person)             |
+| 2nd               | $30 in Virtualand credits (per person)             |
+| 3rd               | $15 in Virtualand credits (per person)             |
 
 ## Lucky Draw Prizes
 
-Any player who makes at least one submission (in either the Challengers or Masters division), and is physically present during the tourney finals, will be eligible for the Lucky Draw.
+Any player who participates in the Qualifiers, fully paid the entry fee, and is physically present during the Finals, will be eligible for the Lucky Draw.
 
-### Grand Prize
+### Prize List
 
-- 25-ji Nightcord de. Set (Aime, Glove, Keychain)
+(To : Be Confirmed)
 
-### Second Prize
-
-- More More Jump! Set (Aime, Glove, Keychain)
-
-### Third Prize
-
-- Vivid Bad SQUAD Set (Aime, Glove)
-
-### Tier 2 Prizes
-
-- Leo/need Set (Aime, Glove)
-- Wonderlands x Showtime Set (Aime, Glove)
-- VIRTUAL SINGERS Set (Aime, Glove)
-
-### Starters
-
-- Nai/0419_Guardian Aime ×2
-- Chunithm Sports Towel
-- Chunithm Yellow Glove
-
-### Pictures of Prizes
-
-![Project Sekai Sets](lucky-draw-prizes/sekai_small.png)
-
-![Towel](lucky-draw-prizes/towel_small.jpg)
-
-![TUYU Aime](lucky-draw-prizes/tuyu_small.png)
-
-![Gloves](lucky-draw-prizes/glove_small.JPG)
-
-## Challengers Qualifiers
+## Qualifiers
 
 ### Format
 
-The Qualifier follows a Score-Attack format where players will have to play a fixed set of songs and submit the score of their run. For the Challengers Division, players will need to complete 1 set of 3 songs.
+The Qualifier follows a Score-Attack format where players will have to play a fixed set of 3 songs. Each player will have a maximum of **2 attempts**, and may complete the set of songs any time during the Qualifiers period.
+
+Please note that the Qualifiers will have a **$10 entry fee**, payable by cash.
 
 ### Qualifier Songs
 
-The Challengers Qualifier consists of 1 set of 3 songs:
-
-![Wake up Dreamer](wakeupdreamer.png)
-![CHAOS](chaos.png)
-![ピュグマリオンの咒文](pygmalion.png)
+The Qualifiers consists of 3 songs:
 
 | No. | Title                | Artist                     | Difficulty | Genre    |
 | --- | -------------------- | -------------------------- | ---------- | -------- |
-| 1   | Wake up Dreamer      | Junk                       | Master 13  | Original |
-| 2   | CHAOS                | Æsir「Cytus Ⅱ」            | Master 13+ | Variety  |
-| 3   | ピュグマリオンの咒文 | アリスシャッハと魔法の楽団 | Master 14  | Original |
+| 1   | ???                  | ???                        | ???        | ???      |
+| 2   | ???                  | ???                        | ???        | ???      |
+| 3   | ???                  | ???                        | ???        | ???      |
 
 ### Rules (Please Read Before Attempting!)
 
 #### Attempting the qualifiers
 
-Challengers Qualifiers can only be attempted by players with a Max Rating (as displayed in Chunithm-Net) of at most 16.50. This must be maintained until the end of the qualifiers period.
+Qualifiers can only be played in **Virtualand Nex**, and during the Qualifiers period (3rd-4th Feb 2024, 1200-1800). Unless special permission is granted by the Organisers, any entry that violates these conditions will be disregarded, even if the player has paid the entry fee.
 
-Should a participant’s Max Rating go above 16.50 before the end of the qualifiers period, their submission will be voided.
+Players may either walk-in or reserve a timeslot in advance (details of this process will be released soon).
 
-Qualifiers can only be played in Virtualand outlets only.
+The qualifier songs must be played in the exact order as shown in the document (i.e. Tracks 1, 2 and 3), and **in view of any one of the Organisers**.
 
-The qualifier songs must be played in the exact order as shown in the document (i.e. Tracks 1, 2 and 3, or Tracks 2, 3 and 4).
-
-Please take a picture of each individual score. Each picture should clearly show:
-
-- The Virtualand card reader.
-- The QR Code on the machine (next to the Aime card reader).
-
-Please note that the Qualifiers are done at your own expense.
-
-#### Submission
-
-[Submissions are done here.](https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform)
-
-You are allowed to attempt the qualifiers as many times as you would like.
-
-Both the play times of the songs (as displayed in Chunithm-Net) and the submission (in Google Forms) must be within the Qualifier Period.
+Please notify any one of the Organisers, who will be physically present at the Qualifiers venue, before you begin your Qualifiers attempt. Your scores for the Qualifier songs will be recorded.
 
 #### Ranking
 
-Rankings are based on the total score of all 3 songs.
+Rankings are based on the total score of all 3 songs. We will take the **better of the two attempts** as the final score.
 
-In the case of a tie in the total score, the player with an earlier play time (of the final song, as displayed in Chunithm-Net) will be ranked higher.
+In the rare event of a tie, the player with an **earlier play time** will be ranked higher.
 
-The Top 16 ranked players will move on to the Finals.
+The Top 30 ranked players will move on to the Finals.
 
-You may view the leaderboard which will be updated daily as much as possible (Chunithm Sun Divisional Leaderboard).
+During the Qualifiers period, the leaderboard will be updated hourly, subject to the Organisers' availability.
 
 #### Notes
 
-The organisers reserve the right to disqualify any player from the challengers bracket for any reason.
+The organisers reserve the right to disqualify any player from the competition for any reason.
 
 ## Challengers Finals
 
