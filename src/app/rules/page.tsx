@@ -2,20 +2,20 @@
 
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import rules from "./rules.md";
 import remarkGfm from "remark-gfm";
 import { Affix, Col, Row } from "antd";
 import { useWindowSize } from "@/utils/useWindowSize";
+import rules from "./rules.md";
 
 const Rules = () => {
   const { width } = useWindowSize();
 
   // https://gist.github.com/sobelk/16fe68ff5520b2d5e2b6d406e329e0de
-  const toc: {
+  const toc: Array<{
     level: number;
     id: string;
     title: string;
-  }[] = [];
+  }> = [];
 
   // Magic.
   const addToTOC = ({ children, ...props }: React.PropsWithChildren<any>) => {

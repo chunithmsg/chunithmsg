@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "ci": "pnpm install --frozen-lockfile",
+    "ci": "yarn install --frozen-lockfile",
     "eslint": "eslint \"**/*.+(js|jsx|ts|tsx)\"",
     "eslint:fix": "eslint --fix \"**/*.+(js|jsx|ts|tsx)\"",
     "lint": "next lint",
@@ -13,9 +13,6 @@
     "prettier:fix": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|css)\"",
     "start": "next start",
     "test": "jest"
-  },
-  "engines": {
-    "node": ">=18"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
