@@ -8,6 +8,12 @@ export const allSongIds = [
   "wakeUpDreamer",
   "chaos",
   "pygmalion",
+  "flames135seconds",
+  "viyellasTears",
+  "solips",
+  "opfer",
+  "rhapsodyForTheEnd",
+  "azureVixen",
 ] as const;
 
 const allGenres = ["variety", "original", "gekimai", "touhou", ""] as const;
@@ -33,6 +39,15 @@ export const songDetails: { [songId in SongId]: SongDetails } = {
   wakeUpDreamer: { title: "Wake up Dreamer", genre: "original" },
   chaos: { title: "CHAOS", genre: "variety" },
   pygmalion: { title: "ピュグマリオンの咒文", genre: "original" },
+  flames135seconds: { title: "封焔の135秒", genre: "original" },
+  viyellasTears: { title: "Viyella's Tears", genre: "gekimai" },
+  solips: { title: "sølips", genre: "gekimai" },
+  opfer: { title: "Opfer", genre: "gekimai" },
+  rhapsodyForTheEnd: {
+    title: "《破滅》 ～ Rhapsody for The End",
+    genre: "original",
+  },
+  azureVixen: { title: "Λzure Vixen", genre: "original" },
 };
 
 export interface SongWithJacket {

@@ -1,339 +1,177 @@
-## Introduction
+## Overview
 
-The Chunithm SUN Divisional Tourney will be held on Saturday, 17th June 2023 at 12pm at Virtualand Nex. The qualifiers will be held from Saturday, 6th May 2023 and Sunday, 11th June 2023, playable at any Virtualand Outlet.
+The **Chunithm Singapore SUN+ers League** will be held on Saturday, 17th February 2024 at 12pm. The qualifiers will be held **in-person** on Saturday, 3rd February 2024 12pm-6pm and Sunday, 4th February 2024 12pm-6pm. Both the Qualifiers and Finals will be held at **Virtualand Nex**.
 
-There will be 2 Divisions for this Tourney, Masters and Challengers. The Masters Division will be open to all players and the Challengers Division will be open to all players with a Max Rating of at most 16.50.
+In this tournament, players who qualify for the Finals will first compete in a **Score Attack Round**, where all finalists will play **one** song randomly selected from a pool of 15 Master Lv14 songs. Those who advance will then proceed to a **Team Draft Round**, where 6 captains will draft their team captains, and teams will battle it out in intense team battles and fight for the top prize! 
 
-Only the Top 8 of the Masters Division and the Top 16 of the Challengers Division of their respective qualifiers will gain entry to the Finals.
+Only the Top 30 players in the Qualifiers will gain entry to the Finals.
 
-## Qualifiers Prizes
+## Prizes
 
-### Masters
-
-For each song, the player with the highest score that didn't qualify for finals will get $5.
-
-## Finals Prizes
-
-### Challengers
-
-| Placement  | Prizes                                             |
-| ---------- | -------------------------------------------------- |
-| Rank 1     | $40 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 2     | $20 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 3 - 4 | $10 in Virtualand credits + Handkerchief           |
-| Rank 5 - 8 | Handkerchief                                       |
-
-### Masters
-
-| Placement  | Prizes                                              |
-| ---------- | --------------------------------------------------- |
-| Rank 1     | $150 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 2     | $100 in Virtualand credits + T-shirt + Handkerchief |
-| Rank 3 - 4 | $50 in Virtualand credits + Handkerchief            |
-| Rank 5 - 8 | $25 in Virtualand credits                           |
+| Placement (Team)  | Prizes                                             |
+| ----------------- | -------------------------------------------------- |
+| 1st               | $60 in Virtualand credits (per person)             |
+| 2nd               | $30 in Virtualand credits (per person)             |
+| 3rd               | $15 in Virtualand credits (per person)             |
 
 ## Lucky Draw Prizes
 
-Any player who makes at least one submission (in either the Challengers or Masters division), and is physically present during the tourney finals, will be eligible for the Lucky Draw.
+Any player who participates in the Qualifiers, fully paid the entry fee, and is physically present during the Finals, will be eligible for the Lucky Draw.
 
-### Grand Prize
+### Prize List
 
-- 25-ji Nightcord de. Set (Aime, Glove, Keychain)
+(To : Be Confirmed)
 
-### Second Prize
-
-- More More Jump! Set (Aime, Glove, Keychain)
-
-### Third Prize
-
-- Vivid Bad SQUAD Set (Aime, Glove)
-
-### Tier 2 Prizes
-
-- Leo/need Set (Aime, Glove)
-- Wonderlands x Showtime Set (Aime, Glove)
-- VIRTUAL SINGERS Set (Aime, Glove)
-
-### Starters
-
-- Nai/0419_Guardian Aime ×2
-- Chunithm Sports Towel
-- Chunithm Yellow Glove
-
-### Pictures of Prizes
-
-![Project Sekai Sets](lucky-draw-prizes/sekai_small.png)
-
-![Towel](lucky-draw-prizes/towel_small.jpg)
-
-![TUYU Aime](lucky-draw-prizes/tuyu_small.png)
-
-![Gloves](lucky-draw-prizes/glove_small.JPG)
-
-## Challengers Qualifiers
+## Qualifiers
 
 ### Format
 
-The Qualifier follows a Score-Attack format where players will have to play a fixed set of songs and submit the score of their run. For the Challengers Division, players will need to complete 1 set of 3 songs.
+The Qualifier follows a Score-Attack format where players will have to play a fixed set of 3 songs. Each player will have a maximum of **2 attempts**, and may complete the set of songs any time during the Qualifiers period.
+
+Please note that the Qualifiers will have a **$10 entry fee**, payable by cash.
 
 ### Qualifier Songs
 
-The Challengers Qualifier consists of 1 set of 3 songs:
-
-![Wake up Dreamer](wakeupdreamer.png)
-![CHAOS](chaos.png)
-![ピュグマリオンの咒文](pygmalion.png)
+The Qualifiers consists of 3 songs:
 
 | No. | Title                | Artist                     | Difficulty | Genre    |
 | --- | -------------------- | -------------------------- | ---------- | -------- |
-| 1   | Wake up Dreamer      | Junk                       | Master 13  | Original |
-| 2   | CHAOS                | Æsir「Cytus Ⅱ」            | Master 13+ | Variety  |
-| 3   | ピュグマリオンの咒文 | アリスシャッハと魔法の楽団 | Master 14  | Original |
+| 1   | ???                  | ???                        | ???        | ???      |
+| 2   | ???                  | ???                        | ???        | ???      |
+| 3   | ???                  | ???                        | ???        | ???      |
 
 ### Rules (Please Read Before Attempting!)
 
 #### Attempting the qualifiers
 
-Challengers Qualifiers can only be attempted by players with a Max Rating (as displayed in Chunithm-Net) of at most 16.50. This must be maintained until the end of the qualifiers period.
+Qualifiers can only be played in **Virtualand Nex**, and during the Qualifiers period (3rd-4th Feb 2024, 1200-1800). Unless special permission is granted by the Organisers, any entry that violates these conditions will be disregarded, even if the player has paid the entry fee.
 
-Should a participant’s Max Rating go above 16.50 before the end of the qualifiers period, their submission will be voided.
+Players may either walk-in or reserve a timeslot in advance (details of this process will be released soon).
 
-Qualifiers can only be played in Virtualand outlets only.
+The qualifier songs must be played in the exact order as shown in the document (i.e. Tracks 1, 2 and 3), and **in view of any one of the Organisers**.
 
-The qualifier songs must be played in the exact order as shown in the document (i.e. Tracks 1, 2 and 3, or Tracks 2, 3 and 4).
-
-Please take a picture of each individual score. Each picture should clearly show:
-
-- The Virtualand card reader.
-- The QR Code on the machine (next to the Aime card reader).
-
-Please note that the Qualifiers are done at your own expense.
-
-#### Submission
-
-[Submissions are done here.](https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform)
-
-You are allowed to attempt the qualifiers as many times as you would like.
-
-Both the play times of the songs (as displayed in Chunithm-Net) and the submission (in Google Forms) must be within the Qualifier Period.
+Please notify any one of the Organisers, who will be physically present at the Qualifiers venue, before you begin your Qualifiers attempt. Your scores for the Qualifier songs will be recorded.
 
 #### Ranking
 
-Rankings are based on the total score of all 3 songs.
+Rankings are based on the total score of all 3 songs. We will take the **better of the two attempts** as the final score.
 
-In the case of a tie in the total score, the player with an earlier play time (of the final song, as displayed in Chunithm-Net) will be ranked higher.
+In the rare event of a tie, the player with an **earlier play time** will be ranked higher.
 
-The Top 16 ranked players will move on to the Finals.
+The Top 30 ranked players will move on to the Finals.
 
-You may view the leaderboard which will be updated daily as much as possible (Chunithm Sun Divisional Leaderboard).
+During the Qualifiers period, the leaderboard will be updated hourly, subject to the Organisers' availability.
 
 #### Notes
 
-The organisers reserve the right to disqualify any player from the challengers bracket for any reason.
+The organisers reserve the right to disqualify any player from the competition for any reason.
 
-## Challengers Finals
+## Finals
 
 ### Format
 
-For the Challengers Division, the format of all matches (except the final match) will be an Arena System, which is similar to the 全国対戦 mode in the Japan Version of Chunithm.
+The Finals will consist of 3 rounds:
 
-### Arena System
+1. Score Attack Round
+2. Team Matches Round
+3. Grand Finals
 
-For each match, a random Top 4 seed will be placed inside. Then, the other 3 slots will be filled by the remaining 12 players randomly. Each player will pick 1 song each, for a total of 4 songs per match.
+### Score Attack Round
 
-If the same song is picked by multiple players, that song will still be played in the Match, but a random song will be picked by the Organisers as a replacement. No song will be repeated twice in the same match.
+(The Top 6 players in the Qualifiers will **not** be involved in this round.)
 
-After each song has been played, points will be awarded depending on the position. Please refer to the following table below for the point system:
+In the Score Attack Round, the **7th-30th placed players** will have to play **one** song prescribed by the Organisers. This song will be randomly chosen by the Organisers from a pool of **fifteen (15) Master Lv14** songs, and will be announced on 4th February 2200hrs. Players will play the song in order of seed number.
 
-| Score Ranking | Points Awarded |
-| ------------- | -------------- |
-| 1st Place     | 4 Points       |
-| 2nd Place     | 3 Points       |
-| 3rd Place     | 2 Points       |
-| 4th Place     | 1 Points       |
+Only the top 12 scoring players will advance to the Team Matches Round. All other players will be eliminated.
 
-In the case of a tie (within a single song), both players will be awarded the same number of points.
+#### Song Pool
 
-At the end of the match, the total number of points will be added up. The Top 2 of each match will advance to the next round.
-
-At the end of the final Arena round (4 players left), the Top 2 will advance to the grand finals.
-
-### Tiebreakers
-
-In the event of a tie where there are multiple players (among the top 3 or 4) with the same total number of points at the end of the match, the winner will be chosen using the following properties, in order:
-
-- The higher total score of all 4 songs.
-- The lower total number of (Non-Critical) Justice judgments among all 4 songs.
-
-### Challengers Grand Finals
-
-In the grand finals match between the Top 2, each player will select 2 songs each, for a total of 4 songs.
-
-Just like the Arena matches, if the same song is picked by both players, that song will still be played in the Match, but a random song will be picked by the Organisers as a replacement. No song will be repeated twice in the same match.
-
-The winner is the player with the higher total score.
+(To be announced later)
 
 #### Tiebreakers
 
-In the event of a tie where both players have the same total score, the winner will be chosen using the following properties, in order:
+In the rare event of a tie where multiple players have the same score, the player with the **better seed number** will be ranked higher.
 
-- The higher number of songs won.
-- The higher number of counter-picks won (i.e. songs that were not selected by the player themselves).
-- The lower total number of (Non-Critical) Justice judgments among all 4 songs.
+### Team Matches Round
 
-### Chart Constant Restrictions
+In this round, the remaining 18 players will be split into 6 teams of 3 players each. This round will be conducted in two phases: a Team Drafting phase, and the Team Battle phase.
 
-There will be level restrictions put in place per round through the course of the tournament. Please view the following tables for more information.
+#### Team Drafting
 
-| Round  | Level / Chart Constant Restrictions |
-| ------ | ----------------------------------- |
-| Top 16 | Level 13 and 13+                    |
-| Top 8  | Level 13+ and 14                    |
-| Top 4  | Level 14                            |
-| Top 2  | Chart Constant 14.2 - 14.7          |
+In the Team Drafting Phase, the Top 6 players in the Qualifiers Round will be designated as Team Captains. In order of seed number, each Captain will draft one player of their choice (from the remaining 12 finalists), and the player will be added to their team. After all teams have 2 players each, the remaining 6 finalists will then be randomly placed into teams. Please refer to the image below for more details.
 
-### Song Ban List
+(Image to be uploaded soon)
 
-In addition, all songs that are locked as well as all ULTIMA charts may not be selected in the competition. For a full list of banned songs and charts (which may be updated), [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
+At the end of this phase, each player must belong in exactly one team.
 
-## Masters Qualifiers
+#### Notes
 
-### Format
+- The decisions of the Team Captains are **final** and **irreversible**. Therefore, Captains are advised to carefully consider their selections.
+- If any player refuses to be accepted in their team despite all mediation possible by the Organisers, the **entire team** shall be disbanded and disqualified from the Tournament.
+- The Organisers reserve the right to disqualify any player and/or team from the Tournament for any reason.
 
-The Qualifier follows a Score-Attack format where players will have to play a fixed set of songs and submit the score of their run. For the Masters Division, players will need to complete 2 sets of 3 songs each.
+#### Team Battle
 
-### Qualifier Songs
+Team matches will feature home and away sides. In the 1st half, each team will play against every other team once. Matches are repeated in the 2nd half but with **home/away sides switched**.
 
-The Masters Qualifier (Set A) songs are as follows:
+Every team match consists of 2 separate 1v1 tracks. The home team will present the song and player order, before the away team responds with their player own player order. Please refer to the image below for more information.
 
-![Valsqotch](valsqotch.png)
-![Imperishable Night 2006 (2016 Refine)](imperishablenight.png)
-![BATTLE NO.1](battleno1.png)
+(Image to be uploaded soon)
 
-| No. | Title                                 | Artist                    | Difficulty | Genre        |
-| --- | ------------------------------------- | ------------------------- | ---------- | ------------ |
-| 1   | Valsqotch                             | owl＊tree feat. chi＊tree | Master 14+ | ゲキマイ     |
-| 2   | Imperishable Night 2006 (2016 Refine) | ゆうゆ / 篠螺悠那         | Master 14+ | 東方 Project |
-| 3   | BATTLE NO.1                           | TANO\*C Sound Team        | Master 14+ | Variety      |
+Each team will play a total of 10 matches, with 5 of them being on the home side. Every player must play **at least thrice in each half**.
 
-The Masters Qualifier (Set B) songs are as follows:
+#### Limit Break Mechanic
 
-![スピカの天秤](spica.png)
-![We Gonna Journey](wegonnajourney.png)
-![Blazing:Storm](blazingstorm.png)
+Each team shall be entitled to **three (3)** "Limit Break" cards. This allows teams to select songs that are outside of the standard Chart Constant restrictions.
 
-| No. | Title            | Artist       | Difficulty | Genre    |
-| --- | ---------------- | ------------ | ---------- | -------- |
-| 1   | スピカの天秤     | Acotto       | Master 14+ | Original |
-| 2   | We Gonna Journey | Queen P.A.L. | Ultima 14+ | Original |
-| 3   | Blazing:Storm    | かゆき       | Master 14+ | Original |
+At the end of the Team Battle phase, all unused Limit Break cards will expire.
 
-### Rules (Please Read Before Attempting!)
+#### Song Restrictions
 
-#### Attempting the qualifiers
+The following table shows the Chart Constant restrictions for the Team Battle phase.
 
-Qualifiers can only be played in Virtualand outlets only.
+| Chart Constant Restrictions | With Limit Break      |
+| --------------------------- | --------------------- |
+| 13.7 - 14.7 inclusive       | 13.0 - 14.9 inclusive |
 
-For each set, the qualifier songs must be played in the exact order as shown in the document (i.e. Tracks 1, 2 and 3, or Tracks 2, 3 and 4).
-
-Please take a picture of each individual score. Each picture should clearly show:
-
-- The Virtualand card reader.
-- The QR Code on the machine (next to the Aime card reader).
-
-Please note that the Qualifiers are done at your own expense.
-
-#### Submission
-
-[Submissions are done here.](https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform)
-
-You will need to submit the form two times - once for each set.
-
-You are allowed to attempt the qualifiers as many times as you would like.
-
-You are allowed to submit your scores for Set A and Set B separately, and you can submit multiple attempts for each set.
-
-Both the play times of the songs (as displayed in Chunithm-Net) and the submission (in Google Forms) must be within the Qualifier Period.
+Note that **only MASTER or ULTIMA** charts may be selected. Furthermore, teams **cannot** repeat their picks throughout the entire tournament.
 
 #### Ranking
 
-Rankings are based on the total score of all 6 songs.
+At the end of the Team Battle phase, teams will be ranked according to the total number of wins during the Team Matches. The top **four (4)** teams will proceed to the Grand Finals, and the remaining teams will be eliminated.
 
-In the case of a tie in the total score, the player with an earlier play time (of the latest of the 6 songs, as displayed in Chunithm-Net) will be ranked higher.
+In the event of a tie in total wins, the following tiebreakers shall apply, in order of priority:
 
-The Top 8 ranked players will move on to the Finals.
+- The highest total number of wins on the "away" side.
+- The highest total score difference across all team matches.
+ 
+### Grand Finals
 
-You may view the leaderboard which will be updated daily as much as possible (Chunithm Sun Divisional Leaderboard).
+In the Grand Finals round, there will be three (3) matches, each consisting of 5 1v1 tracks. 
 
-## Masters Finals
+Songs 1, 3, and 5 are decided by the higher ranked team, while song 2 and 4 by the lower ranked team (CC range **14.8-15.4**). When responding to the opponent’s picks, no repeat assigning of players is allowed.
 
-### Format
+The 3rd and 4th place teams will battle first, and the team with the **higher total score** wins. The winning team challenges the next highest placed group until one team is left. Please refer to the following infographic for more information.
 
-The Masters Division will compete in a Single-Elimination Bracket, similar to the King of Performai (KOP) system. The 1st Seed will play against the 8th Seed, 2nd Seed against the 7th Seed, 3rd Seed against the 6th Seed and the 4th Seed against the 5th Seed.
+(Infographic to be uploaded soon)
 
-Each match will be 4 songs, 2 songs picked each by each player. If the same song is picked by both players, that song will still be played in the Match, but a random song will be picked by the Organisers as a replacement. No song will be repeated twice in the same match.
+#### Tiebreakers
 
-The winner of the match through total sum of score will advance to the next round.
-
-### Tiebreakers
-
-In the event of a tie where both players have the same total score, the winner will be chosen using the following properties, in order:
+In the extreme event of a tie in total score, the following tiebreakers will apply, in order of priority:
 
 - The higher number of songs won.
 - The higher number of counter-picks won (i.e. songs that were not selected by the player themselves).
 - The lower total number of (Non-Critical) Justice judgments among all 4 songs.
 
-### Cards
-
-Each player will be given two power-up cards that they can use during the tournament.
-
-- Each card may only be used at most once throughout the tournament.
-- A player can use at most one card per round.
-- No card can be used in the final (i.e. Top 2) round.
-
-The cards are as follows:
-
-1. Randomiser: Randomises one song chosen by your opponent to a pool of six songs according to the song's chart constant. The chosen song by the randomiser cannot be the same as the song previously chosen.
-2. Limit Break: One of your song choices may be chosen with a higher chart constant, according to the section "Chart Constant Restrictions" below. In addition, this song choice may not be randomised with the "Randomiser" card above.
-
-Hence, this is how choosing the song process will be done.
-
-1. Everyone chooses 2 charts. Limit break can be used in one chart of your choice.
-2. These charts will be passed to your opponent. If your opponent has not used limit break, your opponent may use the Randomiser card to randomise one chart of your choice. However, charts chosen with Limit Break cannot be randomised.
-3. Reveal all charts.
-
-### Chart Constant Restrictions
-
-There will be level restrictions put in place per round through the course of the tournament. Please view the following tables for more information.
-
-| Round | Chart Constant Restrictions | With Limit Break      |
-| ----- | --------------------------- | --------------------- |
-| Top 8 | 14.5 - 14.9 inclusive       | 14.5 - 15.2 inclusive |
-| Top 4 | 14.8 - 15.2 inclusive       | 14.8 - 15.4 inclusive |
-| Top 2 | 15.0 - 15.4 inclusive       | N/A                   |
-
 ### Song Ban List
 
-In addition, some charts may not be chosen in the competition. For a full list of charts, [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
-
-### Randomiser Pool
-
-Here are the charts that are available to be chosen with the Randomiser card.
-
-| No. \ Chart Constant | 14.5                                                                   | 14.6                | 14.7                             | 14.8                                   | 14.9                                                | 15.0                        | 15.1                    | 15.2                   |
-| -------------------- | ---------------------------------------------------------------------- | ------------------- | -------------------------------- | -------------------------------------- | --------------------------------------------------- | --------------------------- | ----------------------- | ---------------------- |
-| 1                    | Good bye, Merry-Go-Round. (MAS)                                        | Evans (ULT)         | Ai Nov (MAS)                     | 8-EM (MAS)                             | Exitium (MAS)                                       | ANU (MAS)                   | parvorbital (MAS)       | macrocosmos (MAS)      |
-| 2                    | Philosopher (MAS)                                                      | larva (MAS)         | Blessed Rain (MAS)               | AMAZING MIGHTYYYY!!!! (MAS)            | GIGA DRIVE (MAS)                                    | Contrapasso -inferno- (MAS) | POTENTIAL (MAS)         | Rebellion (MAS)        |
-| 3                    | Qlipthogear (MAS)                                                      | Nhelv (MAS)         | Last Celebration (MAS)           | Don't Fight The Music (MAS)            | Glorious Crown (tpz over-Over-OVERCUTE REMIX) (MAS) | ENDYMION (MAS)              | Trrricksters!! (MAS)    | Strange Love (MAS)     |
-| 4                    | 初音ミクの消失 (MAS)                                                   | Parad'ox (MAS)      | Paqqin (tpz Despair Remix) (MAS) | Excalibur \~Revived resolution\~ (MAS) | Surveiller et punir (MAS)                           | Invisible Frenzy (MAS)      | X7124 (MAS)             | To: Be Continued (MAS) |
-| 5                    | 管弦楽組曲 第 3 番 ニ長調「第 2 曲（G 線上のアリア）」BWV.1068-2 (MAS) | PUPA (MAS)          | Sound Chimera (MAS)              | Trackless wilderness (MAS)             | YURUSHITE (MAS)                                     | Killing Rhythm (MAS)        | 怒槌 (MAS)              | Λzure Vixen (MAS)      |
-| 6                    | 花と、雪と、ドラムンベース。 (MAS)                                     | Scarlet Lance (MAS) | 初音ミクの激唱 (MAS)             | 封焔の 135 秒 (MAS)                    | 患部で止まってすぐ溶ける～狂気の優曇華院 (ULT)      | TiamaT:F minor (MAS)        | 玩具狂奏曲 -終焉- (MAS) | 宿星審判 (MAS)         |
+For a full list of banned songs and charts (which may be updated), [click here](https://docs.google.com/spreadsheets/d/1QpTEl-36QFohIipiX2j9VgNgx_Fpoor_BJGsgPNb9Ss/edit?usp=sharing).
 
 ## FAQs
 
 ### Will the games be sponsored?
 
-The game credits will be provided in the Finals only.
+The game credits will be provided in both the Qualifiers and the Finals.
 
 ### When will the Waiting List people know whether they will be competing in the Finals?
 
@@ -343,17 +181,17 @@ On the day of the competition, if there are no shows, the Organiser will contact
 
 We will be sending out a schedule closer to the Finals date. However, you are highly recommended to stay in the Arcade for the duration of the Tournament.
 
-### How will the brackets be determined?
+### How will the teams be determined?
 
-The organiser will be drawing lots for the unseeded players beforehand. The procedures will be done live and in view of an audience.
+The Top 6 players in the Qualifiers will be designated as Team Captains. After the Score Attack Round concludes, the remaining 12 players will then be drafted by the Team Captains. Please refer to the Team Matches section for more details.
 
 ### Are there any registration fees for the tourney?
 
-No, there are not.
+Yes, there is a **$10 entry fee** for the Qualifiers.
 
 ### What is the Song Pool?
 
-We will cut off the Song Pool at Armageddon, which is the 13 April 2023 update. All games will use Master Ticket unless an Ultima is chosen, in which case an Ultima Ticket will be required.
+We will cut off the Song Pool at SUN Ep. V (夢と幻想の終点にて, Superbia, 空間創造理論, βlαnoir), which is the 21 December 2023 update. All games will use Master Ticket unless an Ultima is chosen, in which case an Ultima Ticket will be required.
 
 ### Is there any particular character skill needed for the Tournament?
 

@@ -4,15 +4,12 @@ import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
-import wakeUpDreamer from "../../public/wakeupdreamer.png";
-import chaos from "../../public/chaos.png";
-import pygmalion from "../../public/pygmalion.png";
-import valsqotch from "../../public/valsqotch.png";
-import imperishableNight from "../../public/imperishablenight.png";
-import battleNo1 from "../../public/battleno1.png";
-import spica from "../../public/spica.png";
-import weGonnaJourney from "../../public/wegonnajourney.png";
-import blazingStorm from "../../public/blazingstorm.png";
+import flames135seconds from "../../public/kop-5th-qualifiers/flames135seconds.jpg";
+import viyellasTears from "../../public/kop-5th-qualifiers/viyellas_tears.jpg";
+import solips from "../../public/kop-5th-qualifiers/solips.jpg";
+import opfer from "../../public/kop-5th-qualifiers/opfer.jpg";
+import rhapsodyForTheEnd from "../../public/kop-5th-qualifiers/rhapsody_for_the end.jpg";
+import azureVixen from "../../public/kop-5th-qualifiers/azure_vixen.jpg";
 
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
@@ -22,7 +19,7 @@ import { SongScore } from "@/models/songScore";
 import { IndividualSongStanding } from "@/models/individualSongStanding";
 import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
 import SongScoreLabel from "@/components/SongScoreLabel";
-import { SongWithJacket } from "@/utils/songUtils";
+import { SongWithJacket, songDetails } from "@/utils/songUtils";
 import {
   leaderboardFreezeEndTimestamp,
   leaderboardFreezeStartTimestamp,
@@ -30,49 +27,25 @@ import {
 } from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
-interface Song {
-  image: any;
-  title: string;
-  genre?: Genre;
-}
-
-type Genre = "variety" | "original" | "gekimai" | "touhou" | "";
-
-const challengerSongs: Song[] = [
-  { image: wakeUpDreamer, title: "Wake up Dreamer", genre: "original" },
-  { image: chaos, title: "CHAOS", genre: "variety" },
-  { image: pygmalion, title: "ピュグマリオンの咒文", genre: "original" },
-];
-
-const masterSongs: Song[] = [
-  { image: valsqotch, title: "Valsqotch", genre: "gekimai" },
-  {
-    image: imperishableNight,
-    title: "Imperishable Night 2006\n(2016 Refine)",
-    genre: "touhou",
-  },
-  { image: battleNo1, title: "BATTLE NO.1", genre: "variety" },
-  { image: spica, title: "スピカの天秤", genre: "original" },
-  { image: weGonnaJourney, title: "We Gonna Journey", genre: "original" },
-  { image: blazingStorm, title: "Blazing:Storm", genre: "original" },
+const masterSongs: SongWithJacket[] = [
+  { songId: "flames135seconds", jacket: flames135seconds },
+  { songId: "viyellasTears", jacket: viyellasTears },
+  { songId: "solips", jacket: solips },
+  { songId: "opfer", jacket: opfer },
+  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
+  { songId: "azureVixen", jacket: azureVixen },
 ];
 
 const individualMastersSongs: SongWithJacket[] = [
-  { songId: "valsqotch", jacket: valsqotch },
-  { songId: "imperishableNight", jacket: imperishableNight },
-  { songId: "battleNo1", jacket: battleNo1 },
-  { songId: "spica", jacket: spica },
-  { songId: "weGonnaJourney", jacket: weGonnaJourney },
-  { songId: "blazingStorm", jacket: blazingStorm },
+  { songId: "flames135seconds", jacket: flames135seconds },
+  { songId: "viyellasTears", jacket: viyellasTears },
+  { songId: "solips", jacket: solips },
+  { songId: "opfer", jacket: opfer },
+  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
+  { songId: "azureVixen", jacket: azureVixen },
 ];
 
-const individualChallengersSongs: SongWithJacket[] = [
-  { songId: "wakeUpDreamer", jacket: wakeUpDreamer },
-  { songId: "chaos", jacket: chaos },
-  { songId: "pygmalion", jacket: pygmalion },
-];
-
-const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
+const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
   {
     title: "#",
     key: "no",
@@ -96,33 +69,37 @@ const generateColumns = (songs: Song[]): ColumnsType<Standing> => [
       </div>
     ),
   },
-  ...songs.map(({ title, image }, idx) => ({
-    title: (
-      <Image
-        src={image}
-        alt={title}
-        title={title}
-        style={{
-          maxHeight: "90px",
-          height: "auto",
-          width: "auto",
-        }}
-      />
-    ),
-    children: [
-      {
-        title: <div style={{ whiteSpace: "pre-line" }}>{title}</div>,
-        key: `song${idx + 1}`,
-        dataIndex: `song${idx + 1}`,
-        render: (_text: string, record: Standing) => {
-          const songScore = record[
-            `song${idx + 1}` as keyof Standing
-          ] as SongScore;
-          return <SongScoreLabel songScore={songScore} />;
+  ...songs.map(({ songId, jacket }, idx) => {
+    const { title } = songDetails[songId];
+
+    return {
+      title: (
+        <Image
+          src={jacket}
+          alt={title}
+          title={title}
+          style={{
+            maxHeight: "90px",
+            height: "auto",
+            width: "auto",
+          }}
+        />
+      ),
+      children: [
+        {
+          title: <div style={{ whiteSpace: "pre-line" }}>{title}</div>,
+          key: `song${idx + 1}`,
+          dataIndex: `song${idx + 1}`,
+          render: (_text: string, record: Standing) => {
+            const songScore = record[
+              `song${idx + 1}` as keyof Standing
+            ] as SongScore;
+            return <SongScoreLabel songScore={songScore} />;
+          },
         },
-      },
-    ],
-  })),
+      ],
+    };
+  }),
   {
     title: "Total Score",
     key: "totalScore",
@@ -159,10 +136,6 @@ const LeaderboardTable = styled(Table<Standing>)`
     background-color: #f0e9f5;
   }
 
-  .challengers-finalist {
-    background-color: #f5f0f0;
-  }
-
   .disqualified {
     background-color: #ccc;
   }
@@ -179,9 +152,6 @@ const Leaderboard = () => {
   const [shouldHideFinalists, setShouldHideFinalists] = useState(false);
 
   const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
-  const [challengerStandings, setChallengerStandings] = useState<Standing[]>(
-    []
-  );
 
   const [individualSongStandings, setIndividualSongStandings] = useState<
     IndividualSongStanding[]
@@ -192,10 +162,8 @@ const Leaderboard = () => {
   const fetchStandings = useCallback(async () => {
     setIsFetchingStandings(true);
     const response = await fetch("/submissions");
-    const { masters, challengers, individualSongStandings } =
-      await response.json();
+    const { masters, individualSongStandings } = await response.json();
 
-    setChallengerStandings(challengers);
     setMasterStandings(masters);
     setIndividualSongStandings(individualSongStandings);
     setIsFetchingStandings(false);
@@ -228,9 +196,9 @@ const Leaderboard = () => {
     currentTimestamp < leaderboardFreezeEndTimestamp;
 
   const table = (
-    songs: Song[],
+    songs: SongWithJacket[],
     scores: Standing[],
-    division: "masters" | "challengers",
+    division: "masters",
     numFinalists: number
   ) => (
     <LeaderboardTable
@@ -278,8 +246,7 @@ const Leaderboard = () => {
             />
             {"Hide Disqualified"}
           </div>
-          {(activeTab === "individualMastersSongStandings" ||
-            activeTab === "individualChallengersSongStandings") && (
+          {activeTab === "individualMastersSongStandings" && (
             <div style={{ display: "flex", gap: "8px" }}>
               <Switch
                 onChange={setShouldHideFinalists}
@@ -333,36 +300,11 @@ const Leaderboard = () => {
             children: table(masterSongs, masterStandings, "masters", 8),
           },
           {
-            key: "challengers",
-            label: "Challengers",
-            children: table(
-              challengerSongs,
-              challengerStandings,
-              "challengers",
-              16
-            ),
-          },
-          {
             key: "individualMastersSongStandings",
             label: "Individual Songs (Masters)",
             children: (
               <IndividualSongLeaderboard
                 songs={individualMastersSongs}
-                loading={isFetchingStandings}
-                standings={individualSongStandings}
-                options={{
-                  shouldHideFinalists,
-                  shouldHideDisqualified,
-                }}
-              />
-            ),
-          },
-          {
-            key: "individualChallengersSongStandings",
-            label: "Individual Songs (Challengers)",
-            children: (
-              <IndividualSongLeaderboard
-                songs={individualChallengersSongs}
                 loading={isFetchingStandings}
                 standings={individualSongStandings}
                 options={{
