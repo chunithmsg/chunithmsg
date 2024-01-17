@@ -1,25 +1,25 @@
 import {
   IndividualSongStanding,
   generateKey,
-} from "@/models/individualSongStanding";
-import { SongScore } from "@/models/songScore";
-import { Standing, compareStandings } from "@/models/standing";
+} from '@/models/individualSongStanding';
+import { SongScore } from '@/models/songScore';
+import { Standing, compareStandings } from '@/models/standing';
 import {
   Submission,
   SubmissionSet,
   compareSubmissions,
   getTotalSubmissionScore,
-} from "@/models/submission";
-import { SongId } from "./songUtils";
+} from '@/models/submission';
 import {
   IndividualSongScore,
   compareIndividualSongScores,
   mergeIndividualSongScores,
-} from "@/models/individualSongScore";
-import { numChallengersFinalists, numMastersFinalists } from "./constants";
-import { QualifierSet, allQualifierSets } from "./submissionConstants";
+} from '@/models/individualSongScore';
+import { SongId } from './song';
+import { numChallengersFinalists, numMastersFinalists } from './constants';
+import { QualifierSet, allQualifierSets } from './submissionConstants';
 
-const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: "" };
+const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: '' };
 
 const extractBestSubmissions = (submissionSet: SubmissionSet) => {
   const output: { [S in QualifierSet]?: Submission[] } = {};
@@ -117,7 +117,7 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
 
 const toRankMap = (
   standings: Standing[],
-  shouldIgnoreDisqualified: boolean = true
+  shouldIgnoreDisqualified: boolean = true,
 ) => {
   const rankMap: { [ign: string]: number } = {};
   for (const [rank, standing] of standings
@@ -135,13 +135,13 @@ const toRankMap = (
 
 export const getIndividualScoreStandings = (
   submissionSet: SubmissionSet,
-  submissionScoreThreshold: number = 0
+  submissionScoreThreshold: number = 0,
 ): IndividualSongStanding[] => {
   // Holy shit, this function is a long hot mess and I feel filthy for writing it.
 
   const setSongs: { [A in QualifierSet]: SongId[] } = {
-    [QualifierSet.MastersA]: ["flames135seconds", "viyellasTears", "solips"],
-    [QualifierSet.MastersB]: ["opfer", "rhapsodyForTheEnd", "azureVixen"],
+    [QualifierSet.MastersA]: ['flames135seconds', 'viyellasTears', 'solips'],
+    [QualifierSet.MastersB]: ['opfer', 'rhapsodyForTheEnd', 'azureVixen'],
   };
 
   const allSongs: SongId[] = [];
@@ -168,7 +168,7 @@ export const getIndividualScoreStandings = (
     // all the songs in the submission to be at least the given threshold.
     const filteredSubmissions = submissionSet[qualifierSet].filter(
       ({ songScores }) =>
-        songScores.every(({ score }) => score >= submissionScoreThreshold)
+        songScores.every(({ score }) => score >= submissionScoreThreshold),
     );
 
     for (const {
@@ -178,12 +178,12 @@ export const getIndividualScoreStandings = (
       timestamp,
     } of filteredSubmissions) {
       // Prepare the "leaderboard standing" object.
-      let leaderboardStanding: IndividualSongScore["leaderboardStanding"] =
+      let leaderboardStanding: IndividualSongScore['leaderboardStanding'] =
         undefined;
 
       if (mastersRankMap.hasOwnProperty(ign)) {
         const rank = mastersRankMap[ign];
-        leaderboardStanding = { division: "Masters", rank };
+        leaderboardStanding = { division: 'Masters', rank };
       }
 
       for (let i = 0; i < songScores.length; ++i) {
@@ -242,7 +242,7 @@ export const getIndividualScoreStandings = (
 };
 
 export const isFinalist = (leaderboardStanding?: {
-  division: "Challengers" | "Masters";
+  division: 'Challengers' | 'Masters';
   rank: number;
 }) => {
   if (!leaderboardStanding) {
@@ -250,7 +250,7 @@ export const isFinalist = (leaderboardStanding?: {
   }
 
   const { division, rank } = leaderboardStanding;
-  if (division === "Challengers") {
+  if (division === 'Challengers') {
     return rank <= numChallengersFinalists;
   } else {
     return rank <= numMastersFinalists;
@@ -262,7 +262,7 @@ export const filterIndividualScoreStandings = (
   options: {
     shouldFilterDisqualified?: boolean;
     shouldFilterFinalists?: boolean;
-  } = {}
+  } = {},
 ): IndividualSongStanding[] => {
   if (standings.length === 0) {
     return [];
@@ -324,7 +324,7 @@ export const filterIndividualScoreStandings = (
  * @param score The score to format, given as the string representation of an integer.
  * @returns The formatted score.
  */
-export const formatScore = (score: number) => score.toLocaleString("en-US");
+export const formatScore = (score: number) => score.toLocaleString('en-US');
 
 export const formatOrdinal = (rank: number) => {
   if (rank % 10 == 1 && rank % 100 != 11) {
@@ -339,9 +339,9 @@ export const formatOrdinal = (rank: number) => {
 };
 
 export const formatTimestamp = (timestamp: number) =>
-  new Date(timestamp).toLocaleString("en-SG", {
-    timeZone: "Asia/Singapore",
-    dateStyle: "short",
-    timeStyle: "short",
+  new Date(timestamp).toLocaleString('en-SG', {
+    timeZone: 'Asia/Singapore',
+    dateStyle: 'short',
+    timeStyle: 'short',
     hour12: false,
   });

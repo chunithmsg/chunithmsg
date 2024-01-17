@@ -1,19 +1,17 @@
-import { qualifiersSpreadsheetId } from "@/utils/constants";
-import { Submission, SubmissionSet } from "@/models/submission";
+import { Submission, SubmissionSet } from '@/models/submission';
 import {
   AuthClient,
   getAuthClient,
   getSpreadSheetValues,
-} from "@/services/googleSheetsService";
-import { parseLocalDate } from "@/utils/dateUtils";
-import { QualifierSet, allQualifierSets } from "@/utils/submissionConstants";
+} from '@/services/googleSheetsService';
+import { qualifiersSpreadsheetId, parseLocalDate, QualifierSet, allQualifierSets } from '@/libs';
 
 /**
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
  */
 const sheetNames = {
-  [QualifierSet.MastersA]: "KOP 5th - Set 1",
-  [QualifierSet.MastersB]: "KOP 5th - Set 2",
+  [QualifierSet.MastersA]: 'KOP 5th - Set 1',
+  [QualifierSet.MastersB]: 'KOP 5th - Set 2',
 };
 
 const columnIndexes = {
@@ -28,7 +26,7 @@ const columnIndexes = {
 /**
  * The range within each sheet that contains the submission data.
  */
-const submissionRange = "A3:M1000";
+const submissionRange = 'A3:M1000';
 
 export interface SubmissionOptions {
   /**
@@ -71,19 +69,19 @@ export const isCompleteSubmissionRow = (row: string[]) => {
  * @returns The parsed Submission, or undefined if an error occurred.
  */
 export const tryParseSubmissionRow = (
-  row: string[]
+  row: string[],
 ): Submission | undefined => {
   try {
     const timestamp = parseLocalDate(row[columnIndexes.timestamp]).getTime();
     const formSubmissionTimestamp = parseLocalDate(
-      row[columnIndexes.formSubmissionTimestamp]
+      row[columnIndexes.formSubmissionTimestamp],
     ).getTime();
     const songScores = [0, 1, 2].map((index) => ({
       score: parseInt(row[columnIndexes.songs + 2 * index]),
-      ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? "") as
-        | ""
-        | "FC"
-        | "AJ",
+      ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? '') as
+        | ''
+        | 'FC'
+        | 'AJ',
     }));
 
     // Check if any of the numerical fields was parsed to NaN.
@@ -94,20 +92,22 @@ export const tryParseSubmissionRow = (
         ...songScores.map(({ score }) => score),
       ].some(isNaN)
     ) {
-      throw new Error("One of the numerical fields is parsed as NaN.");
+      throw new Error('One of the numerical fields is parsed as NaN.');
     }
 
     return {
       timestamp,
       formSubmissionTimestamp,
       ign: row[columnIndexes.ign],
-      isDisqualified: row[columnIndexes.isPlayerDisqualified] === "TRUE",
-      isVoidSubmission: row[columnIndexes.isVoidSubmission] === "TRUE",
+      isDisqualified: row[columnIndexes.isPlayerDisqualified] === 'TRUE',
+      isVoidSubmission: row[columnIndexes.isVoidSubmission] === 'TRUE',
       songScores,
     };
   } catch (error) {
     console.error(
-      `Parsing error occurred when attempting to parse: ${JSON.stringify(row)}.`
+      `Parsing error occurred when attempting to parse: ${JSON.stringify(
+        row,
+      )}.`,
     );
     console.error(error);
     return undefined;
@@ -138,7 +138,7 @@ export class SubmissionController {
     for (const qualifierSet of allQualifierSets) {
       output[qualifierSet] = await this.getSubmissionForSet(
         qualifierSet,
-        options
+        options,
       );
     }
 
@@ -147,12 +147,12 @@ export class SubmissionController {
 
   private async getSubmissionForSet(
     qualifierSet: QualifierSet,
-    options?: SubmissionOptions
+    options?: SubmissionOptions,
   ): Promise<Submission[]> {
     const response = await getSpreadSheetValues(
       qualifiersSpreadsheetId,
       this.authClient,
-      `${sheetNames[qualifierSet]}!${submissionRange}`
+      `${sheetNames[qualifierSet]}!${submissionRange}`,
     );
 
     const values = response.data.values as string[][] | null | undefined;
@@ -170,13 +170,13 @@ export class SubmissionController {
         // Filter by timestamp, if specified in options.
         options?.timestampLimit === undefined
           ? true
-          : timestamp <= options.timestampLimit
+          : timestamp <= options.timestampLimit,
       )
       .filter(({ formSubmissionTimestamp }) =>
         options?.formSubmissionTimestampLimit === undefined
           ? true
           : formSubmissionTimestamp !== undefined &&
-            formSubmissionTimestamp <= options.formSubmissionTimestampLimit
+            formSubmissionTimestamp <= options.formSubmissionTimestampLimit,
       );
   }
 }

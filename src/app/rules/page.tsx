@@ -1,11 +1,13 @@
-"use client";
+'use client';
 
-import React from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Affix, Col, Row } from "antd";
-import { useWindowSize } from "@/utils/useWindowSize";
-import rules from "./rules.md";
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Affix, Col, Row } from 'antd';
+
+import { useWindowSize } from '@/libs';
+
+import rules from './rules.md';
 
 const Rules = () => {
   const { width } = useWindowSize();
@@ -20,8 +22,8 @@ const Rules = () => {
   // Magic.
   const addToTOC = ({ children, ...props }: React.PropsWithChildren<any>) => {
     const level = Number(props.node.tagName.match(/h(\d)/)?.slice(1));
-    if (level && children && typeof children[0] === "string") {
-      const id = children[0].toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    if (level && children && typeof children[0] === 'string') {
+      const id = children[0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
       toc.push({
         level,
         id,

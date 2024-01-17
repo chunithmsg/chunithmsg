@@ -1,3 +1,7 @@
+// TODO: convert this into as const for scalability
+// * this is because enums suck in ts
+// * literally the scum of ts, should never be used and should be removed from the language
+// * use as const instead
 /**
  * The two qualifiers sets.
  */

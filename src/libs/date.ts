@@ -1,3 +1,4 @@
+// TODO: install luxon to fix the date issues
 /**
  * Parses a local date/time string that has no specified timezone.
  *
@@ -15,7 +16,7 @@ export const parseLocalDate = (
   // timezoneOffsetOf("Asia/Singapore"), and I can sort of understand
   // why with DST and all that stuff, but wow am I just tired of trying
   // to find a 'nice' solution. So screw it - hardcoded 8 hours is what you get.
-  timezoneOffsetInMilliseconds = 8 * 60 * 60 * 1000
+  timezoneOffsetInMilliseconds = 8 * 60 * 60 * 1000,
 ) => {
   const tokens = dateTimeString.split(/\D/).map((token) => parseInt(token, 10));
   const pseudoTimestamp = Date.UTC(
@@ -23,7 +24,7 @@ export const parseLocalDate = (
     (tokens[1] ?? 1) - 1,
     tokens[2] ?? 1,
     tokens[3] ?? 0,
-    tokens[4] ?? 0
+    tokens[4] ?? 0,
   );
 
   return new Date(pseudoTimestamp - timezoneOffsetInMilliseconds);

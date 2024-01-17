@@ -1,4 +1,4 @@
-import { SongScore } from "./songScore";
+import { SongScore } from './songScore';
 
 /**
  * The Standing interface refers to an entry on the leaderboard.
@@ -25,7 +25,7 @@ export const compareStandings = (standingA: Standing, standingB: Standing) => {
 
   if (aScore !== bScore) {
     return bScore - aScore;
-  } else {
-    return standingA.timestamp - standingB.timestamp;
   }
+
+  return standingA.timestamp - standingB.timestamp;
 };

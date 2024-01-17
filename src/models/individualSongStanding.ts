@@ -1,5 +1,6 @@
-import { SongId, allSongIds } from "@/utils/songUtils";
-import { IndividualSongScore } from "./individualSongScore";
+// Can't use @/libs due to circular dependency.
+import { SongId, allSongIds } from '@/libs/song';
+import { IndividualSongScore } from './individualSongScore';
 
 /**
  * The IndividualSongStanding interface represents a single row in the

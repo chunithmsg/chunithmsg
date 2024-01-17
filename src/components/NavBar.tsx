@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Menu } from "antd";
-import { usePathname } from "next/navigation";
-import { submissionUrl } from "@/utils/constants";
+import Link from 'next/link';
+import { Menu } from 'antd';
+import { usePathname } from 'next/navigation';
+
+import { submissionUrl } from '@/libs';
 
 const links = {
-  Leaderboard: "/",
-  Rules: "/rules",
+  Leaderboard: '/',
+  Rules: '/rules',
   Submission: submissionUrl,
 };
 
@@ -19,10 +20,10 @@ const NavBar = () => {
       mode="horizontal"
       items={Object.entries(links).map(([key, href]) => ({
         label: <Link href={href}>{key}</Link>,
-        key: key,
+        key,
       }))}
       selectedKeys={Object.entries(links).flatMap(([key, href]) =>
-        pathname === href ? [key] : []
+        pathname === href ? [key] : [],
       )}
     />
   );

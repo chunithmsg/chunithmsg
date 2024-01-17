@@ -1,67 +1,70 @@
-"use client";
+'use client';
 
-import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
-import { RedoOutlined } from "@ant-design/icons";
-import Image from "next/image";
+import { Table, Switch, Tabs, Button, Tag, notification } from 'antd';
+import { RedoOutlined } from '@ant-design/icons';
+import Image from 'next/image';
 
-import flames135seconds from "../../public/kop-5th-qualifiers/flames135seconds.jpg";
-import viyellasTears from "../../public/kop-5th-qualifiers/viyellas_tears.jpg";
-import solips from "../../public/kop-5th-qualifiers/solips.jpg";
-import opfer from "../../public/kop-5th-qualifiers/opfer.jpg";
-import rhapsodyForTheEnd from "../../public/kop-5th-qualifiers/rhapsody_for_the end.jpg";
-import azureVixen from "../../public/kop-5th-qualifiers/azure_vixen.jpg";
+import { useCallback, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { ColumnsType } from 'antd/es/table';
 
-import styled from "styled-components";
-import { useCallback, useEffect, useState } from "react";
-import { Standing } from "@/models/standing";
-import { ColumnsType } from "antd/es/table";
-import { SongScore } from "@/models/songScore";
-import { IndividualSongStanding } from "@/models/individualSongStanding";
-import IndividualSongLeaderboard from "@/components/IndividualSongLeaderboard";
-import SongScoreLabel from "@/components/SongScoreLabel";
-import { SongWithJacket, songDetails } from "@/utils/songUtils";
+import { Standing } from '@/models/standing';
+import { SongScore } from '@/models/songScore';
+import { IndividualSongStanding } from '@/models/individualSongStanding';
+import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
+import SongScoreLabel from '@/components/SongScoreLabel';
 import {
   leaderboardFreezeEndTimestamp,
   leaderboardFreezeStartTimestamp,
   qualifiersEndTimestamp,
-} from "@/utils/constants";
-import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
+  formatScore,
+  formatTimestamp,
+  songDetails,
+} from '@/libs';
+import type { SongWithJacket } from '@/libs';
+
+import azureVixen from '../../public/kop-5th-qualifiers/azure_vixen.jpg';
+import rhapsodyForTheEnd from '../../public/kop-5th-qualifiers/rhapsody_for_the end.jpg';
+import solips from '../../public/kop-5th-qualifiers/solips.jpg';
+import viyellasTears from '../../public/kop-5th-qualifiers/viyellas_tears.jpg';
+import flames135seconds from '../../public/kop-5th-qualifiers/flames135seconds.jpg';
+import opfer from '../../public/kop-5th-qualifiers/opfer.jpg';
 
 const masterSongs: SongWithJacket[] = [
-  { songId: "flames135seconds", jacket: flames135seconds },
-  { songId: "viyellasTears", jacket: viyellasTears },
-  { songId: "solips", jacket: solips },
-  { songId: "opfer", jacket: opfer },
-  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
-  { songId: "azureVixen", jacket: azureVixen },
+  { songId: 'flames135seconds', jacket: flames135seconds },
+  { songId: 'viyellasTears', jacket: viyellasTears },
+  { songId: 'solips', jacket: solips },
+  { songId: 'opfer', jacket: opfer },
+  { songId: 'rhapsodyForTheEnd', jacket: rhapsodyForTheEnd },
+  { songId: 'azureVixen', jacket: azureVixen },
 ];
 
 const individualMastersSongs: SongWithJacket[] = [
-  { songId: "flames135seconds", jacket: flames135seconds },
-  { songId: "viyellasTears", jacket: viyellasTears },
-  { songId: "solips", jacket: solips },
-  { songId: "opfer", jacket: opfer },
-  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
-  { songId: "azureVixen", jacket: azureVixen },
+  { songId: 'flames135seconds', jacket: flames135seconds },
+  { songId: 'viyellasTears', jacket: viyellasTears },
+  { songId: 'solips', jacket: solips },
+  { songId: 'opfer', jacket: opfer },
+  { songId: 'rhapsodyForTheEnd', jacket: rhapsodyForTheEnd },
+  { songId: 'azureVixen', jacket: azureVixen },
 ];
 
 const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
   {
-    title: "#",
-    key: "no",
-    dataIndex: "no",
+    title: '#',
+    key: 'no',
+    dataIndex: 'no',
     render: (_text: string, _record: Standing, idx: number) => idx + 1,
   },
   {
-    title: "IGN",
-    key: "ign",
-    dataIndex: "ign",
+    title: 'IGN',
+    key: 'ign',
+    dataIndex: 'ign',
     render: (_text: string, { ign, isDisqualified }: Standing) => (
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "4px",
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px',
         }}
       >
         {ign}
@@ -79,15 +82,15 @@ const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
           alt={title}
           title={title}
           style={{
-            maxHeight: "90px",
-            height: "auto",
-            width: "auto",
+            maxHeight: '90px',
+            height: 'auto',
+            width: 'auto',
           }}
         />
       ),
       children: [
         {
-          title: <div style={{ whiteSpace: "pre-line" }}>{title}</div>,
+          title: <div style={{ whiteSpace: 'pre-line' }}>{title}</div>,
           key: `song${idx + 1}`,
           dataIndex: `song${idx + 1}`,
           render: (_text: string, record: Standing) => {
@@ -101,15 +104,15 @@ const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
     };
   }),
   {
-    title: "Total Score",
-    key: "totalScore",
-    dataIndex: "totalScore",
+    title: 'Total Score',
+    key: 'totalScore',
+    dataIndex: 'totalScore',
     render: formatScore,
   },
   {
-    title: "Time of play",
-    key: "timestamp",
-    dataIndex: "timestamp",
+    title: 'Time of play',
+    key: 'timestamp',
+    dataIndex: 'timestamp',
     render: (_text: string, record: Standing) =>
       formatTimestamp(record.timestamp),
   },
@@ -145,7 +148,7 @@ const Leaderboard = () => {
   const [api, contextHolder] = notification.useNotification();
 
   const [currentTimestamp, setCurrentTimestamp] = useState<number | undefined>(
-    undefined
+    undefined,
   );
 
   const [shouldHideDisqualified, setShouldHideDisqualified] = useState(true);
@@ -157,11 +160,11 @@ const Leaderboard = () => {
     IndividualSongStanding[]
   >([]);
   const [isFetchingStandings, setIsFetchingStandings] = useState(false);
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState('');
 
   const fetchStandings = useCallback(async () => {
     setIsFetchingStandings(true);
-    const response = await fetch("/submissions");
+    const response = await fetch('/submissions');
     const { masters, individualSongStandings } = await response.json();
 
     setMasterStandings(masters);
@@ -170,7 +173,7 @@ const Leaderboard = () => {
   }, []);
 
   const updateCurrentTimestamp = useCallback(async () => {
-    const response = await fetch("/current-time");
+    const response = await fetch('/current-time');
     const { unixTimestamp } = await response.json();
 
     setCurrentTimestamp(unixTimestamp);
@@ -198,23 +201,23 @@ const Leaderboard = () => {
   const table = (
     songs: SongWithJacket[],
     scores: Standing[],
-    division: "masters",
-    numFinalists: number
+    division: 'masters',
+    numFinalists: number,
   ) => (
     <LeaderboardTable
       size="small"
       loading={isFetchingStandings}
       columns={generateColumns(songs)}
       dataSource={scores.filter(
-        ({ isDisqualified }) => !shouldHideDisqualified || !isDisqualified
+        ({ isDisqualified }) => !shouldHideDisqualified || !isDisqualified,
       )}
       rowClassName={(record: Standing, index: number) =>
-        `${index < numFinalists ? `${division}-finalist ` : ""}${
-          record.isDisqualified ? "disqualified " : ""
+        `${index < numFinalists ? `${division}-finalist ` : ''}${
+          record.isDisqualified ? 'disqualified ' : ''
         }`
       }
       pagination={false}
-      rowKey={"ign"}
+      rowKey="ign"
       scroll={{ x: true }}
     />
   );
@@ -223,36 +226,36 @@ const Leaderboard = () => {
     <>
       {contextHolder}
       <h1>Leaderboard</h1>
-      <p style={{ fontWeight: "bold" }}>{`Qualifiers time remaining: ${
+      <p style={{ fontWeight: 'bold' }}>{`Qualifiers time remaining: ${
         qualifiersRemainingTimeInMilliseconds === undefined
-          ? "---"
+          ? '---'
           : qualifiersRemainingTimeInMilliseconds > 0
           ? formatDuration(qualifiersRemainingTimeInMilliseconds)
-          : "Ended!"
+          : 'Ended!'
       }`}</p>
-      <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
         <div
           style={{
-            display: "flex",
-            flex: "1",
-            flexDirection: "column",
-            gap: "8px",
+            display: 'flex',
+            flex: '1',
+            flexDirection: 'column',
+            gap: '8px',
           }}
         >
-          <div style={{ display: "flex", gap: "8px" }}>
+          <div style={{ display: 'flex', gap: '8px' }}>
             <Switch
               onChange={setShouldHideDisqualified}
               checked={shouldHideDisqualified}
             />
-            {"Hide Disqualified"}
+            Hide Disqualified
           </div>
-          {activeTab === "individualMastersSongStandings" && (
-            <div style={{ display: "flex", gap: "8px" }}>
+          {activeTab === 'individualMastersSongStandings' && (
+            <div style={{ display: 'flex', gap: '8px' }}>
               <Switch
                 onChange={setShouldHideFinalists}
                 checked={shouldHideFinalists}
               />
-              {"Hide Finalists"}
+              Hide Finalists
             </div>
           )}
         </div>
@@ -263,10 +266,10 @@ const Leaderboard = () => {
           onClick={() => {
             if (isLeaderboardFrozen) {
               api.info({
-                message: "Bruh, calm down",
+                message: 'Bruh, calm down',
                 description:
                   "The leaderboard is still frozen. I promise it'll unfreeze when the qualifiers are over, which should happen soon. Be patient, okay? :›",
-                placement: "bottomRight",
+                placement: 'bottomRight',
                 duration: 6,
               });
             }
@@ -279,29 +282,29 @@ const Leaderboard = () => {
       {isLeaderboardFrozen && (
         <div
           style={{
-            marginTop: "12px",
-            marginBottom: "4px",
-            fontWeight: "bold",
-            fontSize: "large",
-            textAlign: "center",
+            marginTop: '12px',
+            marginBottom: '4px',
+            fontWeight: 'bold',
+            fontSize: 'large',
+            textAlign: 'center',
           }}
         >
           The leaderboard is currently frozen
         </div>
       )}
       <Tabs
-        style={{ marginTop: "8px" }}
+        style={{ marginTop: '8px' }}
         onChange={setActiveTab}
         defaultActiveKey="masters"
         items={[
           {
-            key: "masters",
-            label: "Masters",
-            children: table(masterSongs, masterStandings, "masters", 8),
+            key: 'masters',
+            label: 'Masters',
+            children: table(masterSongs, masterStandings, 'masters', 8),
           },
           {
-            key: "individualMastersSongStandings",
-            label: "Individual Songs (Masters)",
+            key: 'individualMastersSongStandings',
+            label: 'Individual Songs (Masters)',
             children: (
               <IndividualSongLeaderboard
                 songs={individualMastersSongs}

@@ -2,13 +2,13 @@ import {
   leaderboardFreezeEndTimestamp,
   leaderboardFreezeStartTimestamp,
   qualifiersEndTimestamp,
-} from "@/utils/constants";
-import { parseLocalDate } from "@/utils/dateUtils";
+  parseLocalDate,
+} from '@/libs';
 
-describe("Date Utils", () => {
-  it("Test parseLocalDate", () => {
+describe('Date Utils', () => {
+  it('Test parseLocalDate', () => {
     // Assumed: UTC+8
-    const localDateString = "2023-05-06 18:01";
+    const localDateString = '2023-05-06 18:01';
 
     // UTC: 2023-05-06 10:01
     const expectedTimestamp = Date.UTC(2023, 4, 6, 10, 1);
@@ -21,23 +21,23 @@ describe("Date Utils", () => {
 
   it.each([
     {
-      localDateString: "2023-05-06 18:01",
+      localDateString: '2023-05-06 18:01',
       expectedTimestamp: Date.UTC(2023, 4, 6, 18, 1) - 8 * 60 * 60 * 1000,
     },
     {
-      localDateString: "2023-05-06 18",
+      localDateString: '2023-05-06 18',
       expectedTimestamp: Date.UTC(2023, 4, 6, 18, 0) - 8 * 60 * 60 * 1000,
     },
     {
-      localDateString: "2023-05-06",
+      localDateString: '2023-05-06',
       expectedTimestamp: Date.UTC(2023, 4, 6, 0, 0) - 8 * 60 * 60 * 1000,
     },
     {
-      localDateString: "2023-05",
+      localDateString: '2023-05',
       expectedTimestamp: Date.UTC(2023, 4, 1, 0, 0) - 8 * 60 * 60 * 1000,
     },
     {
-      localDateString: "2023",
+      localDateString: '2023',
       expectedTimestamp: Date.UTC(2023, 0, 1, 0, 0) - 8 * 60 * 60 * 1000,
     },
   ])(
@@ -47,7 +47,7 @@ describe("Date Utils", () => {
       const actualTimestamp = actualDate.getTime();
 
       expect(actualTimestamp).toEqual(expectedTimestamp);
-    }
+    },
   );
 
   it.each([
@@ -63,7 +63,7 @@ describe("Date Utils", () => {
       constant: leaderboardFreezeEndTimestamp,
       expected: 1686499200000, // Midnight (GMT+8), 12th June
     },
-  ])("Test constants", ({ constant, expected }) => {
+  ])('Test constants', ({ constant, expected }) => {
     expect(constant).toEqual(expected);
   });
 });

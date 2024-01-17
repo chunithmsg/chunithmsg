@@ -1,15 +1,14 @@
-import { SubmissionController } from "@/controllers/submissionController";
+import { NextResponse } from 'next/server';
+
+import { SubmissionController } from '@/controllers/submissionController';
 import {
   leaderboardFreezeEndTimestamp,
   leaderboardFreezeStartTimestamp,
-} from "@/utils/constants";
-import {
   getIndividualScoreStandings,
   getMastersStandings,
-} from "@/utils/leaderboardUtils";
-import { NextResponse } from "next/server";
+} from '@/libs';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export const GET = async () => {
   const currentTimestamp = Date.now();
@@ -23,7 +22,7 @@ export const GET = async () => {
   const submissionSet = await submissionController.getAllSubmissions(
     isLeaderboardFrozen
       ? { formSubmissionTimestampLimit: leaderboardFreezeStartTimestamp }
-      : {}
+      : {},
   );
 
   return NextResponse.json({
