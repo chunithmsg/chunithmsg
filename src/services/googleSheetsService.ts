@@ -1,12 +1,12 @@
-import { google } from 'googleapis';
+import { sheets, auth } from '@googleapis/sheets';
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
-const sheets = google.sheets('v4');
+const sheetsClient = sheets({ version: 'v4' });
 
 export type AuthClient = Awaited<ReturnType<typeof getAuthClient>>;
 
 export const getAuthClient = async () => {
-  const auth = new google.auth.GoogleAuth({
+  const sheetsAuth = new auth.GoogleAuth({
     scopes: SCOPES,
     projectId: process.env.GOOGLE_PROJECT_ID,
     credentials: {
@@ -14,7 +14,8 @@ export const getAuthClient = async () => {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
     },
   });
-  const authClient = await auth.getClient();
+
+  const authClient = await sheetsAuth.getClient();
   return authClient;
 };
 
@@ -26,7 +27,7 @@ export const getSpreadSheetValues = async (
   authClient: any,
   range: string,
 ) =>
-  sheets.spreadsheets.values.get({
+  sheetsClient.spreadsheets.values.get({
     spreadsheetId,
     auth: authClient,
     range,

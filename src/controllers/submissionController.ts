@@ -4,7 +4,12 @@ import {
   getAuthClient,
   getSpreadSheetValues,
 } from '@/services/googleSheetsService';
-import { qualifiersSpreadsheetId, parseLocalDate, QualifierSet, allQualifierSets } from '@/libs';
+import {
+  qualifiersSpreadsheetId,
+  parseLocalDate,
+  QualifierSet,
+  allQualifierSets,
+} from '@/libs';
 
 /**
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
