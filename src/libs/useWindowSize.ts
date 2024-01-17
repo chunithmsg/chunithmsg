@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 
 // Taken from https://usehooks.com/useWindowSize/
