@@ -22,6 +22,7 @@ import {
   songDetails,
 } from '@/libs';
 import type { SongWithJacket } from '@/libs';
+import { getCurrentTime } from '@/actions';
 
 import azureVixen from '../../public/kop-5th-qualifiers/azure_vixen.jpg';
 import rhapsodyForTheEnd from '../../public/kop-5th-qualifiers/rhapsody_for_the end.jpg';
@@ -173,9 +174,7 @@ const Leaderboard = () => {
   }, []);
 
   const updateCurrentTimestamp = useCallback(async () => {
-    const response = await fetch('/current-time');
-    const { unixTimestamp } = await response.json();
-
+    const unixTimestamp = getCurrentTime(); 
     setCurrentTimestamp(unixTimestamp);
   }, []);
 
