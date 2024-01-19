@@ -1,4 +1,5 @@
-const withMDX = require('@next/mdx')();
+import remarkGFM from 'remark-gfm';
+import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -15,12 +16,19 @@ const nextConfig = {
   //     ]),
   //   },
   // }),
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
 };
 
-module.exports = withMDX(nextConfig);
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGFM],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(nextConfig);
