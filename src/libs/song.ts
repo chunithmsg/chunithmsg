@@ -14,6 +14,7 @@ export const allSongIds = [
   'opfer',
   'rhapsodyForTheEnd',
   'azureVixen',
+  'question',
 ] as const;
 
 const allGenres = ['variety', 'original', 'gekimai', 'touhou', ''] as const;
@@ -48,6 +49,7 @@ export const songDetails: { [songId in SongId]: SongDetails } = {
     genre: 'original',
   },
   azureVixen: { title: 'Λzure Vixen', genre: 'original' },
+  question: { title: '???', genre: '' },
 };
 
 export interface SongWithJacket {
