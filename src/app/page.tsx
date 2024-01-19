@@ -4,12 +4,7 @@ import { Table, Switch, Tabs, Button, Tag, notification } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
-import flames135seconds from "../../public/kop-5th-qualifiers/flames135seconds.jpg";
-import viyellasTears from "../../public/kop-5th-qualifiers/viyellas_tears.jpg";
-import solips from "../../public/kop-5th-qualifiers/solips.jpg";
-import opfer from "../../public/kop-5th-qualifiers/opfer.jpg";
-import rhapsodyForTheEnd from "../../public/kop-5th-qualifiers/rhapsody_for_the end.jpg";
-import azureVixen from "../../public/kop-5th-qualifiers/azure_vixen.jpg";
+import question from "../../public/question.png";
 
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
@@ -28,21 +23,15 @@ import {
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
 const masterSongs: SongWithJacket[] = [
-  { songId: "flames135seconds", jacket: flames135seconds },
-  { songId: "viyellasTears", jacket: viyellasTears },
-  { songId: "solips", jacket: solips },
-  { songId: "opfer", jacket: opfer },
-  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
-  { songId: "azureVixen", jacket: azureVixen },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
 ];
 
 const individualMastersSongs: SongWithJacket[] = [
-  { songId: "flames135seconds", jacket: flames135seconds },
-  { songId: "viyellasTears", jacket: viyellasTears },
-  { songId: "solips", jacket: solips },
-  { songId: "opfer", jacket: opfer },
-  { songId: "rhapsodyForTheEnd", jacket: rhapsodyForTheEnd },
-  { songId: "azureVixen", jacket: azureVixen },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
 ];
 
 const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
