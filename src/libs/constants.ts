@@ -1,5 +1,11 @@
 import { parseLocalDate } from './date';
 
+export const creatorGitHubUrls = {
+  xantho09: 'https://github.com/xantho09',
+  yytan25: 'https://github.com/yytan25',
+  notlega: 'https://github.com/notlega',
+} as const;
+
 /**
  * The URL of the Google Form used for submission.
  */

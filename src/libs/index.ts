@@ -4,3 +4,4 @@ export * from './leaderboard';
 export * from './song';
 export * from './submissionConstants';
 export * from './useWindowSize';
+export * from './utils';
