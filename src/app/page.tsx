@@ -24,29 +24,18 @@ import {
 import type { SongWithJacket } from '@/libs';
 import { getCurrentTime } from '@/actions';
 
-import azureVixen from '../../public/kop-5th-qualifiers/azure_vixen.jpg';
-import rhapsodyForTheEnd from '../../public/kop-5th-qualifiers/rhapsody_for_the end.jpg';
-import solips from '../../public/kop-5th-qualifiers/solips.jpg';
-import viyellasTears from '../../public/kop-5th-qualifiers/viyellas_tears.jpg';
-import flames135seconds from '../../public/kop-5th-qualifiers/flames135seconds.jpg';
-import opfer from '../../public/kop-5th-qualifiers/opfer.jpg';
+import question from "../../public/question.png";
 
 const masterSongs: SongWithJacket[] = [
-  { songId: 'flames135seconds', jacket: flames135seconds },
-  { songId: 'viyellasTears', jacket: viyellasTears },
-  { songId: 'solips', jacket: solips },
-  { songId: 'opfer', jacket: opfer },
-  { songId: 'rhapsodyForTheEnd', jacket: rhapsodyForTheEnd },
-  { songId: 'azureVixen', jacket: azureVixen },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
 ];
 
 const individualMastersSongs: SongWithJacket[] = [
-  { songId: 'flames135seconds', jacket: flames135seconds },
-  { songId: 'viyellasTears', jacket: viyellasTears },
-  { songId: 'solips', jacket: solips },
-  { songId: 'opfer', jacket: opfer },
-  { songId: 'rhapsodyForTheEnd', jacket: rhapsodyForTheEnd },
-  { songId: 'azureVixen', jacket: azureVixen },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
+  { songId: "question", jacket: question },
 ];
 
 const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
