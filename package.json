@@ -26,9 +26,9 @@
     "clsx": "^2.1.0",
     "eslint-config-prettier": "^9.0.0",
     "lucide-react": "^0.312.0",
-    "next": "^13.5.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
     "react-markdown": "^8.0.7",
     "remark-gfm": "^3.0.1",
     "sharp": "^0.32.1",
@@ -41,9 +41,9 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/mdx": "^2.0.10",
-    "@types/node": "18.17.1",
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.0",
+    "@types/node": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
@@ -64,6 +64,6 @@
     "prettier": "2.8.8",
     "shadcn-ui": "^0.8.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5"
   }
 }
