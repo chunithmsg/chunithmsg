@@ -1,313 +1,146 @@
 'use client';
 
-import { Table, Switch, Tabs, Button, Tag, notification } from 'antd';
-import { RedoOutlined } from '@ant-design/icons';
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 import Image from 'next/image';
 
-import { useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { ColumnsType } from 'antd/es/table';
-
+// import { getCurrentTime } from '@/actions';
 import { Standing } from '@/models/standing';
 import { SongScore } from '@/models/songScore';
 import { IndividualSongStanding } from '@/models/individualSongStanding';
 import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
 import SongScoreLabel from '@/components/SongScoreLabel';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 import {
-  leaderboardFreezeEndTimestamp,
-  leaderboardFreezeStartTimestamp,
-  qualifiersEndTimestamp,
-  formatScore,
-  formatTimestamp,
-  songDetails,
-} from '@/libs';
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import type { SongWithJacket } from '@/libs';
-import { getCurrentTime } from '@/actions';
+import { formatScore, formatTimestamp, songDetails, fetcher } from '@/libs';
 
-import question from "../../public/question.png";
+import question from '@/../public/question.png';
 
-const masterSongs: SongWithJacket[] = [
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
+const qualifierSongs: SongWithJacket[] = [
+  { songId: 'question', jacket: question },
+  { songId: 'question', jacket: question },
+  { songId: 'question', jacket: question },
 ];
 
-const individualMastersSongs: SongWithJacket[] = [
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
+const individualQualifiersSongs: SongWithJacket[] = [
+  { songId: 'question', jacket: question },
+  { songId: 'question', jacket: question },
+  { songId: 'question', jacket: question },
 ];
-
-const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
-  {
-    title: '#',
-    key: 'no',
-    dataIndex: 'no',
-    render: (_text: string, _record: Standing, idx: number) => idx + 1,
-  },
-  {
-    title: 'IGN',
-    key: 'ign',
-    dataIndex: 'ign',
-    render: (_text: string, { ign, isDisqualified }: Standing) => (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '4px',
-        }}
-      >
-        {ign}
-        {isDisqualified && <Tag color="magenta">DQ</Tag>}
-      </div>
-    ),
-  },
-  ...songs.map(({ songId, jacket }, idx) => {
-    const { title } = songDetails[songId];
-
-    return {
-      title: (
-        <Image
-          src={jacket}
-          alt={title}
-          title={title}
-          style={{
-            maxHeight: '90px',
-            height: 'auto',
-            width: 'auto',
-          }}
-        />
-      ),
-      children: [
-        {
-          title: <div style={{ whiteSpace: 'pre-line' }}>{title}</div>,
-          key: `song${idx + 1}`,
-          dataIndex: `song${idx + 1}`,
-          render: (_text: string, record: Standing) => {
-            const songScore = record[
-              `song${idx + 1}` as keyof Standing
-            ] as SongScore;
-            return <SongScoreLabel songScore={songScore} />;
-          },
-        },
-      ],
-    };
-  }),
-  {
-    title: 'Total Score',
-    key: 'totalScore',
-    dataIndex: 'totalScore',
-    render: formatScore,
-  },
-  {
-    title: 'Time of play',
-    key: 'timestamp',
-    dataIndex: 'timestamp',
-    render: (_text: string, record: Standing) =>
-      formatTimestamp(record.timestamp),
-  },
-];
-
-const formatDuration = (durationInMilliseconds: number) => {
-  let tempDuration = Math.floor(durationInMilliseconds / 1000);
-  const numSeconds = tempDuration % 60;
-
-  tempDuration = Math.floor(tempDuration / 60);
-  const numMinutes = tempDuration % 60;
-
-  tempDuration = Math.floor(tempDuration / 60);
-  const numHours = tempDuration % 24;
-
-  tempDuration = Math.floor(tempDuration / 24);
-  const numDays = tempDuration;
-
-  return `${numDays}d ${numHours}h ${numMinutes}m ${numSeconds}s`;
-};
-
-const LeaderboardTable = styled(Table<Standing>)`
-  .masters-finalist {
-    background-color: #f0e9f5;
-  }
-
-  .disqualified {
-    background-color: #ccc;
-  }
-`;
 
 const Leaderboard = () => {
-  const [api, contextHolder] = notification.useNotification();
+  const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
+  // const [serverUnixTimestamp, setServerUnixTimestamp] = useState<number>(0);
+  const {
+    data,
+  }: {
+    data?: {
+      qualifiers: Standing[];
+      individualSongStandings: IndividualSongStanding[];
+    };
+  } = useSWR('/api/submissions', fetcher);
 
-  const [currentTimestamp, setCurrentTimestamp] = useState<number | undefined>(
-    undefined,
-  );
-
-  const [shouldHideDisqualified, setShouldHideDisqualified] = useState(true);
-  const [shouldHideFinalists, setShouldHideFinalists] = useState(false);
-
-  const [masterStandings, setMasterStandings] = useState<Standing[]>([]);
-
-  const [individualSongStandings, setIndividualSongStandings] = useState<
-    IndividualSongStanding[]
-  >([]);
-  const [isFetchingStandings, setIsFetchingStandings] = useState(false);
-  const [activeTab, setActiveTab] = useState('');
-
-  const fetchStandings = useCallback(async () => {
-    setIsFetchingStandings(true);
-    const response = await fetch('/submissions');
-    const { masters, individualSongStandings } = await response.json();
-
-    setMasterStandings(masters);
-    setIndividualSongStandings(individualSongStandings);
-    setIsFetchingStandings(false);
-  }, []);
-
-  const updateCurrentTimestamp = useCallback(async () => {
-    const unixTimestamp = getCurrentTime(); 
-    setCurrentTimestamp(unixTimestamp);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(updateCurrentTimestamp, 250);
-    return () => clearInterval(interval);
-  }, [updateCurrentTimestamp]);
-
-  useEffect(() => {
-    fetchStandings().catch(console.error);
-  }, [fetchStandings]);
-
-  const qualifiersRemainingTimeInMilliseconds =
-    currentTimestamp === undefined
-      ? undefined
-      : Math.max(qualifiersEndTimestamp - currentTimestamp, 0);
-
-  const isLeaderboardFrozen =
-    currentTimestamp &&
-    leaderboardFreezeStartTimestamp <= currentTimestamp &&
-    currentTimestamp < leaderboardFreezeEndTimestamp;
-
-  const table = (
-    songs: SongWithJacket[],
-    scores: Standing[],
-    division: 'masters',
-    numFinalists: number,
-  ) => (
-    <LeaderboardTable
-      size="small"
-      loading={isFetchingStandings}
-      columns={generateColumns(songs)}
-      dataSource={scores.filter(
-        ({ isDisqualified }) => !shouldHideDisqualified || !isDisqualified,
-      )}
-      rowClassName={(record: Standing, index: number) =>
-        `${index < numFinalists ? `${division}-finalist ` : ''}${
-          record.isDisqualified ? 'disqualified ' : ''
-        }`
-      }
-      pagination={false}
-      rowKey="ign"
-      scroll={{ x: true }}
-    />
-  );
+  // useEffect(() => {
+  //   const currentServerUnixTimestamp = getCurrentTime();
+  //   setServerUnixTimestamp(serverUnixTimestamp);
+  // }, [])
 
   return (
-    <>
-      {contextHolder}
+    <section>
       <h1>Leaderboard</h1>
-      <p style={{ fontWeight: 'bold' }}>{`Qualifiers time remaining: ${
-        qualifiersRemainingTimeInMilliseconds === undefined
-          ? '---'
-          : qualifiersRemainingTimeInMilliseconds > 0
-          ? formatDuration(qualifiersRemainingTimeInMilliseconds)
-          : 'Ended!'
-      }`}</p>
-      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-        <div
-          style={{
-            display: 'flex',
-            flex: '1',
-            flexDirection: 'column',
-            gap: '8px',
-          }}
-        >
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <Switch
-              onChange={setShouldHideDisqualified}
-              checked={shouldHideDisqualified}
-            />
-            Hide Disqualified
-          </div>
-          {activeTab === 'individualMastersSongStandings' && (
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <Switch
-                onChange={setShouldHideFinalists}
-                checked={shouldHideFinalists}
-              />
-              Hide Finalists
-            </div>
-          )}
-        </div>
-        <Button
-          icon={<RedoOutlined />}
-          type="default"
-          disabled={isFetchingStandings}
-          onClick={() => {
-            if (isLeaderboardFrozen) {
-              api.info({
-                message: 'Bruh, calm down',
-                description:
-                  "The leaderboard is still frozen. I promise it'll unfreeze when the qualifiers are over, which should happen soon. Be patient, okay? :›",
-                placement: 'bottomRight',
-                duration: 6,
-              });
-            }
-            fetchStandings();
-          }}
-        >
-          Refresh
-        </Button>
+      <div className="flex items-center space-x-2">
+        <Switch
+          id="hideDisqualified"
+          className="my-5"
+          checked={hideDisqualified}
+          onCheckedChange={setHideDisqualified}
+        />
+        <Label htmlFor="hideDisqualified">Hide Disqualified</Label>
       </div>
-      {isLeaderboardFrozen && (
-        <div
-          style={{
-            marginTop: '12px',
-            marginBottom: '4px',
-            fontWeight: 'bold',
-            fontSize: 'large',
-            textAlign: 'center',
-          }}
-        >
-          The leaderboard is currently frozen
-        </div>
-      )}
-      <Tabs
-        style={{ marginTop: '8px' }}
-        onChange={setActiveTab}
-        defaultActiveKey="masters"
-        items={[
-          {
-            key: 'masters',
-            label: 'Masters',
-            children: table(masterSongs, masterStandings, 'masters', 8),
-          },
-          {
-            key: 'individualMastersSongStandings',
-            label: 'Individual Songs (Masters)',
-            children: (
-              <IndividualSongLeaderboard
-                songs={individualMastersSongs}
-                loading={isFetchingStandings}
-                standings={individualSongStandings}
-                options={{
-                  shouldHideFinalists,
-                  shouldHideDisqualified,
-                }}
-              />
-            ),
-          },
-        ]}
-      />
-    </>
+      <Tabs defaultValue="qualifiers" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="qualifiers">Qualifiers</TabsTrigger>
+          <TabsTrigger value="individuals">
+            Individual Songs (Qualifiers)
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="qualifiers">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>#</TableHead>
+                <TableHead>IGN</TableHead>
+                {qualifierSongs.map((song, index) => (
+                  <TableHead key={`${index}${song.songId}`}>
+                    <div className="flex flex-col">
+                      <Image
+                        src={song.jacket}
+                        alt={songDetails[song.songId].title}
+                        priority
+                      />
+                      <hr className="my-2" />
+                      <span>{songDetails[song.songId].title}</span>
+                    </div>
+                  </TableHead>
+                ))}
+                <TableHead>Total Score</TableHead>
+                <TableHead>Time of Play</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data?.qualifiers.map((standing, index) => (
+                <TableRow key={`${index}${standing.ign}`}>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell>{standing.ign}</TableCell>
+                  <TableCell>
+                    <SongScoreLabel
+                      songScore={{
+                        score: standing.song1.score,
+                        ajFcStatus: standing.song1.ajFcStatus,
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <SongScoreLabel
+                      songScore={{
+                        score: standing.song2.score,
+                        ajFcStatus: standing.song2.ajFcStatus,
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <SongScoreLabel
+                      songScore={{
+                        score: standing.song3.score,
+                        ajFcStatus: standing.song3.ajFcStatus,
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                      {formatScore(standing.totalScore)}
+                  </TableCell>
+                  <TableCell>{formatTimestamp(standing.timestamp)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TabsContent>
+        <TabsContent value="individuals">
+          Change your password here.
+        </TabsContent>
+      </Tabs>
+    </section>
   );
 };
 

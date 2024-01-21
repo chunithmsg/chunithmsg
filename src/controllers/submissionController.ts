@@ -33,7 +33,7 @@ const columnIndexes = {
  */
 const submissionRange = 'A3:M1000';
 
-export interface SubmissionOptions {
+export type SubmissionOptions = {
   /**
    * A timestamp, indicating only to fetch submissions with timestamps up
    * to (and including) the specified timestamp. If unspecified, all
@@ -82,7 +82,7 @@ export const tryParseSubmissionRow = (
       row[columnIndexes.formSubmissionTimestamp],
     ).getTime();
     const songScores = [0, 1, 2].map((index) => ({
-      score: parseInt(row[columnIndexes.songs + 2 * index]),
+      score: parseInt(row[columnIndexes.songs + 2 * index], 10),
       ajFcStatus: (row[columnIndexes.songs + 2 * index + 1] ?? '') as
         | ''
         | 'FC'
@@ -95,7 +95,7 @@ export const tryParseSubmissionRow = (
         timestamp,
         formSubmissionTimestamp,
         ...songScores.map(({ score }) => score),
-      ].some(isNaN)
+      ].some(Number.isNaN)
     ) {
       throw new Error('One of the numerical fields is parsed as NaN.');
     }
@@ -119,9 +119,7 @@ export const tryParseSubmissionRow = (
   }
 };
 
-const notUndefined = <TValue>(value: TValue | undefined): value is TValue => {
-  return value !== undefined;
-};
+const notUndefined = <TValue>(value: TValue | undefined): value is TValue => value !== undefined;
 
 export class SubmissionController {
   authClient?: AuthClient;

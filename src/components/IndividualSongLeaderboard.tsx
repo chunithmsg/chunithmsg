@@ -58,7 +58,7 @@ const createColumnFromSong = ({
         render: (_text: string, record: IndividualSongStanding) => {
           const individualSongScore = record.scoreMap[songId];
           if (!individualSongScore) {
-            return <></>;
+            return null;
           }
 
           const {

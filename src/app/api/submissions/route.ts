@@ -5,7 +5,7 @@ import {
   leaderboardFreezeEndTimestamp,
   leaderboardFreezeStartTimestamp,
   getIndividualScoreStandings,
-  getMastersStandings,
+  getQualifierStandings,
 } from '@/libs';
 
 export const dynamic = 'force-dynamic';
@@ -25,8 +25,14 @@ export const GET = async () => {
       : {},
   );
 
+  const qualifierStandings = getQualifierStandings(submissionSet);
+  const individualSongStandings = getIndividualScoreStandings(submissionSet);
+
+  // console.log(qualifierStandings);
+  console.log(individualSongStandings);
+
   return NextResponse.json({
-    masters: getMastersStandings(submissionSet),
+    qualifiers: getQualifierStandings(submissionSet),
     individualSongStandings: getIndividualScoreStandings(submissionSet),
   });
 };
