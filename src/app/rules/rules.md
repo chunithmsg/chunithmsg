@@ -34,11 +34,15 @@ Please note that the Qualifiers will have a **$10 entry fee**, payable by cash.
 
 The Qualifiers consists of 3 songs:
 
-| No. | Title                | Artist                     | Difficulty | Genre    |
-| --- | -------------------- | -------------------------- | ---------- | -------- |
-| 1   | ???                  | ???                        | ???        | ???      |
-| 2   | ???                  | ???                        | ???        | ???      |
-| 3   | ???                  | ???                        | ???        | ???      |
+![愛のシンギュラリティ](singularityoflove.jpg)
+![Pangaea](pangaea.jpg)
+![ナイト・オブ・ナイツ（かめりあ’s”ワンス・アポン・ア・ナイト”Remix)](nokcamellia.jpg)
+
+| No. | Title                                                         | Artist                     | Difficulty | Genre    |
+| --- | ------------------------------------------------------------- | -------------------------- | ---------- | -------- |
+| 1   | 愛のシンギュラリティ                                            | yuichi NAGAO               | 13+        | Original |
+| 2   | Pangaea                                                       | sasakure.UK                | 14         | Variety  |
+| 3   | ナイト・オブ・ナイツ（かめりあ’s”ワンス・アポン・ア・ナイト”Remix) | ビートまりお×かめりあ        | 14         | Touhou   |
 
 ### Rules (Please Read Before Attempting!)
 
