@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+
 import {
   Table,
   TableBody,
@@ -25,17 +26,20 @@ import type { SongWithJacket } from '@/libs';
 import { formatScore, formatTimestamp, songDetails, fetcher, cn } from '@/libs';
 
 import question from '@/../public/question.png';
+import nokcamellia from "../../public/sunplustourney/qualifiers/nokcamellia.jpg";
+import pangaea from "../../public/sunplustourney/qualifiers/pangaea.jpg";
+import singularity from "../../public/sunplustourney/qualifiers/singularityoflove.jpg";
 
 const qualifierSongs: SongWithJacket[] = [
-  { songId: 'question', jacket: question },
-  { songId: 'question', jacket: question },
-  { songId: 'question', jacket: question },
+  { songId: "singularity", jacket: singularity },
+  { songId: "pangaea", jacket: pangaea },
+  { songId: "nokcamellia", jacket: nokcamellia },
 ];
 
 const individualQualifiersSongs: SongWithJacket[] = [
-  { songId: 'question', jacket: question },
-  { songId: 'question', jacket: question },
-  { songId: 'question', jacket: question },
+  { songId: "singularity", jacket: singularity },
+  { songId: "pangaea", jacket: pangaea },
+  { songId: "nokcamellia", jacket: nokcamellia },
 ];
 
 const Leaderboard = () => {

@@ -15,8 +15,7 @@ import {
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
  */
 const sheetNames = {
-  [QualifierSet.MastersA]: 'KOP 5th - Set 1',
-  [QualifierSet.MastersB]: 'KOP 5th - Set 2',
+  [QualifierSet.MastersA]: "S.S.L. Qualifiers",
 };
 
 const columnIndexes = {

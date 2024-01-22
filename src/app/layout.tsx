@@ -5,7 +5,7 @@ import { creatorGitHubUrls, cn } from '@/libs';
 import NavBar from '@/components/NavBar';
 
 export const metadata = {
-  title: 'Chunithm Singapore SUN+ers League',
+  title: "Chunithm Singapore Official Site",
 };
 
 export const fontSans = FontSans({
