@@ -1,4 +1,5 @@
 import remarkGFM from 'remark-gfm';
+import remarkUnwrapImage from 'remark-unwrap-images';
 import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
@@ -26,7 +27,7 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGFM],
+    remarkPlugins: [remarkGFM, remarkUnwrapImage],
     rehypePlugins: [],
   },
 });

@@ -16,7 +16,7 @@ import {
   mergeIndividualSongScores,
 } from '@/models/individualSongScore';
 import { SongId } from './song';
-import { numChallengersFinalists, numMastersFinalists } from './constants';
+import { numMastersFinalists } from './constants';
 import { QualifierSet, allQualifierSets } from './submissionConstants';
 
 const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: '' };
@@ -143,8 +143,7 @@ export const getIndividualScoreStandings = (
   // fr - lega
 
   const setSongs: { [A in QualifierSet]: SongId[] } = {
-    [QualifierSet.MastersA]: ['flames135seconds', 'viyellasTears', 'solips'],
-    [QualifierSet.MastersB]: ['opfer', 'rhapsodyForTheEnd', 'azureVixen'],
+    [QualifierSet.MastersA]: ['singularity', 'pangaea', 'nokcamellia'],
   };
 
   const allSongs: SongId[] = [];
@@ -249,9 +248,9 @@ export const isFinalist = (leaderboardStanding?: {
   }
 
   const { division, rank } = leaderboardStanding;
-  if (division === 'Challengers') {
-    return rank <= numChallengersFinalists;
-  }
+  // if (division === 'Challengers') {
+  //   return rank <= numMastersFinalists;
+  // }
 
   return rank <= numMastersFinalists;
 };
