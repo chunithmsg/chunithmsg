@@ -5,6 +5,9 @@ import { RedoOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
 import question from "../../public/question.png";
+import nokcamellia from "../../public/sunplustourney/qualifiers/nokcamellia.jpg";
+import pangaea from "../../public/sunplustourney/qualifiers/pangaea.jpg";
+import singularity from "../../public/sunplustourney/qualifiers/singularityoflove.jpg";
 
 import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
@@ -23,15 +26,15 @@ import {
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
 const masterSongs: SongWithJacket[] = [
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
+  { songId: "singularity", jacket: singularity },
+  { songId: "pangaea", jacket: pangaea },
+  { songId: "nokcamellia", jacket: nokcamellia },
 ];
 
 const individualMastersSongs: SongWithJacket[] = [
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
-  { songId: "question", jacket: question },
+  { songId: "singularity", jacket: singularity },
+  { songId: "pangaea", jacket: pangaea },
+  { songId: "nokcamellia", jacket: nokcamellia },
 ];
 
 const generateColumns = (songs: SongWithJacket[]): ColumnsType<Standing> => [
