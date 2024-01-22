@@ -14,6 +14,8 @@ export const qualifiersSpreadsheetId =
 
 export const numMastersFinalists = 30;
 
+export const qualifiersStartTimestamp = 
+  parseLocalDate("2024-02-03 12:00").getTime();
 export const qualifiersEndTimestamp =
   parseLocalDate("2024-02-04 18:00").getTime();
 
