@@ -15,6 +15,9 @@ export const allSongIds = [
   "rhapsodyForTheEnd",
   "azureVixen",
   "question",
+  "singularity",
+  "pangaea",
+  "nokcamellia",
 ] as const;
 
 const allGenres = ["variety", "original", "gekimai", "touhou", ""] as const;
@@ -49,7 +52,9 @@ export const songDetails: { [songId in SongId]: SongDetails } = {
     genre: "original",
   },
   azureVixen: { title: "Λzure Vixen", genre: "original" },
-  question: { title: "???", genre: "" },
+  singularity: { title: "愛のシンギュラリティ", genre: "original" },
+  pangaea: { title: "Pangaea", genre: "variety" },
+  nokcamellia: { title: "ナイト・オブ・ナイツ\n(かめりあ's“ワンス・アポン・\nア・ナイト”Remix)", genre: "touhou" },
 };
 
 export interface SongWithJacket {
