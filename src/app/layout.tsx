@@ -1,7 +1,7 @@
 import CApp from "../components/CApp";
 
 export const metadata = {
-  title: "Chunithm Singapore Tournament 2023",
+  title: "Chunithm Singapore Official Site",
 };
 
 export default function RootLayout({
