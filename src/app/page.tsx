@@ -66,14 +66,14 @@ const Leaderboard = () => {
         />
         <Label htmlFor="hideDisqualified">Hide Disqualified</Label>
       </div>
-      <Tabs defaultValue="qualifiers" className="w-full">
+      {/* <Tabs defaultValue="qualifiers" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="qualifiers">Qualifiers</TabsTrigger>
           <TabsTrigger value="individuals">
             Individual Songs (Qualifiers)
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="qualifiers">
+        <TabsContent value="qualifiers"> */}
           <Table>
             <TableHeader>
               <TableRow>
@@ -168,11 +168,11 @@ const Leaderboard = () => {
               No submissions yet.
             </div>
           )}
-        </TabsContent>
+        {/* </TabsContent>
         <TabsContent value="individuals">
           Change your password here.
         </TabsContent>
-      </Tabs>
+      </Tabs> */}
     </>
   );
 };
