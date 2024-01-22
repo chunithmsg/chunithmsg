@@ -1,6 +1,7 @@
 import { parseLocalDate } from './date';
 
 export const creatorGitHubUrls = {
+  donjar: 'https://github.com/donjar',
   xantho09: 'https://github.com/xantho09',
   yytan25: 'https://github.com/yytan25',
   notlega: 'https://github.com/notlega',

@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter as FontSans } from 'next/font/google';
 
 import { creatorGitHubUrls, cn } from '@/libs';
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     url: 'https://chunithm.sg',
   },
   applicationName: 'Chunithm Singapore Official Site',
+  metadataBase: new URL('https://chunithm.sg'),
 };
 
 export const fontSans = FontSans({
@@ -67,6 +69,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
         </footer>
       </div>
     </body>
+    <Script id="contribution">
+      {`console.info("Found a bug? Want to contribute? Visit https://github.com/xantho09/chunithmsg!")`}
+    </Script>
   </html>
 );
 
