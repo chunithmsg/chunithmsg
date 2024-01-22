@@ -1,12 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useSWR from 'swr';
 import Image from 'next/image';
 
 // import { getCurrentTime } from '@/actions';
 import { Standing } from '@/models/standing';
-import { SongScore } from '@/models/songScore';
 import { IndividualSongStanding } from '@/models/individualSongStanding';
 import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
 import SongScoreLabel from '@/components/SongScoreLabel';
@@ -23,7 +22,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import type { SongWithJacket } from '@/libs';
-import { formatScore, formatTimestamp, songDetails, fetcher } from '@/libs';
+import { formatScore, formatTimestamp, songDetails, fetcher, cn } from '@/libs';
 
 import question from '@/../public/question.png';
 
@@ -42,14 +41,13 @@ const individualQualifiersSongs: SongWithJacket[] = [
 const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
   // const [serverUnixTimestamp, setServerUnixTimestamp] = useState<number>(0);
-  const {
-    data,
-  }: {
-    data?: {
+  const { data, isLoading } = useSWR<
+    {
       qualifiers: Standing[];
       individualSongStandings: IndividualSongStanding[];
-    };
-  } = useSWR('/api/submissions', fetcher);
+    },
+    any
+  >('/api/submissions', fetcher);
 
   // useEffect(() => {
   //   const currentServerUnixTimestamp = getCurrentTime();
@@ -57,7 +55,7 @@ const Leaderboard = () => {
   // }, [])
 
   return (
-    <section>
+    <>
       <h1>Leaderboard</h1>
       <div className="flex items-center space-x-2">
         <Switch
@@ -100,9 +98,23 @@ const Leaderboard = () => {
             </TableHeader>
             <TableBody>
               {data?.qualifiers.map((standing, index) => (
-                <TableRow key={`${index}${standing.ign}`}>
+                <TableRow
+                  key={`${index}${standing.ign}`}
+                  className={cn(
+                    'even:bg-background',
+                    standing.isDisqualified ? 'bg-destructive/20' : '',
+                    hideDisqualified && standing.isDisqualified ? 'hidden' : '',
+                  )}
+                >
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell>{standing.ign}</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 align-middle">
+                      <span>{standing.ign}</span>
+                      {standing.isDisqualified && (
+                        <Badge variant="destructive">DQ</Badge>
+                      )}
+                    </div>
+                  </TableCell>
                   <TableCell>
                     <SongScoreLabel
                       songScore={{
@@ -127,20 +139,41 @@ const Leaderboard = () => {
                       }}
                     />
                   </TableCell>
-                  <TableCell>
-                      {formatScore(standing.totalScore)}
-                  </TableCell>
+                  <TableCell>{formatScore(standing.totalScore)}</TableCell>
                   <TableCell>{formatTimestamp(standing.timestamp)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
+          {isLoading && (
+            <div className="flex min-h-max justify-center items-center mt-8">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="animate-spin h-5 w-5 mr-3"
+              >
+                <path
+                  d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+                  opacity=".25"
+                />
+                <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
+              </svg>
+              Loading...
+            </div>
+          )}
+          {data?.qualifiers.length === 0 && (
+            <div className="flex min-h-max justify-center items-center mt-8">
+              No submissions yet.
+            </div>
+          )}
         </TabsContent>
         <TabsContent value="individuals">
           Change your password here.
         </TabsContent>
       </Tabs>
-    </section>
+    </>
   );
 };
 
