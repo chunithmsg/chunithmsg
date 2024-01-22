@@ -22,6 +22,7 @@ import {
   leaderboardFreezeEndTimestamp,
   leaderboardFreezeStartTimestamp,
   qualifiersEndTimestamp,
+  qualifiersStartTimestamp,
 } from "@/utils/constants";
 import { formatScore, formatTimestamp } from "@/utils/leaderboardUtils";
 
@@ -177,6 +178,11 @@ const Leaderboard = () => {
     fetchStandings().catch(console.error);
   }, [fetchStandings]);
 
+  const qualifiersBeginTimeInMilliseconds =
+    currentTimestamp === undefined
+      ? undefined
+      : Math.max(qualifiersStartTimestamp - currentTimestamp, 0);
+  
   const qualifiersRemainingTimeInMilliseconds =
     currentTimestamp === undefined
       ? undefined
@@ -215,12 +221,10 @@ const Leaderboard = () => {
     <>
       {contextHolder}
       <h1>Leaderboard</h1>
-      <p style={{ fontWeight: "bold" }}>{`Qualifiers time remaining: ${
-        qualifiersRemainingTimeInMilliseconds === undefined
+      <p style={{ fontWeight: "bold" }}>{`Qualifiers begin in: ${
+        qualifiersBeginTimeInMilliseconds === undefined
           ? "---"
-          : qualifiersRemainingTimeInMilliseconds > 0
-          ? formatDuration(qualifiersRemainingTimeInMilliseconds)
-          : "Ended!"
+          : formatDuration(qualifiersBeginTimeInMilliseconds)
       }`}</p>
       <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
         <div
