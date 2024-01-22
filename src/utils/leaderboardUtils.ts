@@ -140,8 +140,7 @@ export const getIndividualScoreStandings = (
   // Holy shit, this function is a long hot mess and I feel filthy for writing it.
 
   const setSongs: { [A in QualifierSet]: SongId[] } = {
-    [QualifierSet.MastersA]: ["flames135seconds", "viyellasTears", "solips"],
-    [QualifierSet.MastersB]: ["opfer", "rhapsodyForTheEnd", "azureVixen"],
+    [QualifierSet.MastersA]: ["singularity", "pangaea", "nokcamellia"],
   };
 
   const allSongs: SongId[] = [];
@@ -242,19 +241,13 @@ export const getIndividualScoreStandings = (
 };
 
 export const isFinalist = (leaderboardStanding?: {
-  division: "Challengers" | "Masters";
   rank: number;
 }) => {
   if (!leaderboardStanding) {
     return false;
   }
-
-  const { division, rank } = leaderboardStanding;
-  if (division === "Challengers") {
-    return rank <= numChallengersFinalists;
-  } else {
-    return rank <= numMastersFinalists;
-  }
+  const { rank } = leaderboardStanding;
+  return rank <= numMastersFinalists;
 };
 
 export const filterIndividualScoreStandings = (
