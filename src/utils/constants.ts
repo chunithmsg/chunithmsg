@@ -12,13 +12,12 @@ export const submissionUrl =
 export const qualifiersSpreadsheetId =
   "1FQ05Q3CyyP5uD38p8sgaIcxn_NwCVKyyUTn7zOBnL8A";
 
-export const numMastersFinalists = 8;
-export const numChallengersFinalists = 16;
+export const numMastersFinalists = 30;
 
 export const qualifiersEndTimestamp =
-  parseLocalDate("2023-11-30 00:59").getTime();
+  parseLocalDate("2024-02-04 18:00").getTime();
 
 export const leaderboardFreezeStartTimestamp =
-  parseLocalDate("2023-11-30 00:59").getTime();
+  parseLocalDate("2024-02-04 15:00").getTime();
 export const leaderboardFreezeEndTimestamp =
-  parseLocalDate("2023-11-30 00:59").getTime();
+  parseLocalDate("2024-02-04 18:00").getTime();
