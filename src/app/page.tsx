@@ -64,6 +64,7 @@ const Leaderboard = () => {
       <div className="flex items-center space-x-2">
         <Switch
           id="hideDisqualified"
+          name="toggleDisqualified"
           className="my-5"
           checked={hideDisqualified}
           onCheckedChange={setHideDisqualified}

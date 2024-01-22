@@ -1,11 +1,28 @@
 import './globals.css';
+import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 
 import { creatorGitHubUrls, cn } from '@/libs';
 import NavBar from '@/components/NavBar';
 
-export const metadata = {
-  title: "Chunithm Singapore Official Site",
+export const metadata: Metadata = {
+  title: 'Chunithm Singapore Official Site',
+  description: 'Official site for Chunithm Singapore',
+  twitter: {
+    title: 'Chunithm Singapore Official Site',
+    description: 'Official site for Chunithm Singapore',
+    card: 'summary_large_image',
+    site: '@chunithm_sg',
+    creator: '@chunithm_sg',
+  },
+  openGraph: {
+    type: 'website',
+    title: 'Chunithm Singapore Official Site',
+    siteName: 'Chunithm Singapore Official Site',
+    description: 'Official site for Chunithm Singapore',
+    url: 'https://chunithm.sg',
+  },
+  applicationName: 'Chunithm Singapore Official Site',
 };
 
 export const fontSans = FontSans({
