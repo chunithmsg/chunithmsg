@@ -16,7 +16,7 @@ import {
   compareIndividualSongScores,
   mergeIndividualSongScores,
 } from "@/models/individualSongScore";
-import { numChallengersFinalists, numMastersFinalists } from "./constants";
+import { numMastersFinalists } from "./constants";
 import { QualifierSet, allQualifierSets } from "./submissionConstants";
 
 const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: "" };
