@@ -60,35 +60,18 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
   // Set A Processing
   for (const submission of bestSubmissionSet[QualifierSet.MastersA]) {
     const { ign, timestamp, isDisqualified, songScores } = submission;
-    standingsByIgn[ign] = {
-      ign,
-      timestamp,
-      isDisqualified,
-      song1: songScores[0],
-      song2: songScores[1],
-      song3: songScores[2],
-      song4: ZERO_SCORE,
-      song5: ZERO_SCORE,
-      song6: ZERO_SCORE,
-      totalScore: getTotalSubmissionScore(submission),
-    };
-  }
-
-  // Set B Processing
-  for (const submission of bestSubmissionSet[QualifierSet.MastersB]) {
-    const { ign, timestamp, isDisqualified, songScores } = submission;
 
     if (!standingsByIgn.hasOwnProperty(ign)) {
       standingsByIgn[ign] = {
         ign,
         timestamp,
         isDisqualified,
-        song1: ZERO_SCORE,
-        song2: ZERO_SCORE,
-        song3: ZERO_SCORE,
-        song4: songScores[0],
-        song5: songScores[1],
-        song6: songScores[2],
+        song1: songScores[0],
+        song2: songScores[1],
+        song3: songScores[2],
+        song4: ZERO_SCORE,
+        song5: ZERO_SCORE,
+        song6: ZERO_SCORE,
         totalScore: getTotalSubmissionScore(submission),
       };
       continue;
@@ -97,9 +80,9 @@ export const getMastersStandings = (submissionSet: SubmissionSet) => {
     if (standingsByIgn.hasOwnProperty(ign)) {
       const standing = standingsByIgn[ign];
 
-      standing.song4 = songScores[0];
-      standing.song5 = songScores[1];
-      standing.song6 = songScores[2];
+      standing.song1 = songScores[0];
+      standing.song2 = songScores[1];
+      standing.song3 = songScores[2];
       standing.totalScore += getTotalSubmissionScore(submission);
 
       standing.isDisqualified ||= isDisqualified;
