@@ -1,4 +1,4 @@
-import { SongScore } from "./songScore";
+import { SongScore } from './songScore';
 
 /**
  * The IndividualSongScore interface represents a player's best score for an
@@ -11,23 +11,23 @@ import { SongScore } from "./songScore";
 export interface IndividualSongScore {
   timestamp: number;
   ign: string;
-  leaderboardStanding?: { division: "Challengers" | "Masters"; rank: number };
+  leaderboardStanding?: { division: 'Challengers' | 'Masters'; rank: number };
   isDisqualified: boolean;
   songScore: SongScore;
 }
 
 export const compareIndividualSongScores = (
   scoreA: IndividualSongScore,
-  scoreB: IndividualSongScore
+  scoreB: IndividualSongScore,
 ) => {
   const aScore = scoreA.songScore.score;
   const bScore = scoreB.songScore.score;
 
   if (aScore !== bScore) {
     return bScore - aScore;
-  } else {
-    return scoreA.timestamp - scoreB.timestamp;
   }
+
+  return scoreA.timestamp - scoreB.timestamp;
 };
 
 /**
@@ -40,7 +40,7 @@ export const compareIndividualSongScores = (
  */
 export const mergeIndividualSongScores = (
   existingScore: IndividualSongScore,
-  scoreToMerge: IndividualSongScore
+  scoreToMerge: IndividualSongScore,
 ) => {
   existingScore.isDisqualified ||= scoreToMerge.isDisqualified;
 

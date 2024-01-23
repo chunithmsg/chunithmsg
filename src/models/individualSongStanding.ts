@@ -1,5 +1,6 @@
-import { SongId, allSongIds } from "@/utils/songUtils";
-import { IndividualSongScore } from "./individualSongScore";
+// Can't use @/libs due to circular dependency.
+import { SongId, allSongIds } from '@/libs/song';
+import { IndividualSongScore } from './individualSongScore';
 
 /**
  * The IndividualSongStanding interface represents a single row in the
@@ -15,27 +16,30 @@ export const generateKey = (scoreMap: {
 }) => {
   // This is a very boring way to hash the scoreMap property.
   // Not much thought was put into this.
+  // Optimise this later yup.
 
   const MOD = 1_000_000_009;
   const MULTIPLIER = 151;
 
   let output = 0;
-  for (const songId of allSongIds) {
+  allSongIds.forEach((songId) => {
     const individualScore = scoreMap[songId];
     if (!individualScore) {
-      continue;
+      return;
     }
 
     const {
       ign,
       songScore: { score },
     } = individualScore;
+    const ignArray = ign.split('');
 
-    for (let i = 0; i < ign.length; ++i) {
-      output = (output * MULTIPLIER + ign.charCodeAt(i)) % MOD;
-    }
+    ignArray.forEach((ignChar) => {
+      output = (output * MULTIPLIER + ignChar.charCodeAt(0)) % MOD;
+    });
+
     output = (output * MULTIPLIER + score) % MOD;
-  }
+  });
 
   return output;
 };

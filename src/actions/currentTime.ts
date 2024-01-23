@@ -1,6 +1,4 @@
-import { NextResponse } from "next/server";
-
-export const dynamic = "force-dynamic";
+'use server';
 
 /**
  * This method is purely for obtaining the current time from the server side,
@@ -9,8 +7,4 @@ export const dynamic = "force-dynamic";
  *
  * @returns The current time as a Unix timestamp.
  */
-export const GET = () => {
-  return NextResponse.json({
-    unixTimestamp: Date.now(),
-  });
-};
+export const getCurrentTime = () => Date.now();

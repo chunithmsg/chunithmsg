@@ -1,20 +1,21 @@
-import { google } from "googleapis";
+import { sheets, auth } from '@googleapis/sheets';
 
-const SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
-const sheets = google.sheets("v4");
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const sheetsClient = sheets({ version: 'v4' });
 
 export type AuthClient = Awaited<ReturnType<typeof getAuthClient>>;
 
 export const getAuthClient = async () => {
-  const auth = new google.auth.GoogleAuth({
+  const sheetsAuth = new auth.GoogleAuth({
     scopes: SCOPES,
     projectId: process.env.GOOGLE_PROJECT_ID,
     credentials: {
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
     },
   });
-  const authClient = await auth.getClient();
+
+  const authClient = await sheetsAuth.getClient();
   return authClient;
 };
 
@@ -24,11 +25,10 @@ export const getSpreadSheetValues = async (
   // Using Awaited<ReturnType<typeof getAuthToken>> doesn't work, because that's a union type of
   // JSONClient | Compute, and I can't cast it into JSONClient for aforementioned reasons.
   authClient: any,
-  range: string
-) => {
-  return await sheets.spreadsheets.values.get({
+  range: string,
+) =>
+  sheetsClient.spreadsheets.values.get({
     spreadsheetId,
     auth: authClient,
     range,
   });
-};
