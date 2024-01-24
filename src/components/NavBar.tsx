@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { submissionUrl } from '@/libs';
+import { qualifierBookingUrl } from '@/libs';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -31,9 +31,9 @@ const NavBar = () => (
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem className='m-0'>
-            <Link href={submissionUrl} legacyBehavior passHref>
+            <Link href={qualifierBookingUrl} legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Submission
+                Qualifier Booking
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
