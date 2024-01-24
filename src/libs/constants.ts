@@ -8,10 +8,10 @@ export const creatorGitHubUrls = {
 } as const;
 
 /**
- * The URL of the Google Form used for submission.
+ * The URL of the Calendly page for booking qualifier slots.
  */
-export const submissionUrl =
-  'https://docs.google.com/forms/d/e/1FAIpQLSdtahyQGjHnLUg3bprDW8Q5qRaGVToAE2rfuzYcLrq0hveXyw/viewform';
+export const qualifierBookingUrl =
+  'https://calendly.com/beazaters/chunithm-tournament-live-qualifiers';
 
 /**
  * The ID for the Google Sheet containing qualifier submissions.
