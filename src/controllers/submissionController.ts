@@ -15,7 +15,7 @@ import {
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
  */
 const sheetNames = {
-  [QualifierSet.MastersA]: "S.S.L. Qualifiers",
+  [QualifierSet.MastersA]: 'S.S.L. Qualifiers',
 };
 
 const columnIndexes = {
@@ -45,7 +45,7 @@ export type SubmissionOptions = {
    * all submissions will be fetched regardless of form submission timestamp.
    */
   formSubmissionTimestampLimit?: number;
-}
+};
 
 /**
  * Checks if the specified row, which represents a submission to parse, is completely filled.
@@ -118,7 +118,8 @@ export const tryParseSubmissionRow = (
   }
 };
 
-const notUndefined = <TValue>(value: TValue | undefined): value is TValue => value !== undefined;
+const notUndefined = <TValue>(value: TValue | undefined): value is TValue =>
+  value !== undefined;
 
 export class SubmissionController {
   authClient?: AuthClient;

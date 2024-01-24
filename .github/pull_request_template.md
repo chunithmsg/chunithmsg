@@ -2,7 +2,7 @@
 
 <!-- The title should be the name of the pull request being made -->
 
-<!-- 
+<!--
 	Describe your changes in detail
 
 	Example:

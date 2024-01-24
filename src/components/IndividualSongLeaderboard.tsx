@@ -5,7 +5,8 @@ import Image from 'next/image';
 
 import { IndividualSongStanding } from '@/models/individualSongStanding';
 import type { SongId, SongWithJacket } from '@/libs';
-import {songDetails,
+import {
+  songDetails,
   filterIndividualScoreStandings,
   formatOrdinal,
   formatTimestamp,

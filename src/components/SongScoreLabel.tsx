@@ -7,7 +7,7 @@ const SongScoreLabel = ({
 }: {
   songScore: SongScore;
 }) => (
-  <div className='flex gap-2 align-middle'>
+  <div className="flex gap-2 align-middle">
     <span>{formatScore(score)}</span>
     {ajFcStatus === 'AJ' && <Badge variant="gold">AJ</Badge>}
     {ajFcStatus === 'FC' && <Badge variant="success">FC</Badge>}

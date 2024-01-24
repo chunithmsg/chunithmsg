@@ -24,7 +24,7 @@ export const allQualifierSets = [QualifierSet.MastersA];
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
  */
 export const sheetNames = {
-  [QualifierSet.MastersA]: "S.S.L. Qualifiers",
+  [QualifierSet.MastersA]: 'S.S.L. Qualifiers',
 };
 
 export const columnIndexes = {

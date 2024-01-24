@@ -10,7 +10,8 @@ export const creatorGitHubUrls = {
 /**
  * The URL of the Calendly page for booking qualifier slots.
  */
-export const qualifierBookingUrl = 'https://calendly.com/beazaters/chunithm-tournament-live-qualifiers';
+export const qualifierBookingUrl =
+  'https://calendly.com/beazaters/chunithm-tournament-live-qualifiers';
 
 /**
  * The ID for the Google Sheet containing qualifier submissions.

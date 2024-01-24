@@ -1,4 +1,4 @@
 export type SongScore = {
   score: number;
-  ajFcStatus: "" | "FC" | "AJ";
-}
+  ajFcStatus: '' | 'FC' | 'AJ';
+};
