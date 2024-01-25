@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 
 import { SubmissionController } from '@/controllers/submissionController';
 import {
-  leaderboardFreezeEndTimestamp,
-  leaderboardFreezeStartTimestamp,
+  // leaderboardFreezeEndTimestamp,
+  // leaderboardFreezeStartTimestamp,
   getIndividualScoreStandings,
   getQualifierStandings,
 } from '@/libs';
@@ -11,28 +11,29 @@ import {
 export const dynamic = 'force-dynamic';
 
 export const GET = async () => {
-  const currentTimestamp = Date.now();
-  const isLeaderboardFrozen =
-    leaderboardFreezeStartTimestamp <= currentTimestamp &&
-    currentTimestamp < leaderboardFreezeEndTimestamp;
+  // const currentTimestamp = Date.now();
+  // const isLeaderboardFrozen =
+  //   leaderboardFreezeStartTimestamp <= currentTimestamp &&
+  //   currentTimestamp < leaderboardFreezeEndTimestamp;
 
   const submissionController = new SubmissionController();
 
   await submissionController.initialise();
-  const submissionSet = await submissionController.getAllSubmissions(
-    isLeaderboardFrozen
-      ? { formSubmissionTimestampLimit: leaderboardFreezeStartTimestamp }
-      : {},
-  );
+  const submissionSet = await submissionController
+    .getAllSubmissions
+    // isLeaderboardFrozen
+    //   ? { formSubmissionTimestampLimit: leaderboardFreezeStartTimestamp }
+    //   : {},
+    ();
 
   const qualifierStandings = getQualifierStandings(submissionSet);
   const individualSongStandings = getIndividualScoreStandings(submissionSet);
 
-  // console.log(qualifierStandings);
+  console.log(qualifierStandings);
   console.log(individualSongStandings);
 
   return NextResponse.json({
-    qualifiers: getQualifierStandings(submissionSet),
-    individualSongStandings: getIndividualScoreStandings(submissionSet),
+    qualifiers: qualifierStandings,
+    individualSongStandings,
   });
 };

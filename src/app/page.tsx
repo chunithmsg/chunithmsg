@@ -3,32 +3,33 @@
 import { useState } from 'react';
 import useSWR from 'swr';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
-// import { getCurrentTime } from '@/actions';
-import { Standing } from '@/models/standing';
-import { IndividualSongStanding } from '@/models/individualSongStanding';
-import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
-import SongScoreLabel from '@/components/SongScoreLabel';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
+import type { Standing } from '@/models/standing';
+import type { IndividualSongStanding } from '@/models/individualSongStanding';
+// import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
 import type { SongWithJacket } from '@/libs';
 import { formatScore, formatTimestamp, songDetails, fetcher, cn } from '@/libs';
 
-import question from '@/../public/question.png';
 import nokcamellia from '../../public/sunplustourney/qualifiers/nokcamellia.jpg';
 import pangaea from '../../public/sunplustourney/qualifiers/pangaea.jpg';
 import singularity from '../../public/sunplustourney/qualifiers/singularityoflove.jpg';
+
+const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
+const Badge = dynamic(() => import('@/components/ui/badge').then((mod) => mod.Badge));
+const Label = dynamic(() => import('@/components/ui/label').then((mod) => mod.Label));
+const Switch = dynamic(() => import('@/components/ui/switch').then((mod) => mod.Switch));
+// const Tabs = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.Tabs));
+// const TabsContent = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsContent));
+// const TabsList = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsList));
+// const TabsTrigger = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsTrigger));
+const Table = dynamic(() => import('@/components/ui/table').then((mod) => mod.Table));
+const TableBody = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableBody));
+const TableCell = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableCell));
+const TableHead = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableHead));
+const TableHeader = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableHeader));
+const TableRow = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableRow));
 
 const qualifierSongs: SongWithJacket[] = [
   { songId: 'singularity', jacket: singularity },
@@ -36,11 +37,11 @@ const qualifierSongs: SongWithJacket[] = [
   { songId: 'nokcamellia', jacket: nokcamellia },
 ];
 
-const individualQualifiersSongs: SongWithJacket[] = [
-  { songId: 'singularity', jacket: singularity },
-  { songId: 'pangaea', jacket: pangaea },
-  { songId: 'nokcamellia', jacket: nokcamellia },
-];
+// const individualQualifiersSongs: SongWithJacket[] = [
+//   { songId: 'singularity', jacket: singularity },
+//   { songId: 'pangaea', jacket: pangaea },
+//   { songId: 'nokcamellia', jacket: nokcamellia },
+// ];
 
 const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
@@ -89,7 +90,7 @@ const Leaderboard = () => {
                 <Image
                   src={song.jacket}
                   alt={songDetails[song.songId].title}
-                  className="min-h-[90px] min-w-[90px] w-auto h-auto"
+                  className="max-h-[90px] max-w-[90px] w-auto h-auto"
                 />
               </TableHead>
             ))}
