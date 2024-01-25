@@ -30,8 +30,10 @@
   "rules": {
     "prefer-spread": "warn",
     "no-param-reassign": "off",
+    "global-require": "off",
     "import/no-unresolved": "error",
     "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/forbid-prop-types": "off",

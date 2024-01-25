@@ -1,6 +1,11 @@
+import withBundleAnalyzer from '@next/bundle-analyzer';
 import remarkGFM from 'remark-gfm';
 import remarkUnwrapImage from 'remark-unwrap-images';
 import createMDX from '@next/mdx';
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true' || false,
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -32,4 +37,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default bundleAnalyzer(withMDX(nextConfig));
