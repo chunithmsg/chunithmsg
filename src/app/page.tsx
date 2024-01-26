@@ -90,7 +90,8 @@ const Leaderboard = () => {
                 <Image
                   src={song.jacket}
                   alt={songDetails[song.songId].title}
-                  className="max-h-[90px] max-w-[90px] w-auto h-auto"
+                  className="max-h-36 max-w-36 w-auto h-auto"
+                  priority
                 />
               </TableHead>
             ))}
