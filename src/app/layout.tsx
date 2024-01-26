@@ -1,12 +1,10 @@
 import './globals.css';
-import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Inter as FontSans } from 'next/font/google';
 
+import NavBar from '@/components/NavBar';
 import { creatorGitHubUrls, cn } from '@/libs';
-
-const NavBar = dynamic(() => import('@/components/NavBar'));
 
 export const metadata: Metadata = {
   title: 'Chunithm Singapore Official Site',

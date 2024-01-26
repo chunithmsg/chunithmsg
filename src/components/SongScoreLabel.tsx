@@ -1,6 +1,11 @@
-import { SongScore } from '@/models/songScore';
-import { Badge } from '@/components/ui/badge';
+import dynamic from 'next/dynamic';
+
+import type { SongScore } from '@/models/songScore';
 import { formatScore } from '@/libs';
+
+const Badge = dynamic(() =>
+  import('@/components/ui/badge').then((mod) => mod.Badge),
+);
 
 const SongScoreLabel = ({
   songScore: { score, ajFcStatus },
