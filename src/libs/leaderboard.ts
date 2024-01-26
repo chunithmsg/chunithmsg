@@ -64,6 +64,7 @@ export const getQualifierStandings = (submissionSet: SubmissionSet) => {
       ign,
       timestamp,
       isDisqualified,
+      qualifiedIndex: 0,
       song1: songScores[0],
       song2: songScores[1],
       song3: songScores[2],
@@ -109,8 +110,16 @@ export const getQualifierStandings = (submissionSet: SubmissionSet) => {
   //   }
   // }
 
-  const standings = Object.values(standingsByIgn);
+  let standings = Object.values(standingsByIgn);
   standings.sort(compareStandings);
+
+  standings = standings.map((standing, index) => {
+    if (!standing.isDisqualified) {
+      standing.qualifiedIndex = index + 1;
+    }
+
+    return standing;
+  });
 
   return standings;
 };

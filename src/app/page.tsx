@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -17,19 +17,37 @@ import pangaea from '../../public/sunplustourney/qualifiers/pangaea.jpg';
 import singularity from '../../public/sunplustourney/qualifiers/singularityoflove.jpg';
 
 const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
-const Badge = dynamic(() => import('@/components/ui/badge').then((mod) => mod.Badge));
-const Label = dynamic(() => import('@/components/ui/label').then((mod) => mod.Label));
-const Switch = dynamic(() => import('@/components/ui/switch').then((mod) => mod.Switch));
+const Badge = dynamic(() =>
+  import('@/components/ui/badge').then((mod) => mod.Badge),
+);
+const Label = dynamic(() =>
+  import('@/components/ui/label').then((mod) => mod.Label),
+);
+const Switch = dynamic(() =>
+  import('@/components/ui/switch').then((mod) => mod.Switch),
+);
 // const Tabs = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.Tabs));
 // const TabsContent = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsContent));
 // const TabsList = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsList));
 // const TabsTrigger = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsTrigger));
-const Table = dynamic(() => import('@/components/ui/table').then((mod) => mod.Table));
-const TableBody = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableBody));
-const TableCell = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableCell));
-const TableHead = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableHead));
-const TableHeader = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableHeader));
-const TableRow = dynamic(() => import('@/components/ui/table').then((mod) => mod.TableRow));
+const Table = dynamic(() =>
+  import('@/components/ui/table').then((mod) => mod.Table),
+);
+const TableBody = dynamic(() =>
+  import('@/components/ui/table').then((mod) => mod.TableBody),
+);
+const TableCell = dynamic(() =>
+  import('@/components/ui/table').then((mod) => mod.TableCell),
+);
+const TableHead = dynamic(() =>
+  import('@/components/ui/table').then((mod) => mod.TableHead),
+);
+const TableHeader = dynamic(() =>
+  import('@/components/ui/table').then((mod) => mod.TableHeader),
+);
+const TableRow = dynamic(() =>
+  import('@/components/ui/table').then((mod) => mod.TableRow),
+);
 
 const qualifierSongs: SongWithJacket[] = [
   { songId: 'singularity', jacket: singularity },
@@ -90,7 +108,7 @@ const Leaderboard = () => {
                 <Image
                   src={song.jacket}
                   alt={songDetails[song.songId].title}
-                  className="max-h-36 max-w-36 w-auto h-auto"
+                  className="max-h-36 max-w-36 w-36 h-36"
                   priority
                 />
               </TableHead>
@@ -111,12 +129,15 @@ const Leaderboard = () => {
             <TableRow
               key={`${index}${standing.ign}`}
               className={cn(
-                'even:bg-background',
-                standing.isDisqualified ? 'bg-destructive/20' : '',
+                standing.isDisqualified
+                  ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive/50'
+                  : 'bg-background/20 even:bg-background/20 hover:bg-background/50 data-[state=selected]:bg-background/50',
                 hideDisqualified && standing.isDisqualified ? 'hidden' : '',
               )}
             >
-              <TableCell>{index + 1}</TableCell>
+              <TableCell>
+                {hideDisqualified ? standing.qualifiedIndex : index + 1}
+              </TableCell>
               <TableCell>
                 <div className="flex gap-2 align-middle">
                   <span>{standing.ign}</span>
