@@ -29,8 +29,8 @@ export const GET = async () => {
   const qualifierStandings = getQualifierStandings(submissionSet);
   const individualSongStandings = getIndividualScoreStandings(submissionSet);
 
-  console.log(qualifierStandings);
-  console.log(individualSongStandings);
+  // console.log(qualifierStandings);
+  // console.log(individualSongStandings);
 
   return NextResponse.json({
     qualifiers: qualifierStandings,

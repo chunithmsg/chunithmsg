@@ -19,7 +19,7 @@ export const qualifierBookingUrl =
 export const qualifiersSpreadsheetId =
   '1FQ05Q3CyyP5uD38p8sgaIcxn_NwCVKyyUTn7zOBnL8A';
 
-export const numMastersFinalists = 30;
+export const numMastersFinalists = 30 as const;
 
 export const qualifiersEndTimestamp =
   parseLocalDate('2023-11-30 00:59').getTime();

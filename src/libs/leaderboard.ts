@@ -1,21 +1,21 @@
 import {
-  IndividualSongStanding,
+  type IndividualSongStanding,
   generateKey,
 } from '@/models/individualSongStanding';
-import { SongScore } from '@/models/songScore';
-import { Standing, compareStandings } from '@/models/standing';
+import type { SongScore } from '@/models/songScore';
+import { type Standing, compareStandings } from '@/models/standing';
 import {
-  Submission,
-  SubmissionSet,
+  type Submission,
+  type SubmissionSet,
   compareSubmissions,
   getTotalSubmissionScore,
 } from '@/models/submission';
 import {
-  IndividualSongScore,
+  type IndividualSongScore,
   compareIndividualSongScores,
   mergeIndividualSongScores,
 } from '@/models/individualSongScore';
-import { SongId } from './song';
+import type { SongId } from './song';
 import { numMastersFinalists } from './constants';
 import { QualifierSet, allQualifierSets } from './submissionConstants';
 
@@ -65,7 +65,7 @@ export const getQualifierStandings = (submissionSet: SubmissionSet) => {
       timestamp,
       isDisqualified,
       qualifiedIndex: 0,
-      song1: songScores[0],
+      song1: songScores[0] || ZERO_SCORE,
       song2: songScores[1],
       song3: songScores[2],
       // song4: ZERO_SCORE,
@@ -256,7 +256,9 @@ export const isFinalist = (leaderboardStanding?: {
     return false;
   }
 
-  const { division, rank } = leaderboardStanding;
+  const { rank } = leaderboardStanding;
+
+  // const { division, rank } = leaderboardStanding;
   // if (division === 'Challengers') {
   //   return rank <= numMastersFinalists;
   // }
@@ -279,7 +281,7 @@ export const filterIndividualScoreStandings = (
 
   const output: IndividualSongStanding[] = [];
 
-  Array.apply(null, Array(standings.length)).forEach((_, index) => {
+  Array.apply(null, Array(standings.length)).forEach(() => {
     output.push({ key: 0, scoreMap: {} });
   });
 
@@ -287,14 +289,14 @@ export const filterIndividualScoreStandings = (
   const songIds = Object.keys(standings[0].scoreMap) as SongId[];
   songIds.forEach((songId) => {
     let copyIndex = 0;
-    let readIndex = 0;
 
     // I see break i scared, no change for NOW
     // TODO: find out how to optimise this
-    for (; readIndex < standings.length; ++readIndex) {
-      const individualSongScore = standings[readIndex].scoreMap[songId];
+    standings.forEach((standing) => {
+      const individualSongScore = standing.scoreMap[songId];
+
       if (!individualSongScore) {
-        break;
+        return;
       }
 
       const shouldFilter =
@@ -303,27 +305,28 @@ export const filterIndividualScoreStandings = (
           isFinalist(individualSongScore.leaderboardStanding));
 
       if (shouldFilter) {
-        continue;
+        return;
       }
 
       output[copyIndex].scoreMap[songId] = individualSongScore;
-      ++copyIndex;
-    }
+      copyIndex += 1;
+    });
   });
 
   // Remove trailing empty entries.
-  for (let i = output.length - 1; i >= 0; --i) {
-    if (Object.keys(output[i].scoreMap).length > 0) {
-      break;
+  output.every((_, index) => {
+    if (Object.keys(output[output.length - 1 - index].scoreMap).length > 0) {
+      return false;
     }
 
     output.pop();
-  }
+    return true;
+  });
 
   // Re-calculate key values
-  for (let i = 0; i < output.length; ++i) {
-    output[i].key = generateKey(output[i].scoreMap);
-  }
+  output.forEach((individualSongStanding) => {
+    individualSongStanding.key = generateKey(individualSongStanding.scoreMap);
+  });
 
   return output;
 };
