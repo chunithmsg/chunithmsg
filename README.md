@@ -3,7 +3,7 @@
 ## Project Requirements
 
 - NodeJS 18 or higher
-- Yarn 1.22.10 or higher
+- Yarn 4.0.2 or higher
 - 17.00 Rating on Chunithm (Optional)
 
 ## Installation
