@@ -27,7 +27,7 @@ jobs:
         run: yarn set version stable
 
       - name: Install Vercel CLI
-        run: yarn global add vercel@latest
+        run: npm i -g vercel@latest
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
