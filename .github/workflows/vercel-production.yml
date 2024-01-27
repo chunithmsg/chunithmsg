@@ -20,8 +20,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install Yarn
-        run: npm install --global yarn@latest
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Use latest version of Yarn
+        run: yarn set version stable
 
       - name: Install Vercel CLI
         run: yarn global add vercel@latest
