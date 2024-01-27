@@ -28,3 +28,5 @@ export const leaderboardFreezeStartTimestamp =
   parseLocalDate('2023-11-30 00:59').getTime();
 export const leaderboardFreezeEndTimestamp =
   parseLocalDate('2023-11-30 00:59').getTime();
+
+export const SNOWFLAKE_EPOCH = 1640995200 as const;
