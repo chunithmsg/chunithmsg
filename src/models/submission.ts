@@ -5,14 +5,14 @@ import { SongScore } from './songScore';
 /**
  * The Submission type represents a player's submission of 3 songs.
  */
-export interface Submission {
+export type Submission = {
   ign: string;
   timestamp: number;
   formSubmissionTimestamp: number;
   songScores: SongScore[];
   isDisqualified: boolean;
   isVoidSubmission: boolean;
-}
+};
 
 export const getTotalSubmissionScore = (submission: Submission) =>
   submission.songScores.reduce(

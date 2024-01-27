@@ -7,6 +7,7 @@ export type Standing = {
   timestamp: number;
   ign: string;
   isDisqualified: boolean;
+  qualifiedIndex: number;
   song1: SongScore;
   song2: SongScore;
   song3: SongScore;

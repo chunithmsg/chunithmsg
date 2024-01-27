@@ -8,13 +8,13 @@ import { SongScore } from './songScore';
  * As such, in addition to the the song score, it contains information on the
  * player as well.
  */
-export interface IndividualSongScore {
+export type IndividualSongScore = {
   timestamp: number;
   ign: string;
   leaderboardStanding?: { division: 'Challengers' | 'Masters'; rank: number };
   isDisqualified: boolean;
   songScore: SongScore;
-}
+};
 
 export const compareIndividualSongScores = (
   scoreA: IndividualSongScore,

@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Inter as FontSans } from 'next/font/google';
 
-import { creatorGitHubUrls, cn } from '@/libs';
 import NavBar from '@/components/NavBar';
+import { creatorGitHubUrls, cn } from '@/libs';
 
 export const metadata: Metadata = {
   title: 'Chunithm Singapore Official Site',
@@ -69,7 +69,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
         </footer>
       </div>
     </body>
-    <Script id="contribution">
+    <Script id="contribution" strategy="lazyOnload">
       {`console.info("Found a bug? Want to contribute? Visit https://github.com/xantho09/chunithmsg!")`}
     </Script>
   </html>

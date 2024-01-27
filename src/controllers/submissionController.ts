@@ -136,13 +136,18 @@ export class SubmissionController {
   async getAllSubmissions(options?: SubmissionOptions) {
     const output: { [S in QualifierSet]?: Submission[] } = {};
 
-    // Not taking advantage of possibilities of concurrency/parallelism,
-    // but that can be a problem for the future. This is good enough.
-    for (const qualifierSet of allQualifierSets) {
-      output[qualifierSet] = await this.getSubmissionForSet(
-        qualifierSet,
-        options,
-      );
+    const qualifierSetsPromises = allQualifierSets.map((qualifierSet) =>
+      this.getSubmissionForSet(qualifierSet, options),
+    );
+
+    try {
+      const results = await Promise.all(qualifierSetsPromises);
+
+      results.forEach((result, index) => {
+        output[allQualifierSets[index]] = result;
+      });
+    } catch (error) {
+      console.error(error);
     }
 
     return output as SubmissionSet;
