@@ -41,7 +41,7 @@ credentials.json
 /.vscode/
 
 # Yarn
-.yarn/*
+.yarn
 !.yarn/releases
 !.yarn/patches
 !.yarn/plugins
