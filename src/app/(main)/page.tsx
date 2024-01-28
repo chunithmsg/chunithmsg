@@ -12,9 +12,9 @@ import type { IndividualSongStanding } from '@/models/individualSongStanding';
 import type { SongWithJacket } from '@/libs';
 import { formatScore, formatTimestamp, songDetails, fetcher, cn } from '@/libs';
 
-import nokcamellia from '../../public/sunplustourney/qualifiers/nokcamellia.jpg';
-import pangaea from '../../public/sunplustourney/qualifiers/pangaea.jpg';
-import singularity from '../../public/sunplustourney/qualifiers/singularityoflove.jpg';
+import nokcamellia from '../../../public/sunplustourney/qualifiers/nokcamellia.jpg';
+import pangaea from '../../../public/sunplustourney/qualifiers/pangaea.jpg';
+import singularity from '../../../public/sunplustourney/qualifiers/singularityoflove.jpg';
 
 const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
 const Badge = dynamic(() =>

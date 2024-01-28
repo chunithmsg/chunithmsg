@@ -35,11 +35,13 @@
   },
   "dependencies": {
     "@googleapis/sheets": "^5.0.5",
+    "@hookform/resolvers": "^3.3.4",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "^1.0.4",
     "axios": "^1.6.5",
@@ -50,12 +52,14 @@
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.49.3",
     "remark-gfm": "^4.0.0",
     "remark-unwrap-images": "^4.0.0",
     "sharp": "^0.33.2",
     "swr": "^2.2.4",
     "tailwind-merge": "^2.2.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0",
@@ -86,8 +90,7 @@
     "shadcn-ui": "^0.8.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
-    "webpack": "^5.89.0",
-    "zod": "^3.22.4"
+    "webpack": "^5.89.0"
   },
   "packageManager": "yarn@4.0.2"
 }
