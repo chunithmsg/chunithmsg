@@ -4,7 +4,7 @@ import { JWT } from 'next-auth/jwt';
 import { FirestoreAdapter } from '@next-auth/firebase-adapter';
 import { getFirestore } from '@/services/firestore';
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   adapter: FirestoreAdapter(getFirestore()),
   providers: [
     CredentialsProvider({
