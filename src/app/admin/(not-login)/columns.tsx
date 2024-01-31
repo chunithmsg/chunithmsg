@@ -3,6 +3,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 
 import { Checkbox } from '@/components/ui/checkbox';
+import { DataTableColumnHeader } from '@/components/ui/data-table-column-header';
 
 export const sampleData = [
   {
@@ -43,32 +44,46 @@ export const columns: ColumnDef<SampleData>[] = [
   },
   {
     accessorKey: 'active',
-    header: 'Active',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Active" />
+    ),
     cell: ({ row }) => <Checkbox checked={row.getValue('active')} />,
   },
   {
     accessorKey: 'ign',
-    header: 'IGN',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="IGN" />
+    ),
   },
   {
     accessorKey: 'song1',
-    header: 'Song 1',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Song 1" />
+    ),
   },
   {
     accessorKey: 'song2',
-    header: 'Song 2',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Song 2" />
+    ),
   },
   {
     accessorKey: 'song3',
-    header: 'Song 3',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Song 3" />
+    ),
   },
   {
     accessorKey: 'totalScore',
-    header: 'Total Score',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Total Score" />
+    ),
   },
   {
     accessorKey: 'timestamp',
-    header: 'Timestamp',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Timestamp" />
+    ),
     cell: ({ row }) =>
       new Date(row.getValue('timestamp')).toLocaleString('en-SG', {
         timeZone: 'Asia/Singapore',
@@ -79,7 +94,9 @@ export const columns: ColumnDef<SampleData>[] = [
   },
   {
     accessorKey: 'isDisqualified',
-    header: 'Disqualified',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="DQed" />
+    ),
     cell: ({ row }) => <Checkbox checked={row.getValue('isDisqualified')} />,
   },
 ];

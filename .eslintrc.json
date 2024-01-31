@@ -31,6 +31,7 @@
     "prefer-spread": "warn",
     "no-param-reassign": "off",
     "global-require": "off",
+    "no-nested-ternary": "warn",
     "import/no-unresolved": "error",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",

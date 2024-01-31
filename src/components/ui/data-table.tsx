@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
 import { DataTablePagination } from '@/components/ui/data-table-pagination';
+import { DataTableViewOptions } from '@/components/ui/data-table-view-options';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -58,6 +59,7 @@ export const DataTable = <TData, TValue>({
           }
           className="max-w-sm"
         />
+        <DataTableViewOptions table={table} />
       </div>
       <div className="rounded-md border">
         <Table>
