@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 import Hero from '@/components/Hero';
 import { Button } from '@/components/ui/button';
@@ -26,6 +28,7 @@ const formSchema = z.object({
 });
 
 const AdminLoginPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,26 +39,26 @@ const AdminLoginPage = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const { getFirebase } = await import('@/services/firebase');
-    const { getAuth, signInWithEmailAndPassword } = await import(
-      'firebase/auth'
-    );
+    const result = await signIn('credentials', {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+    });
 
-    try {
-      const app = await getFirebase();
-      const auth = getAuth(app);
-
-      const { email, password } = values;
-
-      const userCredentials = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password,
-      );
-      const { user } = userCredentials;
-    } catch (error) {
-      console.error(error);
+    if (!result) {
+      form.setError('email', {
+        type: 'manual',
+        message: 'Something went wrong',
+      });
+      return;
     }
+
+    if (result.error) {
+      form.setError('email', { message: result.error });
+      return;
+    }
+
+    router.push('/admin');
   };
 
   return (

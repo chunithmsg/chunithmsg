@@ -1,5 +1,6 @@
 export const getFirebase = async () => {
-  const { initializeApp } = (await import('firebase/app'));
+  const { initializeApp } = await import('firebase/app');
+  Promise.all([import('firebase/auth'), import('firebase/firestore')]);
 
   const app = initializeApp({
     apiKey: process.env.FIREBASE_API_KEY,

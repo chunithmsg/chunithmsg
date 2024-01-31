@@ -36,5 +36,5 @@ declare global {
 
   var firestore:
     | undefined
-    | ReturnType<typeof import('@auth/firebase-adapter').initFirestore>;
+    | ReturnType<typeof import('@next-auth/firebase-adapter').initFirestore>;
 }
