@@ -1,9 +1,7 @@
 export const getFirebase = async () => {
-  const { initializeApp } = (await import('firebase/app')).default;
+  const { initializeApp } = (await import('firebase/app'));
 
-  Promise.all([import('firebase/database'), import('firebase/auth')]);
-
-  const firebase = initializeApp({
+  const app = initializeApp({
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
     projectId: process.env.FIREBASE_PROJECT_ID,
@@ -14,11 +12,11 @@ export const getFirebase = async () => {
     return global.firebase;
   }
 
-  if (!firebase) {
+  if (!app) {
     return Promise.reject(new Error('Firebase not found'));
   }
 
-  global.firebase = firebase;
+  global.firebase = app;
 
-  return global.firebase ? global.firebase : firebase;
+  return global.firebase ? global.firebase : app;
 };

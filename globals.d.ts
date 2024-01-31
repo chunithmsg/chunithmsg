@@ -1,3 +1,5 @@
+/* eslint-disable vars-on-top */
+/* eslint-disable no-var */
 import { z } from 'zod';
 
 declare module '*.png' {
@@ -28,8 +30,11 @@ declare global {
     interface ProcessEnv extends z.infer<typeof envSchema> {}
   }
 
-  // eslint-disable-next-line no-var, vars-on-top
   var firebase:
     | undefined
     | ReturnType<typeof import('firebase/app').initializeApp>;
+
+  var firestore:
+    | undefined
+    | ReturnType<typeof import('@auth/firebase-adapter').initFirestore>;
 }
