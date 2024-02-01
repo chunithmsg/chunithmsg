@@ -1,6 +1,15 @@
-export const getLeaderboard = async () => {
-  const axios = (await import('@/libs')).axiosClient;
-  const { data } = await axios.get('/api/submissions');
+export const getLeaderboard = async (competitionId: string) => {
+  const supabase = (
+    await import('@supabase/auth-helpers-nextjs')
+  ).createClientComponentClient();
+  const { data } = await supabase
+    .from('scores')
+    .select('*')
+    .eq('competition_id', competitionId)
+    .eq('active', true)
+    .is('deleted_at', null)
+    .order('total_score', { ascending: false })
+    .order('played_at', { ascending: true });
   return data;
 };
 
@@ -38,7 +47,5 @@ export const getScore = async (competitionId: string, scoreId: string) => {
     .eq('id', scoreId)
     .is('deleted_at', null)
     .single();
-
-  console.log(data);
   return data;
 };

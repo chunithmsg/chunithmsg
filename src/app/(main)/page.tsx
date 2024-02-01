@@ -1,25 +1,15 @@
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from '@tanstack/react-query';
+import { getCompetitions, getLeaderboard } from '@/queries';
+import type { Score } from '@/models/standing';
 
-import { getLeaderboard } from '@/queries';
 import Leaderboard from './leaderboard';
 
 const LeaderboardPage = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ['leaderboard'],
-    queryFn: getLeaderboard,
-  });
-
-  return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Leaderboard />
-    </HydrationBoundary>
+  const competitions = await getCompetitions();
+  const leaderboard: Array<Score> | null = await getLeaderboard(
+    competitions?.[0].id,
   );
+
+  return <Leaderboard leaderboard={leaderboard} />;
 };
 
 export default LeaderboardPage;
