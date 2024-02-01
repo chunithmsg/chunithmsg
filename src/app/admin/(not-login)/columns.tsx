@@ -1,27 +1,23 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
+import { MoreHorizontal } from 'lucide-react';
+import Link from 'next/link';
 
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Checkbox } from '@/components/ui/checkbox';
 import { DataTableColumnHeader } from '@/components/ui/data-table-column-header';
+import type { Score } from '@/models/standing';
 
-export const sampleData = [
-  {
-    active: true,
-    ign: 'Testify',
-    isDisqualified: true,
-    qualifiedIndex: 0,
-    song1: 1008797,
-    song2: 1009088,
-    song3: 1009294,
-    totalScore: 3027179,
-    timestamp: 1706263500000,
-  },
-];
-
-type SampleData = (typeof sampleData)[number];
-
-export const columns: ColumnDef<SampleData>[] = [
+export const columns: ColumnDef<Score>[] = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -42,13 +38,7 @@ export const columns: ColumnDef<SampleData>[] = [
       />
     ),
   },
-  {
-    accessorKey: 'active',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Active" />
-    ),
-    cell: ({ row }) => <Checkbox checked={row.getValue('active')} />,
-  },
+  
   {
     accessorKey: 'ign',
     header: ({ column }) => (
@@ -74,18 +64,18 @@ export const columns: ColumnDef<SampleData>[] = [
     ),
   },
   {
-    accessorKey: 'totalScore',
+    accessorKey: 'total_score',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Total Score" />
     ),
   },
   {
-    accessorKey: 'timestamp',
+    accessorKey: 'played_at',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Timestamp" />
+      <DataTableColumnHeader column={column} title="Time of Play" />
     ),
     cell: ({ row }) =>
-      new Date(row.getValue('timestamp')).toLocaleString('en-SG', {
+      new Date(row.getValue('played_at')).toLocaleString('en-SG', {
         timeZone: 'Asia/Singapore',
         dateStyle: 'short',
         timeStyle: 'short',
@@ -93,10 +83,43 @@ export const columns: ColumnDef<SampleData>[] = [
       }),
   },
   {
-    accessorKey: 'isDisqualified',
+    accessorKey: 'disqualified',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="DQed" />
     ),
-    cell: ({ row }) => <Checkbox checked={row.getValue('isDisqualified')} />,
+    cell: ({ row }) => (
+      <Checkbox disabled checked={row.getValue('disqualified')} />
+    ),
+  },
+  {
+    accessorKey: 'active',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Active" />
+    ),
+    cell: ({ row }) => <Checkbox disabled checked={row.getValue('active')} />,
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      const play = row.original;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <Link href={`/admin/edit-play/${play.id}`}>
+              <DropdownMenuItem>Edit Play</DropdownMenuItem>
+            </Link>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
   },
 ];

@@ -25,7 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { getCompetitions } from '@/queries';
+import type { Score } from '@/models/standing';
 
 const formSchema = z.object({
   competition_id: z.string(),
@@ -38,25 +38,29 @@ const formSchema = z.object({
   played_at: z.date(),
 });
 
-const NewPlay = () => {
+const EditPlay = ({
+  competitions,
+  score,
+}: {
+  competitions: {
+    id: string;
+    name: string;
+  }[] | null;
+  score: Score;
+}) => {
   const router = useRouter();
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['competitions'],
-    queryFn: getCompetitions,
-  });
-  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      competition_id: '',
-      ign: '',
-      active: true,
-      disqualified: false,
-      song1: 0,
-      song2: 0,
-      song3: 0,
-      played_at: new Date(),
+      competition_id: score.competition_id,
+      ign: score.ign,
+      active: score.active,
+      disqualified: score.disqualified,
+      song1: score.song1,
+      song2: score.song2,
+      song3: score.song3,
+      played_at: score.played_at,
     },
   });
 
@@ -75,7 +79,7 @@ const NewPlay = () => {
       song3: values.song3,
       total_score: values.song1 + values.song2 + values.song3,
       played_at: values.played_at,
-    }
+    };
 
     const { error } = await supabase.from('scores').insert(updatedValues);
 
@@ -94,7 +98,7 @@ const NewPlay = () => {
 
   return (
     <>
-      <h1>Add New Play</h1>
+      <h1>Edit Play</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="my-5 space-y-6">
           <FormField
@@ -109,25 +113,15 @@ const NewPlay = () => {
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue
-                        placeholder={
-                          isLoading ? 'Loading...' : 'Select a competition'
-                        }
-                      />
+                      <SelectValue placeholder="Select a competition" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {isLoading ? (
-                      <SelectItem disabled value="">
-                        Loading...
+                    {competitions?.map((competition) => (
+                      <SelectItem key={competition.id} value={competition.id}>
+                        {competition.name}
                       </SelectItem>
-                    ) : (
-                      data?.map((competition) => (
-                        <SelectItem key={competition.id} value={competition.id}>
-                          {competition.name}
-                        </SelectItem>
-                      ))
-                    )}
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormDescription>Select a competition</FormDescription>
@@ -142,7 +136,13 @@ const NewPlay = () => {
               <FormItem>
                 <FormLabel>IGN</FormLabel>
                 <FormControl>
-                  <Input placeholder="IGN" type="text" {...field} required />
+                  <Input
+                    placeholder="IGN"
+                    type="text"
+                    {...field}
+                    defaultValue={field.value}
+                    required
+                  />
                 </FormControl>
                 <FormDescription>
                   The IGN of the player who made the play
@@ -251,4 +251,4 @@ const NewPlay = () => {
   );
 };
 
-export default NewPlay;
+export default EditPlay;
