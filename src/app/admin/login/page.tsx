@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -27,6 +27,7 @@ const formSchema = z.object({
 });
 
 const AdminLoginPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,26 +38,22 @@ const AdminLoginPage = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const result = await signIn('credentials', {
-      redirect: false,
+    const supabase = (
+      await import('@supabase/auth-helpers-nextjs')
+    ).createClientComponentClient();
+    const { error } = await supabase.auth.signInWithPassword({
       email: values.email,
       password: values.password,
     });
 
-    if (!result) {
-      form.setError('email', {
-        type: 'manual',
-        message: 'Something went wrong',
+    if (error) {
+      form.setError('email', { message: 'Invalid email or password entered' });
+      form.setError('password', {
+        message: 'Invalid email or password entered',
       });
       return;
     }
 
-    if (result.error) {
-      form.setError('email', { message: result.error });
-      return;
-    }
-
-    const router = (await import('next/navigation')).useRouter();
     router.push('/admin');
   };
 
@@ -96,9 +93,7 @@ const AdminLoginPage = () => {
                       <Checkbox
                         id="password-visibility"
                         checked={showPassword}
-                        onCheckedChange={(prevValue) =>
-                          setShowPassword(!prevValue)
-                        }
+                        onCheckedChange={() => setShowPassword(!showPassword)}
                       />
                       <label
                         htmlFor="password-visibility"
@@ -111,6 +106,7 @@ const AdminLoginPage = () => {
                   </FormItem>
                 )}
               />
+              <FormMessage />
               <Button className="w-full !mt-6" size="lg" type="submit">
                 Submit
               </Button>

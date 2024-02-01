@@ -17,11 +17,11 @@ const envSchema = z.object({
   GOOGLE_CLIENT_EMAIL: z.string(),
   GOOGLE_PRIVATE_KEY: z.string(),
   ANALYZE: z.string(),
-  FIREBASE_API_KEY: z.string(),
-  FIREBASE_AUTH_DOMAIN: z.string(),
-  FIREBASE_DB_URL: z.string(),
-  FIREBASE_PROJECT_ID: z.string(),
-  FIREBASE_SENDER_ID: z.string(),
+  FRONTEND_URL: z.string(),
+  SUPABASE_URL: z.string(),
+  SUPABASE_ANON_KEY: z.string(),
+  NEXT_PUBLIC_SUPABASE_URL: z.string(),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
 });
 
 declare global {
@@ -29,12 +29,4 @@ declare global {
     type NodeEnv = 'development' | 'production';
     interface ProcessEnv extends z.infer<typeof envSchema> {}
   }
-
-  var firebase:
-    | undefined
-    | ReturnType<typeof import('firebase/app').initializeApp>;
-
-  var firestore:
-    | undefined
-    | ReturnType<typeof import('@next-auth/firebase-adapter').initFirestore>;
 }

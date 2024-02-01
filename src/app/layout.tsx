@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { Inter as FontSans } from 'next/font/google';
 
 import { cn } from '@/libs';
+import Providers from '@/providers';
 
 export const metadata: Metadata = {
   title: 'Chunithm Singapore Official Site',
@@ -40,7 +41,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
         fontSans.variable,
       )}
     >
-      {children}
+      <Providers>{children}</Providers>
     </body>
     <Script id="contribution" strategy="lazyOnload">
       {`console.info("Found a bug? Want to contribute? Visit https://github.com/xantho09/chunithmsg!")`}
