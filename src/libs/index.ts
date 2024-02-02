@@ -1,5 +1,6 @@
 export * from './axios';
 export * from './constants';
+export * from './database.types';
 export * from './date';
 export * from './leaderboard';
 export * from './queryClient';

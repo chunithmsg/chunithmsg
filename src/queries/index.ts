@@ -1,16 +1,16 @@
-import type { Score } from '@/models/standing';
+import type { Database } from '@/libs';
 
 export const getLeaderboard = async (competitionId: string) => {
   const supabase = (
     await import('@supabase/auth-helpers-nextjs')
-  ).createClientComponentClient();
-  let { data }: { data: Array<Score> | null } = await supabase
+  ).createClientComponentClient<Database>();
+  let { data } = await supabase
     .from('scores')
     .select('*')
     .order('total_score', { ascending: false })
     .order('played_at', { ascending: true })
     .eq('competition_id', competitionId)
-    .is('active', true)
+    .eq('active', true)
     .is('deleted_at', null);
 
   if (data !== null && data.length > 0) {
@@ -40,10 +40,10 @@ export const getLeaderboard = async (competitionId: string) => {
 export const getCompetitions = async () => {
   const supabase = (
     await import('@supabase/auth-helpers-nextjs')
-  ).createClientComponentClient();
+  ).createClientComponentClient<Database>();
   const { data } = await supabase
     .from('competitions')
-    .select('id, name')
+    .select('*')
     .filter('active', 'eq', true);
   return data;
 };
@@ -51,7 +51,7 @@ export const getCompetitions = async () => {
 export const getScores = async (competitionId: string) => {
   const supabase = (
     await import('@supabase/auth-helpers-nextjs')
-  ).createClientComponentClient();
+  ).createClientComponentClient<Database>();
   const { data } = await supabase
     .from('scores')
     .select('*')
@@ -63,13 +63,14 @@ export const getScores = async (competitionId: string) => {
 export const getScore = async (competitionId: string, scoreId: string) => {
   const supabase = (
     await import('@supabase/auth-helpers-nextjs')
-  ).createClientComponentClient();
+  ).createClientComponentClient<Database>();
   const { data } = await supabase
     .from('scores')
     .select('*')
     .eq('competition_id', competitionId)
-    .eq('id', scoreId)
     .is('deleted_at', null)
+    .eq('id', scoreId)
     .single();
+  console.log(data);
   return data;
 };

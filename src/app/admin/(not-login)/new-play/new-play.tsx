@@ -3,8 +3,8 @@
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -25,27 +25,32 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { getCompetitions } from '@/queries';
+import { SongStatus } from '@/models/standing';
+import type { Database, Tables } from '@/libs';
 
 const formSchema = z.object({
-  competition_id: z.string(),
+  competition_id: z.string().min(1, {
+    message: 'Competition is required',
+  }),
   ign: z.string().min(1),
   active: z.boolean().default(true),
   disqualified: z.boolean().default(false),
   song1: z.coerce.number().int().min(0).max(1010000),
+  song1_type: z.nativeEnum({ ...SongStatus, NULL: 'NULL' } as const),
   song2: z.coerce.number().int().min(0).max(1010000),
+  song2_type: z.nativeEnum({ ...SongStatus, NULL: 'NULL' } as const),
   song3: z.coerce.number().int().min(0).max(1010000),
+  song3_type: z.nativeEnum({ ...SongStatus, NULL: 'NULL' } as const),
   played_at: z.date(),
 });
 
-const NewPlay = () => {
+const NewPlay = ({
+  competitions,
+}: {
+  competitions: Array<Tables<'competitions'>> | null;
+}) => {
   const router = useRouter();
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['competitions'],
-    queryFn: getCompetitions,
-  });
-  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,16 +59,20 @@ const NewPlay = () => {
       active: true,
       disqualified: false,
       song1: 0,
+      song1_type: 'NULL',
       song2: 0,
+      song2_type: 'NULL',
       song3: 0,
+      song3_type: 'NULL',
       played_at: new Date(),
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    toast.info('Adding new play...');
     const supabase = (
       await import('@supabase/auth-helpers-nextjs')
-    ).createClientComponentClient();
+    ).createClientComponentClient<Database>();
 
     const updatedValues = {
       competition_id: values.competition_id,
@@ -71,23 +80,25 @@ const NewPlay = () => {
       active: values.active,
       disqualified: values.disqualified,
       song1: values.song1,
+      song1_type: values.song1_type === 'NULL' ? null : values.song1_type,
       song2: values.song2,
+      song2_type: values.song2_type === 'NULL' ? null : values.song2_type,
       song3: values.song3,
+      song3_type: values.song3_type === 'NULL' ? null : values.song3_type,
       total_score: values.song1 + values.song2 + values.song3,
       played_at: values.played_at,
-    }
+    };
 
     const { error } = await supabase.from('scores').insert(updatedValues);
 
     if (error) {
-      form.setError('competition_id', { message: 'An error occurred' });
-      form.setError('ign', { message: 'An error occurred' });
-      form.setError('song1', { message: 'An error occurred' });
-      form.setError('song2', { message: 'An error occurred' });
-      form.setError('song3', { message: 'An error occurred' });
+      toast.error('Failed to add new play', {
+        description: error.message,
+      });
       return;
     }
 
+    toast.success('Play added successfully');
     router.push('/admin');
   };
 
@@ -108,25 +119,15 @@ const NewPlay = () => {
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue
-                        placeholder={
-                          isLoading ? 'Loading...' : 'Select a competition'
-                        }
-                      />
+                      <SelectValue placeholder="Select a competition" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {isLoading ? (
-                      <SelectItem disabled value="">
-                        Loading...
+                    {competitions?.map((competition) => (
+                      <SelectItem key={competition.id} value={competition.id}>
+                        {competition.name}
                       </SelectItem>
-                    ) : (
-                      data?.map((competition) => (
-                        <SelectItem key={competition.id} value={competition.id}>
-                          {competition.name}
-                        </SelectItem>
-                      ))
-                    )}
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormDescription>Select a competition</FormDescription>
@@ -205,6 +206,41 @@ const NewPlay = () => {
           />
           <FormField
             control={form.control}
+            name="song1_type"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Song 1 Type</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select song status (AJC, AJ, FC)" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value={SongStatus.AJC}>
+                      {SongStatus.AJC}
+                    </SelectItem>
+                    <SelectItem value={SongStatus.AJ}>
+                      {SongStatus.AJ}
+                    </SelectItem>
+                    <SelectItem value={SongStatus.FC}>
+                      {SongStatus.FC}
+                    </SelectItem>
+                    <SelectItem value="NULL">None</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormDescription>
+                  Select the status of the first song
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="song2"
             render={({ field }) => (
               <FormItem>
@@ -224,6 +260,41 @@ const NewPlay = () => {
           />
           <FormField
             control={form.control}
+            name="song2_type"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Song 2 Type</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select song status (AJC, AJ, FC)" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value={SongStatus.AJC}>
+                      {SongStatus.AJC}
+                    </SelectItem>
+                    <SelectItem value={SongStatus.AJ}>
+                      {SongStatus.AJ}
+                    </SelectItem>
+                    <SelectItem value={SongStatus.FC}>
+                      {SongStatus.FC}
+                    </SelectItem>
+                    <SelectItem value="NULL">None</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormDescription>
+                  Select the status of the second song
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="song3"
             render={({ field }) => (
               <FormItem>
@@ -237,6 +308,41 @@ const NewPlay = () => {
                   />
                 </FormControl>
                 <FormDescription>The score of the third song</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="song3_type"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Song 3 Type</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select song status (AJC, AJ, FC)" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value={SongStatus.AJC}>
+                      {SongStatus.AJC}
+                    </SelectItem>
+                    <SelectItem value={SongStatus.AJ}>
+                      {SongStatus.AJ}
+                    </SelectItem>
+                    <SelectItem value={SongStatus.FC}>
+                      {SongStatus.FC}
+                    </SelectItem>
+                    <SelectItem value="NULL">None</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormDescription>
+                  Select the status of the third song
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

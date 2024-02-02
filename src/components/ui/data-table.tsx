@@ -22,6 +22,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { DataTablePagination } from '@/components/ui/data-table-pagination';
 import { DataTableViewOptions } from '@/components/ui/data-table-view-options';
+import { Tables } from '@/libs';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -47,6 +48,13 @@ export const DataTable = <TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       columnFilters,
+    },
+    meta: {
+      removeRow: (rowIndex: number) => {
+        const setFilterFunc = (old: Array<TData>) =>
+          old.filter((_row: TData, index: number) => index !== rowIndex);
+        setFilterFunc(data);
+      },
     },
   });
 
@@ -84,10 +92,7 @@ export const DataTable = <TData, TValue>({
           <TableBody>
             {isDataLoading && (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24"
-                >
+                <TableCell colSpan={columns.length} className="h-24">
                   <div className="flex justify-center items-center">
                     <svg
                       width="24"

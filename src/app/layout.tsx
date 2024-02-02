@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Inter as FontSans } from 'next/font/google';
 
+import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/libs';
 import Providers from '@/providers';
 
@@ -42,6 +43,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
       )}
     >
       <Providers>{children}</Providers>
+      <Toaster richColors theme="light" closeButton />
     </body>
     <Script id="contribution" strategy="lazyOnload">
       {`console.info("Found a bug? Want to contribute? Visit https://github.com/xantho09/chunithmsg!")`}

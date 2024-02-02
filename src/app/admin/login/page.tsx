@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Hero, HeroBody } from '@/components/ui/hero';
+import type { Database } from '@/libs';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -40,7 +41,7 @@ const AdminLoginPage = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const supabase = (
       await import('@supabase/auth-helpers-nextjs')
-    ).createClientComponentClient();
+    ).createClientComponentClient<Database>();
     const { error } = await supabase.auth.signInWithPassword({
       email: values.email,
       password: values.password,

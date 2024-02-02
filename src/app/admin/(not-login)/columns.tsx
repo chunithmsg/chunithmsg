@@ -4,6 +4,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { MoreHorizontal } from 'lucide-react';
 import Link from 'next/link';
 
+import { deletePlay } from '@/actions';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -38,7 +39,6 @@ export const columns: ColumnDef<Score>[] = [
       />
     ),
   },
-  
   {
     accessorKey: 'ign',
     header: ({ column }) => (
@@ -117,6 +117,14 @@ export const columns: ColumnDef<Score>[] = [
             <Link href={`/admin/edit-play/${play.id}`}>
               <DropdownMenuItem>Edit Play</DropdownMenuItem>
             </Link>
+            <DropdownMenuItem
+              onClick={async () => {
+                await deletePlay(play.id);
+                window.location.reload();
+              }}
+            >
+              Delete Play
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

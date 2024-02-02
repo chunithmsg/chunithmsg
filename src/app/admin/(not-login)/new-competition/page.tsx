@@ -17,6 +17,7 @@ import {
   FormDescription,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import type { Database } from '@/libs';
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -36,7 +37,7 @@ const NewCompetitionPage = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const supabase = (
       await import('@supabase/auth-helpers-nextjs')
-    ).createClientComponentClient();
+    ).createClientComponentClient<Database>();
     const { error } = await supabase.from('competitions').insert(values);
 
     if (error) {

@@ -10,7 +10,7 @@ const Badge = dynamic(() =>
 const SongScoreLabel = ({
   songScore: { score, ajFcStatus },
 }: {
-  songScore: { score: number; ajFcStatus: SongStatusType };
+  songScore: { score: number; ajFcStatus: SongStatusType | null };
 }) => (
   <div className="flex gap-2 align-middle">
     <span>{formatScore(score)}</span>

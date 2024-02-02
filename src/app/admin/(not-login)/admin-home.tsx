@@ -17,8 +17,10 @@ const AdminHome = () => {
 
   const { data: scores, isLoading: isScoresLoading } = useQuery({
     queryKey: ['scores', competitions?.[0].id],
-    queryFn: ({ queryKey }) => getScores(queryKey[1]),
+    queryFn: ({ queryKey }) => getScores(queryKey[1] || ''),
     enabled: !isCompetitionsLoading,
+    staleTime: 0,
+    refetchOnMount: 'always',
   });
 
   return (
