@@ -4,9 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
-import type { Score, Standing } from '@/models/standing';
-import type { IndividualSongStanding } from '@/models/individualSongStanding';
-// import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
+import type { Score } from '@/models/standing';
 
 import type { SongWithJacket } from '@/libs';
 import { formatScore, formatTimestamp, songDetails, cn } from '@/libs';
@@ -60,7 +58,6 @@ const qualifierSongs: SongWithJacket[] = [
 //   { songId: 'nokcamellia', jacket: nokcamellia },
 // ];
 
-// TODO: fix any typing
 const Leaderboard = ({ leaderboard }: { leaderboard: Array<Score> | null }) => {
   const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
 
@@ -118,12 +115,18 @@ const Leaderboard = ({ leaderboard }: { leaderboard: Array<Score> | null }) => {
                 key={`${index}${standing.ign}`}
                 className={cn(
                   standing.disqualified
-                    ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive/50'
-                    : 'bg-background/20 even:bg-background/20 hover:bg-background/50 data-[state=selected]:bg-background/50',
+                    ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive'
+                    : standing.qualified_index &&
+                      standing.qualified_index <= 30 &&
+                      standing.qualified_index > 0
+                    ? 'bg-success/20 even:bg-success/20 hover:bg-success/50 data-[state=selected]:bg-success'
+                    : 'bg-background/20 even:bg-background/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
                   hideDisqualified && standing.disqualified ? 'hidden' : '',
                 )}
               >
-                <TableCell>{index + 1}</TableCell>
+                <TableCell>
+                  {hideDisqualified ? standing.qualified_index : index + 1}
+                </TableCell>
                 <TableCell>
                   <div className="flex gap-2 align-middle">
                     <span>{standing.ign}</span>
@@ -136,7 +139,7 @@ const Leaderboard = ({ leaderboard }: { leaderboard: Array<Score> | null }) => {
                   <SongScoreLabel
                     songScore={{
                       score: standing.song1,
-                      ajFcStatus: 'FC',
+                      ajFcStatus: standing.song3_type,
                     }}
                   />
                 </TableCell>
@@ -144,7 +147,7 @@ const Leaderboard = ({ leaderboard }: { leaderboard: Array<Score> | null }) => {
                   <SongScoreLabel
                     songScore={{
                       score: standing.song2,
-                      ajFcStatus: 'FC',
+                      ajFcStatus: standing.song2_type,
                     }}
                   />
                 </TableCell>
@@ -152,12 +155,12 @@ const Leaderboard = ({ leaderboard }: { leaderboard: Array<Score> | null }) => {
                   <SongScoreLabel
                     songScore={{
                       score: standing.song3,
-                      ajFcStatus: 'FC',
+                      ajFcStatus: standing.song3_type,
                     }}
                   />
                 </TableCell>
                 <TableCell>{formatScore(standing.total_score)}</TableCell>
-                <TableCell>{standing.played_at.toLocaleString()}</TableCell>
+                <TableCell>{formatTimestamp(standing.played_at)}</TableCell>
               </TableRow>
             ))}
         </TableBody>

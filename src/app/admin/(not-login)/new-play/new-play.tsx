@@ -80,7 +80,6 @@ const NewPlay = () => {
     const { error } = await supabase.from('scores').insert(updatedValues);
 
     if (error) {
-      console.error(error);
       form.setError('competition_id', { message: 'An error occurred' });
       form.setError('ign', { message: 'An error occurred' });
       form.setError('song1', { message: 'An error occurred' });

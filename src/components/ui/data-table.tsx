@@ -26,13 +26,13 @@ import { DataTableViewOptions } from '@/components/ui/data-table-view-options';
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  isDataLoading: boolean;
+  isDataLoading?: boolean;
 }
 
 export const DataTable = <TData, TValue>({
   columns,
   data,
-  isDataLoading,
+  isDataLoading = false,
 }: DataTableProps<TData, TValue>) => {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     [],

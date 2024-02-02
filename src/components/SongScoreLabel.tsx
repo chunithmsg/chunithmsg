@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-import type { SongScore } from '@/models/songScore';
+import { SongStatus, type SongStatusType } from '@/models/standing';
 import { formatScore } from '@/libs';
 
 const Badge = dynamic(() =>
@@ -10,12 +10,13 @@ const Badge = dynamic(() =>
 const SongScoreLabel = ({
   songScore: { score, ajFcStatus },
 }: {
-  songScore: SongScore;
+  songScore: { score: number; ajFcStatus: SongStatusType };
 }) => (
   <div className="flex gap-2 align-middle">
     <span>{formatScore(score)}</span>
-    {ajFcStatus === 'AJ' && <Badge variant="gold">AJ</Badge>}
-    {ajFcStatus === 'FC' && <Badge variant="success">FC</Badge>}
+    {ajFcStatus === SongStatus.AJC && <Badge variant="gold">AJC</Badge>}
+    {ajFcStatus === SongStatus.AJ && <Badge variant="gold">AJ</Badge>}
+    {ajFcStatus === SongStatus.FC && <Badge variant="success">FC</Badge>}
   </div>
 );
 

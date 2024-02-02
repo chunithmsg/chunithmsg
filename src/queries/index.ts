@@ -1,15 +1,39 @@
+import type { Score } from '@/models/standing';
+
 export const getLeaderboard = async (competitionId: string) => {
   const supabase = (
     await import('@supabase/auth-helpers-nextjs')
   ).createClientComponentClient();
-  const { data } = await supabase
+  let { data }: { data: Array<Score> | null } = await supabase
     .from('scores')
     .select('*')
-    .eq('competition_id', competitionId)
-    .eq('active', true)
-    .is('deleted_at', null)
     .order('total_score', { ascending: false })
-    .order('played_at', { ascending: true });
+    .order('played_at', { ascending: true })
+    .eq('competition_id', competitionId)
+    .is('active', true)
+    .is('deleted_at', null);
+
+  if (data !== null && data.length > 0) {
+    let hasBeenDisqualified = 0;
+
+    data = data.map((score, index) => {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      let qualified_index = index + 1;
+
+      if (score.disqualified) {
+        hasBeenDisqualified += 1;
+        qualified_index = 0;
+      } else {
+        qualified_index -= hasBeenDisqualified;
+      }
+
+      return {
+        ...score,
+        qualified_index,
+      };
+    });
+  }
+
   return data;
 };
 
