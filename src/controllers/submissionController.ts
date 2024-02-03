@@ -15,7 +15,7 @@ import {
  * The Sheet names for each of the qualifier sets, in the Google Spreadsheet
  */
 const sheetNames = {
-  [QualifierSet.MastersA]: 'S.S.L. Qualifiers',
+  [QualifierSet.MastersA]: 'S.S.L. Qualifiers Score Dump (Offline)',
 };
 
 const columnIndexes = {
