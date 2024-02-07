@@ -4,195 +4,246 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[];
+  | Json[]
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       competitions: {
         Row: {
-          active: boolean;
-          created_at: Date;
-          deleted_at: Date | null;
-          id: string;
-          name: string;
-          updated_at: Date;
-        };
+          active: boolean
+          created_at: Date
+          deleted_at: Date | null
+          id: string
+          name: string
+          updated_at: Date
+        }
         Insert: {
-          active?: boolean;
-          created_at?: Date;
-          deleted_at?: Date | null;
-          id?: string;
-          name?: string;
-          updated_at?: Date;
-        };
+          active?: boolean
+          created_at?: Date
+          deleted_at?: Date | null
+          id?: string
+          name: string
+          updated_at?: Date
+        }
         Update: {
-          active?: boolean;
-          created_at?: Date;
-          deleted_at?: Date | null;
-          id?: string;
-          name?: string;
-          updated_at?: Date;
-        };
-        Relationships: [];
-      };
+          active?: boolean
+          created_at?: Date
+          deleted_at?: Date | null
+          id?: string
+          name?: string
+          updated_at?: Date
+        }
+        Relationships: []
+      }
       scores: {
         Row: {
-          active: boolean;
-          competition_id: string;
-          created_at: Date;
-          deleted_at: Date | null;
-          disqualified: boolean;
-          id: string;
-          ign: string;
-          played_at: Date;
-          song1: number;
-          song1_type: Database['public']['Enums']['scoreType'] | null;
-          song2: number;
-          song2_type: Database['public']['Enums']['scoreType'] | null;
-          song3: number;
-          song3_type: Database['public']['Enums']['scoreType'] | null;
-          total_score: number;
-          updated_at: Date;
-        };
+          active: boolean
+          competition_id: string
+          created_at: Date
+          deleted_at: Date | null
+          disqualified: boolean
+          id: string
+          ign: string
+          played_at: Date
+          song1: number
+          song1_type: Database["public"]["Enums"]["score_type"]
+          song2: number
+          song2_type: Database["public"]["Enums"]["score_type"]
+          song3: number
+          song3_type: Database["public"]["Enums"]["score_type"]
+          total_score: number
+          updated_at: Date
+        }
         Insert: {
-          active?: boolean;
-          competition_id: string;
-          created_at?: Date;
-          deleted_at?: Date | null;
-          disqualified?: boolean;
-          id?: string;
-          ign?: string;
-          played_at: Date;
-          song1: number;
-          song1_type?: Database['public']['Enums']['scoreType'] | null;
-          song2: number;
-          song2_type?: Database['public']['Enums']['scoreType'] | null;
-          song3: number;
-          song3_type?: Database['public']['Enums']['scoreType'] | null;
-          total_score: number;
-          updated_at?: Date;
-        };
+          active?: boolean
+          competition_id: string
+          created_at?: Date
+          deleted_at?: Date | null
+          disqualified?: boolean
+          id?: string
+          ign: string
+          played_at: Date
+          song1: number
+          song1_type?: Database["public"]["Enums"]["score_type"]
+          song2: number
+          song2_type?: Database["public"]["Enums"]["score_type"]
+          song3: number
+          song3_type?: Database["public"]["Enums"]["score_type"]
+          total_score: number
+          updated_at?: Date
+        }
         Update: {
-          active?: boolean;
-          competition_id?: string;
-          created_at?: Date;
-          deleted_at?: Date | null;
-          disqualified?: boolean;
-          id?: string;
-          ign?: string;
-          played_at?: Date;
-          song1?: number;
-          song1_type?: Database['public']['Enums']['scoreType'] | null;
-          song2?: number;
-          song2_type?: Database['public']['Enums']['scoreType'] | null;
-          song3?: number;
-          song3_type?: Database['public']['Enums']['scoreType'] | null;
-          total_score?: number;
-          updated_at?: Date;
-        };
+          active?: boolean
+          competition_id?: string
+          created_at?: Date
+          deleted_at?: Date | null
+          disqualified?: boolean
+          id?: string
+          ign?: string
+          played_at?: Date
+          song1?: number
+          song1_type?: Database["public"]["Enums"]["score_type"]
+          song2?: number
+          song2_type?: Database["public"]["Enums"]["score_type"]
+          song3?: number
+          song3_type?: Database["public"]["Enums"]["score_type"]
+          total_score?: number
+          updated_at?: Date
+        }
         Relationships: [
           {
-            foreignKeyName: 'scores_competition_id_fkey';
-            columns: ['competition_id'];
-            isOneToOne: false;
-            referencedRelation: 'competitions';
-            referencedColumns: ['id'];
-          },
-        ];
-      };
-    };
+            foreignKeyName: "scores_competition_id_fkey"
+            columns: ["competition_id"]
+            isOneToOne: false
+            referencedRelation: "competitions"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+    }
     Views: {
-      [_ in never]: never;
-    };
+      [_ in never]: never
+    }
     Functions: {
-      [_ in never]: never;
-    };
+      get_leaderboard: {
+        Args: {
+          scores_competition_id: string
+          scores_limit?: number
+          scores_offset?: number
+        }
+        Returns: Database["public"]["CompositeTypes"]["scores_qualified_index_type"][]
+      }
+      get_scores: {
+        Args: {
+          scores_competition_id: string
+          filter_active?: boolean
+          scores_limit?: number
+          scores_offset?: number
+        }
+        Returns: {
+          active: boolean
+          competition_id: string
+          created_at: Date
+          deleted_at: Date | null
+          disqualified: boolean
+          id: string
+          ign: string
+          played_at: Date
+          song1: number
+          song1_type: Database["public"]["Enums"]["score_type"]
+          song2: number
+          song2_type: Database["public"]["Enums"]["score_type"]
+          song3: number
+          song3_type: Database["public"]["Enums"]["score_type"]
+          total_score: number
+          updated_at: Date
+        }[]
+      }
+    }
     Enums: {
-      scoreType: 'AJC' | 'AJ' | 'FC';
-    };
+      score_type: "AJC" | "AJ" | "FC" | "NONE"
+    }
     CompositeTypes: {
-      [_ in never]: never;
-    };
-  };
+      scores_qualified_index_type: {
+        qualified_index: number
+        id: string
+        competition_id: string
+        active: boolean
+        disqualified: boolean
+        ign: string
+        song1: number
+        song1_type: Database["public"]["Enums"]["score_type"]
+        song2: number
+        song2_type: Database["public"]["Enums"]["score_type"]
+        song3: number
+        song3_type: Database["public"]["Enums"]["score_type"]
+        total_score: number
+        played_at: Date
+        created_at: Date
+        updated_at: Date
+        deleted_at: Date
+      }
+    }
+  }
 }
 
 export type Tables<
   PublicTableNameOrOptions extends
-    | keyof (Database['public']['Tables'] & Database['public']['Views'])
+    | keyof (Database["public"]["Tables"] & Database["public"]["Views"])
     | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof (Database[PublicTableNameOrOptions['schema']]['Tables'] &
-        Database[PublicTableNameOrOptions['schema']]['Views'])
-    : never = never,
+    ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+        Database[PublicTableNameOrOptions["schema"]]["Views"])
+    : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? (Database[PublicTableNameOrOptions['schema']]['Tables'] &
-      Database[PublicTableNameOrOptions['schema']]['Views'])[TableName] extends {
-      Row: infer R;
+  ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+      Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
     }
     ? R
     : never
-  : PublicTableNameOrOptions extends keyof (Database['public']['Tables'] &
-      Database['public']['Views'])
-  ? (Database['public']['Tables'] &
-      Database['public']['Views'])[PublicTableNameOrOptions] extends {
-      Row: infer R;
+  : PublicTableNameOrOptions extends keyof (Database["public"]["Tables"] &
+      Database["public"]["Views"])
+  ? (Database["public"]["Tables"] &
+      Database["public"]["Views"])[PublicTableNameOrOptions] extends {
+      Row: infer R
     }
     ? R
     : never
-  : never;
+  : never
 
 export type TablesInsert<
   PublicTableNameOrOptions extends
-    | keyof Database['public']['Tables']
+    | keyof Database["public"]["Tables"]
     | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
-    : never = never,
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
-      Insert: infer I;
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
     }
     ? I
     : never
-  : PublicTableNameOrOptions extends keyof Database['public']['Tables']
-  ? Database['public']['Tables'][PublicTableNameOrOptions] extends {
-      Insert: infer I;
+  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+      Insert: infer I
     }
     ? I
     : never
-  : never;
+  : never
 
 export type TablesUpdate<
   PublicTableNameOrOptions extends
-    | keyof Database['public']['Tables']
+    | keyof Database["public"]["Tables"]
     | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
-    : never = never,
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
-      Update: infer U;
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
     }
     ? U
     : never
-  : PublicTableNameOrOptions extends keyof Database['public']['Tables']
-  ? Database['public']['Tables'][PublicTableNameOrOptions] extends {
-      Update: infer U;
+  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+      Update: infer U
     }
     ? U
     : never
-  : never;
+  : never
 
 export type Enums<
   PublicEnumNameOrOptions extends
-    | keyof Database['public']['Enums']
+    | keyof Database["public"]["Enums"]
     | { schema: keyof Database },
   EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicEnumNameOrOptions['schema']]['Enums']
-    : never = never,
+    ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
+    : never = never
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicEnumNameOrOptions['schema']]['Enums'][EnumName]
-  : PublicEnumNameOrOptions extends keyof Database['public']['Enums']
-  ? Database['public']['Enums'][PublicEnumNameOrOptions]
-  : never;
+  ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
+  ? Database["public"]["Enums"][PublicEnumNameOrOptions]
+  : never

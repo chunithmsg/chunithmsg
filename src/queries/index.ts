@@ -4,35 +4,9 @@ export const getLeaderboard = async (competitionId: string) => {
   const supabase = (
     await import('@supabase/auth-helpers-nextjs')
   ).createClientComponentClient<Database>();
-  let { data } = await supabase
-    .from('scores')
-    .select('*')
-    .order('total_score', { ascending: false })
-    .order('played_at', { ascending: true })
-    .eq('competition_id', competitionId)
-    .eq('active', true)
-    .is('deleted_at', null);
-
-  if (data !== null && data.length > 0) {
-    let hasBeenDisqualified = 0;
-
-    data = data.map((score, index) => {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      let qualified_index = index + 1;
-
-      if (score.disqualified) {
-        hasBeenDisqualified += 1;
-        qualified_index = 0;
-      } else {
-        qualified_index -= hasBeenDisqualified;
-      }
-
-      return {
-        ...score,
-        qualified_index,
-      };
-    });
-  }
+  const { data } = await supabase.rpc('get_leaderboard', {
+    scores_competition_id: competitionId,
+  });
 
   return data;
 };

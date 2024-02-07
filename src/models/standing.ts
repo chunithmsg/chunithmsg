@@ -2,6 +2,7 @@ export const SongStatus = {
   AJC: 'AJC',
   AJ: 'AJ',
   FC: 'FC',
+  NONE: 'NONE',
 } as const;
 
 export type SongStatusType = (typeof SongStatus)[keyof typeof SongStatus];
