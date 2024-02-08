@@ -1,7 +1,12 @@
-const MainAdminLayout = ({ children }: { children: React.ReactNode }) => (
+import AdminNavBar from '@/components/AdminNavBar';
+
+const AdminLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="relative flex min-h-svh flex-col bg-background">
-    {children}
+    <AdminNavBar />
+    <main className="flex-1 container py-6 lg:py-8 max-w-6xl mx-auto">
+      {children}
+    </main>
   </div>
 );
 
-export default MainAdminLayout;
+export default AdminLayout;
