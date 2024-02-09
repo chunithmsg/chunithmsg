@@ -106,18 +106,85 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_competition: {
+        Args: {
+          competition_id: string
+        }
+        Returns: {
+          active: boolean
+          created_at: Date
+          deleted_at: Date | null
+          id: string
+          name: string
+          updated_at: Date
+        }[]
+      }
+      get_competitions: {
+        Args: {
+          competition_limit?: number
+          competition_offset?: number
+        }
+        Returns: {
+          active: boolean
+          created_at: Date
+          deleted_at: Date | null
+          id: string
+          name: string
+          updated_at: Date
+        }[]
+      }
       get_leaderboard: {
         Args: {
           scores_competition_id: string
           scores_limit?: number
           scores_offset?: number
         }
-        Returns: Database["public"]["CompositeTypes"]["scores_qualified_index_type"][]
+        Returns: {
+          active: boolean
+          competition_id: string
+          created_at: Date
+          deleted_at: Date | null
+          disqualified: boolean
+          id: string
+          ign: string
+          played_at: Date
+          song1: number
+          song1_type: Database["public"]["Enums"]["score_type"]
+          song2: number
+          song2_type: Database["public"]["Enums"]["score_type"]
+          song3: number
+          song3_type: Database["public"]["Enums"]["score_type"]
+          total_score: number
+          updated_at: Date
+        }[]
+      }
+      get_score: {
+        Args: {
+          score_competition_id: string
+          score_id: string
+        }
+        Returns: {
+          active: boolean
+          competition_id: string
+          created_at: Date
+          deleted_at: Date | null
+          disqualified: boolean
+          id: string
+          ign: string
+          played_at: Date
+          song1: number
+          song1_type: Database["public"]["Enums"]["score_type"]
+          song2: number
+          song2_type: Database["public"]["Enums"]["score_type"]
+          song3: number
+          song3_type: Database["public"]["Enums"]["score_type"]
+          total_score: number
+          updated_at: Date
+        }[]
       }
       get_scores: {
         Args: {
           scores_competition_id: string
-          filter_active?: boolean
           scores_limit?: number
           scores_offset?: number
         }
@@ -145,25 +212,7 @@ export type Database = {
       score_type: "AJC" | "AJ" | "FC" | "NONE"
     }
     CompositeTypes: {
-      scores_qualified_index_type: {
-        qualified_index: number
-        id: string
-        competition_id: string
-        active: boolean
-        disqualified: boolean
-        ign: string
-        song1: number
-        song1_type: Database["public"]["Enums"]["score_type"]
-        song2: number
-        song2_type: Database["public"]["Enums"]["score_type"]
-        song3: number
-        song3_type: Database["public"]["Enums"]["score_type"]
-        total_score: number
-        played_at: Date
-        created_at: Date
-        updated_at: Date
-        deleted_at: Date
-      }
+      [_ in never]: never
     }
   }
 }

@@ -1,4 +1,3 @@
-export * from './axios';
 export * from './constants';
 export * from './database.types';
 export * from './date';

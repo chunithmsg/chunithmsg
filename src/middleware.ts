@@ -10,17 +10,17 @@ export const middleware = async (req: NextRequest) => {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (user && req.nextUrl.pathname === '/admin/login') {
+  if (user && req.nextUrl.pathname === '/login') {
     return NextResponse.redirect(new URL('/admin', req.url));
   }
 
-  if (!user && req.nextUrl.pathname !== '/admin/login') {
-    return NextResponse.redirect(new URL('/admin/login', req.url));
+  if (!user && req.nextUrl.pathname !== '/login') {
+    return NextResponse.redirect(new URL('/login', req.url));
   }
 
   return res;
 };
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/login'],
 };

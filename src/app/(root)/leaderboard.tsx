@@ -94,11 +94,13 @@ const Leaderboard = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="qualifiers"> */}
-      <Table>
+      <Table className="overflow-hidden">
         <TableHeader>
           <TableRow>
             <TableHead rowSpan={2}>#</TableHead>
-            <TableHead rowSpan={2}>IGN</TableHead>
+            <TableHead rowSpan={2} className="w-48">
+              IGN
+            </TableHead>
             {qualifierSongs.map((song, index) => (
               <TableHead key={`${index}${song.songId}`}>
                 <Image
@@ -106,11 +108,16 @@ const Leaderboard = () => {
                   alt={songDetails[song.songId].title}
                   className="max-h-36 max-w-36 w-36 h-36"
                   priority
+                  placeholder="blur"
                 />
               </TableHead>
             ))}
-            <TableHead rowSpan={2}>Total Score</TableHead>
-            <TableHead rowSpan={2}>Time of Play</TableHead>
+            <TableHead rowSpan={2} className="w-28">
+              Total Score
+            </TableHead>
+            <TableHead rowSpan={2} className="w-28">
+              Time of Play
+            </TableHead>
           </TableRow>
           <TableRow>
             {qualifierSongs.map((song, index) => (

@@ -42,7 +42,7 @@ export const columns: ColumnDef<Score>[] = [
   {
     accessorKey: 'ign',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="IGN" />
+      <DataTableColumnHeader column={column} title="IGN" className='w-36' />
     ),
   },
   {
@@ -100,6 +100,9 @@ export const columns: ColumnDef<Score>[] = [
   },
   {
     id: 'actions',
+    header: () => (
+      <div className='w-8' />
+    ),
     cell: ({ row }) => {
       const play = row.original;
 

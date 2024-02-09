@@ -18,6 +18,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <table>{children}</table>
       </div>
     ),
+    img: (props) => (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img {...props} alt="" className="border-2 border-primary" />
+    ),
     ...components,
   };
 }

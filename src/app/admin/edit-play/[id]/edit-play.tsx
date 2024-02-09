@@ -36,11 +36,11 @@ const formSchema = z.object({
   active: z.boolean(),
   disqualified: z.boolean(),
   song1: z.coerce.number().int().min(0).max(1010000),
-  song1_type: z.nativeEnum({ ...SongStatus, NULL: 'NULL' } as const),
+  song1_type: z.nativeEnum(SongStatus),
   song2: z.coerce.number().int().min(0).max(1010000),
-  song2_type: z.nativeEnum({ ...SongStatus, NULL: 'NULL' } as const),
+  song2_type: z.nativeEnum(SongStatus),
   song3: z.coerce.number().int().min(0).max(1010000),
-  song3_type: z.nativeEnum({ ...SongStatus, NULL: 'NULL' } as const),
+  song3_type: z.nativeEnum(SongStatus),
   // played_at: z.date(),
 });
 
@@ -61,11 +61,11 @@ const EditPlay = ({
       active: score?.active,
       disqualified: score?.disqualified,
       song1: score?.song1,
-      song1_type: score?.song1_type === null ? 'NULL' : score?.song1_type,
+      song1_type: score?.song1_type,
       song2: score?.song2,
-      song2_type: score?.song2_type === null ? 'NULL' : score?.song2_type,
+      song2_type: score?.song2_type,
       song3: score?.song3,
-      song3_type: score?.song3_type === null ? 'NULL' : score?.song3_type,
+      song3_type: score?.song3_type,
       // played_at: score?.played_at,
     },
   });
@@ -87,11 +87,11 @@ const EditPlay = ({
       active: values.active,
       disqualified: values.disqualified,
       song1: values.song1,
-      song1_type: values.song1_type === 'NULL' ? null : values.song1_type,
+      song1_type: values.song1_type,
       song2: values.song2,
-      song2_type: values.song2_type === 'NULL' ? null : values.song2_type,
+      song2_type: values.song2_type,
       song3: values.song3,
-      song3_type: values.song3_type === 'NULL' ? null : values.song3_type,
+      song3_type: values.song3_type,
       total_score: values.song1 + values.song2 + values.song3,
       played_at: score.played_at,
     };
@@ -240,7 +240,9 @@ const EditPlay = ({
                     <SelectItem value={SongStatus.FC}>
                       {SongStatus.FC}
                     </SelectItem>
-                    <SelectItem value="NULL">None</SelectItem>
+                    <SelectItem value={SongStatus.NONE}>
+                      {SongStatus.NONE}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormDescription>
@@ -294,7 +296,9 @@ const EditPlay = ({
                     <SelectItem value={SongStatus.FC}>
                       {SongStatus.FC}
                     </SelectItem>
-                    <SelectItem value="NULL">None</SelectItem>
+                    <SelectItem value={SongStatus.NONE}>
+                      {SongStatus.NONE}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormDescription>
@@ -348,7 +352,9 @@ const EditPlay = ({
                     <SelectItem value={SongStatus.FC}>
                       {SongStatus.FC}
                     </SelectItem>
-                    <SelectItem value="NULL">None</SelectItem>
+                    <SelectItem value={SongStatus.NONE}>
+                      {SongStatus.NONE}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormDescription>

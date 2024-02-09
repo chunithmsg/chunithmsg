@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -55,6 +56,7 @@ const AdminLoginPage = () => {
       return;
     }
 
+    toast.success('Logged in successfully');
     router.push('/admin');
   };
 
