@@ -15,6 +15,7 @@ const envSchema = z.object({
   GOOGLE_CLIENT_EMAIL: z.string(),
   GOOGLE_PRIVATE_KEY: z.string(),
   ANALYZE: z.string(),
+  FRONTEND_URL: z.string(),
 });
 
 declare global {

@@ -2,6 +2,7 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@next/next/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
@@ -15,7 +16,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "import"],
+  "plugins": ["react", "import", "@tanstack/query"],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
@@ -31,6 +32,7 @@
     "prefer-spread": "warn",
     "no-param-reassign": "off",
     "global-require": "off",
+    "no-nested-ternary": "warn",
     "import/no-unresolved": "error",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
