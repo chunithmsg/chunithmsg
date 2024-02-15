@@ -110,20 +110,16 @@ export const getQualifierStandings = (submissionSet: SubmissionSet) => {
   //   }
   // }
 
-  let standings = Object.values(standingsByIgn);
+  const standings = Object.values(standingsByIgn);
   standings.sort(compareStandings);
 
+  // Set the qualified index for each non-disqualified standing.
+  // This is done in-place.
   standings
     .filter((standing) => !standing.isDisqualified)
-    .forEach((standing, index) => (standing.qualifiedIndex = index + 1));
-
-  standings = standings.map((standing, index) => {
-    if (!standing.isDisqualified) {
+    .forEach((standing, index) => {
       standing.qualifiedIndex = index + 1;
-    }
-
-    return standing;
-  });
+    });
 
   return standings;
 };
