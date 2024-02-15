@@ -113,6 +113,10 @@ export const getQualifierStandings = (submissionSet: SubmissionSet) => {
   let standings = Object.values(standingsByIgn);
   standings.sort(compareStandings);
 
+  standings
+    .filter((standing) => !standing.isDisqualified)
+    .forEach((standing, index) => (standing.qualifiedIndex = index + 1));
+
   standings = standings.map((standing, index) => {
     if (!standing.isDisqualified) {
       standing.qualifiedIndex = index + 1;
