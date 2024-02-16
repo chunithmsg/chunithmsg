@@ -1,20 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import useSWR from 'swr';
+import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 import type { Standing } from '@/models/standing';
-import type { IndividualSongStanding } from '@/models/individualSongStanding';
 // import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
 
 import type { SongWithJacket } from '@/libs';
-import { formatScore, formatTimestamp, songDetails, fetcher, cn } from '@/libs';
+import { formatScore, formatTimestamp, songDetails, cn } from '@/libs';
 
-import nokcamellia from '../../public/sunplustourney/qualifiers/nokcamellia.jpg';
-import pangaea from '../../public/sunplustourney/qualifiers/pangaea.jpg';
-import singularity from '../../public/sunplustourney/qualifiers/singularityoflove.jpg';
+import nokcamellia from '@/../public/sunplustourney/qualifiers/nokcamellia.jpg';
+import pangaea from '@/../public/sunplustourney/qualifiers/pangaea.jpg';
+import singularity from '@/../public/sunplustourney/qualifiers/singularityoflove.jpg';
 
 const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
 const Badge = dynamic(() =>
@@ -64,13 +63,17 @@ const qualifierSongs: SongWithJacket[] = [
 const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
   // const [serverUnixTimestamp, setServerUnixTimestamp] = useState<number>(0);
-  const { data, isLoading } = useSWR<
-    {
-      qualifiers: Standing[];
-      individualSongStandings: IndividualSongStanding[];
+  const { data: leaderboard, isLoading } = useQuery({
+    queryKey: ['leaderboard'],
+    queryFn: async () => {
+      const axios = (await import('@/libs/axios')).getAxiosInstance();
+      const { data } = await axios.get<{
+        qualifiers: Standing[];
+        individualSongStandings: Standing[];
+      }>('/api/submissions');
+      return data;
     },
-    any
-  >('/api/submissions', fetcher);
+  });
 
   // useEffect(() => {
   //   const currentServerUnixTimestamp = getCurrentTime();
@@ -98,11 +101,15 @@ const Leaderboard = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="qualifiers"> */}
-      <Table>
+      <Table className="overflow-hidden">
         <TableHeader>
           <TableRow>
-            <TableHead rowSpan={2}>#</TableHead>
-            <TableHead rowSpan={2}>IGN</TableHead>
+            <TableHead rowSpan={2} className="w-16">
+              #
+            </TableHead>
+            <TableHead rowSpan={2} className="w-48">
+              IGN
+            </TableHead>
             {qualifierSongs.map((song, index) => (
               <TableHead key={`${index}${song.songId}`}>
                 <Image
@@ -113,8 +120,12 @@ const Leaderboard = () => {
                 />
               </TableHead>
             ))}
-            <TableHead rowSpan={2}>Total Score</TableHead>
-            <TableHead rowSpan={2}>Time of Play</TableHead>
+            <TableHead rowSpan={2} className="w-28">
+              Total Score
+            </TableHead>
+            <TableHead rowSpan={2} className="w-28">
+              Time of Play
+            </TableHead>
           </TableRow>
           <TableRow>
             {qualifierSongs.map((song, index) => (
@@ -125,13 +136,17 @@ const Leaderboard = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.qualifiers.map((standing, index) => (
+          {leaderboard?.qualifiers.map((standing, index) => (
             <TableRow
               key={`${index}${standing.ign}`}
               className={cn(
                 standing.isDisqualified
-                  ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive/50'
-                  : 'bg-background/20 even:bg-background/20 hover:bg-background/50 data-[state=selected]:bg-background/50',
+                  ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive'
+                  : standing.qualifiedIndex &&
+                    standing.qualifiedIndex <= 30 &&
+                    standing.qualifiedIndex > 0
+                  ? 'bg-success/20 even:bg-success/20 hover:bg-success/50 data-[state=selected]:bg-success'
+                  : 'bg-background/20 even:bg-background/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
                 hideDisqualified && standing.isDisqualified ? 'hidden' : '',
               )}
             >
@@ -194,9 +209,9 @@ const Leaderboard = () => {
           Loading...
         </div>
       )}
-      {data?.qualifiers.length === 0 && (
+      {leaderboard?.qualifiers.length === 0 && (
         <div className="flex min-h-max justify-center items-center mt-8">
-          No submissions yet.
+          Empty leaderboard :(
         </div>
       )}
       {/* </TabsContent>

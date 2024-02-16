@@ -18,6 +18,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <table>{children}</table>
       </div>
     ),
+    // TODO: fix the img issue where it spawns fcp warnings
+    img: (props) => (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img {...props} alt="" className="border-2 border-primary" />
+    ),
     ...components,
   };
 }
