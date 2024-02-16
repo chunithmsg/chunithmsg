@@ -1,4 +1,8 @@
-import { qualifiersSpreadsheetId, undefIfEmpty } from '@/libs';
+import {
+  parseIntWithComma,
+  qualifiersSpreadsheetId,
+  undefIfEmpty,
+} from '@/libs';
 import { GrandFinalsMatch } from '@/models/ssl-finals/grandFinalsMatch';
 import {
   ScoreAttackPhase,
@@ -19,12 +23,12 @@ import {
 } from '@/services/googleSheetsService';
 
 const SSL_FINALS_SHEET_NAME = 'S.S.L. Finals';
-const SHEET_RANGE = 'C3:I200';
+const SHEET_RANGE = 'C1:K250';
 
 const parseScoreAttackPhase = (rangeStack: string[][]): ScoreAttackPhase => {
   // Line 1: N = Number of Players
   const firstLine = rangeStack.pop()!;
-  const numPlayers = parseInt(firstLine[2], 10);
+  const numPlayers = parseIntWithComma(firstLine[2]);
 
   // Line 2: Song Name
   const secondLine = rangeStack.pop()!;
@@ -36,13 +40,16 @@ const parseScoreAttackPhase = (rangeStack: string[][]): ScoreAttackPhase => {
   // Next N lines: Player scores
   const rawPlayerScores = rangeStack.splice(-numPlayers);
   const playerScores: ScoreAttackResult[] = rawPlayerScores.map((row) => {
-    const seed = parseInt(row[1], 10);
+    const seed = parseIntWithComma(row[1]);
     const name = row[2];
-    const score = row[3] !== '' ? parseInt(row[3], 10) : undefined;
+    const score = row[3] !== '' ? parseIntWithComma(row[3]) : undefined;
 
-    return { seed, name, score };
+    return { rank: 0, seed, name, score };
   });
   playerScores.sort(compareScoreAttackResults);
+  playerScores.forEach((entry, index) => {
+    entry.rank = index + 1;
+  });
 
   return { songName, playerScores };
 };
@@ -50,7 +57,7 @@ const parseScoreAttackPhase = (rangeStack: string[][]): ScoreAttackPhase => {
 const parseTeamDetails = (rangeStack: string[][]): TeamDetails => {
   // Line 1: N = Number of teams
   const firstLine = rangeStack.pop()!;
-  const numTeams = parseInt(firstLine[2], 10);
+  const numTeams = parseIntWithComma(firstLine[2]);
 
   // Line 2: Header
   rangeStack.pop();
@@ -85,7 +92,7 @@ const parseTeamMatch = (
 
   // First line: Match Number, Home and Away Teams
   const firstLine = teamMatchLines.pop()!;
-  const matchNumber = parseInt(firstLine[2], 10);
+  const matchNumber = parseIntWithComma(firstLine[2]);
   const homeTeamId = firstLine[5];
   const awayTeamId = firstLine[7];
 
@@ -113,11 +120,11 @@ const parseTeamMatch = (
 
     const homeResult = {
       playerName: row[4],
-      score: parseInt(row[5], 10),
+      score: parseIntWithComma(row[5]),
     };
     const awayResult = {
       playerName: row[6],
-      score: parseInt(row[7], 10),
+      score: parseIntWithComma(row[7]),
     };
 
     return {
@@ -130,8 +137,8 @@ const parseTeamMatch = (
 
   // Last line: Total scores
   const lastLine = teamMatchLines.pop()!;
-  const homeTotalScore = parseInt(lastLine[5], 10);
-  const awayTotalScore = parseInt(lastLine[7], 10);
+  const homeTotalScore = parseIntWithComma(lastLine[5]);
+  const awayTotalScore = parseIntWithComma(lastLine[7]);
 
   return {
     matchNumber,
@@ -179,8 +186,9 @@ const parseFinalsMatch = (
   // Exactly 8 lines for a Grand Finals Match.
   const teamMatchLines = rangeStack.splice(-8);
 
-  // First line: Match Number, Home and Away Teams
+  // First line: Match Name, Home and Away Teams
   const firstLine = teamMatchLines.pop()!;
+  const matchName = firstLine[1];
   const homeTeamId = firstLine[4];
   const awayTeamId = firstLine[6];
 
@@ -202,11 +210,11 @@ const parseFinalsMatch = (
     const songName = row[2];
     const homeResult =
       row[4] !== ''
-        ? { playerName: row[3], score: parseInt(row[4], 10) }
+        ? { playerName: row[3], score: parseIntWithComma(row[4]) }
         : undefined;
     const awayResult =
       row[6] !== ''
-        ? { playerName: row[5], score: parseInt(row[6], 10) }
+        ? { playerName: row[5], score: parseIntWithComma(row[6]) }
         : undefined;
 
     return {
@@ -218,10 +226,11 @@ const parseFinalsMatch = (
 
   // Last line: Total scores
   const lastLine = teamMatchLines.pop()!;
-  const homeTotalScore = parseInt(lastLine[4], 10);
-  const awayTotalScore = parseInt(lastLine[6], 10);
+  const homeTotalScore = parseIntWithComma(lastLine[4]);
+  const awayTotalScore = parseIntWithComma(lastLine[6]);
 
   return {
+    matchName,
     homeTeamName,
     awayTeamName,
     songResults,
@@ -315,7 +324,7 @@ export class SslFinalsController {
           updatePhaseResult(nextTeamMatch, teamPhaseResultMap);
           break;
         }
-        case 'finals-battle': {
+        case 'finals-match': {
           const nextFinalsMatch = parseFinalsMatch(rangeStack, teamDetails!);
           if (nextFinalsMatch === undefined) {
             break;
@@ -325,7 +334,7 @@ export class SslFinalsController {
           break;
         }
         default:
-          break;
+          throw new Error(`Unexpected block: ${rangeStack.at(-1)}`);
       }
     }
 
@@ -333,6 +342,7 @@ export class SslFinalsController {
 
     return {
       scoreAttackPhase: scoreAttackPhase!,
+      teamDetails: teamDetails!,
       teamPhaseMatches,
       teamPhaseResults,
       grandFinalsMatches,

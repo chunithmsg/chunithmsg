@@ -1,10 +1,12 @@
 import { GrandFinalsMatch } from './grandFinalsMatch';
 import { ScoreAttackPhase } from './scoreAttackPhase';
+import { TeamDetails } from './teamDetails';
 import { TeamMatch } from './teamMatch';
 import { TeamPhaseResult } from './teamPhaseResult';
 
 export type SslFinalsDetails = {
   scoreAttackPhase: ScoreAttackPhase;
+  teamDetails: TeamDetails;
 
   // Chronological order.
   // Earliest match at the start.

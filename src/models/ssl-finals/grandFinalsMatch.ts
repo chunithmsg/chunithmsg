@@ -1,6 +1,7 @@
 import { TeamSongResult } from './teamSongResult';
 
 export type GrandFinalsMatch = {
+  matchName: string;
   homeTeamName: string; // Higher ranked team
   awayTeamName: string; // Lower ranked team
   /**

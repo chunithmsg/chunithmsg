@@ -1,6 +1,7 @@
 import { compareInt } from '@/libs';
 
 export type ScoreAttackResult = {
+  rank: number;
   name: string;
   seed: number;
   score?: number;

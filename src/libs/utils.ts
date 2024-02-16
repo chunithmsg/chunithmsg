@@ -41,6 +41,9 @@ export const formatDuration = (durationInMilliseconds: number) => {
   return `${numDays}d ${numHours}h ${numMinutes}m ${numSeconds}s`;
 };
 
+export const parseIntWithComma = (value: string) =>
+  parseInt(value.replaceAll(',', ''), 10);
+
 /**
  * Comapres two integers.
  *
