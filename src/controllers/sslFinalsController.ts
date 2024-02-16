@@ -24,7 +24,7 @@ const SHEET_RANGE = 'C3:I200';
 const parseScoreAttackPhase = (rangeStack: string[][]): ScoreAttackPhase => {
   // Line 1: N = Number of Players
   const firstLine = rangeStack.pop()!;
-  const numPlayers = parseInt(firstLine[2]);
+  const numPlayers = parseInt(firstLine[2], 10);
 
   // Line 2: Song Name
   const secondLine = rangeStack.pop()!;
@@ -36,9 +36,9 @@ const parseScoreAttackPhase = (rangeStack: string[][]): ScoreAttackPhase => {
   // Next N lines: Player scores
   const rawPlayerScores = rangeStack.splice(-numPlayers);
   const playerScores: ScoreAttackResult[] = rawPlayerScores.map((row) => {
-    const seed = parseInt(row[1]);
+    const seed = parseInt(row[1], 10);
     const name = row[2];
-    const score = row[3] !== '' ? parseInt(row[3]) : undefined;
+    const score = row[3] !== '' ? parseInt(row[3], 10) : undefined;
 
     return { seed, name, score };
   });
@@ -50,7 +50,7 @@ const parseScoreAttackPhase = (rangeStack: string[][]): ScoreAttackPhase => {
 const parseTeamDetails = (rangeStack: string[][]): TeamDetails => {
   // Line 1: N = Number of teams
   const firstLine = rangeStack.pop()!;
-  const numTeams = parseInt(firstLine[2]);
+  const numTeams = parseInt(firstLine[2], 10);
 
   // Line 2: Header
   rangeStack.pop();
@@ -85,7 +85,7 @@ const parseTeamMatch = (
 
   // First line: Match Number, Home and Away Teams
   const firstLine = teamMatchLines.pop()!;
-  const matchNumber = parseInt(firstLine[2]);
+  const matchNumber = parseInt(firstLine[2], 10);
   const homeTeamId = firstLine[5];
   const awayTeamId = firstLine[7];
 
@@ -113,11 +113,11 @@ const parseTeamMatch = (
 
     const homeResult = {
       playerName: row[4],
-      score: parseInt(row[5]),
+      score: parseInt(row[5], 10),
     };
     const awayResult = {
       playerName: row[6],
-      score: parseInt(row[7]),
+      score: parseInt(row[7], 10),
     };
 
     return {
@@ -130,8 +130,8 @@ const parseTeamMatch = (
 
   // Last line: Total scores
   const lastLine = teamMatchLines.pop()!;
-  const homeTotalScore = parseInt(lastLine[5]);
-  const awayTotalScore = parseInt(lastLine[7]);
+  const homeTotalScore = parseInt(lastLine[5], 10);
+  const awayTotalScore = parseInt(lastLine[7], 10);
 
   return {
     matchNumber,
@@ -202,11 +202,11 @@ const parseFinalsMatch = (
     const songName = row[2];
     const homeResult =
       row[4] !== ''
-        ? { playerName: row[3], score: parseInt(row[4]) }
+        ? { playerName: row[3], score: parseInt(row[4], 10) }
         : undefined;
     const awayResult =
       row[6] !== ''
-        ? { playerName: row[5], score: parseInt(row[6]) }
+        ? { playerName: row[5], score: parseInt(row[6], 10) }
         : undefined;
 
     return {
@@ -218,8 +218,8 @@ const parseFinalsMatch = (
 
   // Last line: Total scores
   const lastLine = teamMatchLines.pop()!;
-  const homeTotalScore = parseInt(lastLine[4]);
-  const awayTotalScore = parseInt(lastLine[6]);
+  const homeTotalScore = parseInt(lastLine[4], 10);
+  const awayTotalScore = parseInt(lastLine[6], 10);
 
   return {
     homeTeamName,
@@ -288,10 +288,10 @@ export class SslFinalsController {
         case 'score-attack':
           scoreAttackPhase = parseScoreAttackPhase(rangeStack);
           break;
-        case 'team-details':
+        case 'team-details': {
           teamDetails = parseTeamDetails(rangeStack);
 
-          for (const [teamId, details] of Object.entries(teamDetails)) {
+          Object.entries(teamDetails).forEach(([teamId, details]) => {
             teamPhaseResultMap[teamId] = {
               rank: 0,
               teamId,
@@ -301,10 +301,11 @@ export class SslFinalsController {
               numAwayWins: 0,
               totalScoreDiff: 0,
             };
-          }
+          });
 
           break;
-        case 'team-match':
+        }
+        case 'team-match': {
           const nextTeamMatch = parseTeamMatch(rangeStack, teamDetails!);
           if (nextTeamMatch === undefined) {
             break;
@@ -313,13 +314,18 @@ export class SslFinalsController {
           teamPhaseMatches.push(nextTeamMatch);
           updatePhaseResult(nextTeamMatch, teamPhaseResultMap);
           break;
-        case 'finals-battle':
+        }
+        case 'finals-battle': {
           const nextFinalsMatch = parseFinalsMatch(rangeStack, teamDetails!);
           if (nextFinalsMatch === undefined) {
             break;
           }
 
           grandFinalsMatches.push(nextFinalsMatch);
+          break;
+        }
+        default:
+          break;
       }
     }
 

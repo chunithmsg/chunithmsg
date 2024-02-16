@@ -14,14 +14,15 @@ export const compareScoreAttackResults = (
     // If one is undefined, prioritise the one with a score
     if (resultA.score === undefined) {
       return 1;
-    } else if (resultB.score === undefined) {
+    }
+    if (resultB.score === undefined) {
       return -1;
     }
 
     return -compareInt(resultA.score, resultB.score);
-  } else {
-    return compareInt(resultA.seed, resultB.seed);
   }
+
+  return compareInt(resultA.seed, resultB.seed);
 };
 
 export type ScoreAttackPhase = {

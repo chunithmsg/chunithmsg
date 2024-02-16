@@ -16,9 +16,10 @@ export const compareTeamPhaseResults = (
 ): number => {
   if (resultA.numWins !== resultB.numWins) {
     return -compareInt(resultA.numWins, resultB.numWins);
-  } else if (resultA.numAwayWins !== resultB.numAwayWins) {
-    return -compareInt(resultA.numAwayWins, resultB.numAwayWins);
-  } else {
-    return -compareInt(resultA.totalScoreDiff, resultB.totalScoreDiff);
   }
+  if (resultA.numAwayWins !== resultB.numAwayWins) {
+    return -compareInt(resultA.numAwayWins, resultB.numAwayWins);
+  }
+
+  return -compareInt(resultA.totalScoreDiff, resultB.totalScoreDiff);
 };
