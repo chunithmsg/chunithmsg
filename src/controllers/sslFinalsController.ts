@@ -241,7 +241,7 @@ const processPhaseResults = (teamPhaseResultMap: {
   return teamPhaseResults;
 };
 
-export class SubmissionController {
+export class SslFinalsController {
   authClient?: AuthClient;
 
   async initialise() {
