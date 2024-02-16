@@ -40,3 +40,24 @@ export const formatDuration = (durationInMilliseconds: number) => {
 
   return `${numDays}d ${numHours}h ${numMinutes}m ${numSeconds}s`;
 };
+
+export const parseIntWithComma = (value: string) =>
+  parseInt(value.replaceAll(',', ''), 10);
+
+/**
+ * Comapres two integers.
+ *
+ * @param first The first value
+ * @param second The second value
+ * @returns <0 if the first value is smaller, >0 if the first value is larger, 0
+ * if they are identical
+ */
+export const compareInt = (first: number, second: number) => first - second;
+
+/**
+ * Returns the given string if non-empty, else undefined.
+ *
+ * @param str The string to check
+ * @returns The given value if non-empty, else undefined.
+ */
+export const undefIfEmpty = (str: string) => (str.length > 0 ? str : undefined);
