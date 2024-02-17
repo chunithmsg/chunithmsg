@@ -207,7 +207,7 @@ const parseFinalsMatch = (
   const rawSongResults = teamMatchLines.splice(-5).reverse();
 
   const songResults = rawSongResults.map((row) => {
-    const songName = row[2];
+    const songName = row[2] !== '' ? row[2] : undefined;
     const homeResult =
       row[4] !== ''
         ? { playerName: row[3], score: parseIntWithComma(row[4]) }
@@ -223,6 +223,11 @@ const parseFinalsMatch = (
       awayResult,
     };
   });
+
+  // If all the songs are still unset, the match has not yet started
+  if (songResults.every((songResult) => songResult.songName === undefined)) {
+    return undefined;
+  }
 
   // Last line: Total scores
   const lastLine = teamMatchLines.pop()!;

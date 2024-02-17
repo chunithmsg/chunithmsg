@@ -337,7 +337,16 @@ export const filterIndividualScoreStandings = (
  * @param score The score to format, given as the string representation of an integer.
  * @returns The formatted score.
  */
-export const formatScore = (score: number) => score.toLocaleString('en-US');
+export const formatScore = (
+  score: number | undefined,
+  onUndefined: string = '---',
+) => {
+  if (score === undefined) {
+    return onUndefined;
+  }
+
+  return score.toLocaleString('en-US');
+};
 
 export const formatOrdinal = (rank: number) => {
   if (rank % 10 === 1 && rank % 100 !== 11) {
