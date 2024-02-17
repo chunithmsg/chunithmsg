@@ -9,6 +9,18 @@ import { formatScore } from '@/libs';
 const isNonempty = (arr: any[] | undefined) =>
   arr !== undefined && arr.length > 0;
 
+const Tabs = dynamic(() =>
+  import('@/components/ui/tabs').then((mod) => mod.Tabs),
+);
+const TabsContent = dynamic(() =>
+  import('@/components/ui/tabs').then((mod) => mod.TabsContent),
+);
+const TabsList = dynamic(() =>
+  import('@/components/ui/tabs').then((mod) => mod.TabsList),
+);
+const TabsTrigger = dynamic(() =>
+  import('@/components/ui/tabs').then((mod) => mod.TabsTrigger),
+);
 const Table = dynamic(() =>
   import('@/components/ui/table').then((mod) => mod.Table),
 );
@@ -42,94 +54,95 @@ const SslFinals = () => {
 
   return (
     <>
-      <h1>Singapore SUN+ers League Finals</h1>
-      {isLoading && (
-        <div className="flex min-h-max justify-center items-center mt-8">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            className="animate-spin h-5 w-5 mr-3"
-          >
-            <path
-              d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-              opacity=".25"
-            />
-            <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
-          </svg>
-          Loading...
-        </div>
-      )}
-      {!isLoading && (
-        <>
-          {/* Grand Finals */}
-          {sslFinalsDetails &&
-            isNonempty(sslFinalsDetails.grandFinalsMatches) && (
-              <>
-                <h2>Grand Finals</h2>
-                {sslFinalsDetails.grandFinalsMatches
-                  .toReversed()
-                  .map((match) => (
-                    <div key={match.matchName}>
-                      <h3>{`Grand Finals: ${match.matchName}`}</h3>
-                      <div>{`Home team: ${match.homeTeamName}`}</div>
-                      <div>{`Away team: ${match.awayTeamName}`}</div>
-                      <Table className="overflow-hidden">
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead className="w-48">Song</TableHead>
-                            <TableHead className="w-24">Home Player</TableHead>
-                            <TableHead className="w-48">Score</TableHead>
-                            <TableHead className="w-24">Away Player</TableHead>
-                            <TableHead className="w-48">Score</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {match.songResults.map((songResult, index) => (
-                            <TableRow key={index}>
-                              <TableCell>
-                                {songResult.songName ?? '???'}
-                              </TableCell>
-                              <TableCell>
-                                {songResult.homeResult?.playerName ?? '???'}
-                              </TableCell>
-                              <TableCell>
-                                {formatScore(songResult.homeResult?.score)}
-                              </TableCell>
-                              <TableCell>
-                                {songResult.awayResult?.playerName ?? '???'}
-                              </TableCell>
-                              <TableCell>
-                                {formatScore(songResult.awayResult?.score)}
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                          <TableRow key="total">
-                            <TableCell>Total Score</TableCell>
-                            <TableCell />
-                            <TableCell>
-                              {formatScore(match.homeTotalScore)}
-                            </TableCell>
-                            <TableCell />
-                            <TableCell>
-                              {formatScore(match.awayTotalScore)}
-                            </TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </Table>
-                    </div>
-                  ))}
-              </>
-            )}
-
+      <h1>Finals</h1>
+      <Tabs defaultValue="grandFinals" className="w-full">
+        <TabsList className="grid w-full grid-cols-3 my-5">
+          <TabsTrigger value="grandFinals">Grand Finals</TabsTrigger>
+          <TabsTrigger value="teamMatches">Team Matches</TabsTrigger>
+          <TabsTrigger value="scoreAttack">Score Attack</TabsTrigger>
+        </TabsList>
+        <TabsContent value="grandFinals">
+          {!isLoading && (
+            <>
+              {/* Grand Finals */}
+              {sslFinalsDetails &&
+                isNonempty(sslFinalsDetails.grandFinalsMatches) && (
+                  <>
+                    <h2>Grand Finals</h2>
+                    {sslFinalsDetails.grandFinalsMatches
+                      .toReversed()
+                      .map((match) => (
+                        <div key={match.matchName}>
+                          <h3 className="mb-2">{match.matchName}</h3>
+                          <Table className="overflow-hidden">
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead className="w-48" rowSpan={2}>
+                                  Song
+                                </TableHead>
+                                <TableHead className="w-96" colSpan={2}>
+                                  Home Team:{' '}
+                                  <strong>{match.homeTeamName}</strong>
+                                </TableHead>
+                                <TableHead className="w-96" colSpan={2}>
+                                  Away Team:{' '}
+                                  <strong>{match.awayTeamName}</strong>
+                                </TableHead>
+                              </TableRow>
+                              <TableRow>
+                                <TableHead className="w-24">Player</TableHead>
+                                <TableHead className="w-48">Score</TableHead>
+                                <TableHead className="w-24">Player</TableHead>
+                                <TableHead className="w-48">Score</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              {match.songResults.map((songResult, index) => (
+                                <TableRow key={index}>
+                                  <TableCell>
+                                    {songResult.songName ?? '???'}
+                                  </TableCell>
+                                  <TableCell>
+                                    {songResult.homeResult?.playerName ?? '???'}
+                                  </TableCell>
+                                  <TableCell>
+                                    {formatScore(songResult.homeResult?.score)}
+                                  </TableCell>
+                                  <TableCell>
+                                    {songResult.awayResult?.playerName ?? '???'}
+                                  </TableCell>
+                                  <TableCell>
+                                    {formatScore(songResult.awayResult?.score)}
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                              <TableRow key="total">
+                                <TableCell>Total Score</TableCell>
+                                <TableCell />
+                                <TableCell>
+                                  {formatScore(match.homeTotalScore)}
+                                </TableCell>
+                                <TableCell />
+                                <TableCell>
+                                  {formatScore(match.awayTotalScore)}
+                                </TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        </div>
+                      ))}
+                  </>
+                )}
+            </>
+          )}
+        </TabsContent>
+        <TabsContent value="teamMatches">
           {/* Team Matches */}
           {sslFinalsDetails &&
             isNonempty(sslFinalsDetails.teamPhaseMatches) && (
               <>
                 <h2>Team Match Phase</h2>
-
-                <h3>Team Standings</h3>
+                <h3 className="mb-2">Team Standings</h3>
                 <Table className="overflow-hidden">
                   <TableHeader>
                     <TableRow>
@@ -161,16 +174,24 @@ const SslFinals = () => {
 
                 {sslFinalsDetails.teamPhaseMatches.toReversed().map((match) => (
                   <div key={match.matchNumber}>
-                    <h3>{`Match #${match.matchNumber}`}</h3>
-                    <div>{`Home team: ${match.homeTeamName}`}</div>
-                    <div>{`Away team: ${match.awayTeamName}`}</div>
+                    <h3 className="mb-2">Match {match.matchNumber}</h3>
                     <Table className="overflow-hidden">
                       <TableHeader>
                         <TableRow>
-                          <TableHead className="w-48">Song</TableHead>
-                          <TableHead className="w-24">Home Player</TableHead>
+                          <TableHead className="w-48" rowSpan={2}>
+                            Song
+                          </TableHead>
+                          <TableHead className="w-96" colSpan={2}>
+                            Home Team: <strong>{match.homeTeamName}</strong>
+                          </TableHead>
+                          <TableHead className="w-96" colSpan={2}>
+                            Away Team: <strong>{match.awayTeamName}</strong>
+                          </TableHead>
+                        </TableRow>
+                        <TableRow>
+                          <TableHead className="w-24">Player</TableHead>
                           <TableHead className="w-48">Score</TableHead>
-                          <TableHead className="w-24">Away Player</TableHead>
+                          <TableHead className="w-24">Player</TableHead>
                           <TableHead className="w-48">Score</TableHead>
                         </TableRow>
                       </TableHeader>
@@ -209,11 +230,16 @@ const SslFinals = () => {
                 ))}
               </>
             )}
+        </TabsContent>
+        <TabsContent value="scoreAttack">
           {/* Score Attack */}
-          <h2>Score Attack Phase</h2>
-          <p>{`Song Name: ${
-            sslFinalsDetails?.scoreAttackPhase.songName ?? '???'
-          }`}</p>
+          <h2>Score Attack</h2>
+          <h5 className="mt-6 mb-2">
+            Song Name:{' '}
+            <span className="font-semibold">
+              {sslFinalsDetails?.scoreAttackPhase.songName ?? '???'}
+            </span>
+          </h5>
           <Table className="overflow-hidden">
             <TableHeader>
               <TableRow>
@@ -239,7 +265,25 @@ const SslFinals = () => {
               )}
             </TableBody>
           </Table>
-        </>
+        </TabsContent>
+      </Tabs>
+      {isLoading && (
+        <div className="flex min-h-max justify-center items-center mt-8">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            className="animate-spin h-5 w-5 mr-3"
+          >
+            <path
+              d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+              opacity=".25"
+            />
+            <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
+          </svg>
+          Loading...
+        </div>
       )}
     </>
   );
