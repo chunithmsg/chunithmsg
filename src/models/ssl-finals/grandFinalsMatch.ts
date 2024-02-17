@@ -11,7 +11,7 @@ export type GrandFinalsMatch = {
    * concluded
    */
   songResults: {
-    songName: string;
+    songName?: string;
     homeResult?: TeamSongResult;
     awayResult?: TeamSongResult;
   }[];

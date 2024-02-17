@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import dynamic from 'next/dynamic';
 
@@ -10,20 +9,6 @@ import { formatScore } from '@/libs';
 const isNonempty = (arr: any[] | undefined) =>
   arr !== undefined && arr.length > 0;
 
-const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
-const Badge = dynamic(() =>
-  import('@/components/ui/badge').then((mod) => mod.Badge),
-);
-const Label = dynamic(() =>
-  import('@/components/ui/label').then((mod) => mod.Label),
-);
-const Switch = dynamic(() =>
-  import('@/components/ui/switch').then((mod) => mod.Switch),
-);
-// const Tabs = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.Tabs));
-// const TabsContent = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsContent));
-// const TabsList = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsList));
-// const TabsTrigger = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsTrigger));
 const Table = dynamic(() =>
   import('@/components/ui/table').then((mod) => mod.Table),
 );
@@ -78,6 +63,66 @@ const SslFinals = () => {
       )}
       {!isLoading && (
         <>
+          {/* Grand Finals */}
+          {sslFinalsDetails &&
+            isNonempty(sslFinalsDetails.grandFinalsMatches) && (
+              <>
+                <h2>Grand Finals</h2>
+                {sslFinalsDetails.grandFinalsMatches
+                  .toReversed()
+                  .map((match) => (
+                    <div key={match.matchName}>
+                      <h3>{`Grand Finals: ${match.matchName}`}</h3>
+                      <div>{`Home team: ${match.homeTeamName}`}</div>
+                      <div>{`Away team: ${match.awayTeamName}`}</div>
+                      <Table className="overflow-hidden">
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead className="w-48">Song</TableHead>
+                            <TableHead className="w-48">Home Player</TableHead>
+                            <TableHead className="w-48">Score</TableHead>
+                            <TableHead className="w-48">Away Player</TableHead>
+                            <TableHead className="w-48">Score</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {match.songResults.map((songResult, index) => (
+                            <TableRow key={index}>
+                              <TableCell>
+                                {songResult.songName ?? '???'}
+                              </TableCell>
+                              <TableCell>
+                                {songResult.homeResult?.playerName ?? '???'}
+                              </TableCell>
+                              <TableCell>
+                                {formatScore(songResult.homeResult?.score)}
+                              </TableCell>
+                              <TableCell>
+                                {songResult.awayResult?.playerName ?? '???'}
+                              </TableCell>
+                              <TableCell>
+                                {formatScore(songResult.awayResult?.score)}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                          <TableRow key="total">
+                            <TableCell>Total Score</TableCell>
+                            <TableCell />
+                            <TableCell>
+                              {formatScore(match.homeTotalScore)}
+                            </TableCell>
+                            <TableCell />
+                            <TableCell>
+                              {formatScore(match.awayTotalScore)}
+                            </TableCell>
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+                    </div>
+                  ))}
+              </>
+            )}
+
           {/* Team Matches */}
           {sslFinalsDetails &&
             isNonempty(sslFinalsDetails.teamPhaseMatches) && (
@@ -131,7 +176,7 @@ const SslFinals = () => {
                       </TableHeader>
                       <TableBody>
                         {match.songResults.map((songResult, index) => (
-                          <TableRow key={`${match.matchNumber}-${index}`}>
+                          <TableRow key={index}>
                             <TableCell>{songResult.songName}</TableCell>
                             <TableCell>
                               {songResult.homeResult.playerName}
@@ -187,9 +232,7 @@ const SslFinals = () => {
                     <TableCell>{playerScore.seed}</TableCell>
                     <TableCell>{playerScore.name}</TableCell>
                     <TableCell>
-                      {playerScore.score
-                        ? formatScore(playerScore.score)
-                        : '---'}
+                      {formatScore(playerScore.score, '---')}
                     </TableCell>
                   </TableRow>
                 ),
