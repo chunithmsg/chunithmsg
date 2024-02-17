@@ -22,8 +22,7 @@ import {
   getSpreadSheetValues,
 } from '@/services/googleSheetsService';
 
-const SSL_FINALS_SHEET_NAME = '(For Testing Only) S.S.L. Finals';
-// const SSL_FINALS_SHEET_NAME = 'S.S.L. Finals';
+const SSL_FINALS_SHEET_NAME = 'S.S.L. Finals';
 const SHEET_RANGE = 'C1:K250';
 
 const parseScoreAttackPhase = (rangeStack: string[][]): ScoreAttackPhase => {
