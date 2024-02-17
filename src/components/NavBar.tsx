@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 
-import { qualifierBookingUrl } from '@/libs';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -19,7 +18,14 @@ const NavBar = () => (
           <NavigationMenuItem className="m-0">
             <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Leaderboard
+                Finals
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem className="m-0">
+            <Link href="/qualifiers" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Qualifiers
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -27,13 +33,6 @@ const NavBar = () => (
             <Link href="/rules" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Rules
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem className="m-0">
-            <Link href={qualifierBookingUrl} legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Qualifier Booking
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

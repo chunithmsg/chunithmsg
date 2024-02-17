@@ -3,25 +3,26 @@ import {
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query';
-import SslFinals from './sslFinals';
 
-const SslFinalsPage = async () => {
+import Leaderboard from './leaderboard';
+
+const LeaderboardPage = async () => {
   const queryClient = new QueryClient();
 
   queryClient.prefetchQuery({
-    queryKey: ['ssl-finals-details'],
+    queryKey: ['leaderboard'],
     queryFn: async () => {
       const axios = (await import('@/libs/axios')).getAxiosInstance();
-      const { data } = await axios.get('/api/ssl-finals-details');
+      const { data } = await axios.get('/api/submissions');
       return data;
     },
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <SslFinals />
+      <Leaderboard />
     </HydrationBoundary>
   );
 };
 
-export default SslFinalsPage;
+export default LeaderboardPage;
