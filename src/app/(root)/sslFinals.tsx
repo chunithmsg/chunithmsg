@@ -7,6 +7,9 @@ import dynamic from 'next/dynamic';
 import { SslFinalsDetails } from '@/models/ssl-finals/sslFinalsDetails';
 import { formatScore } from '@/libs';
 
+const isNonempty = (arr: any[] | undefined) =>
+  arr !== undefined && arr.length > 0;
+
 const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
 const Badge = dynamic(() =>
   import('@/components/ui/badge').then((mod) => mod.Badge),
@@ -75,6 +78,72 @@ const SslFinals = () => {
       )}
       {!isLoading && (
         <>
+          {/* Team Matches */}
+          {sslFinalsDetails &&
+            isNonempty(sslFinalsDetails.teamPhaseMatches) && (
+              <>
+                <h2>Team Match Phase</h2>
+
+                {sslFinalsDetails.teamPhaseMatches.map((match) => (
+                  <div key={match.matchNumber}>
+                    <h3>{`Match #${match.matchNumber}`}</h3>
+                    <div>{`Home team: ${match.homeTeamName}`}</div>
+                    <div>{`Away team: ${match.awayTeamName}`}</div>
+                    <Table className="overflow-hidden">
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead rowSpan={2} className="w-48">
+                            Song
+                          </TableHead>
+                          <TableHead rowSpan={2} className="w-48">
+                            Home Player
+                          </TableHead>
+                          <TableHead rowSpan={2} className="w-48">
+                            Score
+                          </TableHead>
+                          <TableHead rowSpan={2} className="w-48">
+                            Away Player
+                          </TableHead>
+                          <TableHead rowSpan={2} className="w-48">
+                            Score
+                          </TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {match.songResults.map((songResult, index) => (
+                          <TableRow key={`${match.matchNumber}-${index}`}>
+                            <TableCell>{songResult.songName}</TableCell>
+                            <TableCell>
+                              {songResult.homeResult.playerName}
+                            </TableCell>
+                            <TableCell>
+                              {formatScore(songResult.homeResult.score)}
+                            </TableCell>
+                            <TableCell>
+                              {songResult.awayResult.playerName}
+                            </TableCell>
+                            <TableCell>
+                              {formatScore(songResult.awayResult.score)}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                        <TableRow key="total">
+                          <TableCell>Total Score</TableCell>
+                          <TableCell />
+                          <TableCell>
+                            {formatScore(match.homeTotalScore)}
+                          </TableCell>
+                          <TableCell />
+                          <TableCell>
+                            {formatScore(match.awayTotalScore)}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </div>
+                ))}
+              </>
+            )}
           {/* Score Attack */}
           <h2>Score Attack Phase</h2>
           <p>{`Song Name: ${
