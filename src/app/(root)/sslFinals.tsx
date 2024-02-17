@@ -84,7 +84,37 @@ const SslFinals = () => {
               <>
                 <h2>Team Match Phase</h2>
 
-                {sslFinalsDetails.teamPhaseMatches.map((match) => (
+                <h3>Team Standings</h3>
+                <Table className="overflow-hidden">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-16">Rank</TableHead>
+                      <TableHead className="w-48">Team Name</TableHead>
+                      <TableHead className="w-16">Wins</TableHead>
+                      <TableHead className="w-16">Away Wins</TableHead>
+                      <TableHead className="w-48">Score Diff</TableHead>
+                      <TableHead className="w-48">Matches Played</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {sslFinalsDetails.teamPhaseResults.map(
+                      (teamResult, index) => (
+                        <TableRow key={`${index}-${teamResult.teamId}`}>
+                          <TableCell>{teamResult.rank}</TableCell>
+                          <TableCell>{teamResult.teamName}</TableCell>
+                          <TableCell>{teamResult.numWins}</TableCell>
+                          <TableCell>{teamResult.numAwayWins}</TableCell>
+                          <TableCell>
+                            {formatScore(teamResult.totalScoreDiff)}
+                          </TableCell>
+                          <TableCell>{teamResult.numMatchesPlayed}</TableCell>
+                        </TableRow>
+                      ),
+                    )}
+                  </TableBody>
+                </Table>
+
+                {sslFinalsDetails.teamPhaseMatches.toReversed().map((match) => (
                   <div key={match.matchNumber}>
                     <h3>{`Match #${match.matchNumber}`}</h3>
                     <div>{`Home team: ${match.homeTeamName}`}</div>
@@ -92,21 +122,11 @@ const SslFinals = () => {
                     <Table className="overflow-hidden">
                       <TableHeader>
                         <TableRow>
-                          <TableHead rowSpan={2} className="w-48">
-                            Song
-                          </TableHead>
-                          <TableHead rowSpan={2} className="w-48">
-                            Home Player
-                          </TableHead>
-                          <TableHead rowSpan={2} className="w-48">
-                            Score
-                          </TableHead>
-                          <TableHead rowSpan={2} className="w-48">
-                            Away Player
-                          </TableHead>
-                          <TableHead rowSpan={2} className="w-48">
-                            Score
-                          </TableHead>
+                          <TableHead className="w-48">Song</TableHead>
+                          <TableHead className="w-48">Home Player</TableHead>
+                          <TableHead className="w-48">Score</TableHead>
+                          <TableHead className="w-48">Away Player</TableHead>
+                          <TableHead className="w-48">Score</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -152,18 +172,10 @@ const SslFinals = () => {
           <Table className="overflow-hidden">
             <TableHeader>
               <TableRow>
-                <TableHead rowSpan={2} className="w-16">
-                  Rank
-                </TableHead>
-                <TableHead rowSpan={2} className="w-16">
-                  Seed
-                </TableHead>
-                <TableHead rowSpan={2} className="w-48">
-                  IGN
-                </TableHead>
-                <TableHead rowSpan={2} className="w-48">
-                  Score
-                </TableHead>
+                <TableHead className="w-16">Rank</TableHead>
+                <TableHead className="w-16">Seed</TableHead>
+                <TableHead className="w-48">IGN</TableHead>
+                <TableHead className="w-48">Score</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
