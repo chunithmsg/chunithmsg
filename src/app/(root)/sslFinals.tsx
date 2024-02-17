@@ -79,9 +79,9 @@ const SslFinals = () => {
                         <TableHeader>
                           <TableRow>
                             <TableHead className="w-48">Song</TableHead>
-                            <TableHead className="w-48">Home Player</TableHead>
+                            <TableHead className="w-24">Home Player</TableHead>
                             <TableHead className="w-48">Score</TableHead>
-                            <TableHead className="w-48">Away Player</TableHead>
+                            <TableHead className="w-24">Away Player</TableHead>
                             <TableHead className="w-48">Score</TableHead>
                           </TableRow>
                         </TableHeader>
@@ -138,7 +138,7 @@ const SslFinals = () => {
                       <TableHead className="w-16">Wins</TableHead>
                       <TableHead className="w-16">Away Wins</TableHead>
                       <TableHead className="w-48">Score Diff</TableHead>
-                      <TableHead className="w-48">Matches Played</TableHead>
+                      <TableHead className="w-16">Matches Played</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -168,9 +168,9 @@ const SslFinals = () => {
                       <TableHeader>
                         <TableRow>
                           <TableHead className="w-48">Song</TableHead>
-                          <TableHead className="w-48">Home Player</TableHead>
+                          <TableHead className="w-24">Home Player</TableHead>
                           <TableHead className="w-48">Score</TableHead>
-                          <TableHead className="w-48">Away Player</TableHead>
+                          <TableHead className="w-24">Away Player</TableHead>
                           <TableHead className="w-48">Score</TableHead>
                         </TableRow>
                       </TableHeader>
@@ -219,7 +219,7 @@ const SslFinals = () => {
               <TableRow>
                 <TableHead className="w-16">Rank</TableHead>
                 <TableHead className="w-16">Seed</TableHead>
-                <TableHead className="w-48">IGN</TableHead>
+                <TableHead className="w-24">IGN</TableHead>
                 <TableHead className="w-48">Score</TableHead>
               </TableRow>
             </TableHeader>
