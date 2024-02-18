@@ -7,6 +7,9 @@ import dynamic from 'next/dynamic';
 
 import type { Standing } from '@/models/standing';
 // import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import type { SongWithJacket } from '@/libs';
 import { formatScore, formatTimestamp, songDetails, cn } from '@/libs';
@@ -19,16 +22,6 @@ const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
 const Badge = dynamic(() =>
   import('@/components/ui/badge').then((mod) => mod.Badge),
 );
-const Label = dynamic(() =>
-  import('@/components/ui/label').then((mod) => mod.Label),
-);
-const Switch = dynamic(() =>
-  import('@/components/ui/switch').then((mod) => mod.Switch),
-);
-// const Tabs = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.Tabs));
-// const TabsContent = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsContent));
-// const TabsList = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsList));
-// const TabsTrigger = dynamic(() => import('@/components/ui/tabs').then((mod) => mod.TabsTrigger));
 const Table = dynamic(() =>
   import('@/components/ui/table').then((mod) => mod.Table),
 );

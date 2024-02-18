@@ -3,24 +3,13 @@
 import { useQuery } from '@tanstack/react-query';
 import dynamic from 'next/dynamic';
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SslFinalsDetails } from '@/models/ssl-finals/sslFinalsDetails';
 import { formatScore } from '@/libs';
 
 const isNonempty = (arr: any[] | undefined) =>
   arr !== undefined && arr.length > 0;
 
-const Tabs = dynamic(() =>
-  import('@/components/ui/tabs').then((mod) => mod.Tabs),
-);
-const TabsContent = dynamic(() =>
-  import('@/components/ui/tabs').then((mod) => mod.TabsContent),
-);
-const TabsList = dynamic(() =>
-  import('@/components/ui/tabs').then((mod) => mod.TabsList),
-);
-const TabsTrigger = dynamic(() =>
-  import('@/components/ui/tabs').then((mod) => mod.TabsTrigger),
-);
 const Table = dynamic(() =>
   import('@/components/ui/table').then((mod) => mod.Table),
 );
