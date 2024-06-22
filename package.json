@@ -33,6 +33,7 @@
     "start": "next start",
     "test": "jest"
   },
+  "packageManager": "pnpm@9.3.0",
   "dependencies": {
     "@googleapis/sheets": "^5.0.5",
     "@mdx-js/loader": "^3.0.0",
