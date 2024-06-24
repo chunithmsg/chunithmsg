@@ -9,6 +9,11 @@ const bundleAnalyzer = withBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  basePath: '/chunithmsg',
+  images: {
+    unoptimized: true,
+  },
   pageExtensions: ['ts', 'tsx', 'mdx'],
   // webpack: (config) => ({
   //   ...config,

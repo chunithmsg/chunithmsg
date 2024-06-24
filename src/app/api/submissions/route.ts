@@ -8,8 +8,6 @@ import {
   getQualifierStandings,
 } from '@/libs';
 
-export const dynamic = 'force-dynamic';
-
 export const GET = async () => {
   // const currentTimestamp = Date.now();
   // const isLeaderboardFrozen =

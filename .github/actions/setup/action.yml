@@ -1,0 +1,31 @@
+name: 'Setup PNPM and Install Dependencies'
+description: 'Setup PNPM and install dependencies using PNPM'
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Setup PNPM
+      uses: pnpm/action-setup@v3
+      with:
+        version: latest
+        run_install: false
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/iron
+        cache: pnpm
+
+    - name: Restore Cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          .next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        restore-keys: |
+          ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+
+    - name: Install Dependencies
+      shell: bash
+      run: pnpm run ci

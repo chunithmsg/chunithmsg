@@ -14,10 +14,6 @@ import { Switch } from '@/components/ui/switch';
 import type { SongWithJacket } from '@/libs';
 import { formatScore, formatTimestamp, songDetails, cn } from '@/libs';
 
-import nokcamellia from '@/../public/sunplustourney/qualifiers/nokcamellia.jpg';
-import pangaea from '@/../public/sunplustourney/qualifiers/pangaea.jpg';
-import singularity from '@/../public/sunplustourney/qualifiers/singularityoflove.jpg';
-
 const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
 const Badge = dynamic(() =>
   import('@/components/ui/badge').then((mod) => mod.Badge),
@@ -42,9 +38,9 @@ const TableRow = dynamic(() =>
 );
 
 const qualifierSongs: SongWithJacket[] = [
-  { songId: 'singularity', jacket: singularity },
-  { songId: 'pangaea', jacket: pangaea },
-  { songId: 'nokcamellia', jacket: nokcamellia },
+  { songId: 'singularity', jacket: '/chunithmsg/sunplustourney/qualifiers/singularityoflove.jpg' },
+  { songId: 'pangaea', jacket: '/chunithmsg/sunplustourney/qualifiers/pangaea.jpg' },
+  { songId: 'nokcamellia', jacket: '/chunithmsg/sunplustourney/qualifiers/nokcamellia.jpg' },
 ];
 
 // const individualQualifiersSongs: SongWithJacket[] = [

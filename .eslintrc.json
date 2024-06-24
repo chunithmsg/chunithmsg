@@ -2,7 +2,6 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@next/next/recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended",
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
@@ -16,7 +15,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "import", "@tanstack/query"],
+  "plugins": ["react", "import"],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
