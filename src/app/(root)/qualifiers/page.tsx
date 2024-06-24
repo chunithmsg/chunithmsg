@@ -12,7 +12,7 @@ import { Switch } from '@/components/ui/switch';
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import type { SongWithJacket } from '@/libs';
-import { formatScore, formatTimestamp, songDetails, cn, prodUrl } from '@/libs';
+import { formatScore, formatTimestamp, songDetails, cn } from '@/libs';
 
 const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
 const Badge = dynamic(() =>
@@ -38,9 +38,9 @@ const TableRow = dynamic(() =>
 );
 
 const qualifierSongs: SongWithJacket[] = [
-  { songId: 'singularity', jacket: prodUrl('/sunplustourney/qualifiers/singularityoflove.jpg') },
-  { songId: 'pangaea', jacket: prodUrl('/sunplustourney/qualifiers/pangaea.jpg') },
-  { songId: 'nokcamellia', jacket: prodUrl('/sunplustourney/qualifiers/nokcamellia.jpg') },
+  { songId: 'singularity', jacket: '/sunplustourney/qualifiers/singularityoflove.jpg' },
+  { songId: 'pangaea', jacket: '/sunplustourney/qualifiers/pangaea.jpg' },
+  { songId: 'nokcamellia', jacket: '/sunplustourney/qualifiers/nokcamellia.jpg' },
 ];
 
 // const individualQualifiersSongs: SongWithJacket[] = [
@@ -59,7 +59,7 @@ const Leaderboard = () => {
       const { data } = await axios.get<{
         qualifiers: Standing[];
         individualSongStandings: Standing[];
-      }>('/public/sunplustourney/qualifiers/results.json');
+      }>('/sunplustourney/qualifiers/results.json');
       return data;
     },
   });

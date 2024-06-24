@@ -29,7 +29,7 @@
     "lint": "next lint",
     "prettier": "prettier --check \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|css)\"",
     "prettier:fix": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|css)\"",
-    "start": "next start",
+    "start": "serve out",
     "test": "jest"
   },
   "packageManager": "pnpm@9.3.0",
@@ -88,6 +88,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.33",
     "prettier": "2.8.8",
+    "serve": "^14.2.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "webpack": "^5.89.0"

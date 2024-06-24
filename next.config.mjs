@@ -10,7 +10,6 @@ const bundleAnalyzer = withBundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/chunithmsg',
   images: {
     unoptimized: true,
   },

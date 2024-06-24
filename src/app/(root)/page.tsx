@@ -35,7 +35,7 @@ const SslFinals = () => {
     queryFn: async () => {
       const axios = (await import('@/libs/axios')).getAxiosInstance();
       const { data } = await axios.get<SslFinalsDetails>(
-        '/public/sunplustourney/results.json',
+        '/sunplustourney/results.json',
       );
       return data;
     },

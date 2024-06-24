@@ -61,19 +61,3 @@ export const compareInt = (first: number, second: number) => first - second;
  * @returns The given value if non-empty, else undefined.
  */
 export const undefIfEmpty = (str: string) => (str.length > 0 ? str : undefined);
-
-/**
- * Appends the org name to the given url string
- * 
- * @param url The url to append the org name to
- * @returns The url with the org name appended
- */
-export const prodUrl = (url: string) => {
-  const isProd = process.env.NODE_ENV === 'production';
-
-  if (isProd) {
-    url = `/chunithmsg${url}`
-  }
-
-  return url;
-}
