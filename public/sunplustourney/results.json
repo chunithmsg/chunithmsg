@@ -1,0 +1,1503 @@
+{
+  "scoreAttackPhase": {
+      "songName": "オススメ☆♂♀☆でぃすとぴあ",
+      "playerScores": [
+          {
+              "rank": 1,
+              "seed": 7,
+              "name": "Blerargh",
+              "score": 1009950
+          },
+          {
+              "rank": 2,
+              "seed": 9,
+              "name": "Re:Blaze",
+              "score": 1009919
+          },
+          {
+              "rank": 3,
+              "seed": 8,
+              "name": "Kero",
+              "score": 1009480
+          },
+          {
+              "rank": 4,
+              "seed": 21,
+              "name": "niunai",
+              "score": 1009269
+          },
+          {
+              "rank": 5,
+              "seed": 15,
+              "name": "Veggie",
+              "score": 1009165
+          },
+          {
+              "rank": 6,
+              "seed": 11,
+              "name": "rur‡",
+              "score": 1008857
+          },
+          {
+              "rank": 7,
+              "seed": 23,
+              "name": "saun",
+              "score": 1008011
+          },
+          {
+              "rank": 8,
+              "seed": 12,
+              "name": "Saltify☆",
+              "score": 1007907
+          },
+          {
+              "rank": 9,
+              "seed": 22,
+              "name": "Washdown",
+              "score": 1007884
+          },
+          {
+              "rank": 10,
+              "seed": 28,
+              "name": "Ccccl",
+              "score": 1007680
+          },
+          {
+              "rank": 11,
+              "seed": 20,
+              "name": "FIRANOIC",
+              "score": 1007673
+          },
+          {
+              "rank": 12,
+              "seed": 10,
+              "name": "quit•w•?",
+              "score": 1007646
+          },
+          {
+              "rank": 13,
+              "seed": 19,
+              "name": "jo☆",
+              "score": 1007446
+          },
+          {
+              "rank": 14,
+              "seed": 24,
+              "name": "X-DEN",
+              "score": 1007388
+          },
+          {
+              "rank": 15,
+              "seed": 14,
+              "name": "ToriTora",
+              "score": 1007338
+          },
+          {
+              "rank": 16,
+              "seed": 16,
+              "name": "FUEE",
+              "score": 1007296
+          },
+          {
+              "rank": 17,
+              "seed": 25,
+              "name": "acoustic",
+              "score": 1006438
+          },
+          {
+              "rank": 18,
+              "seed": 17,
+              "name": "Jαp",
+              "score": 1005180
+          },
+          {
+              "rank": 19,
+              "seed": 26,
+              "name": "KUROYUKI",
+              "score": 1005123
+          },
+          {
+              "rank": 20,
+              "seed": 27,
+              "name": "Ame3",
+              "score": 1004400
+          },
+          {
+              "rank": 21,
+              "seed": 18,
+              "name": "lega",
+              "score": 1002669
+          },
+          {
+              "rank": 22,
+              "seed": 30,
+              "name": "255",
+              "score": 1000711
+          },
+          {
+              "rank": 23,
+              "seed": 32,
+              "name": "C○pium♪",
+              "score": 1000126
+          },
+          {
+              "rank": 24,
+              "seed": 31,
+              "name": "gt~",
+              "score": 997330
+          }
+      ]
+  },
+  "teamDetails": {
+      "aa72": {
+          "teamName": "Chunity",
+          "members": {
+              "captain": "AA72",
+              "player2": "Washdown",
+              "player3": "Ccccl"
+          }
+      },
+      "auto-air": {
+          "teamName": "Retirement Home",
+          "members": {
+              "captain": "Auto△Air",
+              "player2": "quit•w•?",
+              "player3": "FIRANOIC"
+          }
+      },
+      "raveille": {
+          "teamName": "Chuni in Bio",
+          "members": {
+              "captain": "RAVEILLE",
+              "player2": "Saltify☆",
+              "player3": "saun"
+          }
+      },
+      "flan": {
+          "teamName": "Rainbow Possession",
+          "members": {
+              "captain": "Flan",
+              "player2": "Re:Blaze",
+              "player3": "Veggie"
+          }
+      },
+      "judi": {
+          "teamName": "观音吗",
+          "members": {
+              "captain": "Judi",
+              "player2": "Kero",
+              "player3": "niunai"
+          }
+      },
+      "beazat": {
+          "teamName": "财神爷",
+          "members": {
+              "captain": "beazat",
+              "player2": "Blerargh",
+              "player3": "rur‡"
+          }
+      }
+  },
+  "teamPhaseMatches": [
+      {
+          "matchNumber": 1,
+          "homeTeamId": "raveille",
+          "homeTeamName": "Chuni in Bio",
+          "awayTeamId": "beazat",
+          "awayTeamName": "财神爷",
+          "songResults": [
+              {
+                  "songName": "Black Swan Lake",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "RAVEILLE",
+                      "score": 1009932
+                  },
+                  "awayResult": {
+                      "playerName": "beazat",
+                      "score": 1009958
+                  }
+              },
+              {
+                  "songName": "きゅうりバーにダイブ",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Saltify☆",
+                      "score": 1009352
+                  },
+                  "awayResult": {
+                      "playerName": "Blerargh",
+                      "score": 1009954
+                  }
+              }
+          ],
+          "homeTotalScore": 2019284,
+          "awayTotalScore": 2019912
+      },
+      {
+          "matchNumber": 2,
+          "homeTeamId": "auto-air",
+          "homeTeamName": "Retirement Home",
+          "awayTeamId": "judi",
+          "awayTeamName": "观音吗",
+          "songResults": [
+              {
+                  "songName": "Genesis",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1008054
+                  },
+                  "awayResult": {
+                      "playerName": "Judi",
+                      "score": 1007523
+                  }
+              },
+              {
+                  "songName": "strelitzia",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "FIRANOIC",
+                      "score": 1008437
+                  },
+                  "awayResult": {
+                      "playerName": "Kero",
+                      "score": 1009932
+                  }
+              }
+          ],
+          "homeTotalScore": 2016491,
+          "awayTotalScore": 2017455
+      },
+      {
+          "matchNumber": 3,
+          "homeTeamId": "aa72",
+          "homeTeamName": "Chunity",
+          "awayTeamId": "flan",
+          "awayTeamName": "Rainbow Possession",
+          "songResults": [
+              {
+                  "songName": "萌豚♥功夫♥大乱舞",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "AA72",
+                      "score": 1009626
+                  },
+                  "awayResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1009951
+                  }
+              },
+              {
+                  "songName": "フリーフォール",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Washdown",
+                      "score": 1009898
+                  },
+                  "awayResult": {
+                      "playerName": "Veggie",
+                      "score": 1005809
+                  }
+              }
+          ],
+          "homeTotalScore": 2019524,
+          "awayTotalScore": 2015760
+      },
+      {
+          "matchNumber": 4,
+          "homeTeamId": "auto-air",
+          "homeTeamName": "Retirement Home",
+          "awayTeamId": "beazat",
+          "awayTeamName": "财神爷",
+          "songResults": [
+              {
+                  "songName": "雷切-RAIKIRI-",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "quit•w•?",
+                      "score": 1008489
+                  },
+                  "awayResult": {
+                      "playerName": "Blerargh",
+                      "score": 1009077
+                  }
+              },
+              {
+                  "songName": "初音天地開闢神話",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1008515
+                  },
+                  "awayResult": {
+                      "playerName": "beazat",
+                      "score": 1009929
+                  }
+              }
+          ],
+          "homeTotalScore": 2017004,
+          "awayTotalScore": 2019006
+      },
+      {
+          "matchNumber": 5,
+          "homeTeamId": "flan",
+          "homeTeamName": "Rainbow Possession",
+          "awayTeamId": "raveille",
+          "awayTeamName": "Chuni in Bio",
+          "songResults": [
+              {
+                  "songName": "STAGER",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1009906
+                  },
+                  "awayResult": {
+                      "playerName": "RAVEILLE",
+                      "score": 1009942
+                  }
+              },
+              {
+                  "songName": "《自戒》 ～ Paganelope",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1008657
+                  },
+                  "awayResult": {
+                      "playerName": "Saltify☆",
+                      "score": 1008246
+                  }
+              }
+          ],
+          "homeTotalScore": 2018563,
+          "awayTotalScore": 2018188
+      },
+      {
+          "matchNumber": 6,
+          "homeTeamId": "aa72",
+          "homeTeamName": "Chunity",
+          "awayTeamId": "judi",
+          "awayTeamName": "观音吗",
+          "songResults": [
+              {
+                  "songName": "ASH",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Washdown",
+                      "score": 1009948
+                  },
+                  "awayResult": {
+                      "playerName": "Kero",
+                      "score": 1009231
+                  }
+              },
+              {
+                  "songName": "ホーリーサンバランド",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Ccccl",
+                      "score": 1008018
+                  },
+                  "awayResult": {
+                      "playerName": "niunai",
+                      "score": 1002854
+                  }
+              }
+          ],
+          "homeTotalScore": 2017966,
+          "awayTotalScore": 2012085
+      },
+      {
+          "matchNumber": 7,
+          "homeTeamId": "beazat",
+          "homeTeamName": "财神爷",
+          "awayTeamId": "flan",
+          "awayTeamName": "Rainbow Possession",
+          "songResults": [
+              {
+                  "songName": "Blue Noise",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "beazat",
+                      "score": 1009574
+                  },
+                  "awayResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1009115
+                  }
+              },
+              {
+                  "songName": "Random",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "rur‡",
+                      "score": 1007740
+                  },
+                  "awayResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1009244
+                  }
+              }
+          ],
+          "homeTotalScore": 2017314,
+          "awayTotalScore": 2018359
+      },
+      {
+          "matchNumber": 8,
+          "homeTeamId": "judi",
+          "homeTeamName": "观音吗",
+          "awayTeamId": "raveille",
+          "awayTeamName": "Chuni in Bio",
+          "songResults": [
+              {
+                  "songName": "再生不能",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "niunai",
+                      "score": 1009441
+                  },
+                  "awayResult": {
+                      "playerName": "saun",
+                      "score": 1004810
+                  }
+              },
+              {
+                  "songName": "Aleph-0 (MAS)",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Judi",
+                      "score": 1009620
+                  },
+                  "awayResult": {
+                      "playerName": "Saltify☆",
+                      "score": 1006757
+                  }
+              }
+          ],
+          "homeTotalScore": 2019061,
+          "awayTotalScore": 2011567
+      },
+      {
+          "matchNumber": 9,
+          "homeTeamId": "auto-air",
+          "homeTeamName": "Retirement Home",
+          "awayTeamId": "aa72",
+          "awayTeamName": "Chunity",
+          "songResults": [
+              {
+                  "songName": "Here We Go",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "FIRANOIC",
+                      "score": 1009675
+                  },
+                  "awayResult": {
+                      "playerName": "AA72",
+                      "score": 1009390
+                  }
+              },
+              {
+                  "songName": "小悪魔の遊園地",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "quit•w•?",
+                      "score": 1007907
+                  },
+                  "awayResult": {
+                      "playerName": "Washdown",
+                      "score": 1007737
+                  }
+              }
+          ],
+          "homeTotalScore": 2017582,
+          "awayTotalScore": 2017127
+      },
+      {
+          "matchNumber": 10,
+          "homeTeamId": "judi",
+          "homeTeamName": "观音吗",
+          "awayTeamId": "flan",
+          "awayTeamName": "Rainbow Possession",
+          "songResults": [
+              {
+                  "songName": "Yakumo >>JOINT STRUGGLE\n(2019 Update)",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Judi",
+                      "score": 1009920
+                  },
+                  "awayResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1009028
+                  }
+              },
+              {
+                  "songName": "JIGOKU STATION CENTRAL GATE",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "niunai",
+                      "score": 1009190
+                  },
+                  "awayResult": {
+                      "playerName": "Veggie",
+                      "score": 1008970
+                  }
+              }
+          ],
+          "homeTotalScore": 2019110,
+          "awayTotalScore": 2017998
+      },
+      {
+          "matchNumber": 11,
+          "homeTeamId": "aa72",
+          "homeTeamName": "Chunity",
+          "awayTeamId": "beazat",
+          "awayTeamName": "财神爷",
+          "songResults": [
+              {
+                  "songName": "PRAGMATISM -RESURRECTION-",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "AA72",
+                      "score": 1009356
+                  },
+                  "awayResult": {
+                      "playerName": "rur‡",
+                      "score": 1007133
+                  }
+              },
+              {
+                  "songName": "オンソクデイズ！！",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Ccccl",
+                      "score": 1007922
+                  },
+                  "awayResult": {
+                      "playerName": "beazat",
+                      "score": 1009904
+                  }
+              }
+          ],
+          "homeTotalScore": 2017278,
+          "awayTotalScore": 2017037
+      },
+      {
+          "matchNumber": 12,
+          "homeTeamId": "raveille",
+          "homeTeamName": "Chuni in Bio",
+          "awayTeamId": "auto-air",
+          "awayTeamName": "Retirement Home",
+          "songResults": [
+              {
+                  "songName": "the EmpErroR",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "RAVEILLE",
+                      "score": 1007215
+                  },
+                  "awayResult": {
+                      "playerName": "quit•w•?",
+                      "score": 1007655
+                  }
+              },
+              {
+                  "songName": "Alea jacta est",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "saun",
+                      "score": 1006613
+                  },
+                  "awayResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1007524
+                  }
+              }
+          ],
+          "homeTotalScore": 2013828,
+          "awayTotalScore": 2015179
+      },
+      {
+          "matchNumber": 13,
+          "homeTeamId": "beazat",
+          "homeTeamName": "财神爷",
+          "awayTeamId": "judi",
+          "awayTeamName": "观音吗",
+          "songResults": [
+              {
+                  "songName": "Dengeki Tube",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Blerargh",
+                      "score": 1009120
+                  },
+                  "awayResult": {
+                      "playerName": "Judi",
+                      "score": 1008380
+                  }
+              },
+              {
+                  "songName": "CO5M1C R4ILR0AD",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "rur‡",
+                      "score": 1008961
+                  },
+                  "awayResult": {
+                      "playerName": "Kero",
+                      "score": 1009323
+                  }
+              }
+          ],
+          "homeTotalScore": 2018081,
+          "awayTotalScore": 2017703
+      },
+      {
+          "matchNumber": 14,
+          "homeTeamId": "flan",
+          "homeTeamName": "Rainbow Possession",
+          "awayTeamId": "auto-air",
+          "awayTeamName": "Retirement Home",
+          "songResults": [
+              {
+                  "songName": "Sparking Revolver",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Veggie",
+                      "score": 1005810
+                  },
+                  "awayResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1008140
+                  }
+              },
+              {
+                  "songName": "Tidal Wave ",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1009865
+                  },
+                  "awayResult": {
+                      "playerName": "FIRANOIC",
+                      "score": 1003395
+                  }
+              }
+          ],
+          "homeTotalScore": 2015675,
+          "awayTotalScore": 2011535
+      },
+      {
+          "matchNumber": 15,
+          "homeTeamId": "raveille",
+          "homeTeamName": "Chuni in Bio",
+          "awayTeamId": "aa72",
+          "awayTeamName": "Chunity",
+          "songResults": [
+              {
+                  "songName": "XL TECHNO -More Dance Remix-",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Saltify☆",
+                      "score": 1008699
+                  },
+                  "awayResult": {
+                      "playerName": "Washdown",
+                      "score": 1007178
+                  }
+              },
+              {
+                  "songName": "volcanic",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "saun",
+                      "score": 1006693
+                  },
+                  "awayResult": {
+                      "playerName": "Ccccl",
+                      "score": 1009108
+                  }
+              }
+          ],
+          "homeTotalScore": 2015392,
+          "awayTotalScore": 2016286
+      },
+      {
+          "matchNumber": 16,
+          "homeTeamId": "judi",
+          "homeTeamName": "观音吗",
+          "awayTeamId": "auto-air",
+          "awayTeamName": "Retirement Home",
+          "songResults": [
+              {
+                  "songName": "Love & Justice",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Judi",
+                      "score": 1007392
+                  },
+                  "awayResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1006007
+                  }
+              },
+              {
+                  "songName": "天火明命",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "niunai",
+                      "score": 1009123
+                  },
+                  "awayResult": {
+                      "playerName": "FIRANOIC",
+                      "score": 1005257
+                  }
+              }
+          ],
+          "homeTotalScore": 2016515,
+          "awayTotalScore": 2011264
+      },
+      {
+          "matchNumber": 17,
+          "homeTeamId": "beazat",
+          "homeTeamName": "财神爷",
+          "awayTeamId": "raveille",
+          "awayTeamName": "Chuni in Bio",
+          "songResults": [
+              {
+                  "songName": "Garakuta Doll Play",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Blerargh",
+                      "score": 1009638
+                  },
+                  "awayResult": {
+                      "playerName": "RAVEILLE",
+                      "score": 1008805
+                  }
+              },
+              {
+                  "songName": "Pure Ruby",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "rur‡",
+                      "score": 1009871
+                  },
+                  "awayResult": {
+                      "playerName": "Saltify☆",
+                      "score": 1009928
+                  }
+              }
+          ],
+          "homeTotalScore": 2019509,
+          "awayTotalScore": 2018733
+      },
+      {
+          "matchNumber": 18,
+          "homeTeamId": "flan",
+          "homeTeamName": "Rainbow Possession",
+          "awayTeamId": "aa72",
+          "awayTeamName": "Chunity",
+          "songResults": [
+              {
+                  "songName": "Hyper Active",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1009698
+                  },
+                  "awayResult": {
+                      "playerName": "AA72",
+                      "score": 1007845
+                  }
+              },
+              {
+                  "songName": "Reverberate",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1008204
+                  },
+                  "awayResult": {
+                      "playerName": "Washdown",
+                      "score": 1002734
+                  }
+              }
+          ],
+          "homeTotalScore": 2017902,
+          "awayTotalScore": 2010579
+      },
+      {
+          "matchNumber": 19,
+          "homeTeamId": "beazat",
+          "homeTeamName": "财神爷",
+          "awayTeamId": "auto-air",
+          "awayTeamName": "Retirement Home",
+          "songResults": [
+              {
+                  "songName": "Phantasm Brigade",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "rur‡",
+                      "score": 1008782
+                  },
+                  "awayResult": {
+                      "playerName": "FIRANOIC",
+                      "score": 1008703
+                  }
+              },
+              {
+                  "songName": "とあちゃんのおもちゃ箱",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "beazat",
+                      "score": 1009101
+                  },
+                  "awayResult": {
+                      "playerName": "quit•w•?",
+                      "score": 1008150
+                  }
+              }
+          ],
+          "homeTotalScore": 2017883,
+          "awayTotalScore": 2016853
+      },
+      {
+          "matchNumber": 20,
+          "homeTeamId": "aa72",
+          "homeTeamName": "Chunity",
+          "awayTeamId": "raveille",
+          "awayTeamName": "Chuni in Bio",
+          "songResults": [
+              {
+                  "songName": "白庭",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Ccccl",
+                      "score": 1008429
+                  },
+                  "awayResult": {
+                      "playerName": "saun",
+                      "score": 1005431
+                  }
+              },
+              {
+                  "songName": "チョウの標本",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "AA72",
+                      "score": 1009172
+                  },
+                  "awayResult": {
+                      "playerName": "RAVEILLE",
+                      "score": 1005689
+                  }
+              }
+          ],
+          "homeTotalScore": 2017601,
+          "awayTotalScore": 2011120
+      },
+      {
+          "matchNumber": 21,
+          "homeTeamId": "flan",
+          "homeTeamName": "Rainbow Possession",
+          "awayTeamId": "judi",
+          "awayTeamName": "观音吗",
+          "songResults": [
+              {
+                  "songName": "XL TECHNO -More Dance Remix",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Veggie",
+                      "score": 1008886
+                  },
+                  "awayResult": {
+                      "playerName": "niunai",
+                      "score": 1007658
+                  }
+              },
+              {
+                  "songName": "End Time",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1009387
+                  },
+                  "awayResult": {
+                      "playerName": "Judi",
+                      "score": 1008378
+                  }
+              }
+          ],
+          "homeTotalScore": 2018273,
+          "awayTotalScore": 2016036
+      },
+      {
+          "matchNumber": 22,
+          "homeTeamId": "beazat",
+          "homeTeamName": "财神爷",
+          "awayTeamId": "aa72",
+          "awayTeamName": "Chunity",
+          "songResults": [
+              {
+                  "songName": "Life is PIANO",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "rur‡",
+                      "score": 1009501
+                  },
+                  "awayResult": {
+                      "playerName": "Ccccl",
+                      "score": 1009904
+                  }
+              },
+              {
+                  "songName": "L'épisode",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Blerargh",
+                      "score": 1009125
+                  },
+                  "awayResult": {
+                      "playerName": "AA72",
+                      "score": 1006275
+                  }
+              }
+          ],
+          "homeTotalScore": 2018626,
+          "awayTotalScore": 2016179
+      },
+      {
+          "matchNumber": 23,
+          "homeTeamId": "auto-air",
+          "homeTeamName": "Retirement Home",
+          "awayTeamId": "flan",
+          "awayTeamName": "Rainbow Possession",
+          "songResults": [
+              {
+                  "songName": "HERA",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "quit•w•?",
+                      "score": 1006189
+                  },
+                  "awayResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1008637
+                  }
+              },
+              {
+                  "songName": "L'épisode",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1006741
+                  },
+                  "awayResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1005845
+                  }
+              }
+          ],
+          "homeTotalScore": 2012930,
+          "awayTotalScore": 2014482
+      },
+      {
+          "matchNumber": 24,
+          "homeTeamId": "raveille",
+          "homeTeamName": "Chuni in Bio",
+          "awayTeamId": "judi",
+          "awayTeamName": "观音吗",
+          "songResults": [
+              {
+                  "songName": "Black Lair",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "RAVEILLE",
+                      "score": 1009928
+                  },
+                  "awayResult": {
+                      "playerName": "niunai",
+                      "score": 1008094
+                  }
+              },
+              {
+                  "songName": "felys -final remix-",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "saun",
+                      "score": 1006569
+                  },
+                  "awayResult": {
+                      "playerName": "Kero",
+                      "score": 1009830
+                  }
+              }
+          ],
+          "homeTotalScore": 2016497,
+          "awayTotalScore": 2017924
+      },
+      {
+          "matchNumber": 25,
+          "homeTeamId": "flan",
+          "homeTeamName": "Rainbow Possession",
+          "awayTeamId": "beazat",
+          "awayTeamName": "财神爷",
+          "songResults": [
+              {
+                  "songName": "水晶世界 ～Fracture～",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Veggie",
+                      "score": 1006120
+                  },
+                  "awayResult": {
+                      "playerName": "beazat",
+                      "score": 1009633
+                  }
+              },
+              {
+                  "songName": "Viyella's Scream",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1007568
+                  },
+                  "awayResult": {
+                      "playerName": "Blerargh",
+                      "score": 1008987
+                  }
+              }
+          ],
+          "homeTotalScore": 2013688,
+          "awayTotalScore": 2018620
+      },
+      {
+          "matchNumber": 26,
+          "homeTeamId": "judi",
+          "homeTeamName": "观音吗",
+          "awayTeamId": "aa72",
+          "awayTeamName": "Chunity",
+          "songResults": [
+              {
+                  "songName": "Calamity Fortune",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Judi",
+                      "score": 1009673
+                  },
+                  "awayResult": {
+                      "playerName": "Washdown",
+                      "score": 1007852
+                  }
+              },
+              {
+                  "songName": "VerteX",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Kero",
+                      "score": 1009986
+                  },
+                  "awayResult": {
+                      "playerName": "Ccccl",
+                      "score": 1009368
+                  }
+              }
+          ],
+          "homeTotalScore": 2019659,
+          "awayTotalScore": 2017220
+      },
+      {
+          "matchNumber": 27,
+          "homeTeamId": "auto-air",
+          "homeTeamName": "Retirement Home",
+          "awayTeamId": "raveille",
+          "awayTeamName": "Chuni in Bio",
+          "songResults": [
+              {
+                  "songName": "Xevel",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1007651
+                  },
+                  "awayResult": {
+                      "playerName": "Saltify☆",
+                      "score": 1006839
+                  }
+              },
+              {
+                  "songName": "パームカルマ",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "FIRANOIC",
+                      "score": 1009556
+                  },
+                  "awayResult": {
+                      "playerName": "RAVEILLE",
+                      "score": 1009929
+                  }
+              }
+          ],
+          "homeTotalScore": 2017207,
+          "awayTotalScore": 2016768
+      },
+      {
+          "matchNumber": 28,
+          "homeTeamId": "aa72",
+          "homeTeamName": "Chunity",
+          "awayTeamId": "auto-air",
+          "awayTeamName": "Retirement Home",
+          "songResults": [
+              {
+                  "songName": "ウルガレオン",
+                  "isLimitBroken": false,
+                  "homeResult": {
+                      "playerName": "Washdown",
+                      "score": 1007123
+                  },
+                  "awayResult": {
+                      "playerName": "quit•w•?",
+                      "score": 1008436
+                  }
+              },
+              {
+                  "songName": "Garakuta Doll Play",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "AA72",
+                      "score": 1007455
+                  },
+                  "awayResult": {
+                      "playerName": "Auto△Air",
+                      "score": 1003500
+                  }
+              }
+          ],
+          "homeTotalScore": 2014578,
+          "awayTotalScore": 2011936
+      },
+      {
+          "matchNumber": 29,
+          "homeTeamId": "raveille",
+          "homeTeamName": "Chuni in Bio",
+          "awayTeamId": "flan",
+          "awayTeamName": "Rainbow Possession",
+          "songResults": [
+              {
+                  "songName": "Schrecklicher Aufstand",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Saltify☆",
+                      "score": 1008127
+                  },
+                  "awayResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1008496
+                  }
+              },
+              {
+                  "songName": "Blackmagik Blazing",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "saun",
+                      "score": 1006365
+                  },
+                  "awayResult": {
+                      "playerName": "Veggie",
+                      "score": 1004560
+                  }
+              }
+          ],
+          "homeTotalScore": 2014492,
+          "awayTotalScore": 2013056
+      },
+      {
+          "matchNumber": 30,
+          "homeTeamId": "judi",
+          "homeTeamName": "观音吗",
+          "awayTeamId": "beazat",
+          "awayTeamName": "财神爷",
+          "songResults": [
+              {
+                  "songName": "Blackmagik Blazing",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Judi",
+                      "score": 1008973
+                  },
+                  "awayResult": {
+                      "playerName": "beazat",
+                      "score": 1007800
+                  }
+              },
+              {
+                  "songName": "赤壁、大炎上！！",
+                  "isLimitBroken": true,
+                  "homeResult": {
+                      "playerName": "Kero",
+                      "score": 1009417
+                  },
+                  "awayResult": {
+                      "playerName": "Blerargh",
+                      "score": 1009850
+                  }
+              }
+          ],
+          "homeTotalScore": 2018390,
+          "awayTotalScore": 2017650
+      }
+  ],
+  "teamPhaseResults": [
+      {
+          "rank": 1,
+          "teamId": "beazat",
+          "teamName": "财神爷",
+          "numMatchesPlayed": 10,
+          "numWins": 7,
+          "numAwayWins": 3,
+          "totalScoreDiff": 10167
+      },
+      {
+          "rank": 2,
+          "teamId": "judi",
+          "teamName": "观音吗",
+          "numMatchesPlayed": 10,
+          "numWins": 7,
+          "numAwayWins": 2,
+          "totalScoreDiff": 10931
+      },
+      {
+          "rank": 3,
+          "teamId": "flan",
+          "teamName": "Rainbow Possession",
+          "numMatchesPlayed": 10,
+          "numWins": 6,
+          "numAwayWins": 2,
+          "totalScoreDiff": 5428
+      },
+      {
+          "rank": 4,
+          "teamId": "aa72",
+          "teamName": "Chunity",
+          "numMatchesPlayed": 10,
+          "numWins": 6,
+          "numAwayWins": 1,
+          "totalScoreDiff": 7239
+      },
+      {
+          "rank": 5,
+          "teamId": "auto-air",
+          "teamName": "Retirement Home",
+          "numMatchesPlayed": 10,
+          "numWins": 3,
+          "numAwayWins": 1,
+          "totalScoreDiff": -15336
+      },
+      {
+          "rank": 6,
+          "teamId": "raveille",
+          "teamName": "Chuni in Bio",
+          "numMatchesPlayed": 10,
+          "numWins": 1,
+          "numAwayWins": 0,
+          "totalScoreDiff": -18429
+      }
+  ],
+  "grandFinalsMatches": [
+      {
+          "matchName": "3rd vs 4th",
+          "homeTeamName": "Rainbow Possession",
+          "awayTeamName": "Chunity",
+          "songResults": [
+              {
+                  "songName": "真千年女王",
+                  "homeResult": {
+                      "playerName": "Veggie",
+                      "score": 1008835
+                  },
+                  "awayResult": {
+                      "playerName": "Washdown",
+                      "score": 1008473
+                  }
+              },
+              {
+                  "songName": "Lemegeton -little key of solomon-",
+                  "homeResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1007683
+                  },
+                  "awayResult": {
+                      "playerName": "Ccccl",
+                      "score": 1008613
+                  }
+              },
+              {
+                  "songName": "POTENTIAL",
+                  "homeResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1007959
+                  },
+                  "awayResult": {
+                      "playerName": "AA72",
+                      "score": 1004355
+                  }
+              },
+              {
+                  "songName": "(skipped)",
+                  "homeResult": {
+                      "playerName": "",
+                      "score": 0
+                  },
+                  "awayResult": {
+                      "playerName": "",
+                      "score": 0
+                  }
+              },
+              {
+                  "songName": "(skipped)",
+                  "homeResult": {
+                      "playerName": "",
+                      "score": 0
+                  },
+                  "awayResult": {
+                      "playerName": "",
+                      "score": 0
+                  }
+              }
+          ],
+          "homeTotalScore": 3024477,
+          "awayTotalScore": 3021441
+      },
+      {
+          "matchName": "2nd vs 3rd",
+          "homeTeamName": "观音吗",
+          "awayTeamName": "Rainbow Possession",
+          "songResults": [
+              {
+                  "songName": "Λzure Vixen",
+                  "homeResult": {
+                      "playerName": "Kero",
+                      "score": 1008459
+                  },
+                  "awayResult": {
+                      "playerName": "Re:Blaze",
+                      "score": 1005461
+                  }
+              },
+              {
+                  "songName": "《破滅》 ～ Rhapsody for The End",
+                  "homeResult": {
+                      "playerName": "Judi",
+                      "score": 1007776
+                  },
+                  "awayResult": {
+                      "playerName": "Flαn☆",
+                      "score": 1007648
+                  }
+              },
+              {
+                  "songName": "eden",
+                  "homeResult": {
+                      "playerName": "niunai",
+                      "score": 1004871
+                  },
+                  "awayResult": {
+                      "playerName": "Veggie",
+                      "score": 1003276
+                  }
+              },
+              {
+                  "songName": "(skipped)",
+                  "homeResult": {
+                      "playerName": "",
+                      "score": 0
+                  },
+                  "awayResult": {
+                      "playerName": "",
+                      "score": 0
+                  }
+              },
+              {
+                  "songName": "(skipped)",
+                  "homeResult": {
+                      "playerName": "",
+                      "score": 0
+                  },
+                  "awayResult": {
+                      "playerName": "",
+                      "score": 0
+                  }
+              }
+          ],
+          "homeTotalScore": 3021106,
+          "awayTotalScore": 3016385
+      },
+      {
+          "matchName": "1st vs 2nd",
+          "homeTeamName": "财神爷",
+          "awayTeamName": "观音吗",
+          "songResults": [
+              {
+                  "songName": "真千年女王",
+                  "homeResult": {
+                      "playerName": "rur‡",
+                      "score": 1006516
+                  },
+                  "awayResult": {
+                      "playerName": "niunai",
+                      "score": 1006599
+                  }
+              },
+              {
+                  "songName": "Disruptor Array",
+                  "homeResult": {
+                      "playerName": "beazat",
+                      "score": 1008578
+                  },
+                  "awayResult": {
+                      "playerName": "Judi",
+                      "score": 1008822
+                  }
+              },
+              {
+                  "songName": "グラウンドスライダー協奏曲第一番「風唄」",
+                  "homeResult": {
+                      "playerName": "Blerargh",
+                      "score": 1007442
+                  },
+                  "awayResult": {
+                      "playerName": "Kero",
+                      "score": 1004245
+                  }
+              },
+              {
+                  "songName": "祈 -我ら神祖と共に歩む者なり-",
+                  "homeResult": {
+                      "playerName": "Blerargh",
+                      "score": 1007860
+                  },
+                  "awayResult": {
+                      "playerName": "Kero",
+                      "score": 1006059
+                  }
+              },
+              {
+                  "songName": "The Metaverse\n-First story of the SeelischTact-",
+                  "homeResult": {
+                      "playerName": "beazat",
+                      "score": 1007337
+                  },
+                  "awayResult": {
+                      "playerName": "Judi",
+                      "score": 1001288
+                  }
+              }
+          ],
+          "homeTotalScore": 5037733,
+          "awayTotalScore": 5027013
+      }
+  ]
+}

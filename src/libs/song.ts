@@ -64,5 +64,5 @@ export const songDetails: { [songId in SongId]: SongDetails } = {
 
 export interface SongWithJacket {
   songId: SongId;
-  jacket: any; // Image
+  jacket: string; // Image
 }

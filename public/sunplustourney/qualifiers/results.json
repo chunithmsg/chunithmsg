@@ -1,0 +1,2242 @@
+{
+  "qualifiers": [
+      {
+          "ign": "beazat",
+          "timestamp": 1706958000000,
+          "isDisqualified": false,
+          "qualifiedIndex": 1,
+          "song1": {
+              "score": 1009994,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009979,
+              "ajFcStatus": "AJ"
+          },
+          "song3": {
+              "score": 1009980,
+              "ajFcStatus": "AJ"
+          },
+          "totalScore": 3029953
+      },
+      {
+          "ign": "Judi",
+          "timestamp": 1706947380000,
+          "isDisqualified": false,
+          "qualifiedIndex": 2,
+          "song1": {
+              "score": 1009988,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009983,
+              "ajFcStatus": "AJ"
+          },
+          "song3": {
+              "score": 1009968,
+              "ajFcStatus": "AJ"
+          },
+          "totalScore": 3029939
+      },
+      {
+          "ign": "Flαn☆",
+          "timestamp": 1706942340000,
+          "isDisqualified": false,
+          "qualifiedIndex": 3,
+          "song1": {
+              "score": 1009988,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009983,
+              "ajFcStatus": "AJ"
+          },
+          "song3": {
+              "score": 1009956,
+              "ajFcStatus": "AJ"
+          },
+          "totalScore": 3029927
+      },
+      {
+          "ign": "RAVEILLE",
+          "timestamp": 1706945700000,
+          "isDisqualified": false,
+          "qualifiedIndex": 4,
+          "song1": {
+              "score": 1009955,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009946,
+              "ajFcStatus": "AJ"
+          },
+          "song3": {
+              "score": 1009732,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3029633
+      },
+      {
+          "ign": "Auto△Air",
+          "timestamp": 1706938860000,
+          "isDisqualified": false,
+          "qualifiedIndex": 5,
+          "song1": {
+              "score": 1009966,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009739,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1009747,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3029452
+      },
+      {
+          "ign": "AA72",
+          "timestamp": 1706951280000,
+          "isDisqualified": false,
+          "qualifiedIndex": 6,
+          "song1": {
+              "score": 1009944,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009473,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1009897,
+              "ajFcStatus": "AJ"
+          },
+          "totalScore": 3029314
+      },
+      {
+          "ign": "Blerargh",
+          "timestamp": 1707040320000,
+          "isDisqualified": false,
+          "qualifiedIndex": 7,
+          "song1": {
+              "score": 1009686,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1009975,
+              "ajFcStatus": "AJ"
+          },
+          "song3": {
+              "score": 1009590,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3029251
+      },
+      {
+          "ign": "Kero",
+          "timestamp": 1706955300000,
+          "isDisqualified": false,
+          "qualifiedIndex": 8,
+          "song1": {
+              "score": 1009960,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009540,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1009566,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3029066
+      },
+      {
+          "ign": "Re:Blaze",
+          "timestamp": 1706944140000,
+          "isDisqualified": false,
+          "qualifiedIndex": 9,
+          "song1": {
+              "score": 1009955,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009635,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1009468,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3029058
+      },
+      {
+          "ign": "quit•w•?",
+          "timestamp": 1707042600000,
+          "isDisqualified": false,
+          "qualifiedIndex": 10,
+          "song1": {
+              "score": 1009960,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009295,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1009720,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3028975
+      },
+      {
+          "ign": "rur‡",
+          "timestamp": 1706949240000,
+          "isDisqualified": false,
+          "qualifiedIndex": 11,
+          "song1": {
+              "score": 1009821,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009643,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1009342,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3028806
+      },
+      {
+          "ign": "Saltify☆",
+          "timestamp": 1707039480000,
+          "isDisqualified": false,
+          "qualifiedIndex": 12,
+          "song1": {
+              "score": 1009983,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009925,
+              "ajFcStatus": "AJ"
+          },
+          "song3": {
+              "score": 1008892,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3028800
+      },
+      {
+          "ign": "Zhan2000",
+          "timestamp": 1707036600000,
+          "isDisqualified": false,
+          "qualifiedIndex": 13,
+          "song1": {
+              "score": 1009921,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009254,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1009550,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3028725
+      },
+      {
+          "ign": "ToriTora",
+          "timestamp": 1706946600000,
+          "isDisqualified": false,
+          "qualifiedIndex": 14,
+          "song1": {
+              "score": 1009586,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1009656,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1009314,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3028556
+      },
+      {
+          "ign": "Veggie",
+          "timestamp": 1706953080000,
+          "isDisqualified": false,
+          "qualifiedIndex": 15,
+          "song1": {
+              "score": 1009944,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009639,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1008573,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3028156
+      },
+      {
+          "ign": "FUEE",
+          "timestamp": 1707042060000,
+          "isDisqualified": false,
+          "qualifiedIndex": 16,
+          "song1": {
+              "score": 1009910,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009022,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1009050,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3027982
+      },
+      {
+          "ign": "Jαp",
+          "timestamp": 1706949180000,
+          "isDisqualified": false,
+          "qualifiedIndex": 17,
+          "song1": {
+              "score": 1009904,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009917,
+              "ajFcStatus": "AJ"
+          },
+          "song3": {
+              "score": 1008128,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3027949
+      },
+      {
+          "ign": "lega",
+          "timestamp": 1706951040000,
+          "isDisqualified": false,
+          "qualifiedIndex": 18,
+          "song1": {
+              "score": 1009306,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 1009047,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1009472,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3027825
+      },
+      {
+          "ign": "jo☆",
+          "timestamp": 1707033000000,
+          "isDisqualified": false,
+          "qualifiedIndex": 19,
+          "song1": {
+              "score": 1009384,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 1008844,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1009412,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3027640
+      },
+      {
+          "ign": "FIRANOIC",
+          "timestamp": 1706951040000,
+          "isDisqualified": false,
+          "qualifiedIndex": 20,
+          "song1": {
+              "score": 1009334,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 1008964,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1009302,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3027600
+      },
+      {
+          "ign": "niunai",
+          "timestamp": 1707039600000,
+          "isDisqualified": false,
+          "qualifiedIndex": 21,
+          "song1": {
+              "score": 1009826,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1009076,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1007825,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3026727
+      },
+      {
+          "ign": "Washdown",
+          "timestamp": 1706948880000,
+          "isDisqualified": false,
+          "qualifiedIndex": 22,
+          "song1": {
+              "score": 1009580,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1008579,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1008254,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3026413
+      },
+      {
+          "ign": "saun",
+          "timestamp": 1707034680000,
+          "isDisqualified": false,
+          "qualifiedIndex": 23,
+          "song1": {
+              "score": 1009552,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1009034,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1007691,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3026277
+      },
+      {
+          "ign": "X-DEN",
+          "timestamp": 1706944320000,
+          "isDisqualified": false,
+          "qualifiedIndex": 24,
+          "song1": {
+              "score": 1009899,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1008285,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1007486,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3025670
+      },
+      {
+          "ign": "acoustic",
+          "timestamp": 1707038640000,
+          "isDisqualified": false,
+          "qualifiedIndex": 25,
+          "song1": {
+              "score": 1009848,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1007891,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1007758,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3025497
+      },
+      {
+          "ign": "KUROYUKI",
+          "timestamp": 1706952420000,
+          "isDisqualified": false,
+          "qualifiedIndex": 26,
+          "song1": {
+              "score": 1009580,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1008131,
+              "ajFcStatus": "FC"
+          },
+          "song3": {
+              "score": 1007281,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3024992
+      },
+      {
+          "ign": "Ame3",
+          "timestamp": 1706937300000,
+          "isDisqualified": false,
+          "qualifiedIndex": 27,
+          "song1": {
+              "score": 1009272,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 1008206,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1007198,
+              "ajFcStatus": "FC"
+          },
+          "totalScore": 3024676
+      },
+      {
+          "ign": "Ccccl",
+          "timestamp": 1707038580000,
+          "isDisqualified": false,
+          "qualifiedIndex": 28,
+          "song1": {
+              "score": 1009384,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1008786,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1006335,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3024505
+      },
+      {
+          "ign": "CantPlay",
+          "timestamp": 1706943780000,
+          "isDisqualified": false,
+          "qualifiedIndex": 29,
+          "song1": {
+              "score": 1009278,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1007344,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1007403,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3024025
+      },
+      {
+          "ign": "255",
+          "timestamp": 1706941680000,
+          "isDisqualified": false,
+          "qualifiedIndex": 30,
+          "song1": {
+              "score": 1009563,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1008057,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1005011,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3022631
+      },
+      {
+          "ign": "gt~",
+          "timestamp": 1707041220000,
+          "isDisqualified": false,
+          "qualifiedIndex": 31,
+          "song1": {
+              "score": 1009821,
+              "ajFcStatus": "AJ"
+          },
+          "song2": {
+              "score": 1008268,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1003620,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3021709
+      },
+      {
+          "ign": "Ｃ○ｐｉｕｍ♪\n",
+          "timestamp": 1706698980000,
+          "isDisqualified": false,
+          "qualifiedIndex": 32,
+          "song1": {
+              "score": 1009496,
+              "ajFcStatus": "FC"
+          },
+          "song2": {
+              "score": 1007195,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 999038,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3015729
+      },
+      {
+          "ign": "Dummy",
+          "timestamp": 1705226400000,
+          "isDisqualified": true,
+          "qualifiedIndex": 0,
+          "song1": {
+              "score": 1005000,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 1005000,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 1005000,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3015000
+      },
+      {
+          "ign": "NICEVA",
+          "timestamp": 1707035100000,
+          "isDisqualified": false,
+          "qualifiedIndex": 33,
+          "song1": {
+              "score": 1008998,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 1005994,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 995539,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3010531
+      },
+      {
+          "ign": "HUATMAN",
+          "timestamp": 1707041160000,
+          "isDisqualified": false,
+          "qualifiedIndex": 34,
+          "song1": {
+              "score": 1006291,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 1002493,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 998431,
+              "ajFcStatus": ""
+          },
+          "totalScore": 3007215
+      },
+      {
+          "ign": "HELPDESK",
+          "timestamp": 1707042420000,
+          "isDisqualified": false,
+          "qualifiedIndex": 35,
+          "song1": {
+              "score": 1003646,
+              "ajFcStatus": ""
+          },
+          "song2": {
+              "score": 997439,
+              "ajFcStatus": ""
+          },
+          "song3": {
+              "score": 961390,
+              "ajFcStatus": ""
+          },
+          "totalScore": 2962475
+      }
+  ],
+  "individualSongStandings": [
+      {
+          "key": 815052062,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706958000000,
+                  "ign": "beazat",
+                  "songScore": {
+                      "score": 1009994,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 1
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706942340000,
+                  "ign": "Flαn☆",
+                  "songScore": {
+                      "score": 1009983,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 3
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706958000000,
+                  "ign": "beazat",
+                  "songScore": {
+                      "score": 1009980,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 1
+                  }
+              }
+          }
+      },
+      {
+          "key": 992883385,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706942340000,
+                  "ign": "Flαn☆",
+                  "songScore": {
+                      "score": 1009988,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 3
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706947380000,
+                  "ign": "Judi",
+                  "songScore": {
+                      "score": 1009983,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 2
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706947380000,
+                  "ign": "Judi",
+                  "songScore": {
+                      "score": 1009968,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 2
+                  }
+              }
+          }
+      },
+      {
+          "key": 155565396,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706947380000,
+                  "ign": "Judi",
+                  "songScore": {
+                      "score": 1009988,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 2
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706958000000,
+                  "ign": "beazat",
+                  "songScore": {
+                      "score": 1009979,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 1
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706942340000,
+                  "ign": "Flαn☆",
+                  "songScore": {
+                      "score": 1009956,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 3
+                  }
+              }
+          }
+      },
+      {
+          "key": 253042641,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707039480000,
+                  "ign": "Saltify☆",
+                  "songScore": {
+                      "score": 1009983,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 12
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707039480000,
+                  "ign": "Saltify☆",
+                  "songScore": {
+                      "score": 1009925,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 12
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706951280000,
+                  "ign": "AA72",
+                  "songScore": {
+                      "score": 1009897,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 6
+                  }
+              }
+          }
+      },
+      {
+          "key": 767018070,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706946360000,
+                  "ign": "RAVEILLE",
+                  "songScore": {
+                      "score": 1009977,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 4
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706949180000,
+                  "ign": "Jαp",
+                  "songScore": {
+                      "score": 1009917,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 17
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706938860000,
+                  "ign": "Auto△Air",
+                  "songScore": {
+                      "score": 1009747,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 5
+                  }
+              }
+          }
+      },
+      {
+          "key": 547721169,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706938860000,
+                  "ign": "Auto△Air",
+                  "songScore": {
+                      "score": 1009966,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 5
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706947260000,
+                  "ign": "ToriTora",
+                  "songScore": {
+                      "score": 1009875,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 14
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707042600000,
+                  "ign": "quit•w•?",
+                  "songScore": {
+                      "score": 1009720,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 10
+                  }
+              }
+          }
+      },
+      {
+          "key": 888299348,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706955300000,
+                  "ign": "Kero",
+                  "songScore": {
+                      "score": 1009960,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 8
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706938860000,
+                  "ign": "Auto△Air",
+                  "songScore": {
+                      "score": 1009739,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 5
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706955300000,
+                  "ign": "Kero",
+                  "songScore": {
+                      "score": 1009566,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 8
+                  }
+              }
+          }
+      },
+      {
+          "key": 662985124,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707042600000,
+                  "ign": "quit•w•?",
+                  "songScore": {
+                      "score": 1009960,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 10
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706946360000,
+                  "ign": "RAVEILLE",
+                  "songScore": {
+                      "score": 1009726,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 4
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707036600000,
+                  "ign": "Zhan2000",
+                  "songScore": {
+                      "score": 1009550,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 13
+                  }
+              }
+          }
+      },
+      {
+          "key": 100633311,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706944140000,
+                  "ign": "Re:Blaze",
+                  "songScore": {
+                      "score": 1009955,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 9
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706949240000,
+                  "ign": "rur‡",
+                  "songScore": {
+                      "score": 1009643,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 11
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706946360000,
+                  "ign": "RAVEILLE",
+                  "songScore": {
+                      "score": 1009542,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 4
+                  }
+              }
+          }
+      },
+      {
+          "key": 201456723,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706951280000,
+                  "ign": "AA72",
+                  "songScore": {
+                      "score": 1009944,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 6
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706953080000,
+                  "ign": "Veggie",
+                  "songScore": {
+                      "score": 1009639,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 15
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706944140000,
+                  "ign": "Re:Blaze",
+                  "songScore": {
+                      "score": 1009468,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 9
+                  }
+              }
+          }
+      },
+      {
+          "key": 752862993,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706953080000,
+                  "ign": "Veggie",
+                  "songScore": {
+                      "score": 1009944,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 15
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706944140000,
+                  "ign": "Re:Blaze",
+                  "songScore": {
+                      "score": 1009635,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 9
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707033000000,
+                  "ign": "jo☆",
+                  "songScore": {
+                      "score": 1009412,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 19
+                  }
+              }
+          }
+      },
+      {
+          "key": 869335457,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707035220000,
+                  "ign": "saun",
+                  "songScore": {
+                      "score": 1009932,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 23
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706955300000,
+                  "ign": "Kero",
+                  "songScore": {
+                      "score": 1009540,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 8
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706949240000,
+                  "ign": "rur‡",
+                  "songScore": {
+                      "score": 1009342,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 11
+                  }
+              }
+          }
+      },
+      {
+          "key": 474854282,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707036600000,
+                  "ign": "Zhan2000",
+                  "songScore": {
+                      "score": 1009921,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 13
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706951280000,
+                  "ign": "AA72",
+                  "songScore": {
+                      "score": 1009473,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 6
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706951040000,
+                  "ign": "FIRANOIC",
+                  "songScore": {
+                      "score": 1009302,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 20
+                  }
+              }
+          }
+      },
+      {
+          "key": 910218410,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707042060000,
+                  "ign": "FUEE",
+                  "songScore": {
+                      "score": 1009910,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 16
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707042600000,
+                  "ign": "quit•w•?",
+                  "songScore": {
+                      "score": 1009295,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 10
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706263500000,
+                  "ign": "Testify",
+                  "songScore": {
+                      "score": 1009294,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": true
+              }
+          }
+      },
+      {
+          "key": 630051128,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706949180000,
+                  "ign": "Jαp",
+                  "songScore": {
+                      "score": 1009904,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 17
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707036600000,
+                  "ign": "Zhan2000",
+                  "songScore": {
+                      "score": 1009254,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 13
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706952120000,
+                  "ign": "lega",
+                  "songScore": {
+                      "score": 1009144,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 18
+                  }
+              }
+          }
+      },
+      {
+          "key": 119694229,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707039300000,
+                  "ign": "Ccccl",
+                  "songScore": {
+                      "score": 1009893,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 28
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706263500000,
+                  "ign": "Testify",
+                  "songScore": {
+                      "score": 1009088,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": true
+              },
+              "nokcamellia": {
+                  "timestamp": 1707042060000,
+                  "ign": "FUEE",
+                  "songScore": {
+                      "score": 1009050,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 16
+                  }
+              }
+          }
+      },
+      {
+          "key": 518094093,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706952120000,
+                  "ign": "lega",
+                  "songScore": {
+                      "score": 1009876,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 18
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707039300000,
+                  "ign": "Ccccl",
+                  "songScore": {
+                      "score": 1009038,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 28
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707039480000,
+                  "ign": "Saltify☆",
+                  "songScore": {
+                      "score": 1008892,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 12
+                  }
+              }
+          }
+      },
+      {
+          "key": 786041475,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707037320000,
+                  "ign": "NICEVA",
+                  "songScore": {
+                      "score": 1009865,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 33
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707035220000,
+                  "ign": "saun",
+                  "songScore": {
+                      "score": 1009026,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 23
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706953080000,
+                  "ign": "Veggie",
+                  "songScore": {
+                      "score": 1008573,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 15
+                  }
+              }
+          }
+      },
+      {
+          "key": 771909740,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707038640000,
+                  "ign": "acoustic",
+                  "songScore": {
+                      "score": 1009848,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 25
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707042060000,
+                  "ign": "FUEE",
+                  "songScore": {
+                      "score": 1009022,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 16
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706948880000,
+                  "ign": "Washdown",
+                  "songScore": {
+                      "score": 1008254,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 22
+                  }
+              }
+          }
+      },
+      {
+          "key": 68823301,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706949240000,
+                  "ign": "rur‡",
+                  "songScore": {
+                      "score": 1009821,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 11
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706951040000,
+                  "ign": "FIRANOIC",
+                  "songScore": {
+                      "score": 1008964,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 20
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706949180000,
+                  "ign": "Jαp",
+                  "songScore": {
+                      "score": 1008128,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 17
+                  }
+              }
+          }
+      },
+      {
+          "key": 16147435,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707041220000,
+                  "ign": "gt~",
+                  "songScore": {
+                      "score": 1009821,
+                      "ajFcStatus": "AJ"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 31
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706944980000,
+                  "ign": "X-DEN",
+                  "songScore": {
+                      "score": 1008877,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 24
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707038640000,
+                  "ign": "acoustic",
+                  "songScore": {
+                      "score": 1007758,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 25
+                  }
+              }
+          }
+      },
+      {
+          "key": 540311351,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707040260000,
+                  "ign": "niunai",
+                  "songScore": {
+                      "score": 1009625,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 21
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707033000000,
+                  "ign": "jo☆",
+                  "songScore": {
+                      "score": 1008844,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 19
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706943780000,
+                  "ign": "CantPlay",
+                  "songScore": {
+                      "score": 1007403,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 29
+                  }
+              }
+          }
+      },
+      {
+          "key": 940115768,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706948880000,
+                  "ign": "Washdown",
+                  "songScore": {
+                      "score": 1009580,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 22
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706952120000,
+                  "ign": "lega",
+                  "songScore": {
+                      "score": 1008786,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 18
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706952420000,
+                  "ign": "KUROYUKI",
+                  "songScore": {
+                      "score": 1007281,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 26
+                  }
+              }
+          }
+      },
+      {
+          "key": 889811619,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706952420000,
+                  "ign": "KUROYUKI",
+                  "songScore": {
+                      "score": 1009580,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 26
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706948880000,
+                  "ign": "Washdown",
+                  "songScore": {
+                      "score": 1008579,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 22
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706937300000,
+                  "ign": "Ame3",
+                  "songScore": {
+                      "score": 1007198,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 27
+                  }
+              }
+          }
+      },
+      {
+          "key": 526225804,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706941680000,
+                  "ign": "255",
+                  "songScore": {
+                      "score": 1009563,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 30
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707041220000,
+                  "ign": "gt~",
+                  "songScore": {
+                      "score": 1008268,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 31
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706788200000,
+                  "ign": "Xantho",
+                  "songScore": {
+                      "score": 1007186,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": true
+              }
+          }
+      },
+      {
+          "key": 686260102,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707033000000,
+                  "ign": "jo☆",
+                  "songScore": {
+                      "score": 1009384,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 19
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706937300000,
+                  "ign": "Ame3",
+                  "songScore": {
+                      "score": 1008206,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 27
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706944980000,
+                  "ign": "X-DEN",
+                  "songScore": {
+                      "score": 1006914,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 24
+                  }
+              }
+          }
+      },
+      {
+          "key": 224872972,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706951040000,
+                  "ign": "FIRANOIC",
+                  "songScore": {
+                      "score": 1009334,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 20
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706952420000,
+                  "ign": "KUROYUKI",
+                  "songScore": {
+                      "score": 1008131,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 26
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706947260000,
+                  "ign": "ToriTora",
+                  "songScore": {
+                      "score": 1006843,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 14
+                  }
+              }
+          }
+      },
+      {
+          "key": 26787529,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706943780000,
+                  "ign": "CantPlay",
+                  "songScore": {
+                      "score": 1009278,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 29
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706941680000,
+                  "ign": "255",
+                  "songScore": {
+                      "score": 1008057,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 30
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707035220000,
+                  "ign": "saun",
+                  "songScore": {
+                      "score": 1005992,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 23
+                  }
+              }
+          }
+      },
+      {
+          "key": 172686545,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706947260000,
+                  "ign": "ToriTora",
+                  "songScore": {
+                      "score": 1009278,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 14
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707038640000,
+                  "ign": "acoustic",
+                  "songScore": {
+                      "score": 1007891,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 25
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707040260000,
+                  "ign": "niunai",
+                  "songScore": {
+                      "score": 1005224,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 21
+                  }
+              }
+          }
+      },
+      {
+          "key": 761432602,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706937300000,
+                  "ign": "Ame3",
+                  "songScore": {
+                      "score": 1009272,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 27
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706699700000,
+                  "ign": "Ｃ○ｐｉｕｍ♪\n",
+                  "songScore": {
+                      "score": 1007506,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 32
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1706941680000,
+                  "ign": "255",
+                  "songScore": {
+                      "score": 1005011,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 30
+                  }
+              }
+          }
+      },
+      {
+          "key": 572842912,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706699700000,
+                  "ign": "Ｃ○ｐｉｕｍ♪\n",
+                  "songScore": {
+                      "score": 1009244,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 32
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1706943780000,
+                  "ign": "CantPlay",
+                  "songScore": {
+                      "score": 1007344,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 29
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1705226400000,
+                  "ign": "Dummy",
+                  "songScore": {
+                      "score": 1005000,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": true
+              }
+          }
+      },
+      {
+          "key": 612577440,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706788200000,
+                  "ign": "Xantho",
+                  "songScore": {
+                      "score": 1009149,
+                      "ajFcStatus": "FC"
+                  },
+                  "isDisqualified": true
+              },
+              "pangaea": {
+                  "timestamp": 1707040260000,
+                  "ign": "niunai",
+                  "songScore": {
+                      "score": 1007232,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 21
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707039300000,
+                  "ign": "Ccccl",
+                  "songScore": {
+                      "score": 1004334,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 28
+                  }
+              }
+          }
+      },
+      {
+          "key": 429118590,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706263500000,
+                  "ign": "Testify",
+                  "songScore": {
+                      "score": 1008797,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": true
+              },
+              "pangaea": {
+                  "timestamp": 1706788200000,
+                  "ign": "Xantho",
+                  "songScore": {
+                      "score": 1005778,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": true
+              },
+              "nokcamellia": {
+                  "timestamp": 1707041220000,
+                  "ign": "gt~",
+                  "songScore": {
+                      "score": 1003620,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 31
+                  }
+              }
+          }
+      },
+      {
+          "key": 818436663,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1706944980000,
+                  "ign": "X-DEN",
+                  "songScore": {
+                      "score": 1007466,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 24
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1705226400000,
+                  "ign": "Dummy",
+                  "songScore": {
+                      "score": 1005000,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": true
+              },
+              "nokcamellia": {
+                  "timestamp": 1706699700000,
+                  "ign": "Ｃ○ｐｉｕｍ♪\n",
+                  "songScore": {
+                      "score": 998881,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 32
+                  }
+              }
+          }
+      },
+      {
+          "key": 99681795,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707040800000,
+                  "ign": "Blerargh",
+                  "songScore": {
+                      "score": 1006953,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 7
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707037320000,
+                  "ign": "NICEVA",
+                  "songScore": {
+                      "score": 1004763,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 33
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707041160000,
+                  "ign": "HUATMAN",
+                  "songScore": {
+                      "score": 998431,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 34
+                  }
+              }
+          }
+      },
+      {
+          "key": 531359664,
+          "scoreMap": {
+              "singularity": {
+                  "timestamp": 1707041160000,
+                  "ign": "HUATMAN",
+                  "songScore": {
+                      "score": 1006291,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 34
+                  }
+              },
+              "pangaea": {
+                  "timestamp": 1707041160000,
+                  "ign": "HUATMAN",
+                  "songScore": {
+                      "score": 1002493,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 34
+                  }
+              },
+              "nokcamellia": {
+                  "timestamp": 1707037320000,
+                  "ign": "NICEVA",
+                  "songScore": {
+                      "score": 995764,
+                      "ajFcStatus": ""
+                  },
+                  "isDisqualified": false,
+                  "leaderboardStanding": {
+                      "division": "Masters",
+                      "rank": 33
+                  }
+              }
+          }
+      }
+  ]
+}
