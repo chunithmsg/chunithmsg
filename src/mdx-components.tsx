@@ -1,4 +1,3 @@
-/* eslint-disable import-x/prefer-default-export */
 import type { MDXComponents } from 'mdx/types';
 
 /**
@@ -22,7 +21,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // TODO: fix the img issue where it spawns fcp warnings
     img: (props) => (
       // eslint-disable-next-line @next/next/no-img-element
-      (<img {...props} alt="" className="border-2 border-primary" />)
+      <img {...props} alt="" className="border-2 border-primary" />
     ),
     ...components,
   };
