@@ -5,6 +5,7 @@ export const creatorGitHubUrls = {
   xantho09: 'https://github.com/xantho09',
   yytan25: 'https://github.com/yytan25',
   notlega: 'https://github.com/notlega',
+  Blerargh: 'https://github.com/Blerargh',
 } as const;
 
 /**

@@ -1,8 +1,0 @@
-.next
-public
-node_modules
-yarn.lock
-pnpm-lock.yaml
-package-lock.json
-**/*.test.js
-coverage

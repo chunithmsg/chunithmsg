@@ -38,9 +38,15 @@ const TableRow = dynamic(() =>
 );
 
 const qualifierSongs: SongWithJacket[] = [
-  { songId: 'singularity', jacket: '/sunplustourney/qualifiers/singularityoflove.jpg' },
+  {
+    songId: 'singularity',
+    jacket: '/sunplustourney/qualifiers/singularityoflove.jpg',
+  },
   { songId: 'pangaea', jacket: '/sunplustourney/qualifiers/pangaea.jpg' },
-  { songId: 'nokcamellia', jacket: '/sunplustourney/qualifiers/nokcamellia.jpg' },
+  {
+    songId: 'nokcamellia',
+    jacket: '/sunplustourney/qualifiers/nokcamellia.jpg',
+  },
 ];
 
 // const individualQualifiersSongs: SongWithJacket[] = [
@@ -49,7 +55,7 @@ const qualifierSongs: SongWithJacket[] = [
 //   { songId: 'nokcamellia', jacket: nokcamellia },
 // ];
 
-const Leaderboard = () => {
+function Leaderboard() {
   const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
   // const [serverUnixTimestamp, setServerUnixTimestamp] = useState<number>(0);
   const { data: leaderboard, isLoading } = useQuery({
@@ -99,14 +105,16 @@ const Leaderboard = () => {
             <TableHead rowSpan={2} className="w-48">
               IGN
             </TableHead>
-            {qualifierSongs.map((song, index) => (
-              <TableHead key={`${index}${song.songId}`}>
-                <Image
-                  src={song.jacket}
-                  alt={songDetails[song.songId].title}
-                  className="max-h-36 max-w-36 w-36 h-36"
-                  priority
-                />
+            {qualifierSongs.map((song) => (
+              <TableHead key={song.songId}>
+                <div className="relative max-h-36 max-w-36 w-36 h-36 mx-auto">
+                  <Image
+                    src={song.jacket}
+                    alt={songDetails[song.songId].title}
+                    priority
+                    fill
+                  />
+                </div>
               </TableHead>
             ))}
             <TableHead rowSpan={2} className="w-28">
@@ -132,10 +140,10 @@ const Leaderboard = () => {
                 standing.isDisqualified
                   ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive'
                   : standing.qualifiedIndex &&
-                    standing.qualifiedIndex <= 30 &&
-                    standing.qualifiedIndex > 0
-                  ? 'bg-success/20 even:bg-success/20 hover:bg-success/50 data-[state=selected]:bg-success'
-                  : 'bg-background/20 even:bg-background/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
+                      standing.qualifiedIndex <= 30 &&
+                      standing.qualifiedIndex > 0
+                    ? 'bg-success/20 even:bg-success/20 hover:bg-success/50 data-[state=selected]:bg-success'
+                    : 'bg-background/20 even:bg-background/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
                 hideDisqualified && standing.isDisqualified ? 'hidden' : '',
               )}
             >
@@ -210,6 +218,6 @@ const Leaderboard = () => {
       </Tabs> */}
     </>
   );
-};
+}
 
 export default Leaderboard;
