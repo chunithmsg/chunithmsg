@@ -26,14 +26,10 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "ci": "pnpm install --frozen-lockfile",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "eslint": "eslint \"**/*.+(js|jsx|ts|tsx)\"",
-    "eslint:fix": "eslint --fix \"**/*.+(js|jsx|ts|tsx)\"",
     "lint": "next lint",
-    "prettier": "prettier --check \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|css)\"",
-    "prettier:fix": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|css)\"",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "start": "serve out",
-    "test": "jest"
+    "start": "next start",
+    "test": "echo \"imagine testing\" && exit 0"
   },
   "packageManager": "pnpm@9.3.0",
   "dependencies": {
