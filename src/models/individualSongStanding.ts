@@ -8,12 +8,12 @@ import { IndividualSongScore } from './individualSongScore';
  */
 export type IndividualSongStanding = {
   key: number;
-  scoreMap: { [songId in SongId]?: IndividualSongScore };
+  scoreMap: Partial<Record<SongId, IndividualSongScore>>;
 };
 
-export const generateKey = (scoreMap: {
-  [songId in SongId]?: IndividualSongScore;
-}) => {
+export const generateKey = (
+  scoreMap: Partial<Record<SongId, IndividualSongScore>>,
+) => {
   // This is a very boring way to hash the scoreMap property.
   // Not much thought was put into this.
   // Optimise this later yup.

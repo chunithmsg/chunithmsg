@@ -1,10 +1,11 @@
-export type TeamDetails = {
-  [teamId: string]: {
+export type TeamDetails = Record<
+  string,
+  {
     teamName: string;
     members: {
       captain: string;
       player2: string;
       player3: string;
     };
-  };
-};
+  }
+>;

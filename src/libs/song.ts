@@ -30,7 +30,7 @@ export interface SongDetails {
   genre: Genre;
 }
 
-export const songDetails: { [songId in SongId]: SongDetails } = {
+export const songDetails: Record<SongId, SongDetails> = {
   valsqotch: { title: 'Valsqotch', genre: 'gekimai' },
   imperishableNight: {
     title: 'Imperishable Night 2006\n(2016 Refine)',

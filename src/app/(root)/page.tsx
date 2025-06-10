@@ -86,8 +86,10 @@ const SslFinals = () => {
                               </TableRow>
                             </TableHeader>
                             <TableBody>
-                              {match.songResults.map((songResult, index) => (
-                                <TableRow key={index}>
+                              {match.songResults.map((songResult) => (
+                                <TableRow
+                                  key={`${songResult.songName}${songResult.awayResult}${songResult.homeResult}`}
+                                >
                                   <TableCell>
                                     {songResult.songName ?? '???'}
                                   </TableCell>
@@ -144,20 +146,18 @@ const SslFinals = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {sslFinalsDetails.teamPhaseResults.map(
-                      (teamResult, index) => (
-                        <TableRow key={`${index}-${teamResult.teamId}`}>
-                          <TableCell>{teamResult.rank}</TableCell>
-                          <TableCell>{teamResult.teamName}</TableCell>
-                          <TableCell>{teamResult.numWins}</TableCell>
-                          <TableCell>{teamResult.numAwayWins}</TableCell>
-                          <TableCell>
-                            {formatScore(teamResult.totalScoreDiff)}
-                          </TableCell>
-                          <TableCell>{teamResult.numMatchesPlayed}</TableCell>
-                        </TableRow>
-                      ),
-                    )}
+                    {sslFinalsDetails.teamPhaseResults.map((teamResult) => (
+                      <TableRow key={teamResult.teamId}>
+                        <TableCell>{teamResult.rank}</TableCell>
+                        <TableCell>{teamResult.teamName}</TableCell>
+                        <TableCell>{teamResult.numWins}</TableCell>
+                        <TableCell>{teamResult.numAwayWins}</TableCell>
+                        <TableCell>
+                          {formatScore(teamResult.totalScoreDiff)}
+                        </TableCell>
+                        <TableCell>{teamResult.numMatchesPlayed}</TableCell>
+                      </TableRow>
+                    ))}
                   </TableBody>
                 </Table>
 
@@ -185,8 +185,10 @@ const SslFinals = () => {
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {match.songResults.map((songResult, index) => (
-                          <TableRow key={index}>
+                        {match.songResults.map((songResult) => (
+                          <TableRow
+                            key={`${songResult.songName}${songResult.awayResult}${songResult.homeResult}`}
+                          >
                             <TableCell>{songResult.songName}</TableCell>
                             <TableCell>
                               {songResult.homeResult.playerName}
@@ -240,9 +242,8 @@ const SslFinals = () => {
             </TableHeader>
             <TableBody>
               {sslFinalsDetails?.scoreAttackPhase.playerScores.map(
-                (playerScore, index) => (
-                  <TableRow key={`${index}-${playerScore.name}`}>
-                    {/* I'm getting the 'each child should have a unique key' message for some reason? */}
+                (playerScore) => (
+                  <TableRow key={`${playerScore.name}${playerScore.seed}`}>
                     <TableCell>{playerScore.rank}</TableCell>
                     <TableCell>{playerScore.seed}</TableCell>
                     <TableCell>{playerScore.name}</TableCell>

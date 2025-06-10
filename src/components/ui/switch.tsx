@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
 import dynamic from 'next/dynamic';
 import type * as SwitchPrimitives from '@radix-ui/react-switch';

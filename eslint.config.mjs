@@ -66,6 +66,15 @@ const customRules = [
     rules: {
       '@typescript-eslint/consistent-type-definitions': 'off',
       'no-param-reassign': 'off',
+      'import-x/prefer-default-export': 'off',
+      'react/function-component-definition': [
+        'error',
+        {
+          namedComponents: 'arrow-function',
+          unnamedComponents: 'arrow-function',
+        },
+      ],
+      'prefer-spread': 'warn',
     },
   },
 ];

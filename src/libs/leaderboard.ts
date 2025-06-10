@@ -22,10 +22,10 @@ import { QualifierSet, allQualifierSets } from './submissionConstants';
 const ZERO_SCORE: SongScore = { score: 0, ajFcStatus: '' };
 
 const extractBestSubmissions = (submissionSet: SubmissionSet) => {
-  const output: { [S in QualifierSet]?: Submission[] } = {};
+  const output: Partial<Record<QualifierSet, Submission[]>> = {};
   allQualifierSets.forEach((qualifierSet) => {
     const submissions = submissionSet[qualifierSet];
-    const bestSubmissionByIgn: { [ign: string]: Submission } = {};
+    const bestSubmissionByIgn: Record<string, Submission> = {};
 
     submissions.forEach((submission) => {
       if (submission.isVoidSubmission) {
@@ -55,7 +55,7 @@ const extractBestSubmissions = (submissionSet: SubmissionSet) => {
 
 export const getQualifierStandings = (submissionSet: SubmissionSet) => {
   const bestSubmissionSet = extractBestSubmissions(submissionSet);
-  const standingsByIgn: { [ign: string]: Standing } = {};
+  const standingsByIgn: Record<string, Standing> = {};
 
   // Set A Processing
   bestSubmissionSet[QualifierSet.MastersA].forEach((submission) => {
@@ -124,11 +124,8 @@ export const getQualifierStandings = (submissionSet: SubmissionSet) => {
   return standings;
 };
 
-const toRankMap = (
-  standings: Standing[],
-  shouldIgnoreDisqualified: boolean = true,
-) => {
-  const rankMap: { [ign: string]: number } = {};
+const toRankMap = (standings: Standing[], shouldIgnoreDisqualified = true) => {
+  const rankMap: Record<string, number> = {};
   const filteredStandings = standings.filter(
     (standing) => !standing.isDisqualified,
   );
@@ -146,12 +143,12 @@ const toRankMap = (
 
 export const getIndividualScoreStandings = (
   submissionSet: SubmissionSet,
-  submissionScoreThreshold: number = 0,
+  submissionScoreThreshold = 0,
 ): IndividualSongStanding[] => {
   // Holy shit, this function is a long hot mess and I feel filthy for writing it.
   // fr - lega
 
-  const setSongs: { [A in QualifierSet]: SongId[] } = {
+  const setSongs: Record<QualifierSet, SongId[]> = {
     [QualifierSet.MastersA]: ['singularity', 'pangaea', 'nokcamellia'],
   };
 
@@ -164,9 +161,9 @@ export const getIndividualScoreStandings = (
   const mastersStandings = getQualifierStandings(submissionSet);
   const mastersRankMap = toRankMap(mastersStandings);
 
-  const bestScoreBySong: {
-    [songId in SongId]?: { [ign: string]: IndividualSongScore };
-  } = {};
+  const bestScoreBySong: Partial<
+    Record<SongId, Record<string, IndividualSongScore>>
+  > = {};
 
   // Initialise an empty dict for each song.
   allSongs.forEach((songId) => {
@@ -215,9 +212,7 @@ export const getIndividualScoreStandings = (
   });
 
   // For each song, convert the map into a sorted array
-  const sortedScoresBySong: {
-    [songId in SongId]?: IndividualSongScore[];
-  } = {};
+  const sortedScoresBySong: Partial<Record<SongId, IndividualSongScore[]>> = {};
 
   allSongs.forEach((songId) => {
     const sortedScores = Object.values(bestScoreBySong[songId]!);
@@ -233,7 +228,7 @@ export const getIndividualScoreStandings = (
   const numStandings = numMasters;
 
   Array.apply(null, Array(numStandings)).forEach((_, index) => {
-    const scoreMap: { [songId in SongId]?: IndividualSongScore } = {};
+    const scoreMap: Partial<Record<SongId, IndividualSongScore>> = {};
 
     allSongs.forEach((songId) => {
       const individualSongScore = sortedScoresBySong[songId]?.[index];
@@ -337,10 +332,7 @@ export const filterIndividualScoreStandings = (
  * @param score The score to format, given as the string representation of an integer.
  * @returns The formatted score.
  */
-export const formatScore = (
-  score: number | undefined,
-  onUndefined: string = '---',
-) => {
+export const formatScore = (score: number | undefined, onUndefined = '---') => {
   if (score === undefined) {
     return onUndefined;
   }

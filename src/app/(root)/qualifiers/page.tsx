@@ -55,7 +55,7 @@ const qualifierSongs: SongWithJacket[] = [
 //   { songId: 'nokcamellia', jacket: nokcamellia },
 // ];
 
-function Leaderboard() {
+const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
   // const [serverUnixTimestamp, setServerUnixTimestamp] = useState<number>(0);
   const { data: leaderboard, isLoading } = useQuery({
@@ -125,8 +125,8 @@ function Leaderboard() {
             </TableHead>
           </TableRow>
           <TableRow>
-            {qualifierSongs.map((song, index) => (
-              <TableHead key={`${index}${song.songId}`}>
+            {qualifierSongs.map((song) => (
+              <TableHead key={song.songId}>
                 <span>{songDetails[song.songId].title}</span>
               </TableHead>
             ))}
@@ -135,8 +135,9 @@ function Leaderboard() {
         <TableBody>
           {leaderboard?.qualifiers.map((standing, index) => (
             <TableRow
-              key={`${index}${standing.ign}`}
+              key={`${standing.ign}${standing.timestamp}`}
               className={cn(
+                // eslint-disable-next-line no-nested-ternary
                 standing.isDisqualified
                   ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive'
                   : standing.qualifiedIndex &&
@@ -218,6 +219,6 @@ function Leaderboard() {
       </Tabs> */}
     </>
   );
-}
+};
 
 export default Leaderboard;

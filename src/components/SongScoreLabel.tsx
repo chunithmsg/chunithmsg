@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-import { SongStatus, type SongStatusType } from '@/models/standing';
+import { SongStatus } from '@/models/standing';
 import { formatScore } from '@/libs';
 
 const Badge = dynamic(() =>

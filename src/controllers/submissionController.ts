@@ -134,7 +134,7 @@ export class SubmissionController {
   }
 
   async getAllSubmissions(options?: SubmissionOptions) {
-    const output: { [S in QualifierSet]?: Submission[] } = {};
+    const output: Partial<Record<QualifierSet, Submission[]>> = {};
 
     const qualifierSetsPromises = allQualifierSets.map((qualifierSet) =>
       this.getSubmissionForSet(qualifierSet, options),

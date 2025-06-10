@@ -46,7 +46,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
       <Toaster richColors theme="light" closeButton />
     </body>
     <Script id="contribution" strategy="lazyOnload">
-      {`console.info("Found a bug? Want to contribute? Visit https://github.com/xantho09/chunithmsg!")`}
+      {`console.info("Found a bug? Want to contribute? Visit https://github.com/chunithmsg/chunithmsg !")`}
     </Script>
   </html>
 );

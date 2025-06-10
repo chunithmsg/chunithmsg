@@ -34,4 +34,4 @@ export const compareSubmissions = (
   return submissionA.timestamp - submissionB.timestamp;
 };
 
-export type SubmissionSet = { [S in QualifierSet]: Submission[] };
+export type SubmissionSet = Record<QualifierSet, Submission[]>;

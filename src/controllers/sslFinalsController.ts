@@ -154,7 +154,7 @@ const parseTeamMatch = (
 
 const updatePhaseResult = (
   teamMatch: TeamMatch,
-  teamPhaseResultMap: { [teamId: string]: TeamPhaseResult },
+  teamPhaseResultMap: Record<string, TeamPhaseResult>,
 ) => {
   const homePhaseResult = teamPhaseResultMap[teamMatch.homeTeamId];
   const awayPhaseResult = teamPhaseResultMap[teamMatch.awayTeamId];
@@ -244,9 +244,9 @@ const parseFinalsMatch = (
   };
 };
 
-const processPhaseResults = (teamPhaseResultMap: {
-  [teamId: string]: TeamPhaseResult;
-}): TeamPhaseResult[] => {
+const processPhaseResults = (
+  teamPhaseResultMap: Record<string, TeamPhaseResult>,
+): TeamPhaseResult[] => {
   const teamPhaseResults = Object.values(teamPhaseResultMap);
   teamPhaseResults.sort(compareTeamPhaseResults).forEach((result, index) => {
     result.rank = index + 1;
@@ -294,7 +294,7 @@ export class SslFinalsController {
     let scoreAttackPhase: ScoreAttackPhase;
     let teamDetails: TeamDetails;
     const teamPhaseMatches: TeamMatch[] = [];
-    const teamPhaseResultMap: { [teamId: string]: TeamPhaseResult } = {};
+    const teamPhaseResultMap: Record<string, TeamPhaseResult> = {};
     const grandFinalsMatches: GrandFinalsMatch[] = [];
 
     while (rangeStack.length > 0) {
