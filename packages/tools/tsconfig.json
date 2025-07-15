@@ -1,0 +1,3 @@
+{
+	"extends": "@chunithmsg/typescript-config/tools.json"
+}

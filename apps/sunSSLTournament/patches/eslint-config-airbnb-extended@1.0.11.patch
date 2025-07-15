@@ -1,0 +1,218 @@
+diff --git a/dist/@types/index.d.ts b/dist/@types/index.d.ts
+index 74107fcf0219c33b1348c970244c50c012118e2f..03ebe22b313fb9ef1155b1fa0e34d3462ed86992 100644
+--- a/dist/@types/index.d.ts
++++ b/dist/@types/index.d.ts
+@@ -2,11 +2,11 @@
+  * Direct export isn't allowed, it will increase the size of d.ts
+  */
+ export declare const rules: {
+-    readonly base: Record<"strict" | "imports" | "variables" | "bestPractices" | "errors" | "es6" | "style" | "stylistic" | "stylisticPlus" | "importsStrict", import("eslint").Linter.Config>;
++    readonly base: Record<"strict" | "imports" | "variables" | "bestPractices" | "errors" | "es6" | "style" | "importsStrict", import("eslint").Linter.Config>;
+     readonly node: Record<"globals" | "base" | "promises" | "noUnsupportedFeatures", import("eslint").Linter.Config>;
+-    readonly react: Record<"strict" | "stylistic" | "base" | "jsxA11y" | "hooks", import("eslint").Linter.Config>;
++    readonly react: Record<"strict" | "base" | "jsxA11y" | "hooks", import("eslint").Linter.Config>;
+     readonly next: Record<"base" | "coreWebVitals", import("eslint").Linter.Config>;
+-    readonly typescript: Record<"imports" | "stylistic" | "stylisticPlus" | "base" | "typescriptEslint" | "typescriptEslintStrict", import("eslint").Linter.Config>;
++    readonly typescript: Record<"imports" | "base" | "typescriptEslint" | "typescriptEslintStrict", import("eslint").Linter.Config>;
+ };
+ export declare const configs: {
+     readonly base: Record<"recommended" | "typescript" | "all", import("eslint").Linter.Config[]>;
+@@ -15,7 +15,6 @@ export declare const configs: {
+     readonly node: Record<"recommended", import("eslint").Linter.Config[]>;
+ };
+ export declare const plugins: {
+-    readonly stylistic: import("eslint").Linter.Config;
+     readonly importX: import("eslint").Linter.Config;
+     readonly node: import("eslint").Linter.Config;
+     readonly react: import("eslint").Linter.Config;
+diff --git a/dist/configs/base/config.js b/dist/configs/base/config.js
+index c543906d4ee65f29d39d4bfffcde7d16b4f5d420..e911a172d22a7b42a010051704eec471ed8b0e39 100644
+--- a/dist/configs/base/config.js
++++ b/dist/configs/base/config.js
+@@ -9,8 +9,6 @@ const es6_1 = __importDefault(require("../../rules/es6"));
+ const imports_1 = __importDefault(require("../../rules/imports"));
+ const strict_1 = __importDefault(require("../../rules/strict"));
+ const style_1 = __importDefault(require("../../rules/style"));
+-const stylistic_1 = __importDefault(require("../../rules/stylistic"));
+-const stylisticPlus_1 = __importDefault(require("../../rules/stylisticPlus"));
+ const variables_1 = __importDefault(require("../../rules/variables"));
+ const baseConfig = {
+     bestPractices: best_practices_1.default,
+@@ -19,8 +17,6 @@ const baseConfig = {
+     imports: imports_1.default,
+     strict: strict_1.default,
+     style: style_1.default,
+-    stylistic: stylistic_1.default,
+-    stylisticPlus: stylisticPlus_1.default,
+     variables: variables_1.default,
+ };
+ exports.default = baseConfig;
+diff --git a/dist/configs/base/recommended.js b/dist/configs/base/recommended.js
+index d9c94cfff415997f166df904080ec87e239a96ff..7b06310387e56d6ce281e044dd8562473abd9587 100644
+--- a/dist/configs/base/recommended.js
++++ b/dist/configs/base/recommended.js
+@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const config_1 = __importDefault(require("../../configs/base/config"));
+ const getImportSettings_1 = __importDefault(require("../../helpers/getImportSettings"));
+-const getStylisticLegacyConfig_1 = __importDefault(require("../../helpers/getStylisticLegacyConfig"));
+ const utils_1 = require("../../utils");
+ const baseRecommendedConfig = [
+     ...Object.values(config_1.default),
+@@ -27,7 +26,6 @@ const baseRecommendedConfig = [
+         name: 'airbnb/config/base-settings-extensions-configurations',
+         files: utils_1.jsFileWithoutReact,
+         settings: (0, getImportSettings_1.default)({ javascript: true, typescript: false, jsx: false }),
+-    },
+-    Object.assign({ name: 'airbnb/config/base-disable-legacy-stylistic-js-config', files: utils_1.allFiles }, (0, getStylisticLegacyConfig_1.default)('javascript')),
++    }
+ ];
+ exports.default = baseRecommendedConfig;
+diff --git a/dist/configs/base/typescript.js b/dist/configs/base/typescript.js
+index 1dcfefe213aa567e9af393ae957578cd1039486e..c8fc1ee4dca6ec19f71db009bbd8f67fe8966724 100644
+--- a/dist/configs/base/typescript.js
++++ b/dist/configs/base/typescript.js
+@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ const typescript_eslint_1 = require("typescript-eslint");
+ const config_1 = __importDefault(require("../../configs/typescript/config"));
+ const getImportSettings_1 = __importDefault(require("../../helpers/getImportSettings"));
+-const getStylisticLegacyConfig_1 = __importDefault(require("../../helpers/getStylisticLegacyConfig"));
+ const utils_1 = require("../../utils");
+ const baseTypescriptConfig = [
+     ...Object.values(config_1.default),
+@@ -15,7 +14,6 @@ const baseTypescriptConfig = [
+         files: utils_1.tsFileWithoutReact,
+         settings: (0, getImportSettings_1.default)({ javascript: false, typescript: true, jsx: false }),
+     },
+-    Object.assign({ name: 'airbnb/config/base-typescript-disable-legacy-stylistic-ts-config', files: utils_1.tsFiles }, (0, getStylisticLegacyConfig_1.default)('typescript')),
+     Object.assign(Object.assign({}, typescript_eslint_1.configs.disableTypeChecked), { name: 'airbnb/config/base-typescript-disable-type-checked', files: utils_1.jsFiles }),
+ ];
+ exports.default = baseTypescriptConfig;
+diff --git a/dist/configs/react/config.js b/dist/configs/react/config.js
+index e908341ecbb188f1aa3e959d22c003dc1728d9cd..0db0e0b7ebb25a2c49b634c600137c2c0b274d84 100644
+--- a/dist/configs/react/config.js
++++ b/dist/configs/react/config.js
+@@ -6,11 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ const react_1 = __importDefault(require("../../rules/react/react"));
+ const reactHooks_1 = __importDefault(require("../../rules/react/reactHooks"));
+ const reactJsxA11y_1 = __importDefault(require("../../rules/react/reactJsxA11y"));
+-const reactStylistic_1 = __importDefault(require("../../rules/react/reactStylistic"));
+ const reactConfig = {
+     base: react_1.default,
+     jsxA11y: reactJsxA11y_1.default,
+     hooks: reactHooks_1.default,
+-    stylistic: reactStylistic_1.default,
+ };
+ exports.default = reactConfig;
+diff --git a/dist/configs/react/recommended.js b/dist/configs/react/recommended.js
+index 045fd4f24f14d2e6d03d8698424a3f3aa426ac7a..5002c4fdd360c12705721a6212e22870f9ebe4c8 100644
+--- a/dist/configs/react/recommended.js
++++ b/dist/configs/react/recommended.js
+@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const config_1 = __importDefault(require("../../configs/react/config"));
+ const getImportSettings_1 = __importDefault(require("../../helpers/getImportSettings"));
+-const getStylisticLegacyConfig_1 = __importDefault(require("../../helpers/getStylisticLegacyConfig"));
+ const style_1 = __importDefault(require("../../rules/style"));
+ const utils_1 = require("../../utils");
+ const dangleRules = style_1.default.rules['no-underscore-dangle'];
+@@ -54,16 +53,6 @@ const reactRecommendedConfig = [
+                 },
+             ],
+         },
+-    },
+-    {
+-        name: 'airbnb/config/react-stylistic',
+-        files: utils_1.allFiles,
+-        rules: {
+-            // specify whether double or single quotes should be used in JSX attributes
+-            // https://eslint.style/rules/js/jsx-quotes
+-            '@stylistic/jsx-quotes': ['error', 'prefer-double'],
+-        },
+-    },
+-    Object.assign({ name: 'airbnb/config/react-disable-legacy-stylistic-react-config', files: utils_1.allFiles }, (0, getStylisticLegacyConfig_1.default)('react')),
++    }
+ ];
+ exports.default = reactRecommendedConfig;
+diff --git a/dist/configs/typescript/config.js b/dist/configs/typescript/config.js
+index ffb71012aa9f82da20a9df991aa7dae39a017c1f..5d74ab7f27479803b65dbdede12809e06b06df48 100644
+--- a/dist/configs/typescript/config.js
++++ b/dist/configs/typescript/config.js
+@@ -6,12 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ const typescriptBase_1 = __importDefault(require("../../rules/typescript/typescriptBase"));
+ const typescriptEslint_1 = __importDefault(require("../../rules/typescript/typescriptEslint"));
+ const typescriptImports_1 = __importDefault(require("../../rules/typescript/typescriptImports"));
+-const typescriptStylistic_1 = __importDefault(require("../../rules/typescript/typescriptStylistic"));
+-const typescriptStylisticPlus_1 = __importDefault(require("../../rules/typescript/typescriptStylisticPlus"));
+ const typescriptConfig = {
+     base: typescriptBase_1.default,
+-    stylistic: typescriptStylistic_1.default,
+-    stylisticPlus: typescriptStylisticPlus_1.default,
+     typescriptEslint: typescriptEslint_1.default,
+     imports: typescriptImports_1.default,
+ };
+diff --git a/dist/helpers/getStylisticLegacyConfig.js b/dist/helpers/getStylisticLegacyConfig.js
+deleted file mode 100644
+index 7f192b7cfefaf994f1321997d0f41c8e14af3fff..0000000000000000000000000000000000000000
+diff --git a/dist/plugins/index.js b/dist/plugins/index.js
+index 29d454b7a2ae77d3fd29381bad26b422c71ba568..550d90d5bbd1ff0e72f9761e23a718aad4c11869 100644
+--- a/dist/plugins/index.js
++++ b/dist/plugins/index.js
+@@ -5,9 +5,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
+  * as is given due to less size of index.d.ts
+  */
+ const plugins = {
+-    get stylistic() {
+-        return require('../plugins/stylisticPlugin').default;
+-    },
+     get importX() {
+         return require('../plugins/importXPlugin').default;
+     },
+diff --git a/dist/plugins/stylisticPlugin.js b/dist/plugins/stylisticPlugin.js
+deleted file mode 100644
+index 64ca26bcccf1dc11fe7a49359d861732ece0ec27..0000000000000000000000000000000000000000
+diff --git a/dist/rules/react/reactStylistic.js b/dist/rules/react/reactStylistic.js
+deleted file mode 100644
+index 5724aaaea1988f27af850dee6ee572e47b91613f..0000000000000000000000000000000000000000
+diff --git a/dist/rules/stylistic.js b/dist/rules/stylistic.js
+deleted file mode 100644
+index 6ab3917f46b8f293f1aabf129a20d7af9c8d4a30..0000000000000000000000000000000000000000
+diff --git a/dist/rules/stylisticPlus.js b/dist/rules/stylisticPlus.js
+deleted file mode 100644
+index dd79ef1e5212cf3d7731b3aea2e48628a76faf90..0000000000000000000000000000000000000000
+diff --git a/dist/rules/typescript/typescriptStylistic.js b/dist/rules/typescript/typescriptStylistic.js
+deleted file mode 100644
+index 1a61aba03f375691e8617a2ba7d738fa289965a1..0000000000000000000000000000000000000000
+diff --git a/dist/rules/typescript/typescriptStylisticPlus.js b/dist/rules/typescript/typescriptStylisticPlus.js
+deleted file mode 100644
+index 5c1e6438cbde11eeb16b85245f70f70a5c21d33c..0000000000000000000000000000000000000000
+diff --git a/package.json b/package.json
+index b8068bd8ce3f403abbfc8558c13cd38a19b87ffa..0629cb37be079bea44d9f21366790d62c7e92f9a 100644
+--- a/package.json
++++ b/package.json
+@@ -35,7 +35,6 @@
+     "globals": "^16.0.0"
+   },
+   "devDependencies": {
+-    "@stylistic/eslint-plugin": "^3.1.0",
+     "@types/confusing-browser-globals": "^1.0.3",
+     "@types/node": "^22.15.2",
+     "rimraf": "^6.0.1",
+@@ -46,7 +45,6 @@
+   },
+   "peerDependencies": {
+     "@next/eslint-plugin-next": "15.x",
+-    "@stylistic/eslint-plugin": "3.x",
+     "@types/eslint-plugin-jsx-a11y": "6.x",
+     "eslint": "9.x",
+     "eslint-import-resolver-typescript": "4.x",
+@@ -61,9 +59,6 @@
+     "@next/eslint-plugin-next": {
+       "optional": true
+     },
+-    "@stylistic/eslint-plugin": {
+-      "optional": true
+-    },
+     "@types/eslint-plugin-jsx-a11y": {
+       "optional": true
+     },

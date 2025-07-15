@@ -1,0 +1,40 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "NextJS",
+	"extends": "@chunithmsg/typescript-config/base.json",
+	"compilerOptions": {
+		"allowJs": true,
+    "declaration": false,
+    "declarationMap": false,
+		"incremental": true,
+		"jsx": "preserve",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"rootDir": ".",
+		"target": "es6"
+	},
+	"include": [
+		"next-env.d.ts",
+		"*.d.ts",
+		"**/*.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.mdx",
+		"*.config.js",
+		"*.config.ts",
+		"*.config.mjs",
+		"*.config.cjs",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["${configDir}/node_modules/", "${configDir}/dist/", "${configDir}/eslint.config.ts"]
+}

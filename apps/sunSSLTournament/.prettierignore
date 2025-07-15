@@ -1,0 +1,11 @@
+.next
+public
+!public/*.json
+!public/**/*.json
+node_modules
+yarn.lock
+pnpm-lock.yaml
+package-lock.json
+**/*.test.js
+coverage
+wrangler.jsonc
