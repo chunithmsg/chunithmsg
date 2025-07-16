@@ -1,4 +1,4 @@
-import tsEslintParser from '@typescript-eslint/parser'
+import tsEslintParser from '@typescript-eslint/parser/src'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import react from 'eslint-plugin-react'
 import * as reactHooks from 'eslint-plugin-react-hooks'

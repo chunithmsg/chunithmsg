@@ -103,14 +103,14 @@ export default [
 import { FlatCompat } from '@eslint/eslintrc'
 import eslint from '@eslint/js'
 import tsEslintPlugin from '@typescript-eslint/eslint-plugin'
-import tsEslintParser from '@typescript-eslint/parser'
+import tsEslintParser from '@typescript-eslint/parser/src'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import turboConfig from 'eslint-config-turbo/flat'
 // @ts-ignore eslint-plugin-import has no types
 import * as importPlugin from 'eslint-plugin-import'
 import unusedImportsPlugin from 'eslint-plugin-unused-imports'
 import { defineConfig } from 'eslint/config'
-import tseslint from 'typescript-eslint'
+import tseslint from 'typescript-eslint/src'
 
 import { getDirname, getGitIgnoreFiles, getTsconfigRootDir } from './helpers'
 
