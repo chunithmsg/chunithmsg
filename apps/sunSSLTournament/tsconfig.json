@@ -1,4 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-	"extends": "@chunithmsg/typescript-config/next.json",
+  "extends": "@chunithmsg/typescript-config/next.json",
+  "include": [
+    "../../packages/typescript-config/next-env.d.ts",
+    "../../packages/typescript-config/*.d.ts",
+    "../../packages/typescript-config/**/*.d.ts",
+    "../../packages/typescript-config/**/*.ts",
+    "../../packages/typescript-config/**/*.tsx",
+    "../../packages/typescript-config/**/*.mdx",
+    "../../packages/typescript-config/*.config.js",
+    "../../packages/typescript-config/*.config.ts",
+    "../../packages/typescript-config/*.config.mjs",
+    "../../packages/typescript-config/*.config.cjs",
+    "../../packages/typescript-config/.next/types/**/*.ts",
+    ".next/types/**/*.ts"
+  ]
 }
