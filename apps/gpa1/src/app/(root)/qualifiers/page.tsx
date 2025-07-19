@@ -1,18 +1,14 @@
 'use client';
-
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import Image from 'next/image';
-import dynamic from 'next/dynamic';
-
-import type { Standing } from '@/models/standing';
-// import IndividualSongLeaderboard from '@/components/IndividualSongLeaderboard';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/libs/utils';
+import { songDetails } from '@/libs';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 import type { SongWithJacket } from '@/libs';
-import { formatScore, formatTimestamp, songDetails, cn } from '@/libs';
+import { Submission } from '@/models/qualifierSubmission';
 
 const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
 const Badge = dynamic(() =>
@@ -39,45 +35,44 @@ const TableRow = dynamic(() =>
 
 const qualifierSongs: SongWithJacket[] = [
   {
-    songId: 'singularity',
-    jacket: '/sunplustourney/qualifiers/singularityoflove.jpg',
+    songId: 'unknown1',
+    jacket: '/rules/level13+.png',
   },
-  { songId: 'pangaea', jacket: '/sunplustourney/qualifiers/pangaea.jpg' },
+  { songId: 'unknown2', jacket: '/rules/level13+.png' },
   {
-    songId: 'nokcamellia',
-    jacket: '/sunplustourney/qualifiers/nokcamellia.jpg',
+    songId: 'unknown3',
+    jacket: '/rules/level14.png',
   },
 ];
 
-// const individualQualifiersSongs: SongWithJacket[] = [
-//   { songId: 'singularity', jacket: singularity },
-//   { songId: 'pangaea', jacket: pangaea },
-//   { songId: 'nokcamellia', jacket: nokcamellia },
-// ];
-
 const Leaderboard = () => {
   const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
-  // const [serverUnixTimestamp, setServerUnixTimestamp] = useState<number>(0);
-  const { data: leaderboard, isLoading } = useQuery({
-    queryKey: ['leaderboard'],
-    queryFn: async () => {
-      const axios = (await import('@/libs/axios')).getAxiosInstance();
-      const { data } = await axios.get<{
-        qualifiers: Standing[];
-        individualSongStandings: Standing[];
-      }>('/sunplustourney/qualifiers/results.json');
-      return data;
-    },
-  });
+  const [leaderboard, setLeaderboard] = useState<Submission[]>([]);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>('');
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+        const response = await fetch('/api/leaderboard');
+        const data = await response.json();
+        setLeaderboard(data.leaderboard);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // useEffect(() => {
-  //   const currentServerUnixTimestamp = getCurrentTime();
-  //   setServerUnixTimestamp(serverUnixTimestamp);
-  // }, [])
+    fetchLeaderboard();
+  }, []);
+
+  const displayLeaderboard: Submission[] = hideDisqualified
+    ? leaderboard.filter((submission) => !submission.isDisqualified)
+    : leaderboard;
 
   return (
     <>
-      <h1>Leaderboard</h1>
+      <h1>Qualifiers Leaderboard</h1>
       <div className="flex items-center space-x-2">
         <Switch
           id="hideDisqualified"
@@ -86,16 +81,8 @@ const Leaderboard = () => {
           checked={hideDisqualified}
           onCheckedChange={setHideDisqualified}
         />
-        <Label htmlFor="hideDisqualified">Hide Disqualified</Label>
+        <Label htmlFor="hideDisqualified">Hide Staff Scores</Label>
       </div>
-      {/* <Tabs defaultValue="qualifiers" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="qualifiers">Qualifiers</TabsTrigger>
-          <TabsTrigger value="individuals">
-            Individual Songs (Qualifiers)
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="qualifiers"> */}
       <Table className="overflow-hidden">
         <TableHeader>
           <TableRow>
@@ -118,7 +105,7 @@ const Leaderboard = () => {
               </TableHead>
             ))}
             <TableHead rowSpan={2} className="w-28">
-              Total Score
+              Total Deductions
             </TableHead>
             <TableHead rowSpan={2} className="w-28">
               Time of Play
@@ -133,24 +120,23 @@ const Leaderboard = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {leaderboard?.qualifiers.map((standing, index) => (
+          {displayLeaderboard.map((standing, index) => (
             <TableRow
-              key={`${standing.ign}${standing.timestamp}`}
+              key={`${standing.ign}-${standing.discordSubmissionTimestamp}`}
               className={cn(
                 // eslint-disable-next-line no-nested-ternary
                 standing.isDisqualified
                   ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive'
-                  : standing.qualifiedIndex &&
-                      standing.qualifiedIndex <= 30 &&
-                      standing.qualifiedIndex > 0
-                    ? 'bg-success/20 even:bg-success/20 hover:bg-success/50 data-[state=selected]:bg-success'
-                    : 'bg-background/20 even:bg-background/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
-                hideDisqualified && standing.isDisqualified ? 'hidden' : '',
+                  : index < 6 && index >= 0
+                    ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
+                    : index >= 6 && index < 12
+                      ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
+                      : index >= 12 && index < 18
+                        ? 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success'
+                        : 'bg-background/20 even:bg-background/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
               )}
             >
-              <TableCell>
-                {hideDisqualified ? standing.qualifiedIndex : index + 1}
-              </TableCell>
+              <TableCell>{index + 1}</TableCell>
               <TableCell>
                 <div className="flex gap-2 align-middle">
                   <span>{standing.ign}</span>
@@ -160,31 +146,33 @@ const Leaderboard = () => {
                 </div>
               </TableCell>
               <TableCell>
-                <SongScoreLabel
-                  songScore={{
-                    score: standing.song1.score,
-                    ajFcStatus: standing.song1.ajFcStatus,
-                  }}
-                />
+                <SongScoreLabel songScore={standing.songScores[0]} />
               </TableCell>
               <TableCell>
-                <SongScoreLabel
-                  songScore={{
-                    score: standing.song2.score,
-                    ajFcStatus: standing.song2.ajFcStatus,
-                  }}
-                />
+                <SongScoreLabel songScore={standing.songScores[1]} />
               </TableCell>
               <TableCell>
-                <SongScoreLabel
-                  songScore={{
-                    score: standing.song3.score,
-                    ajFcStatus: standing.song3.ajFcStatus,
-                  }}
-                />
+                <SongScoreLabel songScore={standing.songScores[2]} />
               </TableCell>
-              <TableCell>{formatScore(standing.totalScore)}</TableCell>
-              <TableCell>{formatTimestamp(standing.timestamp)}</TableCell>
+              <TableCell>
+                {standing.songScores[0].score +
+                  standing.songScores[1].score +
+                  standing.songScores[2].score}
+              </TableCell>
+              <TableCell>
+                {new Date(standing.discordSubmissionTimestamp).toLocaleString(
+                  'en-GB',
+                  {
+                    timeZone: 'Singapore',
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true,
+                  },
+                )}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -207,16 +195,11 @@ const Leaderboard = () => {
           Loading...
         </div>
       )}
-      {leaderboard?.qualifiers.length === 0 && (
+      {displayLeaderboard.length === 0 && !isLoading && (
         <div className="flex min-h-max justify-center items-center mt-8">
           Empty leaderboard :(
         </div>
       )}
-      {/* </TabsContent>
-        <TabsContent value="individuals">
-          Change your password here.
-        </TabsContent>
-      </Tabs> */}
     </>
   );
 };
