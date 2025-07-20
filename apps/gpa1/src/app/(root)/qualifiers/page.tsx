@@ -54,7 +54,7 @@ const Leaderboard = () => {
     const fetchLeaderboard = async () => {
       try {
         const response = await fetch('/api/leaderboard');
-        const data = await response.json();
+        const data: { leaderboard: Submission[] } = await response.json();
         setLeaderboard(data.leaderboard);
       } catch (err) {
         console.error(err);
