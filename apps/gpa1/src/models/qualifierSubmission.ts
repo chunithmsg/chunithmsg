@@ -32,7 +32,7 @@ export const parseSubmissionRow = (row: string[]) => {
     row[columns.submissionTime],
   ).getTime();
   const isDisqualified: boolean = row[columns.dq] === 'TRUE';
-  const isVoidSubmission: boolean = row[columns.void] === 'TRUE';
+  const isVoidSubmission: boolean = row[columns.void] !== 'FALSE';
 
   // Deduction calculations
   const getDeductions = ([justice, attack, miss]: number[]) => {
