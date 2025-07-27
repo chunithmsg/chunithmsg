@@ -81,7 +81,7 @@ const Leaderboard = () => {
           checked={showHidden}
           onCheckedChange={setShowHidden}
         />
-        <Label htmlFor="hideDisqualified">Show Hidden Scores</Label>
+        <Label htmlFor="hideDisqualified">Show Non-Participant Scores</Label>
       </div>
       <Table className="overflow-hidden">
         <TableHeader>
@@ -141,7 +141,7 @@ const Leaderboard = () => {
                 <div className="flex gap-2 align-middle">
                   <span>{standing.ign}</span>
                   {standing.isDisqualified && (
-                    <Badge variant="destructive">DQ</Badge>
+                    <Badge variant="destructive">NP</Badge>
                   )}
                 </div>
               </TableCell>

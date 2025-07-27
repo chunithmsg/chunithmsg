@@ -29,9 +29,10 @@ const columns = {
 export const parseSubmissionRow = (row: string[]) => {
   // Directly extractable columns
   const ign: string = row[columns.ign];
-  const discordSubmissionTimestamp: number = new Date(
-    row[columns.submissionTime],
-  ).getTime();
+
+  const discordSubmissionTimestamp: number =
+    new Date(row[columns.submissionTime]).getTime() - 8 * 60 * 60 * 1000; // +8 offset
+
   const isDisqualified: boolean = row[columns.dq] === 'TRUE';
   const isVoidSubmission: boolean = row[columns.void] !== 'FALSE';
 
