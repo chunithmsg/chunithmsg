@@ -35,18 +35,18 @@ const TableRow = dynamic(() =>
 
 const qualifierSongs: SongWithJacket[] = [
   {
-    songId: 'unknown1',
-    jacket: '/rules/level13+.png',
+    songId: 'futureeve',
+    jacket: '/qualifier-songs/futureeve.jpg',
   },
-  { songId: 'unknown2', jacket: '/rules/level13+.png' },
+  { songId: 'pinqpiq', jacket: '/qualifier-songs/pinqpiq.jpg' },
   {
-    songId: 'unknown3',
-    jacket: '/rules/level14.png',
+    songId: '_8orochi',
+    jacket: '/qualifier-songs/8orochi.jpg',
   },
 ];
 
 const Leaderboard = () => {
-  const [hideDisqualified, setHideDisqualified] = useState<boolean>(true);
+  const [showHidden, setShowHidden] = useState<boolean>(false);
   const [leaderboard, setLeaderboard] = useState<Submission[]>([]);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
@@ -66,7 +66,7 @@ const Leaderboard = () => {
     fetchLeaderboard();
   }, []);
 
-  const displayLeaderboard: Submission[] = hideDisqualified
+  const displayLeaderboard: Submission[] = !showHidden
     ? leaderboard.filter((submission) => !submission.isDisqualified)
     : leaderboard;
 
@@ -78,10 +78,10 @@ const Leaderboard = () => {
           id="hideDisqualified"
           name="toggleDisqualified"
           className="my-5"
-          checked={hideDisqualified}
-          onCheckedChange={setHideDisqualified}
+          checked={showHidden}
+          onCheckedChange={setShowHidden}
         />
-        <Label htmlFor="hideDisqualified">Hide Staff Scores</Label>
+        <Label htmlFor="hideDisqualified">Show Hidden Scores</Label>
       </div>
       <Table className="overflow-hidden">
         <TableHeader>
@@ -154,11 +154,7 @@ const Leaderboard = () => {
               <TableCell>
                 <SongScoreLabel songScore={standing.songScores[2]} />
               </TableCell>
-              <TableCell>
-                {standing.songScores[0].score +
-                  standing.songScores[1].score +
-                  standing.songScores[2].score}
-              </TableCell>
+              <TableCell>{standing.totalScore}</TableCell>
               <TableCell>
                 {new Date(standing.discordSubmissionTimestamp).toLocaleString(
                   'en-GB',

@@ -9,6 +9,7 @@ export type Submission = {
   ign: string;
   discordSubmissionTimestamp: number;
   songScores: SongScore[];
+  totalScore: number;
   isDisqualified: boolean;
   isVoidSubmission: boolean;
 };
@@ -50,15 +51,19 @@ export const parseSubmissionRow = (row: string[]) => {
   };
 
   type SongKey = 'song1Counts' | 'song2Counts' | 'song3Counts';
+  let totalScore: number = 0;
   const songScores: SongScore[] = [];
   for (let i = 1; i <= 3; i++) {
     const counts: number[] = columns[`song${i}Counts` as SongKey].map((col) =>
       parseInt(row[col]),
     );
+
+    const deduction = getDeductions(counts);
     songScores.push({
-      score: getDeductions(counts),
+      score: deduction,
       ajFcStatus: getFcAjStatus(counts),
     });
+    totalScore += deduction;
   }
 
   // Return submission
@@ -66,6 +71,7 @@ export const parseSubmissionRow = (row: string[]) => {
     ign,
     discordSubmissionTimestamp,
     songScores,
+    totalScore,
     isDisqualified,
     isVoidSubmission,
   };
