@@ -10,7 +10,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => (
       {children}
     </main>
     <footer className="py-6 md:px-8 md:py-0 border-t">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:h-24 text-center text-sm leading-loose text-muted-foreground underline">
+      <div className="flex flex-row md:flex-row items-center justify-center gap-4 md:h-24 text-center text-sm leading-loose text-muted-foreground underline">
         {Object.entries(creatorGitHubUrls).map(([name, url]) => (
           <div key={name}>
             <Link

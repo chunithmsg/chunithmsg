@@ -86,10 +86,10 @@ const Leaderboard = () => {
       <Table className="overflow-hidden">
         <TableHeader>
           <TableRow>
-            <TableHead rowSpan={2} className="w-16">
+            <TableHead rowSpan={2} className="min-w-16 w-16">
               #
             </TableHead>
-            <TableHead rowSpan={2} className="w-48">
+            <TableHead rowSpan={2} className="min-w-48 w-48">
               IGN
             </TableHead>
             {qualifierSongs.map((song) => (
@@ -104,10 +104,10 @@ const Leaderboard = () => {
                 </div>
               </TableHead>
             ))}
-            <TableHead rowSpan={2} className="w-28">
+            <TableHead rowSpan={2} className="min-w-16 w-16">
               Total Deductions
             </TableHead>
-            <TableHead rowSpan={2} className="w-28">
+            <TableHead rowSpan={2} className="min-w-32 w-32">
               Time of Play
             </TableHead>
           </TableRow>
