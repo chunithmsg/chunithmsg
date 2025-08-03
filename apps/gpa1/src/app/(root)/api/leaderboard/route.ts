@@ -35,7 +35,6 @@ export async function GET() {
     const earlySubmissions = getEarlySubmissions(leaderboard);
     leaderboard = filterSubmissions(leaderboard);
     leaderboard.sort(compareSubmissions);
-    console.log(earlySubmissions);
 
     return Response.json({ leaderboard, earlySubmissions });
   } catch (err) {
