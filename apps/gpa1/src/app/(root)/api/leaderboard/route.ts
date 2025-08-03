@@ -15,7 +15,7 @@ export async function GET() {
   try {
     // Retrieve sheet values
     // const auth = await getAuthClient();
-    const range = 'Sheet1!A2:R';
+    const range = 'Qualifiers!A2:R';
 
     // const response = await getSpreadSheetValues(spreadsheetId, auth, range);
 
