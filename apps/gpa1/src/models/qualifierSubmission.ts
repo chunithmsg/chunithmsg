@@ -95,6 +95,27 @@ export const filterSubmissions = (submissions: Submission[]) => {
   return filteredSubmissions;
 };
 
+export const getEarlySubmissions = (submissions: Submission[]) => {
+  // Filtering
+  const filteredSubmissions: Submission[] = [];
+  submissions.forEach((submissionA) => {
+    if (
+      !submissionA.isDisqualified &&
+      submissions.filter(
+        (submissionB) =>
+          submissionA.ign === submissionB.ign &&
+          submissionB.discordSubmissionTimestamp <
+            submissionA.discordSubmissionTimestamp,
+      ).length === 0
+    ) {
+      filteredSubmissions.push(submissionA);
+    }
+  });
+  return filteredSubmissions.sort(
+    (a, b) => a.discordSubmissionTimestamp - b.discordSubmissionTimestamp,
+  );
+};
+
 export const getTotalSubmissionScore = (submission: Submission) =>
   submission.songScores.reduce(
     (total, songScore) => total + songScore.score,
