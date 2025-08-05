@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eu
+
+find . -maxdepth 5 -type d -path "./apps/*/node_modules" -o -path "./packages/*/node_modules" -o -path "*/.next" -o -path "./packages/*/dist" | xargs rm -rf
+rm -rf node_modules
