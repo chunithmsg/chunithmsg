@@ -1,43 +1,32 @@
-import tsEslintParser from '@typescript-eslint/parser/src'
-import eslintConfigPrettier from 'eslint-config-prettier'
-import react from 'eslint-plugin-react'
-import * as reactHooks from 'eslint-plugin-react-hooks'
-import unusedImportsPlugin from 'eslint-plugin-unused-imports'
+import { configs, plugins } from 'eslint-config-airbnb-extended';
 
-import { defineConfig, getConfig } from './default.config'
-import { getTsconfigRootDir } from './helpers'
+import { defineConfig, getConfig, prettierConfig } from './default.config';
 
 export function getReactConfig(importMetaUrl: string) {
-	return defineConfig([
-		...getConfig(importMetaUrl),
-		{
-			files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
-			plugins: {
-				react,
-				'unused-imports': unusedImportsPlugin,
-			},
-			languageOptions: {
-				parser: tsEslintParser,
-				parserOptions: {
-					ecmaFeatures: {
-						jsx: true,
-					},
-					sourceType: 'module',
-					project: true,
-					tsconfigRootDir: getTsconfigRootDir(importMetaUrl),
-				},
-			},
-		},
-		reactHooks.configs['recommended-latest'],
-		{
-			rules: {
-				// this commonly causes false positives with Hono middleware
-				// that have a similar naming scheme (e.g. useSentry())
-				'react-hooks/rules-of-hooks': 'off',
-			},
-		},
+  return defineConfig([
+    ...getConfig(importMetaUrl),
 
-		// Prettier (should be last to override other formatting rules)
-		{ rules: eslintConfigPrettier.rules },
-	])
+    // React Plugin
+    plugins.react,
+    // React Hooks Plugin
+    plugins.reactHooks,
+    // React JSX A11y Plugin
+    plugins.reactA11y,
+    // Airbnb React Recommended Config
+    ...configs.react.recommended,
+
+    {
+      rules: {
+        'react/function-component-definition': [
+          'error',
+          {
+            namedComponents: 'arrow-function',
+            unnamedComponents: 'arrow-function',
+          },
+        ],
+      },
+    },
+
+    ...prettierConfig,
+  ]);
 }
