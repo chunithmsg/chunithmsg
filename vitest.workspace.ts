@@ -1,6 +1,6 @@
 import { defineWorkspace } from 'vitest/config'
 
-import { glob } from './patches/packages/workspace-dependencies/src/zx'
+import { glob } from '@chunithmsg/workspace-dependencies/zx'
 
 const projects = await glob([
 	// All vitest projects
