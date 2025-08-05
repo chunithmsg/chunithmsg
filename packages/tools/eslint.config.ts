@@ -1,4 +1,4 @@
-import { defineConfig, getConfig } from '../eslint-config/src/default.config'
+import { defineConfig, getConfig } from '@chunithmsg/eslint-config'
 
 const config = getConfig(import.meta.url)
 
