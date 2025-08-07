@@ -1,0 +1,77 @@
+{
+	"name": "@chunithmsg/ui",
+	"version": "0.1.1",
+	"private": true,
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		},
+		"./*": {
+			"import": "./dist/*.js",
+			"require": "./dist/*.cjs"
+		},
+		"./libs": {
+			"import": "./dist/libs/index.js",
+			"require": "./dist/libs/index.cjs"
+		}
+	},
+	"scripts": {
+		"add": "pnpx shadcn@latest add",
+		"build": "tsup",
+		"check:lint": "run-eslint",
+		"check:types": "run-tsc",
+		"dev": "tsup --watch",
+		"test": "echo 'No tests defined.'"
+	},
+	"dependencies": {
+		"@mdx-js/loader": "^3.1.0",
+		"@mdx-js/react": "^3.1.0",
+		"@radix-ui/react-checkbox": "^1.3.2",
+		"@radix-ui/react-dropdown-menu": "^2.1.15",
+		"@radix-ui/react-icons": "^1.3.2",
+		"@radix-ui/react-label": "^2.1.7",
+		"@radix-ui/react-navigation-menu": "^1.2.13",
+		"@radix-ui/react-select": "^2.2.5",
+		"@radix-ui/react-slot": "^1.2.3",
+		"@radix-ui/react-switch": "^1.2.5",
+		"@radix-ui/react-tabs": "^1.1.12",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.312.0",
+		"next-themes": "^0.2.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sonner": "^1.7.4",
+		"tailwind-merge": "^2.6.0"
+	},
+	"devDependencies": {
+		"@chunithmsg/eslint-config": "workspace:*",
+		"@chunithmsg/tools": "workspace:*",
+		"@chunithmsg/typescript-config": "workspace:*",
+		"@eslint/compat": "^1.2.9",
+		"@eslint/js": "^9.28.0",
+		"@types/mdx": "^2.0.13",
+		"@types/node": "^20.19.0",
+		"@types/react": "^18.3.23",
+		"@types/react-dom": "^18.3.7",
+		"encoding": "^0.1.13",
+		"eslint": "9.28.0",
+		"eslint-config-airbnb-extended": "^1.0.11",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-import-resolver-typescript": "^4.4.3",
+		"eslint-plugin-import-x": "^4.15.1",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"eslint-plugin-prettier": "^5.4.1",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^5.2.0",
+		"postcss": "^8.5.4",
+		"prettier": "3.5.3",
+		"tailwindcss": "^3.4.17",
+		"tsup": "^8.5.0",
+		"typescript": "^5.8.3",
+		"typescript-eslint": "^8.34.0"
+	}
+}

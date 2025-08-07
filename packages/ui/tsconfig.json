@@ -1,0 +1,22 @@
+{
+  "extends": "@chunithmsg/typescript-config/next.json",
+  "compilerOptions": {
+    "incremental": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": [
+    "*.d.ts",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx",
+    "*.config.js",
+    "*.config.ts",
+    "*.config.mjs",
+    "*.config.cjs"
+  ],
+  "exclude": ["**/node_modules/", "**/dist/", "**/eslint.config.ts"]
+}
