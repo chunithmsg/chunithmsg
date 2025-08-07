@@ -4,17 +4,14 @@
 	"extends": "@chunithmsg/typescript-config/base.json",
 	"compilerOptions": {
 		"allowJs": true,
-    "declaration": false,
-    "declarationMap": false,
+		"declaration": false,
+		"declarationMap": false,
 		"incremental": true,
 		"jsx": "preserve",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"noEmit": true,
-		"paths": {
-			"@/*": ["./src/*"]
-		},
 		"plugins": [
 			{
 				"name": "next"
