@@ -26,6 +26,21 @@ const columns = {
   void: 17,
 };
 
+// Deduction calculations
+export const getDeductions = ([justice, attack, miss]: number[]) => {
+  return -justice + attack * -5 + miss * -3;
+};
+
+export const getFcAjStatus = ([justice, attack, miss]: number[]) => {
+  return miss === 0
+    ? attack === 0
+      ? justice === 0
+        ? 'AJC'
+        : 'AJ'
+      : 'FC'
+    : '';
+};
+
 export const parseSubmissionRow = (row: string[]) => {
   // Directly extractable columns
   const ign: string = row[columns.ign];
@@ -35,21 +50,6 @@ export const parseSubmissionRow = (row: string[]) => {
 
   const isDisqualified: boolean = row[columns.dq] === 'TRUE';
   const isVoidSubmission: boolean = row[columns.void] !== 'FALSE';
-
-  // Deduction calculations
-  const getDeductions = ([justice, attack, miss]: number[]) => {
-    return -justice + attack * -5 + miss * -3;
-  };
-
-  const getFcAjStatus = ([justice, attack, miss]: number[]) => {
-    return miss === 0
-      ? attack === 0
-        ? justice === 0
-          ? 'AJC'
-          : 'AJ'
-        : 'FC'
-      : '';
-  };
 
   type SongKey = 'song1Counts' | 'song2Counts' | 'song3Counts';
   let totalScore: number = 0;
