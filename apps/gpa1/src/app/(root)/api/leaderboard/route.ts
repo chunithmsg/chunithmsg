@@ -1,7 +1,3 @@
-import {
-  getAuthClient,
-  getSpreadSheetValues,
-} from '@/services/googleSheetsService';
 import { getSheetValues } from '@/services/googleSheetsServiceCloudflareCompatible';
 import {
   compareSubmissions,
