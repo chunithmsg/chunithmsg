@@ -1,21 +1,13 @@
 'use client';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { cn } from '@/libs/utils';
-import { songDetails } from '@/libs';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
-import type { SongWithJacket } from '@/libs';
-import { Submission } from '@/models/qualifierSubmission';
+import dynamic from 'next/dynamic';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useEffect, useState } from 'react';
+import { Match, PlayerStat } from '@/models/eventMatch';
+import SongScoreLabel from '@/components/SongScoreLabel';
+import { cn } from '@/libs/utils';
 
-const SongScoreLabel = dynamic(() => import('@/components/SongScoreLabel'));
-const Badge = dynamic(() =>
-  import('@/components/ui/badge').then((mod) => mod.Badge),
-);
 const Table = dynamic(() =>
   import('@/components/ui/table').then((mod) => mod.Table),
 );
@@ -35,253 +27,284 @@ const TableRow = dynamic(() =>
   import('@/components/ui/table').then((mod) => mod.TableRow),
 );
 
-const qualifierSongs: SongWithJacket[] = [
-  {
-    songId: 'futureeve',
-    jacket: '/qualifier-songs/futureeve.jpg',
-  },
-  { songId: 'pinqpiq', jacket: '/qualifier-songs/pinqpiq.jpg' },
-  {
-    songId: '_8orochi',
-    jacket: '/qualifier-songs/8orochi.jpg',
-  },
-];
-
-const Leaderboard = () => {
-  const [showHidden, setShowHidden] = useState<boolean>(false);
-  const [leaderboard, setLeaderboard] = useState<Submission[]>([]);
-  const [earlySubmissionLeaderboard, setEarlySubmissionLeaderboard] = useState<
-    Submission[]
-  >([]);
-
+const GpaSwiss = () => {
   const [isLoading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>('');
+  const [overallStats, setOverallStats] = useState<PlayerStat[]>([]);
+
+  // Unpack into 1D arrays to avoid explicit indexing (e.g. data[0].map(...))
+  const [swissRound1, setSwissRound1] = useState<Match[]>([]);
+  const [swissRound2, setSwissRound2] = useState<Match[]>([]);
+  const [swissRound3, setSwissRound3] = useState<Match[]>([]);
+  const [swissRound4, setSwissRound4] = useState<Match[]>([]);
   useEffect(() => {
-    const fetchLeaderboard = async () => {
+    setLoading(true);
+    const fetchSwissRoundsData = async () => {
       try {
-        const response = await fetch('/api/leaderboard');
-        const data: {
-          leaderboard: Submission[];
-          earlySubmissions: Submission[];
-        } = await response.json();
-        setLeaderboard(data.leaderboard);
-        setEarlySubmissionLeaderboard(data.earlySubmissions);
+        const response = await fetch('/api/swiss');
+        const data: { swissMatches: Match[][]; overallStats: PlayerStat[] } =
+          await response.json();
+        setSwissRound1(data.swissMatches[0]);
+        setSwissRound2(data.swissMatches[1]);
+        setSwissRound3(data.swissMatches[2]);
+        setSwissRound4(data.swissMatches[3]);
+        setOverallStats(data.overallStats);
       } catch (err) {
-        console.error(err);
+        console.error('Error fetching Swiss Rounds data:', err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchLeaderboard();
+    fetchSwissRoundsData();
   }, []);
-
-  const displayLeaderboard: Submission[] = !showHidden
-    ? leaderboard.filter((submission) => !submission.isDisqualified)
-    : leaderboard;
-
   return (
     <>
-      <h1>Qualifiers</h1>
-      <Tabs defaultValue="score" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 my-5">
-          <TabsTrigger value="score">Score Leaderboard</TabsTrigger>
-          <TabsTrigger value="early-submissions">
-            Early Submission Leaderboard
-          </TabsTrigger>
+      <h1>Swiss Rounds</h1>
+      <Tabs defaultValue="overall" className="w-full">
+        <TabsList className="grid w-full grid-cols-5 my-5">
+          <TabsTrigger value="overall">Overall</TabsTrigger>
+          <TabsTrigger value="swiss-round-1">Swiss Round 1</TabsTrigger>
+          <TabsTrigger value="swiss-round-2">Swiss Round 2</TabsTrigger>
+          <TabsTrigger value="swiss-round-3">Swiss Round 3</TabsTrigger>
+          <TabsTrigger value="swiss-round-4">Swiss Round 4</TabsTrigger>
         </TabsList>
-        <TabsContent value="score">
-          <div className="flex items-center space-x-2">
-            <Switch
-              id="hideDisqualified"
-              name="toggleDisqualified"
-              className="my-5"
-              checked={showHidden}
-              onCheckedChange={setShowHidden}
-            />
-            <Label htmlFor="hideDisqualified">
-              Show Non-Participant Scores
-            </Label>
-          </div>
-          <Table className="overflow-hidden">
+
+        {/* Overall Stats */}
+        <TabsContent value="overall">
+          <h3>Overall Stats</h3>
+          <Table className="mt-7">
             <TableHeader>
               <TableRow>
-                <TableHead rowSpan={2} className="min-w-16 w-16">
-                  #
-                </TableHead>
-                <TableHead rowSpan={2} className="min-w-48 w-48">
-                  IGN
-                </TableHead>
-                {qualifierSongs.map((song) => (
-                  <TableHead key={song.songId}>
-                    <div className="relative max-h-36 max-w-36 w-36 h-36 mx-auto">
-                      <Image
-                        src={song.jacket}
-                        alt={songDetails[song.songId].title}
-                        priority
-                        fill
-                      />
-                    </div>
-                  </TableHead>
-                ))}
-                <TableHead rowSpan={2} className="min-w-16 w-16">
+                <TableHead className="min-w-16 w-16">Rank</TableHead>
+                <TableHead className="min-w-48 w-48">IGN</TableHead>
+                <TableHead className="min-w-16 w-36">Matches Played</TableHead>
+                <TableHead className="min-w-16 w-36">Total Points</TableHead>
+                <TableHead className="min-w-16 w-36">
                   Total Deductions
                 </TableHead>
-                <TableHead rowSpan={2} className="min-w-32 w-32">
-                  Time of Play
-                </TableHead>
-              </TableRow>
-              <TableRow>
-                {qualifierSongs.map((song) => (
-                  <TableHead key={song.songId}>
-                    <span>{songDetails[song.songId].title}</span>
-                  </TableHead>
-                ))}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {displayLeaderboard.map((standing, index) => (
+              {overallStats.map((stat, index) => (
                 <TableRow
-                  key={`${standing.ign}-${standing.discordSubmissionTimestamp}-${index}`}
+                  key={`${stat.ign}-${index}`}
                   className={cn(
-                    // eslint-disable-next-line no-nested-ternary
-                    standing.isDisqualified
-                      ? 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive'
-                      : index < 6 && index >= 0
-                        ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
-                        : index >= 6 && index < 12
-                          ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
-                          : index >= 12 && index < 18
-                            ? 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success'
-                            : 'bg-background/20 even:bg-background/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
-                  )}
-                >
-                  <TableCell>{index + 1}</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 align-middle">
-                      <span>{standing.ign}</span>
-                      {standing.isDisqualified && (
-                        <Badge variant="destructive">NP</Badge>
-                      )}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <SongScoreLabel songScore={standing.songScores[0]} />
-                  </TableCell>
-                  <TableCell>
-                    <SongScoreLabel songScore={standing.songScores[1]} />
-                  </TableCell>
-                  <TableCell>
-                    <SongScoreLabel songScore={standing.songScores[2]} />
-                  </TableCell>
-                  <TableCell>{standing.totalScore}</TableCell>
-                  <TableCell>
-                    {new Date(
-                      standing.discordSubmissionTimestamp,
-                    ).toLocaleString('en-GB', {
-                      timeZone: 'Singapore',
-                      day: '2-digit',
-                      month: 'short',
-                      year: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      hour12: true,
-                    })}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          {displayLeaderboard.length === 0 && !isLoading && (
-            <div className="flex min-h-max justify-center items-center mt-8">
-              Empty leaderboard :(
-            </div>
-          )}
-        </TabsContent>
-        <TabsContent value="early-submissions">
-          <Table className="overflow-hidden">
-            <TableHeader>
-              <TableRow>
-                <TableHead rowSpan={2} className="min-w-16 w-16">
-                  #
-                </TableHead>
-                <TableHead rowSpan={2} className="min-w-48 w-48">
-                  IGN
-                </TableHead>
-                {qualifierSongs.map((song) => (
-                  <TableHead key={song.songId}>
-                    <div className="relative max-h-36 max-w-36 w-36 h-36 mx-auto">
-                      <Image
-                        src={song.jacket}
-                        alt={songDetails[song.songId].title}
-                        priority
-                        fill
-                      />
-                    </div>
-                  </TableHead>
-                ))}
-                <TableHead rowSpan={2} className="min-w-16 w-16">
-                  Total Deductions
-                </TableHead>
-                <TableHead rowSpan={2} className="min-w-32 w-32">
-                  Time of Play
-                </TableHead>
-              </TableRow>
-              <TableRow>
-                {qualifierSongs.map((song) => (
-                  <TableHead key={song.songId}>
-                    <span>{songDetails[song.songId].title}</span>
-                  </TableHead>
-                ))}
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {earlySubmissionLeaderboard.map((standing, index) => (
-                <TableRow
-                  key={`${standing.ign}-${standing.discordSubmissionTimestamp}-${index}`}
-                  className={cn(
-                    // eslint-disable-next-line no-nested-ternary
-                    index < 40
-                      ? 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success'
+                    index < 9
+                      ? 'bg-success/35 even:bg-success/35 hover:bg-success/60 data-[state=selected]:bg-success'
                       : 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive',
                   )}
                 >
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 align-middle">
-                      <span>{standing.ign}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <SongScoreLabel songScore={standing.songScores[0]} />
-                  </TableCell>
-                  <TableCell>
-                    <SongScoreLabel songScore={standing.songScores[1]} />
-                  </TableCell>
-                  <TableCell>
-                    <SongScoreLabel songScore={standing.songScores[2]} />
-                  </TableCell>
-                  <TableCell>{standing.totalScore}</TableCell>
-                  <TableCell>
-                    {new Date(
-                      standing.discordSubmissionTimestamp,
-                    ).toLocaleString('en-GB', {
-                      timeZone: 'Singapore',
-                      day: '2-digit',
-                      month: 'short',
-                      year: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      hour12: true,
-                    })}
-                  </TableCell>
+                  <TableCell>{stat.ign}</TableCell>
+                  <TableCell>{stat.matchesPlayed}</TableCell>
+                  <TableCell>{stat.totalPoints}</TableCell>
+                  <TableCell>{stat.totalDeductions}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-          {earlySubmissionLeaderboard.length === 0 && !isLoading && (
+        </TabsContent>
+
+        {/* Round 1 */}
+        <TabsContent value="swiss-round-1">
+          {swissRound1.map((match) => (
+            <>
+              <h3>{match.matchName}</h3>
+              <Table className="mt-7">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="min-w-40 w-48">Player</TableHead>
+                    {match.songs.map((songName) => (
+                      <TableHead className="min-w-48 w-64">
+                        {songName}
+                      </TableHead>
+                    ))}
+                    <TableHead className="min-w-18 w-24">
+                      Total Deductions
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {match.stats.map((playerStats, index) => (
+                    <TableRow
+                      key={`${playerStats.ign}-${index}`}
+                      className={cn(
+                        index === 0
+                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
+                          : index === 1
+                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
+                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
+                      )}
+                    >
+                      <TableCell>{playerStats.ign}</TableCell>
+                      {playerStats.songDeductions.map((songScore) => (
+                        <TableCell>
+                          <SongScoreLabel songScore={songScore} />
+                        </TableCell>
+                      ))}
+                      <TableCell>{playerStats.totalDeductions}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>
+          ))}
+          {!isLoading && swissRound1.length === 0 && (
             <div className="flex min-h-max justify-center items-center mt-8">
-              Empty leaderboard :(
+              No Match Data :(
+            </div>
+          )}
+        </TabsContent>
+
+        {/* Round 2 */}
+        <TabsContent value="swiss-round-2">
+          {swissRound2.map((match) => (
+            <>
+              <h3>{match.matchName}</h3>
+              <Table className="mt-7">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="min-w-40 w-48">Player</TableHead>
+                    {match.songs.map((songName) => (
+                      <TableHead className="min-w-48 w-64">
+                        {songName}
+                      </TableHead>
+                    ))}
+                    <TableHead className="min-w-18 w-24">
+                      Total Deductions
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {match.stats.map((playerStats, index) => (
+                    <TableRow
+                      key={`${playerStats.ign}-${index}`}
+                      className={cn(
+                        index === 0
+                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
+                          : index === 1
+                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
+                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
+                      )}
+                    >
+                      <TableCell>{playerStats.ign}</TableCell>
+                      {playerStats.songDeductions.map((songScore) => (
+                        <TableCell>
+                          <SongScoreLabel songScore={songScore} />
+                        </TableCell>
+                      ))}
+                      <TableCell>{playerStats.totalDeductions}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>
+          ))}
+          {!isLoading && swissRound2.length === 0 && (
+            <div className="flex min-h-max justify-center items-center mt-8">
+              No Match Data :(
+            </div>
+          )}
+        </TabsContent>
+
+        {/* Round 3 */}
+        <TabsContent value="swiss-round-3">
+          {swissRound3.map((match) => (
+            <>
+              <h3>{match.matchName}</h3>
+              <Table className="mt-7">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="min-w-40 w-48">Player</TableHead>
+                    {match.songs.map((songName) => (
+                      <TableHead className="min-w-48 w-64">
+                        {songName}
+                      </TableHead>
+                    ))}
+                    <TableHead className="min-w-18 w-24">
+                      Total Deductions
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {match.stats.map((playerStats, index) => (
+                    <TableRow
+                      key={`${playerStats.ign}-${index}`}
+                      className={cn(
+                        index === 0
+                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
+                          : index === 1
+                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
+                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
+                      )}
+                    >
+                      <TableCell>{playerStats.ign}</TableCell>
+                      {playerStats.songDeductions.map((songScore) => (
+                        <TableCell>
+                          <SongScoreLabel songScore={songScore} />
+                        </TableCell>
+                      ))}
+                      <TableCell>{playerStats.totalDeductions}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>
+          ))}
+          {!isLoading && swissRound3.length === 0 && (
+            <div className="flex min-h-max justify-center items-center mt-8">
+              No Match Data :(
+            </div>
+          )}
+        </TabsContent>
+
+        {/* Round 4 */}
+        <TabsContent value="swiss-round-4">
+          {swissRound4.map((match) => (
+            <>
+              <h3>{match.matchName}</h3>
+              <Table className="mt-7">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="min-w-40 w-48">Player</TableHead>
+                    {match.songs.map((songName) => (
+                      <TableHead className="min-w-48 w-64">
+                        {songName}
+                      </TableHead>
+                    ))}
+                    <TableHead className="min-w-18 w-24">
+                      Total Deductions
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {match.stats.map((playerStats, index) => (
+                    <TableRow
+                      key={`${playerStats.ign}-${index}`}
+                      className={cn(
+                        index === 0
+                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
+                          : index === 1
+                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
+                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
+                      )}
+                    >
+                      <TableCell>{playerStats.ign}</TableCell>
+                      {playerStats.songDeductions.map((songScore) => (
+                        <TableCell>
+                          <SongScoreLabel songScore={songScore} />
+                        </TableCell>
+                      ))}
+                      <TableCell>{playerStats.totalDeductions}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>
+          ))}
+          {!isLoading && swissRound4.length === 0 && (
+            <div className="flex min-h-max justify-center items-center mt-8">
+              No Match Data :(
             </div>
           )}
         </TabsContent>
@@ -308,4 +331,4 @@ const Leaderboard = () => {
   );
 };
 
-export default Leaderboard;
+export default GpaSwiss;

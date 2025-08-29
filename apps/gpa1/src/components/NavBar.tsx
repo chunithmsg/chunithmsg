@@ -16,14 +16,14 @@ const NavBar = () => (
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem className="m-0">
-            <Link href="/" legacyBehavior passHref>
+            <Link href="/qualifiers" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Qualifiers
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem className="m-0">
-            <Link href="/swiss" legacyBehavior passHref>
+            <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Swiss Rounds
               </NavigationMenuLink>
