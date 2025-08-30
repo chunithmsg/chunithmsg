@@ -23,14 +23,14 @@ const NavBar = () => (
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem className="m-0">
-            <Link href="/" legacyBehavior passHref>
+            <Link href="/swiss" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Swiss Rounds
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem className="m-0">
-            <Link href="/finals" legacyBehavior passHref>
+            <Link href="/" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Grand Finals
               </NavigationMenuLink>

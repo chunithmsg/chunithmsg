@@ -2,9 +2,8 @@
 
 import dynamic from 'next/dynamic';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useEffect, useState } from 'react';
-import { Match, PlayerStat } from '@/models/eventMatch';
+import { Match } from '@/models/eventMatch';
 import SongScoreLabel from '@/components/SongScoreLabel';
 import { cn } from '@/libs/utils';
 
@@ -27,27 +26,16 @@ const TableRow = dynamic(() =>
   import('@/components/ui/table').then((mod) => mod.TableRow),
 );
 
-const GpaSwiss = () => {
+const GpaFinals = () => {
   const [isLoading, setLoading] = useState<boolean>(true);
-  const [overallStats, setOverallStats] = useState<PlayerStat[]>([]);
-
-  // Unpack into 1D arrays to avoid explicit indexing (e.g. data[0].map(...))
-  const [swissRound1, setSwissRound1] = useState<Match[]>([]);
-  const [swissRound2, setSwissRound2] = useState<Match[]>([]);
-  const [swissRound3, setSwissRound3] = useState<Match[]>([]);
-  const [swissRound4, setSwissRound4] = useState<Match[]>([]);
+  const [grandFinalsData, setGrandFinalsData] = useState<Match[]>([]);
   useEffect(() => {
     setLoading(true);
     const fetchSwissRoundsData = async () => {
       try {
-        const response = await fetch('/api/swiss');
-        const data: { swissMatches: Match[][]; overallStats: PlayerStat[] } =
-          await response.json();
-        setSwissRound1(data.swissMatches[0]);
-        setSwissRound2(data.swissMatches[1]);
-        setSwissRound3(data.swissMatches[2]);
-        setSwissRound4(data.swissMatches[3]);
-        setOverallStats(data.overallStats);
+        const response = await fetch('/api/finals');
+        const data: { matchData: Match[] } = await response.json();
+        setGrandFinalsData(data.matchData);
       } catch (err) {
         console.error('Error fetching Swiss Rounds data:', err);
       } finally {
@@ -59,256 +47,50 @@ const GpaSwiss = () => {
   }, []);
   return (
     <>
-      <h1>Swiss Rounds</h1>
-      <Tabs defaultValue="overall" className="w-full">
-        <TabsList className="grid w-full grid-cols-5 my-5">
-          <TabsTrigger value="overall">Overall</TabsTrigger>
-          <TabsTrigger value="swiss-round-1">Swiss Round 1</TabsTrigger>
-          <TabsTrigger value="swiss-round-2">Swiss Round 2</TabsTrigger>
-          <TabsTrigger value="swiss-round-3">Swiss Round 3</TabsTrigger>
-          <TabsTrigger value="swiss-round-4">Swiss Round 4</TabsTrigger>
-        </TabsList>
-
-        {/* Overall Stats */}
-        <TabsContent value="overall">
-          <h3>Overall Stats</h3>
+      <h1>Grand Finals</h1>
+      {grandFinalsData.map((match) => (
+        <>
+          <h3>{match.matchName}</h3>
           <Table className="mt-7">
             <TableHeader>
               <TableRow>
-                <TableHead className="min-w-16 w-16">Rank</TableHead>
-                <TableHead className="min-w-48 w-48">IGN</TableHead>
-                <TableHead className="min-w-16 w-36">Matches Played</TableHead>
-                <TableHead className="min-w-16 w-36">Total Points</TableHead>
-                <TableHead className="min-w-16 w-36">
+                <TableHead className="min-w-40 w-48">Player</TableHead>
+                {match.songs.map((songName) => (
+                  <TableHead className="min-w-48 w-64">{songName}</TableHead>
+                ))}
+                <TableHead className="min-w-18 w-24">
                   Total Deductions
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {overallStats.map((stat, index) => (
+              {match.stats.map((playerStats, index) => (
                 <TableRow
-                  key={`${stat.ign}-${index}`}
+                  key={`${playerStats.ign}-${index}`}
                   className={cn(
-                    index < 9
-                      ? 'bg-success/35 even:bg-success/35 hover:bg-success/60 data-[state=selected]:bg-success'
+                    index === 0
+                      ? 'bg-success/35 even:bg-success/35 hover:bg-success/65 data-[state=selected]:bg-success'
                       : 'bg-destructive/20 even:bg-destructive/20 hover:bg-destructive/50 data-[state=selected]:bg-destructive',
                   )}
                 >
-                  <TableCell>{index + 1}</TableCell>
-                  <TableCell>{stat.ign}</TableCell>
-                  <TableCell>{stat.matchesPlayed}</TableCell>
-                  <TableCell>{stat.totalPoints}</TableCell>
-                  <TableCell>{stat.totalDeductions}</TableCell>
+                  <TableCell>{playerStats.ign}</TableCell>
+                  {playerStats.songDeductions.map((songScore) => (
+                    <TableCell>
+                      <SongScoreLabel songScore={songScore} />
+                    </TableCell>
+                  ))}
+                  <TableCell>{playerStats.totalDeductions}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-        </TabsContent>
-
-        {/* Round 1 */}
-        <TabsContent value="swiss-round-1">
-          {swissRound1.map((match) => (
-            <>
-              <h3>{match.matchName}</h3>
-              <Table className="mt-7">
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="min-w-40 w-48">Player</TableHead>
-                    {match.songs.map((songName) => (
-                      <TableHead className="min-w-48 w-64">
-                        {songName}
-                      </TableHead>
-                    ))}
-                    <TableHead className="min-w-18 w-24">
-                      Total Deductions
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {match.stats.map((playerStats, index) => (
-                    <TableRow
-                      key={`${playerStats.ign}-${index}`}
-                      className={cn(
-                        index === 0
-                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
-                          : index === 1
-                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
-                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
-                      )}
-                    >
-                      <TableCell>{playerStats.ign}</TableCell>
-                      {playerStats.songDeductions.map((songScore) => (
-                        <TableCell>
-                          <SongScoreLabel songScore={songScore} />
-                        </TableCell>
-                      ))}
-                      <TableCell>{playerStats.totalDeductions}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </>
-          ))}
-          {!isLoading && swissRound1.length === 0 && (
-            <div className="flex min-h-max justify-center items-center mt-8">
-              No Match Data :(
-            </div>
-          )}
-        </TabsContent>
-
-        {/* Round 2 */}
-        <TabsContent value="swiss-round-2">
-          {swissRound2.map((match) => (
-            <>
-              <h3>{match.matchName}</h3>
-              <Table className="mt-7">
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="min-w-40 w-48">Player</TableHead>
-                    {match.songs.map((songName) => (
-                      <TableHead className="min-w-48 w-64">
-                        {songName}
-                      </TableHead>
-                    ))}
-                    <TableHead className="min-w-18 w-24">
-                      Total Deductions
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {match.stats.map((playerStats, index) => (
-                    <TableRow
-                      key={`${playerStats.ign}-${index}`}
-                      className={cn(
-                        index === 0
-                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
-                          : index === 1
-                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
-                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
-                      )}
-                    >
-                      <TableCell>{playerStats.ign}</TableCell>
-                      {playerStats.songDeductions.map((songScore) => (
-                        <TableCell>
-                          <SongScoreLabel songScore={songScore} />
-                        </TableCell>
-                      ))}
-                      <TableCell>{playerStats.totalDeductions}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </>
-          ))}
-          {!isLoading && swissRound2.length === 0 && (
-            <div className="flex min-h-max justify-center items-center mt-8">
-              No Match Data :(
-            </div>
-          )}
-        </TabsContent>
-
-        {/* Round 3 */}
-        <TabsContent value="swiss-round-3">
-          {swissRound3.map((match) => (
-            <>
-              <h3>{match.matchName}</h3>
-              <Table className="mt-7">
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="min-w-40 w-48">Player</TableHead>
-                    {match.songs.map((songName) => (
-                      <TableHead className="min-w-48 w-64">
-                        {songName}
-                      </TableHead>
-                    ))}
-                    <TableHead className="min-w-18 w-24">
-                      Total Deductions
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {match.stats.map((playerStats, index) => (
-                    <TableRow
-                      key={`${playerStats.ign}-${index}`}
-                      className={cn(
-                        index === 0
-                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
-                          : index === 1
-                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
-                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
-                      )}
-                    >
-                      <TableCell>{playerStats.ign}</TableCell>
-                      {playerStats.songDeductions.map((songScore) => (
-                        <TableCell>
-                          <SongScoreLabel songScore={songScore} />
-                        </TableCell>
-                      ))}
-                      <TableCell>{playerStats.totalDeductions}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </>
-          ))}
-          {!isLoading && swissRound3.length === 0 && (
-            <div className="flex min-h-max justify-center items-center mt-8">
-              No Match Data :(
-            </div>
-          )}
-        </TabsContent>
-
-        {/* Round 4 */}
-        <TabsContent value="swiss-round-4">
-          {swissRound4.map((match) => (
-            <>
-              <h3>{match.matchName}</h3>
-              <Table className="mt-7">
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="min-w-40 w-48">Player</TableHead>
-                    {match.songs.map((songName) => (
-                      <TableHead className="min-w-48 w-64">
-                        {songName}
-                      </TableHead>
-                    ))}
-                    <TableHead className="min-w-18 w-24">
-                      Total Deductions
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {match.stats.map((playerStats, index) => (
-                    <TableRow
-                      key={`${playerStats.ign}-${index}`}
-                      className={cn(
-                        index === 0
-                          ? 'bg-success/50 even:bg-success/50 hover:bg-success/60 data-[state=selected]:bg-success'
-                          : index === 1
-                            ? 'bg-success/35 even:bg-success/35 hover:bg-success/45 data-[state=selected]:bg-success'
-                            : 'bg-success/20 even:bg-success/20 hover:bg-success/30 data-[state=selected]:bg-success',
-                      )}
-                    >
-                      <TableCell>{playerStats.ign}</TableCell>
-                      {playerStats.songDeductions.map((songScore) => (
-                        <TableCell>
-                          <SongScoreLabel songScore={songScore} />
-                        </TableCell>
-                      ))}
-                      <TableCell>{playerStats.totalDeductions}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </>
-          ))}
-          {!isLoading && swissRound4.length === 0 && (
-            <div className="flex min-h-max justify-center items-center mt-8">
-              No Match Data :(
-            </div>
-          )}
-        </TabsContent>
-      </Tabs>
+        </>
+      ))}
+      {!isLoading && grandFinalsData.length === 0 && (
+        <div className="flex min-h-max justify-center items-center mt-8">
+          No Match Data :(
+        </div>
+      )}
       {isLoading && (
         <div className="flex min-h-max justify-center items-center mt-8">
           <svg
@@ -331,4 +113,4 @@ const GpaSwiss = () => {
   );
 };
 
-export default GpaSwiss;
+export default GpaFinals;
